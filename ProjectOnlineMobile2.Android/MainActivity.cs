@@ -5,7 +5,7 @@ using Android.Support.V4.Widget;
 using Android.Views;
 
 using Android.Support.V7.App;
-
+using Fragment = Android.Support.V4.App.Fragment;
 using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
 using ProjectOnlineMobile2.Android.Fragments;
@@ -32,7 +32,7 @@ namespace ProjectOnlineMobile2.Android
             SetContentView(Resource.Layout.main);
 
             Forms.Init(this, savedInstanceState);
-            _page1 = new Page1().CreateFragment(this);
+            _page1 = new Page1().CreateSupportFragment(this);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
@@ -104,7 +104,7 @@ namespace ProjectOnlineMobile2.Android
                     break;
             }
 
-            FragmentManager.BeginTransaction()
+            SupportFragmentManager.BeginTransaction()
                 .Replace(Resource.Id.content_frame, fragment)
                 .Commit();
         }
