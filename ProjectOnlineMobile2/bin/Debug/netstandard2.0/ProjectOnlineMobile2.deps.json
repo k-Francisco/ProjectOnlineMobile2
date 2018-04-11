@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "015dd768bd4c01d571956920a21867aa439fdf61"
+    "signature": "5b8be6b6dbe49e9b96d1e81984d68d6c1ffce814"
   },
   "compilationOptions": {},
   "targets": {
@@ -11,6 +11,7 @@
         "dependencies": {
           "NETStandard.Library": "2.0.1",
           "Refit": "4.3.0",
+          "Xam.Plugins.Settings": "4.0.0.3-beta",
           "Xamarin.Forms": "3.0.0.354232-pre3"
         },
         "runtime": {
@@ -821,6 +822,11 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "Xam.Plugins.Settings/4.0.0.3-beta": {
+        "runtime": {
+          "lib/netstandard2.0/Plugin.Settings.dll": {}
+        }
+      },
       "Xamarin.Forms/3.0.0.354232-pre3": {
         "runtime": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {},
@@ -1395,6 +1401,13 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "Xam.Plugins.Settings/4.0.0.3-beta": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-d3OKHQ67qx01kax3AbkbvclP47hpNgdilrtz9lpc+0GCM1tCzAH12dGV2DlgG4rmcE8pYgUyAYcta7HoDKn+3w==",
+      "path": "xam.plugins.settings/4.0.0.3-beta",
+      "hashPath": "xam.plugins.settings.4.0.0.3-beta.nupkg.sha512"
     },
     "Xamarin.Forms/3.0.0.354232-pre3": {
       "type": "package",

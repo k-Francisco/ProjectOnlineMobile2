@@ -1,6 +1,6 @@
 BundleAssemblies=False
-AotAssemblies=False
-AndroidAotMode=
+AotAssemblies=True
+AndroidAotMode=Normal
 ExplicitCrunch=False
 EnableProguard=
 UseSharedRuntime=true

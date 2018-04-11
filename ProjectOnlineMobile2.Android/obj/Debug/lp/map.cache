@@ -1,6 +1,9 @@
 FormsViewGroup
+Plugin.Settings
 ProjectOnlineMobile2
+System.Collections
 System.Runtime
+System.Threading.Tasks
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Lifecycle.Common
 Xamarin.Android.Arch.Lifecycle.Runtime

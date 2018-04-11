@@ -2,7 +2,7 @@ package md58a8ee8b91fcb3708fbbedb764bd9dd2a;
 
 
 public class Fragment2
-	extends android.app.Fragment
+	extends android.support.v4.app.Fragment
 	implements
 		mono.android.IGCUserPeer
 {

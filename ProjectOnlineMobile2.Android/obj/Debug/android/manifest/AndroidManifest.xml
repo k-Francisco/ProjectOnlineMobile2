@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.company.ProjectOnlineMobile2.Android" android:versionCode="1" android:versionName="1">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" package="com.company.ProjectOnlineMobile2.Android" android:versionCode="1" android:versionName="1">
   <!--suppress UsesMinSdkAttributes-->
-  <uses-sdk android:minSdkVersion="15" />
+  <uses-sdk android:minSdkVersion="16" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <application android:label="@string/app_name" android:icon="@drawable/icon" android:theme="@style/Theme.MyTheme" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
-    <activity android:icon="@drawable/icon" android:label="@string/app_name" android:launchMode="singleTop" android:name="md59a2fec22906f4d29572a9340b3ef5322.MainActivity">
+    <activity android:label="MainActivity" android:name="md59a2fec22906f4d29572a9340b3ef5322.MainActivity" />
+    <activity android:icon="@drawable/icon" android:label="@string/app_name" android:launchMode="singleTop" android:name="md5768ea8aa860a9e68b0c928544b06741b.LoginActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

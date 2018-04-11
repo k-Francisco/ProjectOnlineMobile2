@@ -1279,6 +1279,22 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "Xam.Plugins.Settings/4.0.0.3-beta": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Plugin.Settings.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Plugin.Settings.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/netstandard2.0/readme.txt": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
       "Xamarin.Forms/3.0.0.354232-pre3": {
         "type": "package",
         "compile": {
@@ -4718,6 +4734,50 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
+    "Xam.Plugins.Settings/4.0.0.3-beta": {
+      "sha512": "d3OKHQ67qx01kax3AbkbvclP47hpNgdilrtz9lpc+0GCM1tCzAH12dGV2DlgG4rmcE8pYgUyAYcta7HoDKn+3w==",
+      "type": "package",
+      "path": "xam.plugins.settings/4.0.0.3-beta",
+      "files": [
+        "content/readme.txt",
+        "contentFiles/any/monoandroid44/readme.txt",
+        "contentFiles/any/net45/readme.txt",
+        "contentFiles/any/netcoreapp2.0/readme.txt",
+        "contentFiles/any/netstandard1.0/readme.txt",
+        "contentFiles/any/netstandard2.0/readme.txt",
+        "contentFiles/any/tizen40/readme.txt",
+        "contentFiles/any/uap10.0.15063/readme.txt",
+        "contentFiles/any/xamarinios10/readme.txt",
+        "contentFiles/any/xamarinmac20/readme.txt",
+        "contentFiles/any/xamarintvos10/readme.txt",
+        "contentFiles/any/xamarinwatchos10/readme.txt",
+        "lib/monoandroid44/Plugin.Settings.dll",
+        "lib/monoandroid44/Plugin.Settings.xml",
+        "lib/net45/Plugin.Settings.dll",
+        "lib/net45/Plugin.Settings.xml",
+        "lib/netcoreapp2.0/Plugin.Settings.dll",
+        "lib/netcoreapp2.0/Plugin.Settings.xml",
+        "lib/netstandard1.0/Plugin.Settings.dll",
+        "lib/netstandard1.0/Plugin.Settings.xml",
+        "lib/netstandard2.0/Plugin.Settings.dll",
+        "lib/netstandard2.0/Plugin.Settings.xml",
+        "lib/tizen40/Plugin.Settings.dll",
+        "lib/tizen40/Plugin.Settings.xml",
+        "lib/uap10.0.15063/Plugin.Settings.dll",
+        "lib/uap10.0.15063/Plugin.Settings.pri",
+        "lib/uap10.0.15063/Plugin.Settings.xml",
+        "lib/xamarinios10/Plugin.Settings.dll",
+        "lib/xamarinios10/Plugin.Settings.xml",
+        "lib/xamarinmac20/Plugin.Settings.dll",
+        "lib/xamarinmac20/Plugin.Settings.xml",
+        "lib/xamarintvos10/Plugin.Settings.dll",
+        "lib/xamarintvos10/Plugin.Settings.xml",
+        "lib/xamarinwatchos10/Plugin.Settings.dll",
+        "lib/xamarinwatchos10/Plugin.Settings.xml",
+        "xam.plugins.settings.4.0.0.3-beta.nupkg.sha512",
+        "xam.plugins.settings.nuspec"
+      ]
+    },
     "Xamarin.Forms/3.0.0.354232-pre3": {
       "sha512": "oBsLZobXH8Ru/K3bPOVHkml+XA22PoaqyyOP1vUzkGPZP4B1YzI1oaMaXOn2wxXl/+vbTpkvD5ZxI9bECid/vA==",
       "type": "package",
@@ -4862,6 +4922,7 @@
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.1",
       "Refit >= 4.3.0",
+      "Xam.Plugins.Settings >= 4.0.0.3-beta",
       "Xamarin.Forms >= 3.0.0.354232-pre3"
     ]
   },
@@ -4915,6 +4976,10 @@
           "Refit": {
             "target": "Package",
             "version": "[4.3.0, )"
+          },
+          "Xam.Plugins.Settings": {
+            "target": "Package",
+            "version": "[4.0.0.3-beta, )"
           },
           "Xamarin.Forms": {
             "target": "Package",

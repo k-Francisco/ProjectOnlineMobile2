@@ -1,0 +1,12 @@
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\ProjectOnlineMobile2.iOS.exe
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\ProjectOnlineMobile2.iOS.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\actool\_PartialAppManifest.items
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\coremlc\_PartialAppManifest.items
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\coremlc\_BundleResourceWithLogicalName.items
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\optimized\Entitlements.plist
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\optimized\
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\ProjectOnlineMobile2.iOS.csproj.CoreCompileInputs.cache
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\ProjectOnlineMobile2.iOS.exe
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\ProjectOnlineMobile2.iOS.pdb

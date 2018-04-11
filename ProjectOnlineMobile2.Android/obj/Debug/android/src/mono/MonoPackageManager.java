@@ -108,6 +108,7 @@ class MonoPackageManager_Resources {
 		/* We need to ensure that "ProjectOnlineMobile2.Android.dll" comes first in this list. */
 		"ProjectOnlineMobile2.Android.dll",
 		"FormsViewGroup.dll",
+		"Plugin.Settings.dll",
 		"ProjectOnlineMobile2.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Lifecycle.Common.dll",

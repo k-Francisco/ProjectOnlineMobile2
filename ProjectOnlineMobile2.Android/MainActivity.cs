@@ -17,7 +17,7 @@ using ProjectOnlineMobile2.Pages;
 
 namespace ProjectOnlineMobile2.Android
 {
-    [Activity(Label = "@string/app_name", MainLauncher = true, LaunchMode = LaunchMode.SingleTop, Icon = "@drawable/Icon")]
+    [Activity(Label = "MainActivity")]
     public class MainActivity : AppCompatActivity
     {
 
