@@ -81,6 +81,7 @@ namespace ProjectOnlineMobile2.Android
                 navigationView.SetCheckedItem(Resource.Id.nav_home_1);
                 ListItemClicked(0);
             }
+
         }
 
         int oldPosition = -1;

@@ -1,8 +1,16 @@
 FormsViewGroup
+Microsoft.AspNetCore.WebUtilities
+Microsoft.Extensions.Primitives
+Microsoft.Net.Http.Headers
+Newtonsoft.Json
 Plugin.Settings
 ProjectOnlineMobile2
+Refit
+System.Buffers
 System.Collections
+System.Runtime.CompilerServices.Unsafe
 System.Runtime
+System.Text.Encodings.Web
 System.Threading.Tasks
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Lifecycle.Common

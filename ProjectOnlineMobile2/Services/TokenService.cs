@@ -15,11 +15,11 @@ namespace ProjectOnlineMobile2.Services
             {
                 if(cookie.Contains("rtFa") && cookie.Contains("FedAuth"))
                 {
-                    Debug.WriteLine("cookie", cookie);
                     string[] token = cookie.Split(new char[] { ';' });
+
                     for (int i = 0; i < token.Length; i++)
                     {
-                        if (token[i].Contains("rtFa"))
+                        if (token[i].Contains("rtFa") && String.IsNullOrEmpty(Settings.rtFaToken))
                         {
                             Settings.rtFaToken = token[i].Replace("rtFa=", "");
                         }
@@ -31,7 +31,10 @@ namespace ProjectOnlineMobile2.Services
                     }
                     
                     if (!String.IsNullOrEmpty(Settings.rtFaToken) && (!String.IsNullOrEmpty(Settings.FedAuthToken)))
+                    {
                         doneSavingTokens = true;
+                    }
+                        
                 }
             }
             return doneSavingTokens;
