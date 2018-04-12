@@ -1,6 +1,4 @@
-﻿
-
-using Plugin.Settings;
+﻿using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 
 namespace ProjectOnlineMobile2.Services
@@ -15,6 +13,7 @@ namespace ProjectOnlineMobile2.Services
 
         private const string rtFa = "";
         private const string FedAuth = "";
+        private const string cookie = "";
 
         #endregion
 
@@ -28,6 +27,12 @@ namespace ProjectOnlineMobile2.Services
         {
             get => AppSettings.GetValueOrDefault(FedAuth, string.Empty);
             set => AppSettings.AddOrUpdateValue(FedAuth, value);
+        }
+
+        public static string CookieString
+        {
+            get => AppSettings.GetValueOrDefault(cookie, string.Empty);
+            set => AppSettings.AddOrUpdateValue(cookie, value);
         }
 
         public static void ClearAll()

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace ProjectOnlineMobile2.Services
 {
-    [Headers("Content-Type: application/json")]
     public interface ISharepointApi
     {
         [Get("/_api/web/currentUser?")]

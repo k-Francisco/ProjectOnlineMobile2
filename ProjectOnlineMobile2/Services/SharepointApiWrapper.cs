@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,23 +17,32 @@ namespace ProjectOnlineMobile2.Services
 
         public SharepointApiWrapper()
         {
+
             if(_client == null)
             {
+                TokenService tokenService = new TokenService();
+                Debug.WriteLine("rtFa", tokenService.ExtractRtFa());
+                Debug.WriteLine("FedAuth", tokenService.ExtractFedAuth());
+
                 HttpClientHandler handler = new HttpClientHandler();
                 handler.CookieContainer = new CookieContainer();
-                handler.CookieContainer.Add(new Cookie("rtFa", Settings.rtFaToken, "/", "sharepointevo.sharepoint.com"));
-                handler.CookieContainer.Add(new Cookie("FedAuth", Settings.FedAuthToken, "/", "sharepointevo.sharepoint.com"));
+                handler.CookieContainer.Add(new Cookie("rtFa", tokenService.ExtractRtFa(), "/", "sharepointevo.sharepoint.com"));
+                handler.CookieContainer.Add(new Cookie("FedAuth", tokenService.ExtractFedAuth(), "/", "sharepointevo.sharepoint.com"));
 
-                _client = new HttpClient(handler) {
+                var mediaType = new MediaTypeWithQualityHeaderValue("application/json");
+                mediaType.Parameters.Add(new NameValueHeaderValue("odata", "verbose"));
+
+                _client = new HttpClient(handler)
+                {
                     BaseAddress = new Uri(_sharepointUrl)
                 };
+                _client.DefaultRequestHeaders.Accept.Add(mediaType);
             }
         }
 
         public async Task<string> GetCurrentUser()
         {
-            Debug.WriteLine("rtFa", Settings.rtFaToken);
-            Debug.WriteLine("FedAuthToken", Settings.FedAuthToken);
+            
             try
             {
                 return await RestService.For<ISharepointApi>(_client).GetCurrentUser();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
 
 namespace ProjectOnlineMobile2.Services
@@ -7,45 +8,65 @@ namespace ProjectOnlineMobile2.Services
     //It is required that you install the plugin on your project through nuget
     public class TokenService
     {
-        public bool ExtractAuthorizationTokens(string cookie) {
+        public bool SaveCookies(string cookie) {
 
-            bool doneSavingTokens = false;
+            bool doneSavingCookies = false;
 
             if (cookie != null)
             {
                 if(cookie.Contains("rtFa") && cookie.Contains("FedAuth"))
                 {
-                    string[] token = cookie.Split(new char[] { ';' });
+                    Settings.CookieString = JsonConvert.SerializeObject(cookie);
 
-                    for (int i = 0; i < token.Length; i++)
+                    if (!String.IsNullOrWhiteSpace(Settings.CookieString))
                     {
-                        if (token[i].Contains("rtFa") && String.IsNullOrEmpty(Settings.rtFaToken))
-                        {
-                            Settings.rtFaToken = token[i].Replace("rtFa=", "");
-                        }
-
-                        if (token[i].Contains("FedAuth"))
-                        {
-                            Settings.FedAuthToken = token[i].Replace("FedAuth=", "");
-                        }
+                        doneSavingCookies = true;
                     }
-                    
-                    if (!String.IsNullOrEmpty(Settings.rtFaToken) && (!String.IsNullOrEmpty(Settings.FedAuthToken)))
-                    {
-                        doneSavingTokens = true;
-                    }
-                        
                 }
             }
-            return doneSavingTokens;
+            return doneSavingCookies;
 
+        }
+
+        public String ExtractRtFa()
+        {
+            string rtFa = string.Empty;
+
+            string[] token = JsonConvert.DeserializeObject<string>(Settings.CookieString).Split(new char[] { ';' });
+
+            for (int i = 0; i < token.Length; i++)
+            {
+                if (token[i].Contains("rtFa"))
+                {
+                    rtFa = token[i].Replace("rtFa=","");
+                }
+            }
+
+            return rtFa;
+        }
+
+        public String ExtractFedAuth()
+        {
+            string FedAuth = string.Empty;
+
+            string[] token = JsonConvert.DeserializeObject<string>(Settings.CookieString).Split(new char[] { ';' });
+
+            for (int i = 0; i < token.Length; i++)
+            {
+                if (token[i].Contains("FedAuth"))
+                {
+                    FedAuth = token[i].Replace("FedAuth=", "");
+                }
+            }
+
+            return FedAuth;
         }
 
         public bool IsAlreadyLoggedIn()
         {
             bool isLogged = false;
 
-            if (!String.IsNullOrEmpty(Settings.rtFaToken) && !String.IsNullOrEmpty(Settings.FedAuthToken))
+            if (!String.IsNullOrWhiteSpace(Settings.CookieString))
                 isLogged = true;
 
             return isLogged;

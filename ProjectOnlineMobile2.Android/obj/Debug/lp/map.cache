@@ -3,6 +3,7 @@ Microsoft.AspNetCore.WebUtilities
 Microsoft.Extensions.Primitives
 Microsoft.Net.Http.Headers
 Newtonsoft.Json
+Plugin.Settings.Abstractions
 Plugin.Settings
 ProjectOnlineMobile2
 Refit

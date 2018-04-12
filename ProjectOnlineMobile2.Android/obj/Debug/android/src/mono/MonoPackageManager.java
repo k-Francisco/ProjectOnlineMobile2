@@ -112,6 +112,7 @@ class MonoPackageManager_Resources {
 		"Microsoft.Extensions.Primitives.dll",
 		"Microsoft.Net.Http.Headers.dll",
 		"Newtonsoft.Json.dll",
+		"Plugin.Settings.Abstractions.dll",
 		"Plugin.Settings.dll",
 		"ProjectOnlineMobile2.dll",
 		"Refit.dll",

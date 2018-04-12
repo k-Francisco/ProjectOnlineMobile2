@@ -31,19 +31,13 @@ namespace ProjectOnlineMobile2.Android.Helpers
             CookieManager cookieManager = CookieManager.Instance;
             cookieManager.SetAcceptCookie(true);
 
-            doneSavingTokens = Singleton.Instance.TokenServices.ExtractAuthorizationTokens(cookieManager.GetCookie("https://sharepointevo.sharepoint.com/SitePages/home.aspx?AjaxDelta=1"));
+            doneSavingTokens = Singleton.Instance.TokenServices.SaveCookies(cookieManager.GetCookie("https://sharepointevo.sharepoint.com/SitePages/home.aspx?AjaxDelta=1"));
 
             if (doneSavingTokens && !doneNavigating)
             {
                 _activity.GoToLandingPage();
                 doneNavigating = true;
             }
-        }
-
-        public override void OnPageFinished(WebView view, string url)
-        {
-            base.OnPageFinished(view, url);
-
         }
     }
 }
