@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 
 namespace ProjectOnlineMobile2.Services
 {
+    //this class is dependent on the plugin Xam.Plugins.Settings by James Montemagno
+    //It is required that you install the plugin on your project through nuget
     public class TokenService
     {
         public bool ExtractAuthorizationTokens(string cookie) {
@@ -42,10 +42,11 @@ namespace ProjectOnlineMobile2.Services
         {
             bool isLogged = false;
 
-            if (!string.IsNullOrEmpty(Settings.rtFaToken) && !string.IsNullOrEmpty(Settings.FedAuthToken))
+            if (!String.IsNullOrEmpty(Settings.rtFaToken) && !String.IsNullOrEmpty(Settings.FedAuthToken))
                 isLogged = true;
 
             return isLogged;
         }
+
     }
 }

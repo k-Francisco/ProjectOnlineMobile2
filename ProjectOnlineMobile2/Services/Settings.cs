@@ -5,6 +5,8 @@ using Plugin.Settings.Abstractions;
 
 namespace ProjectOnlineMobile2.Services
 {
+    //This class is dependent on the package Xam.Plugins.Settings by James Montemagno
+    //In order to use the functions available in this class, you need to install the plugin on your project through nuget
     public class Settings
     {
         private static ISettings AppSettings => CrossSettings.Current;
