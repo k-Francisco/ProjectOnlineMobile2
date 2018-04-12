@@ -39,5 +39,6 @@ namespace ProjectOnlineMobile2.Android
         }
 
         public TokenService TokenServices = new TokenService();
+        public SharepointApiWrapper sharepointApi = new SharepointApiWrapper();
     }
 }

@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v26</xs:documentation>
-    <xs:documentation>11/04/2018 5:37:15 PM</xs:documentation>
+    <xs:documentation>13/04/2018 6:59:16 AM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -332,6 +332,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -400,6 +402,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -744,6 +748,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -812,6 +818,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -949,6 +957,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -1017,6 +1027,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -1154,6 +1166,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -1222,6 +1236,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -4550,6 +4566,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -4618,6 +4636,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -4755,6 +4775,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -4823,6 +4845,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -4960,6 +4984,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -5028,6 +5054,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -5165,6 +5193,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -5233,6 +5263,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -5370,6 +5402,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -5438,6 +5472,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -8125,6 +8161,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -8193,6 +8231,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -8330,6 +8370,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -8398,6 +8440,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -10096,6 +10140,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -10164,6 +10210,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -10301,6 +10349,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -10369,6 +10419,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -10506,6 +10558,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -10574,6 +10628,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -10711,6 +10767,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -10779,6 +10837,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -10916,6 +10976,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -10984,6 +11046,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -22412,6 +22476,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -22480,6 +22546,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -22617,6 +22685,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -22685,6 +22755,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -25709,6 +25781,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -25777,6 +25851,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -27010,6 +27086,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -27078,6 +27156,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -32147,6 +32227,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -32215,6 +32297,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -32352,6 +32436,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -32420,6 +32506,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -34011,6 +34099,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -34079,6 +34169,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -34423,6 +34515,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -34491,6 +34585,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -34628,6 +34724,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -34696,6 +34794,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -34833,6 +34933,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -34901,6 +35003,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -35053,6 +35157,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -35121,6 +35227,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -35258,6 +35366,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -35326,6 +35436,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -35463,6 +35575,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -35531,6 +35645,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -35668,6 +35784,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -35736,6 +35854,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -35873,6 +35993,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -35941,6 +36063,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -37189,6 +37313,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -37257,6 +37383,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -37659,6 +37787,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -37727,6 +37857,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -37864,6 +37996,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -37932,6 +38066,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -38069,6 +38205,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -38137,6 +38275,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -38274,6 +38414,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -38342,6 +38484,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -38479,6 +38623,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -38547,6 +38693,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />
@@ -38684,6 +38832,8 @@
             <xs:enumeration value="@dimen/abc_text_size_subtitle_material_toolbar" />
             <xs:enumeration value="@dimen/abc_text_size_title_material" />
             <xs:enumeration value="@dimen/abc_text_size_title_material_toolbar" />
+            <xs:enumeration value="@dimen/activity_horizontal_margin" />
+            <xs:enumeration value="@dimen/activity_vertical_margin" />
             <xs:enumeration value="@dimen/cardview_compat_inset_shadow" />
             <xs:enumeration value="@dimen/cardview_default_elevation" />
             <xs:enumeration value="@dimen/cardview_default_radius" />
@@ -38752,6 +38902,8 @@
             <xs:enumeration value="@dimen/mr_controller_volume_group_list_padding_top" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_major" />
             <xs:enumeration value="@dimen/mr_dialog_fixed_width_minor" />
+            <xs:enumeration value="@dimen/nav_header_height" />
+            <xs:enumeration value="@dimen/nav_header_vertical_spacing" />
             <xs:enumeration value="@dimen/notification_action_icon_size" />
             <xs:enumeration value="@dimen/notification_action_text_size" />
             <xs:enumeration value="@dimen/notification_big_circle_margin" />

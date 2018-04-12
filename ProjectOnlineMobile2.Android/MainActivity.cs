@@ -7,22 +7,26 @@ using Android.Views;
 using Android.Support.V7.App;
 using Fragment = Android.Support.V4.App.Fragment;
 using Android.Support.Design.Widget;
-using Android.Support.V7.Widget;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 using ProjectOnlineMobile2.Android.Fragments;
 using Android.App;
 using Android.Support.V4.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using ProjectOnlineMobile2.Pages;
+using Android.Widget;
+using ProjectOnlineMobile2.Models;
+using System;
 
 namespace ProjectOnlineMobile2.Android
 {
-    [Activity(Label = "MainActivity")]
+    [Activity(Label = "")]
     public class MainActivity : AppCompatActivity
     {
 
         DrawerLayout drawerLayout;
         NavigationView navigationView;
+        TextView userEmail, userName;
         private Fragment _page1;
 
         IMenuItem previousItem;
@@ -50,6 +54,10 @@ namespace ProjectOnlineMobile2.Android
             //setup navigation view
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
 
+            //set the user's name and email
+            userName = navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.tvUserName);
+            userEmail = navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.tvUserEmail);
+
             //handle navigation
             navigationView.NavigationItemSelected += (sender, e) =>
             {
@@ -62,10 +70,10 @@ namespace ProjectOnlineMobile2.Android
 
                 switch (e.MenuItem.ItemId)
                 {
-                    case Resource.Id.nav_home_1:
+                    case Resource.Id.nav_projects:
                         ListItemClicked(0);
                         break;
-                    case Resource.Id.nav_home_2:
+                    case Resource.Id.nav_tasks:
                         ListItemClicked(1);
                         break;
                 }
@@ -78,10 +86,19 @@ namespace ProjectOnlineMobile2.Android
             //if first time you will want to go ahead and click first item.
             if (savedInstanceState == null)
             {
-                navigationView.SetCheckedItem(Resource.Id.nav_home_1);
+                navigationView.SetCheckedItem(Resource.Id.nav_projects);
                 ListItemClicked(0);
             }
 
+            GetUserInfo();
+
+        }
+
+        private async void GetUserInfo()
+        {
+            UserModel user = await Singleton.Instance.sharepointApi.GetCurrentUser();
+            userName.Text = user.D.Title;
+            userEmail.Text = user.D.Email;
         }
 
         int oldPosition = -1;
@@ -99,9 +116,11 @@ namespace ProjectOnlineMobile2.Android
                 case 0:
                     //fragment = Fragment1.NewInstance();
                     fragment = _page1;
+                    SupportActionBar.Title = "Projects";
                     break;
                 case 1:
                     fragment = Fragment2.NewInstance();
+                    SupportActionBar.Title = "My Tasks";
                     break;
             }
 

@@ -5,7 +5,7 @@
   <xs:import schemaLocation="schemas.android.com.tools.xsd" namespace="http://schemas.android.com/tools" />
   <xs:annotation>
     <xs:documentation>v26</xs:documentation>
-    <xs:documentation>11/04/2018 5:37:15 PM</xs:documentation>
+    <xs:documentation>13/04/2018 6:59:16 AM</xs:documentation>
   </xs:annotation>
   <xs:group name="any-view">
     <xs:choice>
@@ -293,6 +293,17 @@
     <xs:attribute ref="tools:visibility" />
     <xs:attribute ref="android:layout_width" />
     <xs:attribute ref="android:layout_height" />
+    <xs:attribute ref="android:layout_weight" />
+    <xs:attribute ref="android:layout_gravity" />
+    <xs:attribute ref="android:layout_margin" />
+    <xs:attribute ref="android:layout_marginLeft" />
+    <xs:attribute ref="android:layout_marginTop" />
+    <xs:attribute ref="android:layout_marginRight" />
+    <xs:attribute ref="android:layout_marginBottom" />
+    <xs:attribute ref="android:layout_marginStart" />
+    <xs:attribute ref="android:layout_marginEnd" />
+    <xs:attribute ref="android:layout_marginHorizontal" />
+    <xs:attribute ref="android:layout_marginVertical" />
     <xs:attribute ref="android:style" />
   </xs:complexType>
   <xs:element name="ActionMenuView" type="ActionMenuView">
@@ -1472,6 +1483,17 @@
     <xs:attribute ref="tools:layout" />
     <xs:attribute ref="android:layout_width" />
     <xs:attribute ref="android:layout_height" />
+    <xs:attribute ref="android:layout_weight" />
+    <xs:attribute ref="android:layout_gravity" />
+    <xs:attribute ref="android:layout_margin" />
+    <xs:attribute ref="android:layout_marginLeft" />
+    <xs:attribute ref="android:layout_marginTop" />
+    <xs:attribute ref="android:layout_marginRight" />
+    <xs:attribute ref="android:layout_marginBottom" />
+    <xs:attribute ref="android:layout_marginStart" />
+    <xs:attribute ref="android:layout_marginEnd" />
+    <xs:attribute ref="android:layout_marginHorizontal" />
+    <xs:attribute ref="android:layout_marginVertical" />
     <xs:attribute ref="android:style" />
   </xs:complexType>
   <xs:element name="com.xamarin.forms.platform.android.FormsViewGroup" type="com.xamarin.forms.platform.android.FormsViewGroup">

@@ -1,4 +1,5 @@
-﻿using Refit;
+﻿using ProjectOnlineMobile2.Models;
+using Refit;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,9 +27,19 @@ namespace ProjectOnlineMobile2.Services
                 };
                 _client.DefaultRequestHeaders.Accept.Add(mediaType);
             }
+
+            if(webInfo == null)
+            {
+                GetWebInfo();
+            }
         }
 
-        public async Task<string> GetCurrentUser()
+        private async void GetWebInfo()
+        {
+            webInfo = await GetFormDigest();
+        }
+
+        public async Task<UserModel> GetCurrentUser()
         {
             
             try
@@ -37,11 +48,12 @@ namespace ProjectOnlineMobile2.Services
             }
             catch(Exception e)
             {
-                return e.Message;
+                Debug.WriteLine(e.Message);
+                return null;
             }
         }
 
-        public async Task<string> GetFormDigest()
+        public async Task<FormDigestModel> GetFormDigest()
         {
             try
             {
@@ -49,7 +61,8 @@ namespace ProjectOnlineMobile2.Services
             }
             catch (Exception e)
             {
-                return e.Message;
+                Debug.WriteLine(e.Message);
+                return null;
             }
         }
     }

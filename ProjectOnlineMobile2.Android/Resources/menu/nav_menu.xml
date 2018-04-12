@@ -3,16 +3,24 @@
 
   <group android:checkableBehavior="single">
     <item
-        android:id="@+id/nav_home_1"
+        android:id="@+id/nav_projects"
         android:icon="@drawable/ic_home_1"
-        android:title="Home 1" />
+        android:title="Projects" />
     <item
-        android:id="@+id/nav_home_2"
+        android:id="@+id/nav_tasks"
         android:icon="@drawable/ic_home_2"
-        android:title="Home 2" />
+        android:title="My Tasks" />
+  <item
+        android:id="@+id/nav_timesheets"
+        android:icon="@drawable/ic_home_2"
+        android:title="Timesheets" />
+  <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_home_2"
+        android:title="Logout" />
   </group>
 
-  <item android:title="Sub items">
+  <!--<item android:title="Sub items">
     <menu>
       <item
           android:icon="@drawable/ic_home_1"
@@ -23,6 +31,6 @@
           android:title="Sub item 2"
           android:checkable="true"  />
     </menu>
-  </item>
+  </item>-->
 
 </menu>

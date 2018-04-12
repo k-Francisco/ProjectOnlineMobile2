@@ -1,4 +1,5 @@
-﻿using Refit;
+﻿using ProjectOnlineMobile2.Models;
+using Refit;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,9 +10,9 @@ namespace ProjectOnlineMobile2.Services
     public interface ISharepointApi
     {
         [Get("/_api/web/currentUser?")]
-        Task<String> GetCurrentUser();
+        Task<UserModel> GetCurrentUser();
 
         [Post("/_api/contextinfo")]
-        Task<String> GetFormDigest();
+        Task<FormDigestModel> GetFormDigest();
     }
 }

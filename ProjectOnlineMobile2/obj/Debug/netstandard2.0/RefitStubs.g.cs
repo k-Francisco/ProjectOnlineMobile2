@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using ProjectOnlineMobile2.Models;
 using Refit;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,19 +52,19 @@ namespace ProjectOnlineMobile2.Services
         }
 
         /// <inheritdoc />
-        public virtual Task<String> GetCurrentUser()
+        public virtual Task<UserModel> GetCurrentUser()
         {
             var arguments = new object[] {  };
             var func = methodImpls.GetOrAdd("GetCurrentUser()", _ => requestBuilder.BuildRestResultFuncForMethod("GetCurrentUser", new Type[] {  }));
-            return (Task<String>)func(Client, arguments);
+            return (Task<UserModel>)func(Client, arguments);
         }
 
         /// <inheritdoc />
-        public virtual Task<String> GetFormDigest()
+        public virtual Task<FormDigestModel> GetFormDigest()
         {
             var arguments = new object[] {  };
             var func = methodImpls.GetOrAdd("GetFormDigest()", _ => requestBuilder.BuildRestResultFuncForMethod("GetFormDigest", new Type[] {  }));
-            return (Task<String>)func(Client, arguments);
+            return (Task<FormDigestModel>)func(Client, arguments);
         }
 
     }

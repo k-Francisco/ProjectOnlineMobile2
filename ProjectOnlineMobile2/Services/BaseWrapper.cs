@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectOnlineMobile2.Models;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -12,6 +13,7 @@ namespace ProjectOnlineMobile2.Services
         protected TokenService tokenService { get; private set; }
         protected HttpClientHandler handler { get; private set; }
         protected MediaTypeWithQualityHeaderValue mediaType { get; private set; }
+        protected FormDigestModel webInfo { get; set; }
 
         public BaseWrapper()
         {
@@ -31,6 +33,8 @@ namespace ProjectOnlineMobile2.Services
                 mediaType = new MediaTypeWithQualityHeaderValue("application/json");
                 mediaType.Parameters.Add(new NameValueHeaderValue("odata", "verbose"));
             }
+
         }
+
     }
 }
