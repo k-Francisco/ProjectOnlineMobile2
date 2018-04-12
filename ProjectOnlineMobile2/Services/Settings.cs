@@ -11,23 +11,9 @@ namespace ProjectOnlineMobile2.Services
 
         #region Setting Constants
 
-        private const string rtFa = "";
-        private const string FedAuth = "";
         private const string cookie = "";
 
         #endregion
-
-        public static string rtFaToken
-        {
-            get => AppSettings.GetValueOrDefault(rtFa, string.Empty);
-            set => AppSettings.AddOrUpdateValue(rtFa, value);
-        }
-
-        public static string FedAuthToken
-        {
-            get => AppSettings.GetValueOrDefault(FedAuth, string.Empty);
-            set => AppSettings.AddOrUpdateValue(FedAuth, value);
-        }
 
         public static string CookieString
         {
