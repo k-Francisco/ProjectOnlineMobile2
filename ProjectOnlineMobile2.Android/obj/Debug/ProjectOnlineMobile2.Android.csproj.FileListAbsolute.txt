@@ -177,10 +177,3 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Xml.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\ProjectOnlineMobile2.Android.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\ProjectOnlineMobile2.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\ProjectOnlineMobile2.Android.dll.mdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Plugin.Settings.Abstractions.dll.mdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Plugin.Settings.dll.mdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb

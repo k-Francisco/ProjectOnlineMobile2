@@ -4947,23 +4947,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ksfgh\\.nuget\\packages\\": {},
+    "C:\\Users\\Karl\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Xamarin Projects\\ProjectOnlineMobile2\\ProjectOnlineMobile2\\ProjectOnlineMobile2.csproj",
+      "projectUniqueName": "C:\\Users\\Karl\\Documents\\Mobility\\asOfApr13\\v2\\ProjectOnlineMobile2\\ProjectOnlineMobile2\\ProjectOnlineMobile2.csproj",
       "projectName": "ProjectOnlineMobile2",
-      "projectPath": "D:\\Xamarin Projects\\ProjectOnlineMobile2\\ProjectOnlineMobile2\\ProjectOnlineMobile2.csproj",
-      "packagesPath": "C:\\Users\\ksfgh\\.nuget\\packages\\",
-      "outputPath": "D:\\Xamarin Projects\\ProjectOnlineMobile2\\ProjectOnlineMobile2\\obj\\",
+      "projectPath": "C:\\Users\\Karl\\Documents\\Mobility\\asOfApr13\\v2\\ProjectOnlineMobile2\\ProjectOnlineMobile2\\ProjectOnlineMobile2.csproj",
+      "packagesPath": "C:\\Users\\Karl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Karl\\Documents\\Mobility\\asOfApr13\\v2\\ProjectOnlineMobile2\\ProjectOnlineMobile2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ksfgh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Karl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
