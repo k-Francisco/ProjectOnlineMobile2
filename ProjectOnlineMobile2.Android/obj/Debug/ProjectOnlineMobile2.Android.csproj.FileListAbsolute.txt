@@ -98,6 +98,7 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\drawable-mdpi\ic_menu.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\drawable-xhdpi\ic_menu.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\drawable-xxhdpi\ic_menu.png
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\drawable-hdpi\ic_more.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\R.cs.flag
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\uploadflags.txt
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\Microsoft.CSharp.pdb

@@ -13,7 +13,7 @@
 
             <DataTemplate x:Key="ProjectCardTemplate">
                 <ViewCell>
-                    <StackLayout Margin="8,8,16,8"
+                    <StackLayout Margin="0,8,0,8"
                                  CompressedLayout.IsHeadless="True"
                                  Orientation="Vertical">
                         <StackLayout.GestureRecognizers>
@@ -30,15 +30,116 @@
                                          Orientation="Vertical"
                                          CompressedLayout.IsHeadless="True">
 
-                                <Label Text="Project Title"
-                                       FontSize="Large"
-                                       FontAttributes="Bold"
-                                       TextColor="Black"/>
+                                <Grid RowSpacing="0"
+                                      ColumnSpacing="0"
+                                      CompressedLayout.IsHeadless="True"
+                                      Margin="0,0,0,16">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <controls:CustomProgressBar HorizontalOptions="FillAndExpand"
-                                                            Progress="0.5"
-                                                            HeightRequest="20"
-                                                            ProgressColor="#31752F"/>
+                                    <Label Text="Project Title"
+                                           FontSize="Large"
+                                           FontAttributes="Bold"
+                                           TextColor="Black"
+                                           Grid.Column="0"/>
+
+                                    <Image Source="ic_more.png"
+                                           Aspect="AspectFit"
+                                           HeightRequest="14"
+                                           WidthRequest="4"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"
+                                           Grid.Column="1"/>
+
+                                </Grid>
+
+                                <Grid RowSpacing="0"
+                                      ColumnSpacing="0"
+                                      CompressedLayout.IsHeadless="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <controls:CustomProgressBar HorizontalOptions="FillAndExpand"
+                                                                Progress="0.5"
+                                                                ProgressColor="#31752F"
+                                                                BackgroundColor="#A9A9A9"
+                                                                Grid.Column="0" Grid.ColumnSpan="3"/>
+
+                                    <Label Text="50%"
+                                           HorizontalOptions="Center"
+                                           FontSize="Medium"
+                                           TextColor="White"
+                                           Grid.Column="1"/>
+
+                                </Grid>
+
+                                <Grid RowSpacing="0"
+                                      ColumnSpacing="0"
+                                      CompressedLayout.IsHeadless="True"
+                                      Margin="0,16,0,12">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="12"/>
+                                        <RowDefinition Height="22"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Owner"
+                                           FontSize="Micro"
+                                           Grid.Row="0"/>
+
+                                    <Label Text="Alan Parsons"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                           Grid.Row="1"/>
+
+                                </Grid>
+
+                                <Grid RowSpacing="0"
+                                      ColumnSpacing="0"
+                                      CompressedLayout.IsHeadless="True"
+                                      Margin="0,0,0,12">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="12"/>
+                                        <RowDefinition Height="22"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Last published"
+                                           FontSize="Micro"
+                                           Grid.Row="0"/>
+
+                                    <Label Text="August 31, 2017"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                           Grid.Row="1"/>
+
+                                </Grid>
+
+                                <Grid RowSpacing="0"
+                                      ColumnSpacing="0"
+                                      CompressedLayout.IsHeadless="True"
+                                      Margin="0">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="12"/>
+                                        <RowDefinition Height="22"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Checked out to"
+                                           FontSize="Micro"
+                                           Grid.Row="0"/>
+
+                                    <Label Text="Alan Parsons"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                           Grid.Row="1"/>
+
+                                </Grid>
 
                             </StackLayout>
 
@@ -57,7 +158,7 @@
     </ContentPage.Padding>
     
     <ContentPage.Content>
-        <StackLayout Padding="0,8,0,0"
+        <StackLayout Padding="16,8,16,0"
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand">
 
