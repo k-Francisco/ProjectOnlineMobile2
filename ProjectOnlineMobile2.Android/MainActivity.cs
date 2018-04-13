@@ -36,7 +36,7 @@ namespace ProjectOnlineMobile2.Android
             SetContentView(Resource.Layout.main);
 
             Forms.Init(this, savedInstanceState);
-            _page1 = new Page1().CreateSupportFragment(this);
+            _page1 = new ProjectPage().CreateSupportFragment(this);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ProjectOnlineMobile2.ViewModels;assembly=ProjectOnlineMobile2"
+             xmlns:controls="clr-namespace:ProjectOnlineMobile2.Controls"
+             x:Class="ProjectOnlineMobile2.Pages.ProjectPage">
+    <ContentPage.BindingContext>
+        <viewModels:ProjectPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <DataTemplate x:Key="ProjectCardTemplate">
+                <ViewCell>
+                    <StackLayout Margin="8,8,16,8"
+                                 CompressedLayout.IsHeadless="True"
+                                 Orientation="Vertical">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command=""/>
+                        </StackLayout.GestureRecognizers>
+                        <Frame HasShadow="True"
+                               BackgroundColor="White"
+                               CornerRadius="4"
+                               Padding="16"
+                               HorizontalOptions="FillAndExpand">
+
+                            <StackLayout Margin="0"
+                                         Padding="0"
+                                         Orientation="Vertical"
+                                         CompressedLayout.IsHeadless="True">
+
+                                <Label Text="Project Title"
+                                       FontSize="Large"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"/>
+
+                                <controls:CustomProgressBar HorizontalOptions="FillAndExpand"
+                                                            Progress="0.5"
+                                                            HeightRequest="20"
+                                                            ProgressColor="#31752F"/>
+
+                            </StackLayout>
+
+                        </Frame>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    iOS="0,20,0,0"
+                    Android="0"/>
+    </ContentPage.Padding>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="0,8,0,0"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+
+            <ListView CachingStrategy="RecycleElementAndDataTemplate"
+                      HasUnevenRows="True"
+                      SeparatorVisibility="None"
+                      IsPullToRefreshEnabled="False"
+                      IsRefreshing="False"
+                      ItemTemplate="{StaticResource ProjectCardTemplate}"
+                      ItemsSource="{Binding Sample}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
