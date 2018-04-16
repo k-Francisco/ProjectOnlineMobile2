@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectOnlineMobile2.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -8,9 +9,16 @@ namespace ProjectOnlineMobile2.ViewModels
 {
     public class ProjectPageViewModel : BaseViewModel
     {
-        
+        private ObservableCollection<Result> _projectList;
+        public ObservableCollection<Result> ProjectList
+        {
+            get { return _projectList; }
+            set { SetProperty(ref _projectList, value); }
+        }
+
         public ProjectPageViewModel()
         {
+            ProjectList = new ObservableCollection<Result>();
             GetAllProjects();
         }
 
@@ -20,7 +28,7 @@ namespace ProjectOnlineMobile2.ViewModels
                 var projects = await PSapi.GetAllProjects();
                 foreach (var project in projects.D.Results)
                 {
-                    Debug.WriteLine("projects", project.ProjectName);
+                    ProjectList.Add(project);
                 }
             }
             catch(Exception e)

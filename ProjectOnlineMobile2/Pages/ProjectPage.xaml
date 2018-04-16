@@ -36,10 +36,10 @@
                                       Margin="0,0,0,16">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="4"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Label Text="Project Title"
+                                    <Label Text="{Binding ProjectName}"
                                            FontSize="Large"
                                            FontAttributes="Bold"
                                            TextColor="Black"
@@ -70,7 +70,7 @@
                                                                 BackgroundColor="#A9A9A9"
                                                                 Grid.Column="0" Grid.ColumnSpan="3"/>
 
-                                    <Label Text="50%"
+                                    <Label Text="{Binding ProjectPercentCompleted, StringFormat='{0}%'}"
                                            HorizontalOptions="Center"
                                            FontSize="Medium"
                                            TextColor="White"
@@ -92,7 +92,7 @@
                                            FontSize="Micro"
                                            Grid.Row="0"/>
 
-                                    <Label Text="Alan Parsons"
+                                    <Label Text="{Binding ProjectOwnerName}"
                                            FontSize="Medium"
                                            TextColor="Black"
                                            Grid.Row="1"/>
@@ -113,7 +113,7 @@
                                            FontSize="Micro"
                                            Grid.Row="0"/>
 
-                                    <Label Text="August 31, 2017"
+                                    <Label Text="{Binding ProjectLastPublishedDate, StringFormat='{0:MMM dd, yyyy}'}}"
                                            FontSize="Medium"
                                            TextColor="Black"
                                            Grid.Row="1"/>
@@ -122,6 +122,7 @@
 
                                 <Grid RowSpacing="0"
                                       ColumnSpacing="0"
+                                      IsVisible="False"
                                       CompressedLayout.IsHeadless="True"
                                       Margin="0">
 
@@ -158,17 +159,17 @@
     </ContentPage.Padding>
     
     <ContentPage.Content>
-        <StackLayout Padding="16,8,16,0"
+        <StackLayout Padding="16,0,16,0"
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand">
 
-            <!--<ListView CachingStrategy="RecycleElementAndDataTemplate"
+            <ListView CachingStrategy="RecycleElementAndDataTemplate"
                       HasUnevenRows="True"
                       SeparatorVisibility="None"
                       IsPullToRefreshEnabled="False"
                       IsRefreshing="False"
                       ItemTemplate="{StaticResource ProjectCardTemplate}"
-                      ItemsSource="{Binding Sample}"/>-->
+                      ItemsSource="{Binding ProjectList}"/>
 
         </StackLayout>
     </ContentPage.Content>
