@@ -162,13 +162,13 @@
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand">
 
-            <ListView CachingStrategy="RecycleElementAndDataTemplate"
+            <!--<ListView CachingStrategy="RecycleElementAndDataTemplate"
                       HasUnevenRows="True"
                       SeparatorVisibility="None"
                       IsPullToRefreshEnabled="False"
                       IsRefreshing="False"
                       ItemTemplate="{StaticResource ProjectCardTemplate}"
-                      ItemsSource="{Binding Sample}"/>
+                      ItemsSource="{Binding Sample}"/>-->
 
         </StackLayout>
     </ContentPage.Content>

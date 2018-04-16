@@ -1,19 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
 
 namespace ProjectOnlineMobile2.ViewModels
 {
-    public class ProjectPageViewModel
+    public class ProjectPageViewModel : BaseViewModel
     {
-        public ObservableCollection<String> Sample { get; set; }
-
+        
         public ProjectPageViewModel()
         {
-            Sample = new ObservableCollection<string>();
-            Sample.Add("");
-            Sample.Add("");
+            GetAllProjects();
+        }
+
+        private async void GetAllProjects()
+        {
+            try {
+                var projects = await PSapi.GetAllProjects();
+                foreach (var project in projects.D.Results)
+                {
+                    Debug.WriteLine("projects", project.ProjectName);
+                }
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("projects", e.Message);
+            }
+
         }
     }
 }

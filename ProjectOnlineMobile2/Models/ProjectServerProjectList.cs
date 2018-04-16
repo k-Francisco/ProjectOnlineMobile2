@@ -19,22 +19,22 @@ namespace ProjectOnlineMobile2.Models
     {
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
-        [JsonProperty("PSPL_AssignmentBaselines")]
-        public PSPL_AssignmentBaselines PSPL_AssignmentBaselines { get; set; }
-        [JsonProperty("PSPL_Assignments")]
-        public PSPL_Assignments PSPL_Assignments { get; set; }
-        [JsonProperty("PSPL_Deliverables")]
-        public PSPL_Deliverables PSPL_Deliverables { get; set; }
-        [JsonProperty("PSPL_Dependencies")]
-        public PSPL_Dependencies PSPL_Dependencies { get; set; }
-        [JsonProperty("PSPL_Issues")]
-        public PSPL_Issues PSPL_Issues { get; set; }
-        [JsonProperty("PSPL_Risks")]
-        public PSPL_Risks PSPL_Risks { get; set; }
-        [JsonProperty("PSPL_StagesInfo")]
-        public PSPL_StagesInfo PSPL_StagesInfo { get; set; }
-        [JsonProperty("PSPL_Tasks")]
-        public PSPL_Tasks PSPL_Tasks { get; set; }
+        [JsonProperty("_AssignmentBaselines")]
+        public _AssignmentBaselines _AssignmentBaselines { get; set; }
+        [JsonProperty("_Assignments")]
+        public _Assignments _Assignments { get; set; }
+        [JsonProperty("_Deliverables")]
+        public _Deliverables _Deliverables { get; set; }
+        [JsonProperty("_Dependencies")]
+        public _Dependencies _Dependencies { get; set; }
+        [JsonProperty("_Issues")]
+        public _Issues _Issues { get; set; }
+        [JsonProperty("_Risks")]
+        public _Risks _Risks { get; set; }
+        [JsonProperty("_StagesInfo")]
+        public _StagesInfo _StagesInfo { get; set; }
+        [JsonProperty("_Tasks")]
+        public _Tasks _Tasks { get; set; }
         [JsonProperty("ProjectId")]
         public string ProjectId { get; set; }
         [JsonProperty("EnterpriseProjectTypeDescription")]
@@ -257,50 +257,50 @@ namespace ProjectOnlineMobile2.Models
         [JsonProperty("type")]
         public string Type { get; set; }
     }
-    public class PSPL_AssignmentBaselines
+    public class _AssignmentBaselines
     {
         [JsonProperty("__deferred")]
-        public PSPL_Deferred PSPL_Deferred { get; set; }
+        public _Deferred _Deferred { get; set; }
     }
-    public class PSPL_Deferred
+    public class _Deferred
     {
         [JsonProperty("uri")]
         public string Uri { get; set; }
     }
-    public class PSPL_Assignments
+    public class _Assignments
     {
         [JsonProperty("__deferred")]
-        public PSPL_Deferred PSPL_Deferred { get; set; }
+        public _Deferred _Deferred { get; set; }
     }
-    public class PSPL_Deliverables
+    public class _Deliverables
     {
         [JsonProperty("__deferred")]
-        public PSPL_Deferred PSPL_Deferred { get; set; }
+        public _Deferred _Deferred { get; set; }
     }
-    public class PSPL_Dependencies
+    public class _Dependencies
     {
         [JsonProperty("__deferred")]
-        public PSPL_Deferred PSPL_Deferred { get; set; }
+        public _Deferred _Deferred { get; set; }
     }
-    public class PSPL_Issues
+    public class _Issues
     {
         [JsonProperty("__deferred")]
-        public PSPL_Deferred PSPL_Deferred { get; set; }
+        public _Deferred _Deferred { get; set; }
     }
-    public class PSPL_Risks
+    public class _Risks
     {
         [JsonProperty("__deferred")]
-        public PSPL_Deferred PSPL_Deferred { get; set; }
+        public _Deferred _Deferred { get; set; }
     }
-    public class PSPL_StagesInfo
+    public class _StagesInfo
     {
         [JsonProperty("__deferred")]
-        public PSPL_Deferred PSPL_Deferred { get; set; }
+        public _Deferred _Deferred { get; set; }
     }
-    public class PSPL_Tasks
+    public class _Tasks
     {
         [JsonProperty("__deferred")]
-        public PSPL_Deferred PSPL_Deferred { get; set; }
+        public _Deferred _Deferred { get; set; }
     }
 
 }

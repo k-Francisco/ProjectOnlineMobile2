@@ -16,7 +16,7 @@ namespace ProjectOnlineMobile2.Services
         [Post("/_api/ProjectData/Projects?$filter=ProjectName eq '{projectName}'")]
         Task<ProjectServerProject> GetProjectByName(string projectName);
 
-        [Post("/_api/ProjectData/Projects")]
+        [Get("/_api/ProjectData/Projects?$filter=ProjectLastPublishedDate ne null")]
         Task<ProjectServerProjectList> GetAllProjects();
     }
 }
