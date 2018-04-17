@@ -32,7 +32,9 @@ namespace ProjectOnlineMobile2.iOS
 
             _loginController = Storyboard.InstantiateInitialViewController() as ViewController;
             _landingPageController = Storyboard.InstantiateInitialViewController() as LandingPageController;
-            //_navigationController = 
+            _navigationController = new UINavigationController(_loginController);
+            _window.RootViewController = _navigationController;
+            _window.MakeKeyAndVisible();
 
             return true;
         }

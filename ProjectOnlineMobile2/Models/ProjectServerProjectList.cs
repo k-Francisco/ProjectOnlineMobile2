@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjectOnlineMobile2.Models
+namespace ProjectOnlineMobile2.Models.PSPL
 {
     public class ProjectServerProjectList
     {
