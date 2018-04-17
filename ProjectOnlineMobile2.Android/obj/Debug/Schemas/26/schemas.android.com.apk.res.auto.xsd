@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v26</xs:documentation>
-    <xs:documentation>13/04/2018 6:59:16 AM</xs:documentation>
+    <xs:documentation>16/04/2018 5:18:01 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1521,6 +1521,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -2352,6 +2353,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -3102,6 +3104,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -3829,6 +3832,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -5938,6 +5942,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -6665,6 +6670,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -7496,6 +7502,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -8683,6 +8690,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -9410,6 +9418,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -11247,6 +11256,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -11974,6 +11984,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -12759,6 +12770,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -13486,6 +13498,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -14213,6 +14226,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -14940,6 +14954,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -15709,6 +15724,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -16436,6 +16452,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -17247,6 +17264,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -18228,6 +18246,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -19026,6 +19045,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -19945,6 +19965,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -20864,6 +20885,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -21591,6 +21613,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -23190,6 +23213,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -24021,6 +24045,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -24852,6 +24877,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -26052,6 +26078,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -27357,6 +27384,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -28084,6 +28112,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -28985,6 +29014,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -29904,6 +29934,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -30643,6 +30674,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -31562,6 +31594,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -32707,6 +32740,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -33434,6 +33468,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -36456,6 +36491,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -39103,6 +39139,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -40022,6 +40059,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -40749,6 +40787,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />
@@ -41729,6 +41768,7 @@
             <xs:enumeration value="@drawable/ic_media_stop_dark" />
             <xs:enumeration value="@drawable/ic_media_stop_light" />
             <xs:enumeration value="@drawable/ic_menu" />
+            <xs:enumeration value="@drawable/ic_more" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_dark" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_00_light" />
             <xs:enumeration value="@drawable/ic_mr_button_connected_01_dark" />

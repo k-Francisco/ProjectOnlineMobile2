@@ -3,13 +3,19 @@ using UIKit;
 
 namespace ProjectOnlineMobile2.iOS
 {
-    // The UIApplicationDelegate for the application. This class is responsible for launching the
-    // User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
+    // The UIApplicationDelegate for the application. This class is responsible for launching the 
+    // User Interface of the application, as well as listening (and optionally responding) to 
+    // application events from iOS.
     [Register("AppDelegate")]
     public class AppDelegate : UIApplicationDelegate
     {
         // class-level declarations
+        public static AppDelegate shared;
+        public static UIStoryboard Storyboard = UIStoryboard.FromName("Main", null);
 
+        UIWindow _window;
+        UINavigationController _navigationController;
+        UIViewController _loginController, _landingPageController;
         public override UIWindow Window
         {
             get;
@@ -18,14 +24,15 @@ namespace ProjectOnlineMobile2.iOS
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            // create a new window instance based on the screen size
-            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            // Override point for customization after application launch.
+            // If not required for your application you can safely delete this method
 
-            // If you have defined a root view controller, set it here:
-            // Window.RootViewController = myViewController;
+            shared = this;
+            _window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            // make the window visible
-            Window.MakeKeyAndVisible();
+            _loginController = Storyboard.InstantiateInitialViewController() as ViewController;
+            _landingPageController = Storyboard.InstantiateInitialViewController() as LandingPageController;
+            //_navigationController = 
 
             return true;
         }
@@ -62,5 +69,3 @@ namespace ProjectOnlineMobile2.iOS
         }
     }
 }
-
-

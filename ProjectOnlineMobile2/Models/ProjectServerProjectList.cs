@@ -19,22 +19,22 @@ namespace ProjectOnlineMobile2.Models
     {
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
-        [JsonProperty("_AssignmentBaselines")]
-        public _AssignmentBaselines _AssignmentBaselines { get; set; }
-        [JsonProperty("_Assignments")]
-        public _Assignments _Assignments { get; set; }
-        [JsonProperty("_Deliverables")]
-        public _Deliverables _Deliverables { get; set; }
-        [JsonProperty("_Dependencies")]
-        public _Dependencies _Dependencies { get; set; }
-        [JsonProperty("_Issues")]
-        public _Issues _Issues { get; set; }
-        [JsonProperty("_Risks")]
-        public _Risks _Risks { get; set; }
-        [JsonProperty("_StagesInfo")]
-        public _StagesInfo _StagesInfo { get; set; }
-        [JsonProperty("_Tasks")]
-        public _Tasks _Tasks { get; set; }
+        [JsonProperty("AssignmentBaselines")]
+        public AssignmentBaselines AssignmentBaselines { get; set; }
+        [JsonProperty("Assignments")]
+        public Assignments Assignments { get; set; }
+        [JsonProperty("Deliverables")]
+        public Deliverables Deliverables { get; set; }
+        [JsonProperty("Dependencies")]
+        public Dependencies Dependencies { get; set; }
+        [JsonProperty("Issues")]
+        public Issues Issues { get; set; }
+        [JsonProperty("Risks")]
+        public Risks Risks { get; set; }
+        [JsonProperty("StagesInfo")]
+        public StagesInfo StagesInfo { get; set; }
+        [JsonProperty("Tasks")]
+        public Tasks Tasks { get; set; }
         [JsonProperty("ProjectId")]
         public string ProjectId { get; set; }
         [JsonProperty("EnterpriseProjectTypeDescription")]
@@ -257,50 +257,50 @@ namespace ProjectOnlineMobile2.Models
         [JsonProperty("type")]
         public string Type { get; set; }
     }
-    public class _AssignmentBaselines
+    public class AssignmentBaselines
     {
         [JsonProperty("__deferred")]
-        public _Deferred _Deferred { get; set; }
+        public Deferred Deferred { get; set; }
     }
-    public class _Deferred
+    public class Deferred
     {
         [JsonProperty("uri")]
         public string Uri { get; set; }
     }
-    public class _Assignments
+    public class Assignments
     {
         [JsonProperty("__deferred")]
-        public _Deferred _Deferred { get; set; }
+        public Deferred Deferred { get; set; }
     }
-    public class _Deliverables
+    public class Deliverables
     {
         [JsonProperty("__deferred")]
-        public _Deferred _Deferred { get; set; }
+        public Deferred Deferred { get; set; }
     }
-    public class _Dependencies
+    public class Dependencies
     {
         [JsonProperty("__deferred")]
-        public _Deferred _Deferred { get; set; }
+        public Deferred Deferred { get; set; }
     }
-    public class _Issues
+    public class Issues
     {
         [JsonProperty("__deferred")]
-        public _Deferred _Deferred { get; set; }
+        public Deferred Deferred { get; set; }
     }
-    public class _Risks
+    public class Risks
     {
         [JsonProperty("__deferred")]
-        public _Deferred _Deferred { get; set; }
+        public Deferred Deferred { get; set; }
     }
-    public class _StagesInfo
+    public class StagesInfo
     {
         [JsonProperty("__deferred")]
-        public _Deferred _Deferred { get; set; }
+        public Deferred Deferred { get; set; }
     }
-    public class _Tasks
+    public class Tasks
     {
         [JsonProperty("__deferred")]
-        public _Deferred _Deferred { get; set; }
+        public Deferred Deferred { get; set; }
     }
 
 }

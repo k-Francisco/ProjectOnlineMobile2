@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectOnlineMobile2.Models;
+using ProjectOnlineMobile2.Models.PTA;
+using ProjectOnlineMobile2.Models.PTL;
 using Refit;
 
 namespace ProjectOnlineMobile2.Services
@@ -57,6 +59,58 @@ namespace ProjectOnlineMobile2.Services
             try
             {
                 return await RestService.For<IProjectOnlineApi>(_client).GetAllProjects();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        public async Task<ProjectTaskList> GetTasksByProject(string projectUID)
+        {
+            try
+            {
+                return await RestService.For<IProjectOnlineApi>(_client).GetTasksByProject(projectUID);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        public async Task<ProjectTaskList> GetProjectTask(string projectUID, string taskId)
+        {
+            try
+            {
+                return await RestService.For<IProjectOnlineApi>(_client).GetProjectTask(projectUID, taskId);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        public async Task<ProjectTaskAssignment> GetProjectTaskAssignment(string projectUID, string taskId)
+        {
+            try
+            {
+                return await RestService.For<IProjectOnlineApi>(_client).GetProjectTaskAssignment(projectUID, taskId);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        public async Task<ProjectTaskAssignment> GetProjectAssignments(string projectUID)
+        {
+            try
+            {
+                return await RestService.For<IProjectOnlineApi>(_client).GetProjectAssignments(projectUID);
             }
             catch (Exception e)
             {

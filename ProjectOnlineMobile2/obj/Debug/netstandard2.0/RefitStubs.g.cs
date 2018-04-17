@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 using ProjectOnlineMobile2.Models;
+using ProjectOnlineMobile2.Models.PTA;
+using ProjectOnlineMobile2.Models.PTL;
 using Refit;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +76,38 @@ namespace ProjectOnlineMobile2.Services
             var arguments = new object[] {  };
             var func = methodImpls.GetOrAdd("GetAllProjects()", _ => requestBuilder.BuildRestResultFuncForMethod("GetAllProjects", new Type[] {  }));
             return (Task<ProjectServerProjectList>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<ProjectTaskList> GetTasksByProject(string projectUID)
+        {
+            var arguments = new object[] { projectUID };
+            var func = methodImpls.GetOrAdd("GetTasksByProject(string projectUID)", _ => requestBuilder.BuildRestResultFuncForMethod("GetTasksByProject", new Type[] { typeof(string) }));
+            return (Task<ProjectTaskList>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<ProjectTaskList> GetProjectTask(string projectUID,string taskId)
+        {
+            var arguments = new object[] { projectUID,taskId };
+            var func = methodImpls.GetOrAdd("GetProjectTask(string projectUID,string taskId)", _ => requestBuilder.BuildRestResultFuncForMethod("GetProjectTask", new Type[] { typeof(string),typeof(string) }));
+            return (Task<ProjectTaskList>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<ProjectTaskAssignment> GetProjectTaskAssignment(string projectUID,string taskId)
+        {
+            var arguments = new object[] { projectUID,taskId };
+            var func = methodImpls.GetOrAdd("GetProjectTaskAssignment(string projectUID,string taskId)", _ => requestBuilder.BuildRestResultFuncForMethod("GetProjectTaskAssignment", new Type[] { typeof(string),typeof(string) }));
+            return (Task<ProjectTaskAssignment>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<ProjectTaskAssignment> GetProjectAssignments(string projectUID)
+        {
+            var arguments = new object[] { projectUID };
+            var func = methodImpls.GetOrAdd("GetProjectAssignments(string projectUID)", _ => requestBuilder.BuildRestResultFuncForMethod("GetProjectAssignments", new Type[] { typeof(string) }));
+            return (Task<ProjectTaskAssignment>)func(Client, arguments);
         }
 
     }
