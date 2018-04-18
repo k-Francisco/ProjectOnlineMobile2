@@ -1,4 +1,7 @@
 ﻿using Foundation;
+using Newtonsoft.Json;
+using ProjectOnlineMobile2.Pages;
+using ProjectOnlineMobile2.Services;
 using System;
 using System.Diagnostics;
 using UIKit;
@@ -62,9 +65,11 @@ namespace ProjectOnlineMobile2.iOS
 
                 if(!string.IsNullOrEmpty(rtFa) && !string.IsNullOrEmpty(FedAuth))
                 {
-                    var authCookie = rtFa + ";" + FedAuth;
+                    var authCookie = rtFa + "; " + FedAuth;
+                    
                     try
                     {
+                        Settings.CookieString = JsonConvert.SerializeObject(authCookie);
                         this.NavigationController.PushViewController(_homeController, true);
                         AppDelegate.shared.navigationController = new UINavigationController(_homeController);
                         AppDelegate.shared.Window.RootViewController = AppDelegate.shared.navigationController;

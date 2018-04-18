@@ -1,6 +1,9 @@
 ﻿using Foundation;
+using ProjectOnlineMobile2.Pages;
+using ProjectOnlineMobile2.Services;
 using System;
 using UIKit;
+using Xamarin.Forms;
 
 namespace ProjectOnlineMobile2.iOS
 {
@@ -13,14 +16,14 @@ namespace ProjectOnlineMobile2.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            this.Title = "Home";
+            this.NavigationController.NavigationBarHidden = true;
 
-            btnGo.TouchUpInside += GoToPage1;
+            btnLogout.TouchUpInside += ClearSettings;
         }
 
-        private void GoToPage1(object sender, EventArgs e)
+        private void ClearSettings(object sender, EventArgs e)
         {
-            
+            Settings.ClearAll();
         }
     }
 }

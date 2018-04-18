@@ -25,6 +25,11 @@
       <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\UINavigationController-12728.nib">
+      <LogicalName>Main.storyboardc/UINavigationController-12728.nib</LogicalName>
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\ViewController.nib">
       <LogicalName>Main.storyboardc/ViewController.nib</LogicalName>
       <InterfaceDefinition>Main.storyboard</InterfaceDefinition>

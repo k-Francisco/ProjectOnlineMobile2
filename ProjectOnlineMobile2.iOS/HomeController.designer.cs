@@ -16,13 +16,40 @@ namespace ProjectOnlineMobile2.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnGo { get; set; }
+        UIKit.UIButton btnLogout { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnProjects { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnTasks { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnTimesheet { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (btnGo != null) {
-                btnGo.Dispose ();
-                btnGo = null;
+            if (btnLogout != null) {
+                btnLogout.Dispose ();
+                btnLogout = null;
+            }
+
+            if (btnProjects != null) {
+                btnProjects.Dispose ();
+                btnProjects = null;
+            }
+
+            if (btnTasks != null) {
+                btnTasks.Dispose ();
+                btnTasks = null;
+            }
+
+            if (btnTimesheet != null) {
+                btnTimesheet.Dispose ();
+                btnTimesheet = null;
             }
         }
     }

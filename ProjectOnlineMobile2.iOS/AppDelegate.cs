@@ -1,5 +1,11 @@
-﻿using Foundation;
+﻿using System;
+using System.Diagnostics;
+using Foundation;
+using ProjectOnlineMobile2.Pages;
+using ProjectOnlineMobile2.Services;
 using UIKit;
+using Xamarin.Forms;
+using Xamarin.SideMenu;
 
 namespace ProjectOnlineMobile2.iOS
 {
@@ -14,7 +20,8 @@ namespace ProjectOnlineMobile2.iOS
         public static UIStoryboard Storyboard = UIStoryboard.FromName("Main", null);
 
         public UINavigationController navigationController;
-        UIViewController _loginController;
+        SideMenuManager _sideMenuManager;
+        UIViewController controller;
         public override UIWindow Window
         {
             get;
@@ -26,6 +33,8 @@ namespace ProjectOnlineMobile2.iOS
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
 
+            Forms.Init();
+            
             UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
             {
                 TextColor = UIColor.White
@@ -38,12 +47,42 @@ namespace ProjectOnlineMobile2.iOS
             shared = this;
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            _loginController = Storyboard.InstantiateInitialViewController() as ViewController;
-            navigationController = new UINavigationController(_loginController);
+            _sideMenuManager = new SideMenuManager();
+            
+            if (String.IsNullOrWhiteSpace(Settings.CookieString))
+            {
+                controller = Storyboard.InstantiateViewController("ViewController") as ViewController;
+            }
+            else
+            {
+                controller = new ProjectPage().CreateViewController();
+                controller.Title = "Projects";
+                SetupSideMenu(controller);
+            }
+            
+            navigationController = new UINavigationController();
             Window.RootViewController = navigationController;
+            navigationController.PushViewController(controller, false);
             Window.MakeKeyAndVisible();
 
             return true;
+        }
+
+        public void SetupSideMenu(UIViewController controller)
+        {
+            controller.NavigationItem.SetLeftBarButtonItem(new UIBarButtonItem("Menu", UIBarButtonItemStyle.Plain, (sender,e) => {
+                controller.PresentViewController(_sideMenuManager.LeftNavigationController, true, null);
+            }), false);
+
+            _sideMenuManager.LeftNavigationController = new UISideMenuNavigationController(_sideMenuManager, Storyboard.InstantiateViewController("HomeController"), true);
+            //_sideMenuManager.AddScreenEdgePanGesturesToPresent(toView: navigationController?.View);
+
+            _sideMenuManager.PresentMode = SideMenuManager.MenuPresentMode.MenuSlideIn;
+            _sideMenuManager.BlurEffectStyle = null;
+            _sideMenuManager.AnimationFadeStrength = .25;
+            _sideMenuManager.ShadowOpacity = .50;
+            _sideMenuManager.FadeStatusBar = false;
+
         }
 
         public override void OnResignActivation(UIApplication application)

@@ -22,16 +22,16 @@ namespace ProjectOnlineMobile2.Services
         [Get("/_api/ProjectData/Projects?$filter=ProjectLastPublishedDate ne null")]
         Task<ProjectServerProjectList> GetAllProjects();
 
-        [Get("/_api/ProjectData/Projects(guid'{projectUID}')/Tasks()?$Select=*")]
-        Task<ProjectTaskList> GetTasksByProject(string projectUID);
+        //[Get("/_api/ProjectData/Projects(guid'{projectUID}')/Tasks()?$Select=*")]
+        //Task<ProjectTaskList> GetTasksByProject(string projectUID);
 
-        [Get("/_api/ProjectServer/Projects('{projUID}')/Draft/Tasks/getById({taskId})")]
-        Task<ProjectTaskList> GetProjectTask(string projectUID, string taskId);
+        //[Get("/_api/ProjectServer/Projects('{projUID}')/Draft/Tasks/getById({taskId})")]
+        //Task<ProjectTaskList> GetProjectTask(string projectUID, string taskId);
 
-        [Get("/_api/ProjectData/Tasks(ProjectId=guid'{projectUID}',TaskId=guid'{taskId}')/Assignments")]
-        Task<ProjectTaskAssignment> GetProjectTaskAssignment(string projectUID, string taskId);
+        //[Get("/_api/ProjectData/Tasks(ProjectId=guid'{projectUID}',TaskId=guid'{taskId}')/Assignments")]
+        //Task<ProjectTaskAssignment> GetProjectTaskAssignment(string projectUID, string taskId);
 
-        [Get("/_api/ProjectData/Projects(guid'{projectUID}')/Assignments")]
-        Task<ProjectTaskAssignment> GetProjectAssignments(string projectUID);
+        //[Get("/_api/ProjectData/Projects(guid'{projectUID}')/Assignments")]
+        //Task<ProjectTaskAssignment> GetProjectAssignments(string projectUID);
     }
 }
