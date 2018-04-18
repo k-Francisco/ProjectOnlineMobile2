@@ -11,11 +11,19 @@ using UIKit;
 
 namespace ProjectOnlineMobile2.iOS
 {
-    [Register ("LandingPageController")]
-    partial class LandingPageController
+    [Register ("HomeController")]
+    partial class HomeController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnGo { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (btnGo != null) {
+                btnGo.Dispose ();
+                btnGo = null;
+            }
         }
     }
 }

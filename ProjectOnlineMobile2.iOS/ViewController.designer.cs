@@ -15,10 +15,19 @@ namespace ProjectOnlineMobile2.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView LoginViewController { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIWebView webView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (LoginViewController != null) {
+                LoginViewController.Dispose ();
+                LoginViewController = null;
+            }
+
             if (webView != null) {
                 webView.Dispose ();
                 webView = null;

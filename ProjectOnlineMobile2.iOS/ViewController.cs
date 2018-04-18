@@ -7,7 +7,7 @@ namespace ProjectOnlineMobile2.iOS
 {
     public partial class ViewController : UIViewController
     {
-        LandingPageController LandingPageController;
+        HomeController _homeController;
         public ViewController(IntPtr handle) : base(handle)
         {
             Initialize();
@@ -15,7 +15,15 @@ namespace ProjectOnlineMobile2.iOS
 
         private void Initialize()
         {
-            
+            //var storyboard = AppDelegate.Storyboard;
+            try
+            {
+                _homeController = this.Storyboard.InstantiateViewController("HomeController") as HomeController;
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("controller", e.Message);
+            }
         }
 
         public override void ViewDidLoad()
@@ -23,6 +31,7 @@ namespace ProjectOnlineMobile2.iOS
             base.ViewDidLoad();
             // Perform any additional setup after loading the view, typically from a nib.
             this.NavigationController.NavigationBarHidden = true;
+
 
             var url = "https://sharepointevo.sharepoint.com";
             var request = new NSMutableUrlRequest(new NSUrl(url));
@@ -51,8 +60,21 @@ namespace ProjectOnlineMobile2.iOS
                     }
                 }
 
-                var authCookie = rtFa + ";" + FedAuth;
-                this.NavigationController.PushViewController(new LandingPageController(), animated: true);
+                if(!string.IsNullOrEmpty(rtFa) && !string.IsNullOrEmpty(FedAuth))
+                {
+                    var authCookie = rtFa + ";" + FedAuth;
+                    try
+                    {
+                        this.NavigationController.PushViewController(_homeController, true);
+                        AppDelegate.shared.navigationController = new UINavigationController(_homeController);
+                        AppDelegate.shared.Window.RootViewController = AppDelegate.shared.navigationController;
+                    }
+                    catch (Exception ez)
+                    {
+                        Debug.WriteLine("waaa", ez.Message);
+                    }
+                }
+                
             }
         }
 

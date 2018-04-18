@@ -13,9 +13,8 @@ namespace ProjectOnlineMobile2.iOS
         public static AppDelegate shared;
         public static UIStoryboard Storyboard = UIStoryboard.FromName("Main", null);
 
-        UIWindow _window;
-        UINavigationController _navigationController;
-        UIViewController _loginController, _landingPageController;
+        public UINavigationController navigationController;
+        UIViewController _loginController;
         public override UIWindow Window
         {
             get;
@@ -27,14 +26,22 @@ namespace ProjectOnlineMobile2.iOS
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
 
+            UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
+            {
+                TextColor = UIColor.White
+            });
+            UINavigationBar.Appearance.Translucent = false;
+            UINavigationBar.Appearance.TintColor = UIColor.White;
+            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGBA(49, 117, 47,1);
+            UINavigationBar.Appearance.BackgroundColor = UIColor.FromRGBA(49, 117, 47, 1);
+
             shared = this;
-            _window = new UIWindow(UIScreen.MainScreen.Bounds);
+            Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             _loginController = Storyboard.InstantiateInitialViewController() as ViewController;
-            _landingPageController = Storyboard.InstantiateInitialViewController() as LandingPageController;
-            _navigationController = new UINavigationController(_loginController);
-            _window.RootViewController = _navigationController;
-            _window.MakeKeyAndVisible();
+            navigationController = new UINavigationController(_loginController);
+            Window.RootViewController = navigationController;
+            Window.MakeKeyAndVisible();
 
             return true;
         }
