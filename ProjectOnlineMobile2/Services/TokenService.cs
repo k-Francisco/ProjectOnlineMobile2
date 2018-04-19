@@ -31,15 +31,20 @@ namespace ProjectOnlineMobile2.Services
         public String ExtractRtFa()
         {
             string rtFa = string.Empty;
+            try {
+                string[] token = JsonConvert.DeserializeObject<string>(Settings.CookieString).Split(new char[] { ';' });
 
-            string[] token = JsonConvert.DeserializeObject<string>(Settings.CookieString).Split(new char[] { ';' });
-
-            for (int i = 0; i < token.Length; i++)
-            {
-                if (token[i].Contains("rtFa"))
+                for (int i = 0; i < token.Length; i++)
                 {
-                    rtFa = token[i].Replace("rtFa=","");
+                    if (token[i].Contains("rtFa"))
+                    {
+                        rtFa = token[i].Replace("rtFa=", "");
+                    }
                 }
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("ExtractRtFa", e.Message);
             }
 
             return rtFa;
@@ -49,14 +54,21 @@ namespace ProjectOnlineMobile2.Services
         {
             string FedAuth = string.Empty;
 
-            string[] token = JsonConvert.DeserializeObject<string>(Settings.CookieString).Split(new char[] { ';' });
-
-            for (int i = 0; i < token.Length; i++)
+            try
             {
-                if (token[i].Contains("FedAuth"))
+                string[] token = JsonConvert.DeserializeObject<string>(Settings.CookieString).Split(new char[] { ';' });
+
+                for (int i = 0; i < token.Length; i++)
                 {
-                    FedAuth = token[i].Replace("FedAuth=", "");
+                    if (token[i].Contains("FedAuth"))
+                    {
+                        FedAuth = token[i].Replace("FedAuth=", "");
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("ExtractFedAuth", e.Message);
             }
 
             return FedAuth;

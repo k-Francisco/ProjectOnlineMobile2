@@ -28,7 +28,7 @@ namespace ProjectOnlineMobile2.Android.Renderers
             base.OnElementChanged(e);
 
             //Control.ProgressTintList = Android.Content.Res.ColorStateList.ValueOf(Color.FromRgb(182, 231, 233).ToAndroid()); //Change the color
-            Control.ScaleY = 30; //Changes the height
+            Control.ScaleY = 20; //Changes the height
         }
     }
 }

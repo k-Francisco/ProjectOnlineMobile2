@@ -15,6 +15,7 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Deb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Xamarin.Forms.Platform.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Xamarin.Forms.Platform.iOS.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Xamarin.Forms.Xaml.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Xamarin.SideMenu.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\ProjectOnlineMobile2.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.AspNetCore.WebUtilities.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.Extensions.Primitives.xml
@@ -79,4 +80,3 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Deb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\ProjectOnlineMobile2.iOS.csproj.CopyComplete
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\ProjectOnlineMobile2.iOS.exe
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\ProjectOnlineMobile2.iOS.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Xamarin.SideMenu.dll

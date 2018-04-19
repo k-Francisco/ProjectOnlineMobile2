@@ -13,16 +13,16 @@
 
             <DataTemplate x:Key="ProjectCardTemplate">
                 <ViewCell>
-                    <StackLayout Margin="0,8,0,8"
-                                 CompressedLayout.IsHeadless="True"
+                    <StackLayout CompressedLayout.IsHeadless="True"
                                  Orientation="Vertical">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command=""/>
                         </StackLayout.GestureRecognizers>
-                        <Frame HasShadow="True"
+                        <controls:CustomFrame HasShadow="True"
                                BackgroundColor="White"
                                CornerRadius="4"
                                Padding="16"
+                               Margin="16,8,16,8"
                                HorizontalOptions="FillAndExpand">
 
                             <StackLayout Margin="0"
@@ -68,7 +68,14 @@
                                                                 Progress="0.5"
                                                                 ProgressColor="#31752F"
                                                                 BackgroundColor="#A9A9A9"
-                                                                Grid.Column="0" Grid.ColumnSpan="3"/>
+                                                                Grid.Column="0" Grid.ColumnSpan="3">
+                                        <controls:CustomProgressBar.VerticalOptions>
+                                            <OnPlatform x:TypeArguments="LayoutOptions">
+                                                <On Platform="iOS" Value="CenterAndExpand"/>
+                                                <On Platform="Android" Value="FillAndExpand"/>
+                                            </OnPlatform>
+                                        </controls:CustomProgressBar.VerticalOptions>
+                                    </controls:CustomProgressBar>
 
                                     <Label Text="{Binding ProjectPercentCompleted, StringFormat='{0}%'}"
                                            HorizontalOptions="Center"
@@ -144,7 +151,7 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </controls:CustomFrame>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
@@ -159,7 +166,7 @@
     </ContentPage.Padding>
     
     <ContentPage.Content>
-        <StackLayout Padding="16,0,16,0"
+        <StackLayout Padding="0"
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand">
 
