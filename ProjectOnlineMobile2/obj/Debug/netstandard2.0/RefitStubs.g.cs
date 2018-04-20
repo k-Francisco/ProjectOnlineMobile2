@@ -9,6 +9,8 @@ using ProjectOnlineMobile2.Models;
 using ProjectOnlineMobile2.Models.PSPL;
 using ProjectOnlineMobile2.Models.PTA;
 using ProjectOnlineMobile2.Models.PTL;
+using ProjectOnlineMobile2.Models.ResourceAssignmentModel;
+using ProjectOnlineMobile2.Models.TaskModel;
 using Refit;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,6 +79,22 @@ namespace ProjectOnlineMobile2.Services
             var arguments = new object[] {  };
             var func = methodImpls.GetOrAdd("GetAllProjects()", _ => requestBuilder.BuildRestResultFuncForMethod("GetAllProjects", new Type[] {  }));
             return (Task<ProjectServerProjectList>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<TaskModel> GetTasksByProject(string projectUID)
+        {
+            var arguments = new object[] { projectUID };
+            var func = methodImpls.GetOrAdd("GetTasksByProject(string projectUID)", _ => requestBuilder.BuildRestResultFuncForMethod("GetTasksByProject", new Type[] { typeof(string) }));
+            return (Task<TaskModel>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<ResourceAssignmentModel> GetResourceAssignment(string projectUID,string resourceName)
+        {
+            var arguments = new object[] { projectUID,resourceName };
+            var func = methodImpls.GetOrAdd("GetResourceAssignment(string projectUID,string resourceName)", _ => requestBuilder.BuildRestResultFuncForMethod("GetResourceAssignment", new Type[] { typeof(string),typeof(string) }));
+            return (Task<ResourceAssignmentModel>)func(Client, arguments);
         }
 
     }

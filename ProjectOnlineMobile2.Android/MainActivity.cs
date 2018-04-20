@@ -27,7 +27,7 @@ namespace ProjectOnlineMobile2.Android
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         TextView userEmail, userName;
-        private Fragment _page1;
+        private Fragment _projectsPage, _tasksPage;
 
         IMenuItem previousItem;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -36,7 +36,8 @@ namespace ProjectOnlineMobile2.Android
             SetContentView(Resource.Layout.main);
 
             Forms.Init(this, savedInstanceState);
-            _page1 = new ProjectPage().CreateSupportFragment(this);
+            _projectsPage = new ProjectPage().CreateSupportFragment(this);
+            _tasksPage = new TasksPage().CreateSupportFragment(this);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
@@ -99,6 +100,7 @@ namespace ProjectOnlineMobile2.Android
             UserModel user = await Singleton.Instance.sharepointApi.GetCurrentUser();
             userName.Text = user.D.Title;
             userEmail.Text = user.D.Email;
+            MessagingCenter.Instance.Send<String>(user.D.Title, "UserName");
         }
 
         int oldPosition = -1;
@@ -114,13 +116,13 @@ namespace ProjectOnlineMobile2.Android
             switch (position)
             {
                 case 0:
-                    //fragment = Fragment1.NewInstance();
-                    fragment = _page1;
+                    fragment = _projectsPage;
                     SupportActionBar.Title = "Projects";
                     break;
                 case 1:
-                    fragment = Fragment2.NewInstance();
+                    fragment = _tasksPage;
                     SupportActionBar.Title = "My Tasks";
+                    MessagingCenter.Instance.Send<String>("", "GetTasks");
                     break;
             }
 

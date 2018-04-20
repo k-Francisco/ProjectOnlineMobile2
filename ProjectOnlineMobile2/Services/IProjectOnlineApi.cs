@@ -3,6 +3,8 @@ using ProjectOnlineMobile2.Models;
 using ProjectOnlineMobile2.Models.PSPL;
 using ProjectOnlineMobile2.Models.PTA;
 using ProjectOnlineMobile2.Models.PTL;
+using ProjectOnlineMobile2.Models.ResourceAssignmentModel;
+using ProjectOnlineMobile2.Models.TaskModel;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -22,8 +24,11 @@ namespace ProjectOnlineMobile2.Services
         [Get("/_api/ProjectData/Projects?$filter=ProjectLastPublishedDate ne null")]
         Task<ProjectServerProjectList> GetAllProjects();
 
-        //[Get("/_api/ProjectData/Projects(guid'{projectUID}')/Tasks()?$Select=*")]
-        //Task<ProjectTaskList> GetTasksByProject(string projectUID);
+        [Get("/_api/ProjectServer/Projects('{projectUID}')/Tasks")]
+        Task<TaskModel> GetTasksByProject(string projectUID);
+
+        [Get("/_api/ProjectData/Projects(guid'{projectUID}')/Assignments?$filter=ResourceName eq '{resourceName}'")]
+        Task<ResourceAssignmentModel> GetResourceAssignment(string projectUID, string resourceName);
 
         //[Get("/_api/ProjectServer/Projects('{projUID}')/Draft/Tasks/getById({taskId})")]
         //Task<ProjectTaskList> GetProjectTask(string projectUID, string taskId);

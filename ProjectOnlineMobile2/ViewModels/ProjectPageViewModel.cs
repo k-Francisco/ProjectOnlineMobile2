@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
+using Xamarin.Forms;
 
 namespace ProjectOnlineMobile2.ViewModels
 {
@@ -28,6 +29,7 @@ namespace ProjectOnlineMobile2.ViewModels
         {
             try {
                 var projects = await PSapi.GetAllProjects();
+                MessagingCenter.Instance.Send<ProjectServerProjectList>(projects, "SetProjects");
                 foreach (var project in projects.D.Results)
                 {
                     ProjectList.Add(project);

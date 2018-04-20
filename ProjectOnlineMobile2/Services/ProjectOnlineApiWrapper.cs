@@ -8,6 +8,8 @@ using ProjectOnlineMobile2.Models;
 using ProjectOnlineMobile2.Models.PSPL;
 using ProjectOnlineMobile2.Models.PTA;
 using ProjectOnlineMobile2.Models.PTL;
+using ProjectOnlineMobile2.Models.ResourceAssignmentModel;
+using ProjectOnlineMobile2.Models.TaskModel;
 using Refit;
 
 namespace ProjectOnlineMobile2.Services
@@ -68,18 +70,31 @@ namespace ProjectOnlineMobile2.Services
             }
         }
 
-        //public async Task<ProjectTaskList> GetTasksByProject(string projectUID)
-        //{
-        //    try
-        //    {
-        //        return await RestService.For<IProjectOnlineApi>(_client).GetTasksByProject(projectUID);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Debug.WriteLine(e.Message);
-        //        return null;
-        //    }
-        //}
+        public async Task<TaskModel> GetTasksByProject(string projectUID)
+        {
+            try
+            {
+                return await RestService.For<IProjectOnlineApi>(_client).GetTasksByProject(projectUID);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        public async Task<ResourceAssignmentModel> GetResourceAssignment(string projectUID, string resourceName)
+        {
+            try
+            {
+                return await RestService.For<IProjectOnlineApi>(_client).GetResourceAssignment(projectUID, resourceName);
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
+        }
 
         //public async Task<ProjectTaskList> GetProjectTask(string projectUID, string taskId)
         //{
