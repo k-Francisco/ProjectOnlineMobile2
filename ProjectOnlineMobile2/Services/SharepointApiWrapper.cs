@@ -48,7 +48,7 @@ namespace ProjectOnlineMobile2.Services
             }
             catch(Exception e)
             {
-                Debug.WriteLine(e.Message);
+                Debug.WriteLine("GetCurrentUser", e.Message);
                 return null;
             }
         }
@@ -61,7 +61,7 @@ namespace ProjectOnlineMobile2.Services
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.Message);
+                Debug.WriteLine("GetFormDigest",e.Message);
                 return null;
             }
         }

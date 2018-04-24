@@ -122,7 +122,6 @@ namespace ProjectOnlineMobile2.Android
                 case 1:
                     fragment = _tasksPage;
                     SupportActionBar.Title = "My Tasks";
-                    MessagingCenter.Instance.Send<String>("", "GetTasks");
                     break;
             }
 

@@ -39,7 +39,7 @@ namespace ProjectOnlineMobile2.Services
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.Message);
+                Debug.WriteLine("GetProjectByGuid", e.Message);
                 return null;
             }
         }
@@ -52,7 +52,7 @@ namespace ProjectOnlineMobile2.Services
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.Message);
+                Debug.WriteLine("GetProjectByName", e.Message);
                 return null;
             }
         }
@@ -65,7 +65,7 @@ namespace ProjectOnlineMobile2.Services
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.Message);
+                Debug.WriteLine("GetAllProjects", e.Message);
                 return null;
             }
         }
@@ -78,7 +78,7 @@ namespace ProjectOnlineMobile2.Services
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.Message);
+                Debug.WriteLine("GetTasksByProject", e.Message);
                 return null;
             }
         }
@@ -91,7 +91,7 @@ namespace ProjectOnlineMobile2.Services
             }
             catch(Exception e)
             {
-                Debug.WriteLine(e.Message);
+                Debug.WriteLine("GetResourceAssignment", e.Message);
                 return null;
             }
         }

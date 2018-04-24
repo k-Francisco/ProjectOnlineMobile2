@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using Foundation;
+using ProjectOnlineMobile2.Models;
 using ProjectOnlineMobile2.Pages;
 using ProjectOnlineMobile2.Services;
 using UIKit;
@@ -55,10 +56,16 @@ namespace ProjectOnlineMobile2.iOS
             }
             else
             {
-                controller = new ProjectPage().CreateViewController();
-                controller.Title = "Projects";
-                SetupSideMenu(controller);
+                controller = new HomePage().CreateViewController();
+                controller.Title = "Home";
+                //SetupSideMenu(controller);
+
+                //GetUserInfo();
             }
+
+            MessagingCenter.Instance.Subscribe<String>(this,"NavigateToPage", (s) => {
+                NavigatePage(s);
+            });
             
             navigationController = new UINavigationController();
             Window.RootViewController = navigationController;
@@ -68,22 +75,64 @@ namespace ProjectOnlineMobile2.iOS
             return true;
         }
 
-        public void SetupSideMenu(UIViewController controller)
+        private void NavigatePage(String page)
         {
-            controller.NavigationItem.SetLeftBarButtonItem(new UIBarButtonItem("Menu", UIBarButtonItemStyle.Plain, (sender,e) => {
-                controller.PresentViewController(_sideMenuManager.LeftNavigationController, true, null);
-            }), false);
-
-            _sideMenuManager.LeftNavigationController = new UISideMenuNavigationController(_sideMenuManager, Storyboard.InstantiateViewController("HomeController"), true);
-            //_sideMenuManager.AddScreenEdgePanGesturesToPresent(toView: navigationController?.View);
-
-            _sideMenuManager.PresentMode = SideMenuManager.MenuPresentMode.MenuSlideIn;
-            _sideMenuManager.BlurEffectStyle = null;
-            _sideMenuManager.AnimationFadeStrength = .25;
-            _sideMenuManager.ShadowOpacity = .50;
-            _sideMenuManager.FadeStatusBar = false;
-
+            if (page.Equals("ProjectPage"))
+            {
+                var controller = new ProjectPage().CreateViewController();
+                controller.Title = "Projects";
+                navigationController.PushViewController(controller, true);
+            }
+            else if (page.Equals("TasksPage"))
+            {
+                var controller = new TasksPage().CreateViewController();
+                controller.Title = "Tasks";
+                navigationController.PushViewController(controller, true);
+            }
         }
+
+        //public async void GetUserInfo()
+        //{
+        //    try
+        //    {
+        //        var sharepointApi = new SharepointApiWrapper();
+        //        UserModel user = await sharepointApi.GetCurrentUser();
+        //        MessagingCenter.Instance.Send<String>(user.D.Title, "UserName");
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        Debug.WriteLine("GetUserInfo", e.Message);
+        //    }
+        //}
+
+        //public void SetupSideMenu(UIViewController controller)
+        //{
+        //    //if(_sideMenuManager.LeftNavigationController != null)
+        //    //{
+        //    //    _sideMenuManager.LeftNavigationController.DismissViewController(true, null);
+        //    //}
+        //    controller.NavigationItem.SetLeftBarButtonItem(new UIBarButtonItem("Menu", UIBarButtonItemStyle.Plain, (sender,e) => {
+        //        controller.PresentViewController(_sideMenuManager.LeftNavigationController, true, null);
+        //    }), false);
+            
+        //    _sideMenuManager.LeftNavigationController = new UISideMenuNavigationController(_sideMenuManager, Storyboard.InstantiateViewController("HomeController"), true);
+        //    //_sideMenuManager.AddScreenEdgePanGesturesToPresent(toView: navigationController?.View);
+
+        //    _sideMenuManager.PresentMode = SideMenuManager.MenuPresentMode.MenuSlideIn;
+        //    _sideMenuManager.BlurEffectStyle = null;
+        //    _sideMenuManager.AnimationFadeStrength = .25;
+        //    _sideMenuManager.ShadowOpacity = .50;
+        //    _sideMenuManager.FadeStatusBar = false;
+
+        //}
+
+        //public void SwitchControllers(UIViewController controller)
+        //{
+        //    navigationController = new UINavigationController();
+        //    navigationController.PushViewController(controller, false);
+        //    Window.RootViewController = navigationController;
+        //    SetupSideMenu(controller);
+        //}
 
         public override void OnResignActivation(UIApplication application)
         {

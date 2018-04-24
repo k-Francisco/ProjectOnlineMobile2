@@ -18,12 +18,7 @@ namespace ProjectOnlineMobile2.iOS
             base.ViewDidLoad();
             this.NavigationController.NavigationBarHidden = true;
 
-            btnLogout.TouchUpInside += ClearSettings;
         }
 
-        private void ClearSettings(object sender, EventArgs e)
-        {
-            Settings.ClearAll();
-        }
     }
 }

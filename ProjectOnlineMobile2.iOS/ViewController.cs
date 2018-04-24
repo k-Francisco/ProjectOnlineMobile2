@@ -5,6 +5,7 @@ using ProjectOnlineMobile2.Services;
 using System;
 using System.Diagnostics;
 using UIKit;
+using Xamarin.Forms;
 
 namespace ProjectOnlineMobile2.iOS
 {
@@ -65,18 +66,25 @@ namespace ProjectOnlineMobile2.iOS
 
                 if(!string.IsNullOrEmpty(rtFa) && !string.IsNullOrEmpty(FedAuth))
                 {
-                    var authCookie = rtFa + "; " + FedAuth;
-                    
                     try
                     {
+                        //save the cookies locally
+                        var authCookie = rtFa + "; " + FedAuth;
                         Settings.CookieString = JsonConvert.SerializeObject(authCookie);
-                        this.NavigationController.PushViewController(_homeController, true);
-                        AppDelegate.shared.navigationController = new UINavigationController(_homeController);
+
+                        //get user information through api
+                        //AppDelegate.shared.GetUserInfo();
+
+                        //navigate to the projects page
+                        var controller = new ProjectPage().CreateViewController();
+                        controller.Title = "Projects";
+                        this.NavigationController.PushViewController(controller, true);
+                        AppDelegate.shared.navigationController = new UINavigationController(controller);
                         AppDelegate.shared.Window.RootViewController = AppDelegate.shared.navigationController;
                     }
                     catch (Exception ez)
                     {
-                        Debug.WriteLine("waaa", ez.Message);
+                        Debug.WriteLine("webViewLoading", ez.Message);
                     }
                 }
                 

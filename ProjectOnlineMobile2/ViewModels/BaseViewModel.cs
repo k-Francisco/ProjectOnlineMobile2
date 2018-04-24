@@ -32,12 +32,12 @@ namespace ProjectOnlineMobile2.ViewModels
 
             MessagingCenter.Instance.Subscribe<ProjectServerProjectList>(this, "SetProjects", (projects)=> {
                 this.projects = projects;
+                Debug.WriteLine("BaseViewModel", "SetProjects");
             });
 
             MessagingCenter.Instance.Subscribe<String>(this, "UserName", (user) => {
                 this.userName = user;
             });
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

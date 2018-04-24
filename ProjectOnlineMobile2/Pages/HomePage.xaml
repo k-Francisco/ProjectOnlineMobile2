@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ProjectOnlineMobile2.ViewModels"
+             xmlns:controls="clr-namespace:ProjectOnlineMobile2.Controls"
+             x:Class="ProjectOnlineMobile2.Pages.HomePage">
+    <ContentPage.BindingContext>
+        <viewModels:HomePageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid CompressedLayout.IsHeadless="True"
+                Grid.Row="1"
+                RowSpacing="0"
+                ColumnSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <controls:CustomFrame HasShadow="True"
+                                      Margin="8"
+                                      BackgroundColor="Green"
+                                      Grid.Row="0"
+                                      Grid.Column="0">
+                    <controls:CustomFrame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToProjectsPage}"
+                                              NumberOfTapsRequired="1"/>
+                    </controls:CustomFrame.GestureRecognizers>
+                    <Label Text="Projects"
+                           TextColor="White"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+
+                </controls:CustomFrame>
+
+                <controls:CustomFrame HasShadow="True"
+                                      Margin="8"
+                                      BackgroundColor="Green"
+                                      Grid.Row="0"
+                                      Grid.Column="1">
+                    <controls:CustomFrame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToTasksPage}"
+                                              NumberOfTapsRequired="1"/>
+                    </controls:CustomFrame.GestureRecognizers>
+                    <Label Text="My Tasks"
+                           TextColor="White"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                </controls:CustomFrame>
+
+                <controls:CustomFrame HasShadow="True"
+                                      Margin="8"
+                                      BackgroundColor="Green"
+                                      Grid.Row="1"
+                                      Grid.Column="0">
+                    <Label Text="Timesheet"
+                           TextColor="White"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                </controls:CustomFrame>
+
+                <controls:CustomFrame HasShadow="True"
+                                      Margin="8"
+                                      BackgroundColor="Green"
+                                      Grid.Row="1"
+                                      Grid.Column="1">
+                    <Label Text="Logout"
+                           TextColor="White"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                </controls:CustomFrame>
+
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

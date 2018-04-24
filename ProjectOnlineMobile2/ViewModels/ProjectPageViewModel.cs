@@ -21,8 +21,12 @@ namespace ProjectOnlineMobile2.ViewModels
 
         public ProjectPageViewModel()
         {
-            ProjectList = new ObservableCollection<Result>();
-            GetAllProjects();
+            if(projects == null)
+            {
+                ProjectList = new ObservableCollection<Result>();
+                GetAllProjects();
+                Debug.WriteLine("ProjectPageViewModel", "getting projects");
+            }
         }
 
         private async void GetAllProjects()
@@ -37,7 +41,7 @@ namespace ProjectOnlineMobile2.ViewModels
             }
             catch(Exception e)
             {
-                Debug.WriteLine("projects", e.Message);
+                Debug.WriteLine("ProjectPage-GetAllProjects", e.Message);
             }
 
         }

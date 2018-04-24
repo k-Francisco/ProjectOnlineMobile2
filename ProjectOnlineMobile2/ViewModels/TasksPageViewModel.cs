@@ -23,6 +23,12 @@ namespace ProjectOnlineMobile2.ViewModels
         public TasksPageViewModel()
         {
             Tasks = new ObservableCollection<Result>();
+
+            if(projects is null)
+            {
+
+            }
+
             MessagingCenter.Instance.Subscribe<String>(this, "GetTasks", (s) =>
             {
                 if(Tasks.Count == 0)
@@ -36,11 +42,12 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 foreach (var project in projects.D.Results)
                 {
-                    var resourceAssignments = await PSapi.GetResourceAssignment(project.ProjectId, userName);
-                    foreach (var item in resourceAssignments.D.Results)
-                    {
-                        Tasks.Add(item);
-                    }
+                    Debug.WriteLine("GetTasks", project.ProjectName);
+                    //var resourceAssignments = await PSapi.GetResourceAssignment(project.ProjectId, userName);
+                    //foreach (var item in resourceAssignments.D.Results)
+                    //{
+                    //    Tasks.Add(item);
+                    //}
                 }
             }
             catch(Exception e)
