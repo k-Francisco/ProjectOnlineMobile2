@@ -21,11 +21,17 @@ namespace ProjectOnlineMobile2.ViewModels
 
         public ProjectPageViewModel()
         {
-            if(projects == null)
+            ProjectList = new ObservableCollection<Result>();
+            if (NetStandardSingleton.Instance.projects is null)
             {
-                ProjectList = new ObservableCollection<Result>();
                 GetAllProjects();
-                Debug.WriteLine("ProjectPageViewModel", "getting projects");
+            }
+            else
+            {
+                foreach (var item in NetStandardSingleton.Instance.projects.D.Results)
+                {
+                    ProjectList.Add(item);
+                }
             }
         }
 

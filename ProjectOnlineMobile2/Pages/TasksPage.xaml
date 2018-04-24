@@ -37,7 +37,7 @@
                                            Grid.Column="0"/>
 
                                 <Grid CompressedLayout.IsHeadless="True"
-                                      RowSpacing="4"
+                                      RowSpacing="8"
                                       ColumnSpacing="0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="12"/>

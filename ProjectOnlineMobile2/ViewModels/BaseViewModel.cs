@@ -17,9 +17,6 @@ namespace ProjectOnlineMobile2.ViewModels
         protected SharepointApiWrapper SPapi { get; private set; }
         protected ProjectOnlineApiWrapper PSapi { get; private set; }
 
-        //used for project references of other viewmodels
-        public ProjectServerProjectList projects;
-
         //used to identify the user
         public string userName = "";
 
@@ -31,8 +28,7 @@ namespace ProjectOnlineMobile2.ViewModels
                 PSapi = new ProjectOnlineApiWrapper();
 
             MessagingCenter.Instance.Subscribe<ProjectServerProjectList>(this, "SetProjects", (projects)=> {
-                this.projects = projects;
-                Debug.WriteLine("BaseViewModel", "SetProjects");
+                NetStandardSingleton.Instance.projects = projects;
             });
 
             MessagingCenter.Instance.Subscribe<String>(this, "UserName", (user) => {
