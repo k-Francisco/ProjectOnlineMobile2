@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
+    <Compile Include="Renderers\CustomPickerRenderer.cs" />
     <Compile Include="Renderers\CustomProgressBarRenderer.cs" />
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
@@ -146,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
+    <BundleResource Include="Resources\arrow_down.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectOnlineMobile2\ProjectOnlineMobile2.csproj">

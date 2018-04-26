@@ -1,5 +1,6 @@
 ﻿using ProjectOnlineMobile2.Models.PSPL;
 using TasksResult = ProjectOnlineMobile2.Models.ResourceAssignmentModel.Result;
+using TimesheetPeriodsResult = ProjectOnlineMobile2.Models.TSPL.Result;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -34,6 +35,7 @@ namespace ProjectOnlineMobile2
 
         public ProjectServerProjectList projects;
         public ObservableCollection<TasksResult> userTasks = new ObservableCollection<TasksResult>();
+        public ObservableCollection<TimesheetPeriodsResult> periods = new ObservableCollection<TimesheetPeriodsResult>();
 
     }
 }

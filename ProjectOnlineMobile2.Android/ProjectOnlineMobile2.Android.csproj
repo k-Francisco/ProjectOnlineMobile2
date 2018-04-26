@@ -194,6 +194,7 @@
     <Compile Include="Fragments\Fragment2.cs" />
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
     <Compile Include="Renderers\CustomListViewRenderer.cs" />
+    <Compile Include="Renderers\CustomPickerRenderer.cs" />
     <Compile Include="Renderers\CustomProgressBarRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -253,6 +254,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu.png" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_more.png" />
     <AndroidResource Include="Resources\drawable\frame_shadow.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\arrow_down.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectOnlineMobile2\ProjectOnlineMobile2.csproj">

@@ -27,7 +27,7 @@ namespace ProjectOnlineMobile2.Android
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         TextView userEmail, userName;
-        private Fragment _projectsPage, _tasksPage;
+        private Fragment _projectsPage, _tasksPage, _timesheetPage;
 
         IMenuItem previousItem;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -38,6 +38,7 @@ namespace ProjectOnlineMobile2.Android
             Forms.Init(this, savedInstanceState);
             _projectsPage = new ProjectPage().CreateSupportFragment(this);
             _tasksPage = new TasksPage().CreateSupportFragment(this);
+            _timesheetPage = new TimesheetPage().CreateSupportFragment(this);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
@@ -77,6 +78,9 @@ namespace ProjectOnlineMobile2.Android
                     case Resource.Id.nav_tasks:
                         ListItemClicked(1);
                         break;
+                    case Resource.Id.nav_timesheets:
+                        ListItemClicked(2);
+                        break;
                 }
 
 
@@ -97,10 +101,17 @@ namespace ProjectOnlineMobile2.Android
 
         private async void GetUserInfo()
         {
-            UserModel user = await Singleton.Instance.sharepointApi.GetCurrentUser();
-            userName.Text = user.D.Title;
-            userEmail.Text = user.D.Email;
-            MessagingCenter.Instance.Send<String>(user.D.Title, "UserName");
+            try
+            {
+                UserModel user = await Singleton.Instance.sharepointApi.GetCurrentUser();
+                userName.Text = user.D.Title;
+                userEmail.Text = user.D.Email;
+                MessagingCenter.Instance.Send<String>(user.D.Title, "UserName");
+            }
+            catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("GetUserInfoAndroid",e.Message);
+            }
         }
 
         int oldPosition = -1;
@@ -122,6 +133,10 @@ namespace ProjectOnlineMobile2.Android
                 case 1:
                     fragment = _tasksPage;
                     SupportActionBar.Title = "My Tasks";
+                    break;
+                case 2:
+                    fragment = _timesheetPage;
+                    SupportActionBar.Title = "Timesheet";
                     break;
             }
 

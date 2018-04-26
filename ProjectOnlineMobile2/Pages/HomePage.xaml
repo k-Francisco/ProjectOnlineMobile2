@@ -70,6 +70,10 @@
                                       BackgroundColor="Green"
                                       Grid.Row="1"
                                       Grid.Column="0">
+                    <controls:CustomFrame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToTimesheetPage}"
+                                              NumberOfTapsRequired="1"/>
+                    </controls:CustomFrame.GestureRecognizers>
                     <Label Text="Timesheet"
                            TextColor="White"
                            FontSize="Medium"

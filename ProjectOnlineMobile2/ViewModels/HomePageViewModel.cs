@@ -11,12 +11,19 @@ namespace ProjectOnlineMobile2.ViewModels
 
         public ICommand GoToProjectsPage { get; set; }
         public ICommand GoToTasksPage { get; set; }
+        public ICommand GoToTimesheetPage { get; set; }
 
         public HomePageViewModel()
         {
             GoToProjectsPage = new Command(ExecuteGoToProjectsPage);
             GoToTasksPage = new Command(ExecuteGoToTasksPage);
+            GoToTimesheetPage = new Command(ExecuteGoToTimesheetPage);
             GetUserInfo();
+        }
+
+        private void ExecuteGoToTimesheetPage(object obj)
+        {
+            MessagingCenter.Instance.Send<String>("TimesheetPage", "NavigateToPage");
         }
 
         private void ExecuteGoToTasksPage(object obj)

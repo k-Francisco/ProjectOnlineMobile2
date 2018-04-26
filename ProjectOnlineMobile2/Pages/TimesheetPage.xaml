@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ProjectOnlineMobile2.ViewModels"
+             xmlns:controls="clr-namespace:ProjectOnlineMobile2.Controls"
+             x:Class="ProjectOnlineMobile2.Pages.TimesheetPage">
+    <ContentPage.BindingContext>
+        <viewModels:TimesheetPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand">
+
+            <controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                   HeightRequest="40"
+                                   Image="arrow_down"
+                                   Title="Select Period"
+                                   Margin="16"
+                                   ItemsSource="{Binding TimesheetPeriods}">
+                
+            </controls:CustomPicker>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

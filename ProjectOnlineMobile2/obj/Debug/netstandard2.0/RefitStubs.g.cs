@@ -11,6 +11,8 @@ using ProjectOnlineMobile2.Models.PTA;
 using ProjectOnlineMobile2.Models.PTL;
 using ProjectOnlineMobile2.Models.ResourceAssignmentModel;
 using ProjectOnlineMobile2.Models.TaskModel;
+using ProjectOnlineMobile2.Models.TLL;
+using ProjectOnlineMobile2.Models.TSPL;
 using Refit;
 using System.Text;
 using System.Threading.Tasks;
@@ -95,6 +97,30 @@ namespace ProjectOnlineMobile2.Services
             var arguments = new object[] { projectUID,resourceName };
             var func = methodImpls.GetOrAdd("GetResourceAssignment(string projectUID,string resourceName)", _ => requestBuilder.BuildRestResultFuncForMethod("GetResourceAssignment", new Type[] { typeof(string),typeof(string) }));
             return (Task<ResourceAssignmentModel>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<TimeSheetPeriodList> GetAllTimesheetPeriods()
+        {
+            var arguments = new object[] {  };
+            var func = methodImpls.GetOrAdd("GetAllTimesheetPeriods()", _ => requestBuilder.BuildRestResultFuncForMethod("GetAllTimesheetPeriods", new Type[] {  }));
+            return (Task<TimeSheetPeriodList>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<TimesheetLinesList> GetTimesheetLinesByPeriod(string periodId)
+        {
+            var arguments = new object[] { periodId };
+            var func = methodImpls.GetOrAdd("GetTimesheetLinesByPeriod(string periodId)", _ => requestBuilder.BuildRestResultFuncForMethod("GetTimesheetLinesByPeriod", new Type[] { typeof(string) }));
+            return (Task<TimesheetLinesList>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<String> GetTimesheet(string periodId)
+        {
+            var arguments = new object[] { periodId };
+            var func = methodImpls.GetOrAdd("GetTimesheet(string periodId)", _ => requestBuilder.BuildRestResultFuncForMethod("GetTimesheet", new Type[] { typeof(string) }));
+            return (Task<String>)func(Client, arguments);
         }
 
     }

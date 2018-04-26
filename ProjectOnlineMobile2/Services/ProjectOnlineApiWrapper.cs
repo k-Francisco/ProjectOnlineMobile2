@@ -10,6 +10,8 @@ using ProjectOnlineMobile2.Models.PTA;
 using ProjectOnlineMobile2.Models.PTL;
 using ProjectOnlineMobile2.Models.ResourceAssignmentModel;
 using ProjectOnlineMobile2.Models.TaskModel;
+using ProjectOnlineMobile2.Models.TLL;
+using ProjectOnlineMobile2.Models.TSPL;
 using Refit;
 
 namespace ProjectOnlineMobile2.Services
@@ -92,6 +94,45 @@ namespace ProjectOnlineMobile2.Services
             catch(Exception e)
             {
                 Debug.WriteLine("GetResourceAssignment", e.Message);
+                return null;
+            }
+        }
+
+        public async Task<TimeSheetPeriodList> GetAllTimesheetPeriods()
+        {
+            try
+            {
+                return await RestService.For<IProjectOnlineApi>(_client).GetAllTimesheetPeriods();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("GetAllTimesheetPeriods", e.Message);
+                return null;
+            }
+        }
+
+        public async Task<TimesheetLinesList> GetTimesheetLinesByPeriod(string periodId)
+        {
+            try
+            {
+                return await RestService.For<IProjectOnlineApi>(_client).GetTimesheetLinesByPeriod(periodId);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("GetTimesheetLinesByPeriod", e.Message);
+                return null;
+            }
+        }
+
+        public async Task<string> GetTimesheet(string periodId)
+        {
+            try
+            {
+                return await RestService.For<IProjectOnlineApi>(_client).GetTimesheet(periodId);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("GetTimesheet", e.Message);
                 return null;
             }
         }

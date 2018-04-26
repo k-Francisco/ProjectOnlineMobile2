@@ -89,6 +89,12 @@ namespace ProjectOnlineMobile2.iOS
                 controller.Title = "Tasks";
                 navigationController.PushViewController(controller, true);
             }
+            else if (page.Equals("TimesheetPage"))
+            {
+                var controller = new TimesheetPage().CreateViewController();
+                controller.Title = "Timesheet";
+                navigationController.PushViewController(controller, true);
+            }
         }
 
         //public async void GetUserInfo()

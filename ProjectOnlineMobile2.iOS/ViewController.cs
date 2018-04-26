@@ -37,7 +37,7 @@ namespace ProjectOnlineMobile2.iOS
             this.NavigationController.NavigationBarHidden = true;
 
 
-            var url = "https://sharepointevo.sharepoint.com";
+            var url = "https://sharepointevo.sharepoint.com/_forms/default.aspx?wa=wsignin1.0";
             var request = new NSMutableUrlRequest(new NSUrl(url));
             webView.Frame = View.Frame;
             webView.LoadRequest(request);
@@ -63,8 +63,8 @@ namespace ProjectOnlineMobile2.iOS
                         FedAuth = cookie.Name + "=" + cookie.Value;
                     }
                 }
-
-                if(!string.IsNullOrEmpty(rtFa) && !string.IsNullOrEmpty(FedAuth))
+                
+                if (!string.IsNullOrEmpty(rtFa) && !string.IsNullOrEmpty(FedAuth))
                 {
                     try
                     {
@@ -76,8 +76,8 @@ namespace ProjectOnlineMobile2.iOS
                         //AppDelegate.shared.GetUserInfo();
 
                         //navigate to the projects page
-                        var controller = new ProjectPage().CreateViewController();
-                        controller.Title = "Projects";
+                        var controller = new HomePage().CreateViewController();
+                        controller.Title = "Home";
                         this.NavigationController.PushViewController(controller, true);
                         AppDelegate.shared.navigationController = new UINavigationController(controller);
                         AppDelegate.shared.Window.RootViewController = AppDelegate.shared.navigationController;
