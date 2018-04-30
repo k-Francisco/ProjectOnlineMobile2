@@ -74,6 +74,7 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\layout\nav_header.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\layout\activity_login.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\layout\fragment_login.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\layout\activity_timesheet_work.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\values\colors.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\values\integers.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\values\strings.xml
@@ -100,6 +101,7 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\drawable-xxhdpi\ic_menu.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\drawable-hdpi\ic_more.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\drawable\frame_shadow.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\drawable-hdpi\arrow_down.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\R.cs.flag
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\uploadflags.txt
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\Microsoft.CSharp.pdb
@@ -150,7 +152,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Plugin.Settings.Abstractions.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Plugin.Settings.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Xamarin.Forms.Platform.Android.dll.mdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\drawable-hdpi\arrow_down.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\ProjectOnlineMobile2.Android.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\FormsViewGroup.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Plugin.Settings.Abstractions.dll.mdb

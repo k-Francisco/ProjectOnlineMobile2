@@ -5,6 +5,7 @@ using Android.Support.V4.Widget;
 using Android.Views;
 
 using Android.Support.V7.App;
+using LineResult = ProjectOnlineMobile2.Models.TLL.Result;
 using Fragment = Android.Support.V4.App.Fragment;
 using Android.Support.Design.Widget;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
@@ -17,6 +18,9 @@ using ProjectOnlineMobile2.Pages;
 using Android.Widget;
 using ProjectOnlineMobile2.Models;
 using System;
+using ProjectOnlineMobile2.Models.TLL;
+using Android.Content;
+using ProjectOnlineMobile2.Android.Activities;
 
 namespace ProjectOnlineMobile2.Android
 {
@@ -27,7 +31,7 @@ namespace ProjectOnlineMobile2.Android
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         TextView userEmail, userName;
-        private Fragment _projectsPage, _tasksPage, _timesheetPage;
+        private Fragment _projectsPage, _tasksPage, _timesheetPage, _homePage;
 
         IMenuItem previousItem;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -39,6 +43,11 @@ namespace ProjectOnlineMobile2.Android
             _projectsPage = new ProjectPage().CreateSupportFragment(this);
             _tasksPage = new TasksPage().CreateSupportFragment(this);
             _timesheetPage = new TimesheetPage().CreateSupportFragment(this);
+            _homePage = new HomePage().CreateSupportFragment(this);
+
+            MessagingCenter.Instance.Subscribe<LineResult>(this, "PushTimesheetWorkPage", (timesheetLine) => {
+                PushTimesheetWorkPage(timesheetLine);
+            });
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
@@ -97,6 +106,14 @@ namespace ProjectOnlineMobile2.Android
 
             GetUserInfo();
 
+        }
+
+        private void PushTimesheetWorkPage(LineResult timesheetLine)
+        {
+            Intent intent = new Intent(this, typeof(TimesheetWorkActivity));
+            intent.PutExtra("TASK_NAME", timesheetLine.TaskName);
+            intent.PutExtra("LINE_ID", timesheetLine.Id);
+            StartActivity(intent);
         }
 
         private async void GetUserInfo()

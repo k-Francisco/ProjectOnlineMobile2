@@ -11,8 +11,11 @@ using ProjectOnlineMobile2.Models.PTL;
 using ProjectOnlineMobile2.Models.ResourceAssignmentModel;
 using ProjectOnlineMobile2.Models.TaskModel;
 using ProjectOnlineMobile2.Models.TLL;
+using ProjectOnlineMobile2.Models.TLWM;
+using ProjectOnlineMobile2.Models.TM;
 using ProjectOnlineMobile2.Models.TSPL;
 using Refit;
+using Xamarin.Forms;
 
 namespace ProjectOnlineMobile2.Services
 {
@@ -120,11 +123,15 @@ namespace ProjectOnlineMobile2.Services
             catch (Exception e)
             {
                 Debug.WriteLine("GetTimesheetLinesByPeriod", e.Message);
+                if(e.Message.Equals("Response status code does not indicate success: 404 (Not Found)."))
+                {
+                    MessagingCenter.Instance.Send<String>(periodId, "DoCreateTimesheet");
+                }
                 return null;
             }
         }
 
-        public async Task<string> GetTimesheet(string periodId)
+        public async Task<TimesheetModel> GetTimesheet(string periodId)
         {
             try
             {
@@ -133,6 +140,35 @@ namespace ProjectOnlineMobile2.Services
             catch (Exception e)
             {
                 Debug.WriteLine("GetTimesheet", e.Message);
+                return null;
+            }
+        }
+
+        public async Task<string> CreateTimesheet(string periodId, string formDigest)
+        {
+            try
+            {
+                _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
+                var response =  await RestService.For<IProjectOnlineApi>(_client).CreateTimesheet(periodId, formDigest);
+                //_client.DefaultRequestHeaders.Remove("X-RequestDigest");
+                return response;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("CreateTimesheet", e.Message);
+                return null;
+            }
+        }
+
+        public async Task<TimesheetLineWorkModel> GetTimesheetLineWork(string periodId, string lineId)
+        {
+            try
+            {
+                return await RestService.For<IProjectOnlineApi>(_client).GetTimesheetLineWork(periodId, lineId);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("GetTimesheetLineWork", e.Message);
                 return null;
             }
         }

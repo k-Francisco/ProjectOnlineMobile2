@@ -14,7 +14,6 @@ namespace ProjectOnlineMobile2.Services
         protected TokenService tokenService { get; private set; }
         protected HttpClientHandler handler { get; private set; }
         protected MediaTypeWithQualityHeaderValue mediaType { get; private set; }
-        protected FormDigestModel webInfo { get; set; }
 
         public BaseWrapper()
         {

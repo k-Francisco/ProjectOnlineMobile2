@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:ProjectOnlineMobile2.ViewModels"
              xmlns:controls="clr-namespace:ProjectOnlineMobile2.Controls"
+             xmlns:behaviors="clr-namespace:ProjectOnlineMobile2.Behaviors"
              x:Class="ProjectOnlineMobile2.Pages.TimesheetPage">
     <ContentPage.BindingContext>
         <viewModels:TimesheetPageViewModel/>
@@ -10,12 +11,121 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+
+            <DataTemplate x:Key="TimesheetLineCardTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Vertical">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer/>
+                        </StackLayout.GestureRecognizers>
+                        <controls:CustomFrame HasShadow="True"
+                                              CornerRadius="4"
+                                              BackgroundColor="White"
+                                              Margin="16,8,16,8"
+                                              Padding="16">
+                            <controls:CustomFrame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.TimesheetLineClicked, Source={x:Reference mainLayout}}"
+                                                  CommandParameter="{Binding .}"/>
+                            </controls:CustomFrame.GestureRecognizers>
+                            
+                            <StackLayout Orientation="Vertical"
+                                         CompressedLayout.IsHeadless="True">
+                                <Grid RowSpacing="4"
+                                  ColumnSpacing="0"
+                                  CompressedLayout.IsHeadless="True">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="12"/>
+                                        <RowDefinition Height="22"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Project Name"
+                                           FontSize="Micro"
+                                           TextColor="LightSlateGray"
+                                           Grid.Row="0" Grid.Column="0"/>
+
+                                    <Label Text="{Binding ProjectName}"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                           Grid.Row="1" Grid.Column="0"/>
+
+                                    <Label Text="Task Name"
+                                           FontSize="Micro"
+                                           TextColor="LightSlateGray"
+                                           Grid.Row="0" Grid.Column="1"/>
+
+                                    <Label Text="{Binding TaskName}"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                           Grid.Row="1" Grid.Column="1"/>
+
+                                </Grid>
+
+                                <Grid RowSpacing="4"
+                                  ColumnSpacing="0"
+                                  CompressedLayout.IsHeadless="True"
+                                      Margin="0,8,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="12"/>
+                                        <RowDefinition Height="22"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Text="Status"
+                                           FontSize="Micro"
+                                           TextColor="LightSlateGray"
+                                           Grid.Row="0" Grid.Column="0"/>
+
+                                    <Label Text="{Binding Status}"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                           Grid.Row="1" Grid.Column="0"/>
+
+                                    <Label Text="Total Work"
+                                           FontSize="Micro"
+                                           TextColor="LightSlateGray"
+                                           Grid.Row="0" Grid.Column="1"/>
+
+                                    <Label Text="{Binding TotalWork}"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                           Grid.Row="1" Grid.Column="1"/>
+
+                                </Grid>
+
+                                <Label Text="Comment"
+                                       FontSize="Micro"
+                                       TextColor="LightSlateGray"
+                                       Grid.Row="4" Grid.Column="0"
+                                       Margin="0,8,0,0"/>
+
+                                <Label Text="{Binding Comment}"
+                                           FontSize="Medium"
+                                           TextColor="Black"
+                                       LineBreakMode="TailTruncation"
+                                           Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                            </StackLayout>
+
+                        </controls:CustomFrame>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
             
         </ResourceDictionary>
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical"
+        <StackLayout x:Name="mainLayout" 
+                     Orientation="Vertical"
                      VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand">
 
@@ -24,9 +134,21 @@
                                    Image="arrow_down"
                                    Title="Select Period"
                                    Margin="16"
-                                   ItemsSource="{Binding TimesheetPeriods}">
-                
+                                   ItemsSource="{Binding TimesheetPeriods}"
+                                   SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+                <controls:CustomPicker.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedItemChangedCommand}"/>
+                </controls:CustomPicker.Behaviors>
             </controls:CustomPicker>
+
+            <ListView CachingStrategy="RecycleElementAndDataTemplate"
+                      HasUnevenRows="True"
+                      SeparatorVisibility="None"
+                      IsPullToRefreshEnabled="False"
+                      IsRefreshing="False"
+                      ItemTemplate="{StaticResource TimesheetLineCardTemplate}"
+                      ItemsSource="{Binding PeriodLines}"/>
+
 
         </StackLayout>
     </ContentPage.Content>

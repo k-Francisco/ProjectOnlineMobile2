@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:ProjectOnlineMobile2.ViewModels"
+             x:Class="ProjectOnlineMobile2.Pages.TimesheetWorkPage">
+    <ContentPage.BindingContext>
+        <viewModels:TimesheetWorkPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="TimesheetWorkTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Vertical"
+                                 Spacing="0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer/>
+                        </StackLayout.GestureRecognizers>
+
+                        <Grid ColumnSpacing="0"
+                              RowSpacing="0">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+
+                            <BoxView BackgroundColor="LightGray"
+                                     VerticalOptions="Start"
+                                     HorizontalOptions="Fill"
+                                     HeightRequest="1"
+                                     Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0"/>
+
+                            <BoxView BackgroundColor="LightGray"
+                                     VerticalOptions="End"
+                                     HorizontalOptions="Fill"
+                                     HeightRequest="1"
+                                     Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0"/>
+
+                            <BoxView BackgroundColor="LightGray"
+                                     VerticalOptions="Fill"
+                                     HorizontalOptions="Start"
+                                     WidthRequest="1"
+                                     Grid.Column="1"/>
+
+                            <BoxView BackgroundColor="LightGray"
+                                     VerticalOptions="Fill"
+                                     HorizontalOptions="End"
+                                     WidthRequest="1"
+                                     Grid.Column="1"/>
+
+                            <Label Text="{Binding Start, StringFormat='{0:ddd, MM/dd}'}}"
+                                   FontSize="Medium"
+                                   TextColor="Black"
+                                   Grid.Column="0"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+
+                            <Label Text="{Binding ActualWork}"
+                                   FontSize="Medium"
+                                   TextColor="Black"
+                                   Grid.Column="1"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+
+                            <Label Text="{Binding PlannedWork}"
+                                   FontSize="Medium"
+                                   TextColor="Black"
+                                   Grid.Column="2"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+
+                        </Grid>
+
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Spacing="0"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+            <Grid ColumnSpacing="0"
+                  RowSpacing="0"
+                  Margin="0,16,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <BoxView BackgroundColor="LightGray"
+                                     VerticalOptions="Start"
+                                     HorizontalOptions="Fill"
+                                     HeightRequest="1"
+                                     Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0"/>
+
+                <BoxView BackgroundColor="LightGray"
+                                     VerticalOptions="End"
+                                     HorizontalOptions="Fill"
+                                     HeightRequest="1"
+                                     Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0"/>
+
+                <BoxView BackgroundColor="LightGray"
+                                     VerticalOptions="Fill"
+                                     HorizontalOptions="Start"
+                                     WidthRequest="1"
+                                     Grid.Column="1"/>
+
+                <BoxView BackgroundColor="LightGray"
+                                     VerticalOptions="Fill"
+                                     HorizontalOptions="End"
+                                     WidthRequest="1"
+                                     Grid.Column="1"/>
+
+                <Label Text="Actual"
+                                   FontSize="Medium"
+                                   TextColor="Black"
+                                   Grid.Column="1"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+
+                <Label Text="Planned"
+                                   FontSize="Medium"
+                                   TextColor="Black"
+                                   Grid.Column="2"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+
+            </Grid>
+
+            <ListView HasUnevenRows="False"
+                      SeparatorVisibility="None"
+                      CachingStrategy="RecycleElementAndDataTemplate"
+                      IsRefreshing="False"
+                      IsPullToRefreshEnabled="False"
+                      ItemsSource="{Binding LineWork}"
+                      ItemTemplate="{StaticResource TimesheetWorkTemplate}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

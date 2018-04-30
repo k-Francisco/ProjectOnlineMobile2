@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProjectOnlineMobile2.Models.TM
 {
-    public class RootObject
+    public class TimesheetModel
     {
         [JsonProperty("d")]
         public D D { get; set; }

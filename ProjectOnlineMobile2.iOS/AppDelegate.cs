@@ -1,4 +1,5 @@
 ﻿using System;
+using LineResult = ProjectOnlineMobile2.Models.TLL.Result;
 using System.Diagnostics;
 using Foundation;
 using ProjectOnlineMobile2.Models;
@@ -66,13 +67,45 @@ namespace ProjectOnlineMobile2.iOS
             MessagingCenter.Instance.Subscribe<String>(this,"NavigateToPage", (s) => {
                 NavigatePage(s);
             });
-            
+
+            MessagingCenter.Instance.Subscribe<String>(this, "DoCreateTimesheet", (periodId) => {
+                DisplayAlertDialog(periodId);
+            });
+
+            MessagingCenter.Instance.Subscribe<LineResult>(this, "PushTimesheetWorkPage", (timesheetLine) => {
+                PushTimesheetWorkPage(timesheetLine);
+            });
+
             navigationController = new UINavigationController();
             Window.RootViewController = navigationController;
             navigationController.PushViewController(controller, false);
             Window.MakeKeyAndVisible();
 
             return true;
+        }
+
+        private void PushTimesheetWorkPage(LineResult timesheetLine)
+        {
+            var controller = new TimesheetWorkPage().CreateViewController();
+            controller.Title = timesheetLine.TaskName;
+            navigationController.PushViewController(controller, true);
+        }
+
+        private void DisplayAlertDialog(String periodId)
+        {
+            var doCreateTimesheet = UIAlertController.Create("", 
+                "The timesheet for this period has not been created. Do you want to create this timesheet?",
+                UIAlertControllerStyle.Alert);
+
+            doCreateTimesheet.AddAction(UIAlertAction.Create("Create", UIAlertActionStyle.Default, alert => {
+                MessagingCenter.Instance.Send<string>(periodId, "CreateTimesheet");
+            }));
+
+            doCreateTimesheet.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, alert => {
+                
+            }));
+
+            navigationController.PresentViewController(doCreateTimesheet, true, null);
         }
 
         private void NavigatePage(String page)
@@ -96,6 +129,8 @@ namespace ProjectOnlineMobile2.iOS
                 navigationController.PushViewController(controller, true);
             }
         }
+
+
 
         //public async void GetUserInfo()
         //{

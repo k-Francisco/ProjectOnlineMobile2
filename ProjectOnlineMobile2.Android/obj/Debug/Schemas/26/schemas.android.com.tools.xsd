@@ -2,7 +2,7 @@
 <xs:schema xmlns:tools="http://schemas.android.com/tools" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/tools" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v26</xs:documentation>
-    <xs:documentation>16/04/2018 5:18:01 PM</xs:documentation>
+    <xs:documentation>27/04/2018 5:42:18 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="layout">
     <xs:annotation>
@@ -39,6 +39,7 @@
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
             <xs:enumeration value="@layout/activity_login" />
+            <xs:enumeration value="@layout/activity_timesheet_work" />
             <xs:enumeration value="@layout/design_bottom_navigation_item" />
             <xs:enumeration value="@layout/design_bottom_sheet_dialog" />
             <xs:enumeration value="@layout/design_layout_snackbar" />
@@ -149,6 +150,7 @@
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
             <xs:enumeration value="@layout/activity_login" />
+            <xs:enumeration value="@layout/activity_timesheet_work" />
             <xs:enumeration value="@layout/design_bottom_navigation_item" />
             <xs:enumeration value="@layout/design_bottom_sheet_dialog" />
             <xs:enumeration value="@layout/design_layout_snackbar" />
@@ -259,6 +261,7 @@
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
             <xs:enumeration value="@layout/activity_login" />
+            <xs:enumeration value="@layout/activity_timesheet_work" />
             <xs:enumeration value="@layout/design_bottom_navigation_item" />
             <xs:enumeration value="@layout/design_bottom_sheet_dialog" />
             <xs:enumeration value="@layout/design_layout_snackbar" />
@@ -369,6 +372,7 @@
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
             <xs:enumeration value="@layout/activity_login" />
+            <xs:enumeration value="@layout/activity_timesheet_work" />
             <xs:enumeration value="@layout/design_bottom_navigation_item" />
             <xs:enumeration value="@layout/design_bottom_sheet_dialog" />
             <xs:enumeration value="@layout/design_layout_snackbar" />

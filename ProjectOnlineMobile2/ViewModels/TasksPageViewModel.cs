@@ -70,7 +70,7 @@ namespace ProjectOnlineMobile2.ViewModels
                 foreach (var project in NetStandardSingleton.Instance.projects.D.Results)
                 {
                     var resourceAssignments = await PSapi.GetResourceAssignment(project.ProjectId, userName);
-                    Debug.WriteLine("GetAllTasks", resourceAssignments.D.Results.Count + "");
+                    //Debug.WriteLine("GetAllTasks", resourceAssignments.D.Results.Count + "");
                     foreach (var item in resourceAssignments.D.Results)
                     {
                         NetStandardSingleton.Instance.userTasks.Add(item);

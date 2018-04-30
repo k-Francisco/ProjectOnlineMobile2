@@ -6,6 +6,8 @@ using ProjectOnlineMobile2.Models.PTL;
 using ProjectOnlineMobile2.Models.ResourceAssignmentModel;
 using ProjectOnlineMobile2.Models.TaskModel;
 using ProjectOnlineMobile2.Models.TLL;
+using ProjectOnlineMobile2.Models.TLWM;
+using ProjectOnlineMobile2.Models.TM;
 using ProjectOnlineMobile2.Models.TSPL;
 using Refit;
 using System;
@@ -39,6 +41,12 @@ namespace ProjectOnlineMobile2.Services
         Task<TimesheetLinesList> GetTimesheetLinesByPeriod(string periodId);
 
         [Get("/_api/ProjectServer/TimesheetPeriods('{periodId}')/Timesheet/")]
-        Task<String> GetTimesheet(string periodId);
+        Task<TimesheetModel> GetTimesheet(string periodId);
+
+        [Get("/_api/ProjectServer/TimesheetPeriods('{periodId}')/Timesheet/Lines('{lineId}')/Work")]
+        Task<TimesheetLineWorkModel> GetTimesheetLineWork(string periodId, string lineId);
+
+        [Post("/_api/ProjectServer/TimesheetPeriods('{periodId}')/createTimesheet()")]
+        Task<String> CreateTimesheet(string periodId, string digest);
     }
 }

@@ -12,6 +12,8 @@ using ProjectOnlineMobile2.Models.PTL;
 using ProjectOnlineMobile2.Models.ResourceAssignmentModel;
 using ProjectOnlineMobile2.Models.TaskModel;
 using ProjectOnlineMobile2.Models.TLL;
+using ProjectOnlineMobile2.Models.TLWM;
+using ProjectOnlineMobile2.Models.TM;
 using ProjectOnlineMobile2.Models.TSPL;
 using Refit;
 using System.Text;
@@ -116,10 +118,26 @@ namespace ProjectOnlineMobile2.Services
         }
 
         /// <inheritdoc />
-        public virtual Task<String> GetTimesheet(string periodId)
+        public virtual Task<TimesheetModel> GetTimesheet(string periodId)
         {
             var arguments = new object[] { periodId };
             var func = methodImpls.GetOrAdd("GetTimesheet(string periodId)", _ => requestBuilder.BuildRestResultFuncForMethod("GetTimesheet", new Type[] { typeof(string) }));
+            return (Task<TimesheetModel>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<TimesheetLineWorkModel> GetTimesheetLineWork(string periodId,string lineId)
+        {
+            var arguments = new object[] { periodId,lineId };
+            var func = methodImpls.GetOrAdd("GetTimesheetLineWork(string periodId,string lineId)", _ => requestBuilder.BuildRestResultFuncForMethod("GetTimesheetLineWork", new Type[] { typeof(string),typeof(string) }));
+            return (Task<TimesheetLineWorkModel>)func(Client, arguments);
+        }
+
+        /// <inheritdoc />
+        public virtual Task<String> CreateTimesheet(string periodId,string digest)
+        {
+            var arguments = new object[] { periodId,digest };
+            var func = methodImpls.GetOrAdd("CreateTimesheet(string periodId,string digest)", _ => requestBuilder.BuildRestResultFuncForMethod("CreateTimesheet", new Type[] { typeof(string),typeof(string) }));
             return (Task<String>)func(Client, arguments);
         }
 

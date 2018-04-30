@@ -28,16 +28,16 @@ namespace ProjectOnlineMobile2.Services
                 _client.DefaultRequestHeaders.Accept.Add(mediaType);
             }
 
-            if(webInfo == null)
-            {
-                GetWebInfo();
-            }
+            //if(webInfo == null)
+            //{
+            //    GetWebInfo();
+            //}
         }
 
-        private async void GetWebInfo()
-        {
-            webInfo = await GetFormDigest();
-        }
+        //private async void GetWebInfo()
+        //{
+        //    webInfo = await GetFormDigest();
+        //}
 
         public async Task<UserModel> GetCurrentUser()
         {

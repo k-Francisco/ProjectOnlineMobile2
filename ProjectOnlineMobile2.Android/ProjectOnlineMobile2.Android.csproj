@@ -187,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\LoginActivity.cs" />
+    <Compile Include="Activities\TimesheetWorkActivity.cs" />
     <Compile Include="Fragments\LoginFragment.cs" />
     <Compile Include="Helpers\CustomWebView.cs" />
     <Compile Include="MainActivity.cs" />
@@ -217,6 +218,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_login.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\activity_timesheet_work.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
