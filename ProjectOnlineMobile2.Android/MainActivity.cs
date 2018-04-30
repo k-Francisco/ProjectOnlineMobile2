@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Support.V7.App;
 using LineResult = ProjectOnlineMobile2.Models.TLL.Result;
 using Fragment = Android.Support.V4.App.Fragment;
+using AlertDialog = Android.Support.V7.App.AlertDialog;
 using Android.Support.Design.Widget;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using ProjectOnlineMobile2.Android.Fragments;
@@ -47,6 +48,10 @@ namespace ProjectOnlineMobile2.Android
 
             MessagingCenter.Instance.Subscribe<LineResult>(this, "PushTimesheetWorkPage", (timesheetLine) => {
                 PushTimesheetWorkPage(timesheetLine);
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "DoCreateTimesheet", (periodId) => {
+                DisplayAlertDialog(periodId);
             });
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
@@ -106,6 +111,23 @@ namespace ProjectOnlineMobile2.Android
 
             GetUserInfo();
 
+        }
+
+        private void DisplayAlertDialog(string periodId)
+        {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.SetTitle("");
+            alert.SetMessage("The timesheet for this period has not been created. Do you want to create this timesheet?");
+            alert.SetPositiveButton("Create", (senderAlert, args) => {
+                MessagingCenter.Instance.Send<string>(periodId, "CreateTimesheet");
+            });
+
+            alert.SetNegativeButton("Cancel", (senderAlert, args) => {
+                
+            });
+
+            Dialog dialog = alert.Create();
+            dialog.Show();
         }
 
         private void PushTimesheetWorkPage(LineResult timesheetLine)
