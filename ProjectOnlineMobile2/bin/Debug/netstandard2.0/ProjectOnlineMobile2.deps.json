@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "98f7b86a7f8eca82aabfe4912f86a61f922f0284"
+    "signature": "d97dceb6c113c48478daec29eec37680f606aa13"
   },
   "compilationOptions": {},
   "targets": {
@@ -11,6 +11,7 @@
         "dependencies": {
           "NETStandard.Library": "2.0.1",
           "Refit": "4.3.0",
+          "Xam.Plugin.Connectivity": "3.1.1",
           "Xam.Plugins.Settings": "3.1.1",
           "Xamarin.Forms": "3.0.0.354232-pre3"
         },
@@ -822,6 +823,15 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "Xam.Plugin.Connectivity/3.1.1": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.1"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/netstandard1.0/Plugin.Connectivity.dll": {}
+        }
+      },
       "Xam.Plugins.Settings/3.1.1": {
         "dependencies": {
           "NETStandard.Library": "2.0.1"
@@ -1405,6 +1415,13 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "Xam.Plugin.Connectivity/3.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-X92JJFbVT8TRVaikzqjonP766jU1xeP6UgvDwu+aWA6Ll00Zjz0S/WevmzzxuPREbsYt//DdLWocy3lbbaJHPA==",
+      "path": "xam.plugin.connectivity/3.1.1",
+      "hashPath": "xam.plugin.connectivity.3.1.1.nupkg.sha512"
     },
     "Xam.Plugins.Settings/3.1.1": {
       "type": "package",

@@ -134,11 +134,9 @@ namespace ProjectOnlineMobile2.Services
         }
 
         /// <inheritdoc />
-        public virtual Task<String> CreateTimesheet(string periodId,string digest)
+        public virtual Task<String> CreateTimesheet(string periodId,string formDigestValue)
         {
-            var arguments = new object[] { periodId,digest };
-            var func = methodImpls.GetOrAdd("CreateTimesheet(string periodId,string digest)", _ => requestBuilder.BuildRestResultFuncForMethod("CreateTimesheet", new Type[] { typeof(string),typeof(string) }));
-            return (Task<String>)func(Client, arguments);
+            throw new NotImplementedException("Either this method has no Refit HTTP method attribute or you've used something other than a string literal for the 'path' argument.");
         }
 
     }

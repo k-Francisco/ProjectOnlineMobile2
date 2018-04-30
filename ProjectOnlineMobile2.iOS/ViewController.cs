@@ -53,6 +53,7 @@ namespace ProjectOnlineMobile2.iOS
             {
                 foreach (var cookie in NSHttpCookieStorage.SharedStorage.Cookies)
                 {
+                    Debug.WriteLine("webViewLoading", cookie.Value);
                     if (cookie.Name.Equals("rtFa"))
                     {
                         rtFa = cookie.Name + "=" + cookie.Value;
@@ -71,9 +72,6 @@ namespace ProjectOnlineMobile2.iOS
                         //save the cookies locally
                         var authCookie = rtFa + "; " + FedAuth;
                         Settings.CookieString = JsonConvert.SerializeObject(authCookie);
-
-                        //get user information through api
-                        //AppDelegate.shared.GetUserInfo();
 
                         //navigate to the projects page
                         var controller = new HomePage().CreateViewController();

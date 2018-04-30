@@ -65,7 +65,6 @@ namespace ProjectOnlineMobile2.ViewModels
             try
             {
                 var webContextInfo = await SPapi.GetFormDigest();
-                Debug.WriteLine("FormDigest", webContextInfo.D.GetContextWebInformation.FormDigestValue);
                 var createTimesheet = await PSapi.CreateTimesheet(periodId, webContextInfo.D.GetContextWebInformation.FormDigestValue);
                 Debug.WriteLine("CreateTimesheet", createTimesheet);
             }

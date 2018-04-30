@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:ProjectOnlineMobile2.ViewModels"
+             xmlns:behaviors="clr-namespace:ProjectOnlineMobile2.Behaviors"
              x:Class="ProjectOnlineMobile2.Pages.TimesheetWorkPage">
     <ContentPage.BindingContext>
         <viewModels:TimesheetWorkPageViewModel/>
@@ -61,19 +62,37 @@
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
 
-                            <Label Text="{Binding ActualWork}"
+                            <Entry Text="{Binding EntryTextActualHours, Mode=TwoWay}"
+                                   Placeholder="{Binding ActualWork}"
+                                   Keyboard="Numeric"
                                    FontSize="Medium"
                                    TextColor="Black"
+                                   HorizontalTextAlignment="Center"
                                    Grid.Column="1"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Center">
+                                <Entry.Behaviors>
+                                    <behaviors:EventToCommandBehavior EventName="TextChanged"
+                                                                      Command="{Binding Path=BindingContext.WorkTextChanged, Source={x:Reference mainLayout}}"
+                                                                      CommandParameter="{Binding .}"/>
+                                </Entry.Behaviors>
+                            </Entry>
 
-                            <Label Text="{Binding PlannedWork}"
+                            <Entry Text="{Binding EntryTextPlannedHours, Mode=TwoWay}"
+                                   Placeholder="{Binding PlannedWork}"
+                                   Keyboard="Numeric"
                                    FontSize="Medium"
+                                   HorizontalTextAlignment="Center"
                                    TextColor="Black"
                                    Grid.Column="2"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="Center">
+                                <Entry.Behaviors>
+                                    <behaviors:EventToCommandBehavior EventName="TextChanged"
+                                                                      Command="{Binding Path=BindingContext.WorkTextChanged, Source={x:Reference mainLayout}}"
+                                                                      CommandParameter="{Binding .}"/>
+                                </Entry.Behaviors>
+                            </Entry>
 
                         </Grid>
 
@@ -84,7 +103,8 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <StackLayout Spacing="0"
+        <StackLayout x:Name="mainLayout"
+                     Spacing="0"
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand">
             <Grid ColumnSpacing="0"
@@ -101,7 +121,7 @@
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
 
-                <BoxView BackgroundColor="LightGray"
+                <!--<BoxView BackgroundColor="LightGray"
                                      VerticalOptions="Start"
                                      HorizontalOptions="Fill"
                                      HeightRequest="1"
@@ -123,7 +143,7 @@
                                      VerticalOptions="Fill"
                                      HorizontalOptions="End"
                                      WidthRequest="1"
-                                     Grid.Column="1"/>
+                                     Grid.Column="1"/>-->
 
                 <Label Text="Actual"
                                    FontSize="Medium"

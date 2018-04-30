@@ -81,3 +81,10 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Deb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\ProjectOnlineMobile2.iOS.csproj.CopyComplete
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\ProjectOnlineMobile2.iOS.exe
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Debug\ProjectOnlineMobile2.iOS.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Connectivity.Abstractions.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Connectivity.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Connectivity.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Connectivity.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Connectivity.Abstractions.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Connectivity.Abstractions.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Connectivity.dll.mdb

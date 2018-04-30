@@ -46,7 +46,9 @@ namespace ProjectOnlineMobile2.Services
         [Get("/_api/ProjectServer/TimesheetPeriods('{periodId}')/Timesheet/Lines('{lineId}')/Work")]
         Task<TimesheetLineWorkModel> GetTimesheetLineWork(string periodId, string lineId);
 
-        [Post("/_api/ProjectServer/TimesheetPeriods('{periodId}')/createTimesheet()")]
-        Task<String> CreateTimesheet(string periodId, string digest);
+        //[Post("/_api/ProjectServer/TimesheetPeriods('{periodId}')/createTimesheet()")]
+        //Task<String> CreateTimesheet(string periodId, [Header("X-RequestDigest")] string formDigestValue);
+        
+        Task<String> CreateTimesheet(string periodId, string formDigestValue);
     }
 }

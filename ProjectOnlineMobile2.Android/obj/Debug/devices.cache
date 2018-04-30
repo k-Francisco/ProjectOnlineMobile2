@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Devices>
-  <Device id="192.168.1.19:5555">
-    <ResultingAbi>armeabi-v7a</ResultingAbi>
-    <SdkVersion>22</SdkVersion>
-  </Device>
-</Devices>

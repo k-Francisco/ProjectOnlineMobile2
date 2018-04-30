@@ -88,6 +88,9 @@ namespace ProjectOnlineMobile2.iOS
         {
             var controller = new TimesheetWorkPage().CreateViewController();
             controller.Title = timesheetLine.TaskName;
+            controller.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem("Save", UIBarButtonItemStyle.Plain, (sender, e) => {
+                MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
+            }),false);
             navigationController.PushViewController(controller, true);
         }
 

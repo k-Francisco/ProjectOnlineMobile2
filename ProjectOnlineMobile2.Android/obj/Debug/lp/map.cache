@@ -3,6 +3,8 @@ Microsoft.AspNetCore.WebUtilities
 Microsoft.Extensions.Primitives
 Microsoft.Net.Http.Headers
 Newtonsoft.Json
+Plugin.Connectivity.Abstractions
+Plugin.Connectivity
 Plugin.Settings.Abstractions
 Plugin.Settings
 ProjectOnlineMobile2

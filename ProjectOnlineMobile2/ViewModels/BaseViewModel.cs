@@ -1,4 +1,5 @@
-﻿using ProjectOnlineMobile2.Models.PSPL;
+﻿using Plugin.Connectivity;
+using ProjectOnlineMobile2.Models.PSPL;
 using ProjectOnlineMobile2.Services;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,14 @@ namespace ProjectOnlineMobile2.ViewModels
             OnPropertyChanged(propertyName);
 
             return true;
+        }
+
+        public bool IsConnectedToInternet()
+        {
+            if (!CrossConnectivity.IsSupported)
+                return true;
+
+            return CrossConnectivity.Current.IsConnected;
         }
     }
 }

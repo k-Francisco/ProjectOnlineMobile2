@@ -57,6 +57,10 @@ namespace ProjectOnlineMobile2.Models.TLWM
         public string PlannedWorkTimeSpan { get; set; }
         [JsonProperty("Start")]
         public DateTime Start { get; set; }
+
+        //custom
+        public string EntryTextActualHours { get; set; }
+        public string EntryTextPlannedHours { get; set; }
     }
     public class Metadata
     {

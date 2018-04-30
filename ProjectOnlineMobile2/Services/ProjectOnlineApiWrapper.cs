@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using ProjectOnlineMobile2.Models;
@@ -22,7 +23,7 @@ namespace ProjectOnlineMobile2.Services
     public class ProjectOnlineApiWrapper : BaseWrapper, IProjectOnlineApi
     {
         private static string _projectOnlineUrl = "https://sharepointevo.sharepoint.com/sites/mobility";
-        private HttpClient _client;
+        private HttpClient _client, _client2;
 
         public ProjectOnlineApiWrapper()
         {
@@ -34,6 +35,9 @@ namespace ProjectOnlineMobile2.Services
                 };
                 _client.DefaultRequestHeaders.Accept.Add(mediaType);
             }
+
+            _client2 = new HttpClient(handler);
+            _client2.DefaultRequestHeaders.Accept.Add(mediaType);
         }
 
         public async Task<ProjectServerProject> GetProjectByGuid(string guid)
@@ -148,9 +152,22 @@ namespace ProjectOnlineMobile2.Services
         {
             try
             {
-                _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
-                var response =  await RestService.For<IProjectOnlineApi>(_client).CreateTimesheet(periodId, formDigest);
+                var contents = new StringContent("", Encoding.UTF8, "application/json");
+                string response = "failed";
+
+                var _client2 = new HttpClient(handler);
+                _client2.DefaultRequestHeaders.Accept.Add(mediaType);
+                _client2.DefaultRequestHeaders.Add("X-RequestDigest",formDigest);
+
+                
+                //_client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
+                //var response =  await RestService.For<IProjectOnlineApi>(_client).CreateTimesheet(periodId, formDigest);
                 //_client.DefaultRequestHeaders.Remove("X-RequestDigest");
+                var postResponse = await _client2.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('"+ periodId +"')/createTimesheet()",contents);
+                var result = postResponse.EnsureSuccessStatusCode();
+                if (postResponse.IsSuccessStatusCode)
+                    response = "success";
+
                 return response;
             }
             catch (Exception e)
@@ -170,6 +187,32 @@ namespace ProjectOnlineMobile2.Services
             {
                 Debug.WriteLine("GetTimesheetLineWork", e.Message);
                 return null;
+            }
+        }
+
+        public async Task<bool> AddTimesheetLineWork(string periodId, string lineId, string body, string formDigestValue)
+        {
+            bool isSuccess = false;
+
+            var contents = new StringContent(body);
+            contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
+            _client2.DefaultRequestHeaders.Add("X-RequestDigest",formDigestValue);
+
+            try
+            {
+                var result = await _client2.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('"+ periodId +"')" +
+                    "/Timesheet/Lines('"+lineId+"')/Work/Add", contents);
+
+                var postResult = result.EnsureSuccessStatusCode();
+                if (postResult.IsSuccessStatusCode)
+                    isSuccess = true;
+
+                return isSuccess;
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("AddTimesheetLineWork", e.Message);
+                return isSuccess;
             }
         }
 
