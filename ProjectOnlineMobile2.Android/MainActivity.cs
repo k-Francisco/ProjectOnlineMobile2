@@ -22,6 +22,8 @@ using System;
 using ProjectOnlineMobile2.Models.TLL;
 using Android.Content;
 using ProjectOnlineMobile2.Android.Activities;
+using System.IO;
+using ProjectOnlineMobile2.Database;
 
 namespace ProjectOnlineMobile2.Android
 {
@@ -39,20 +41,6 @@ namespace ProjectOnlineMobile2.Android
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.main);
-
-            Forms.Init(this, savedInstanceState);
-            _projectsPage = new ProjectPage().CreateSupportFragment(this);
-            _tasksPage = new TasksPage().CreateSupportFragment(this);
-            _timesheetPage = new TimesheetPage().CreateSupportFragment(this);
-            _homePage = new HomePage().CreateSupportFragment(this);
-
-            MessagingCenter.Instance.Subscribe<LineResult>(this, "PushTimesheetWorkPage", (timesheetLine) => {
-                PushTimesheetWorkPage(timesheetLine);
-            });
-
-            MessagingCenter.Instance.Subscribe<String>(this, "DoCreateTimesheet", (periodId) => {
-                DisplayAlertDialog(periodId);
-            });
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
@@ -73,6 +61,30 @@ namespace ProjectOnlineMobile2.Android
             //set the user's name and email
             userName = navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.tvUserName);
             userEmail = navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.tvUserEmail);
+
+
+            Forms.Init(this, savedInstanceState);
+            _homePage = new HomePage().CreateSupportFragment(this);
+            _timesheetPage = new TimesheetPage().CreateSupportFragment(this);
+            _projectsPage = new ProjectPage().CreateSupportFragment(this);
+            _tasksPage = new TasksPage().CreateSupportFragment(this);
+
+            MessagingCenter.Instance.Subscribe<LineResult>(this, "PushTimesheetWorkPage", (timesheetLine) => {
+                PushTimesheetWorkPage(timesheetLine);
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "DoCreateTimesheet", (periodId) => {
+                DisplayAlertDialog(periodId);
+            });
+
+            MessagingCenter.Instance.Subscribe<UserModel>(this, "UserInfo", (user)=> {
+                GetUserInfo(user);
+            });
+
+            //initialize the db
+            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal),"savedChangesDB.db");
+            var savedChangesRepository = new SavedChangesRepository(dbPath);
+            MessagingCenter.Send<SavedChangesRepository>(savedChangesRepository, "database");
 
             //handle navigation
             navigationView.NavigationItemSelected += (sender, e) =>
@@ -109,8 +121,6 @@ namespace ProjectOnlineMobile2.Android
                 ListItemClicked(0);
             }
 
-            GetUserInfo();
-
         }
 
         private void DisplayAlertDialog(string periodId)
@@ -138,19 +148,10 @@ namespace ProjectOnlineMobile2.Android
             StartActivity(intent);
         }
 
-        private async void GetUserInfo()
+        private void GetUserInfo(UserModel user)
         {
-            try
-            {
-                UserModel user = await Singleton.Instance.sharepointApi.GetCurrentUser();
-                userName.Text = user.D.Title;
-                userEmail.Text = user.D.Email;
-                MessagingCenter.Instance.Send<String>(user.D.Title, "UserName");
-            }
-            catch(Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("GetUserInfoAndroid",e.Message);
-            }
+            userName.Text = user.D.Title;
+            userEmail.Text = user.D.Email;
         }
 
         int oldPosition = -1;

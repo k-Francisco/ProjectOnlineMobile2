@@ -101,12 +101,25 @@ namespace ProjectOnlineMobile2.ViewModels
                     }
                 }
 
-                if(!isDateModified)
-                    LineWorkChanges.Add(new LineWorkChangesModel(obj.Start, obj.EntryTextActualHours, obj.EntryTextPlannedHours));
+                if (!isDateModified)
+                    LineWorkChanges.Add(new LineWorkChangesModel() {
+                        StartDate = obj.Start,
+                        ActualHours = obj.EntryTextActualHours,
+                        PlannedHours = obj.EntryTextPlannedHours,
+                        PeriodId = _periodId,
+                        LineId = _lineId,
+                    });
             }
             else
             {
-                LineWorkChanges.Add(new LineWorkChangesModel(obj.Start, obj.EntryTextActualHours, obj.EntryTextPlannedHours));
+                LineWorkChanges.Add(new LineWorkChangesModel()
+                {
+                    StartDate = obj.Start,
+                    ActualHours = obj.EntryTextActualHours,
+                    PlannedHours = obj.EntryTextPlannedHours,
+                    PeriodId = _periodId,
+                    LineId = _lineId,
+                });
             }
 
         }

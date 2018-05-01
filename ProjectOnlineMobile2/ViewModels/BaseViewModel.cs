@@ -1,4 +1,5 @@
 ﻿using Plugin.Connectivity;
+using ProjectOnlineMobile2.Database;
 using ProjectOnlineMobile2.Models.PSPL;
 using ProjectOnlineMobile2.Services;
 using System;
@@ -17,9 +18,10 @@ namespace ProjectOnlineMobile2.ViewModels
 
         protected SharepointApiWrapper SPapi { get; private set; }
         protected ProjectOnlineApiWrapper PSapi { get; private set; }
+        protected SavedChangesRepository savedChangesRepo { get; set; }
 
-        //used to identify the user
-        public string userName = "";
+        ////used to identify the user
+        //public string userName = "";
 
         public BaseViewModel() {
             if (SPapi == null)
@@ -28,13 +30,10 @@ namespace ProjectOnlineMobile2.ViewModels
             if (PSapi == null)
                 PSapi = new ProjectOnlineApiWrapper();
 
-            MessagingCenter.Instance.Subscribe<ProjectServerProjectList>(this, "SetProjects", (projects)=> {
-                NetStandardSingleton.Instance.projects = projects;
-            });
+            //MessagingCenter.Instance.Subscribe<String>(this, "UserName", (user) => {
+            //    this.userName = user;
+            //});
 
-            MessagingCenter.Instance.Subscribe<String>(this, "UserName", (user) => {
-                this.userName = user;
-            });
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

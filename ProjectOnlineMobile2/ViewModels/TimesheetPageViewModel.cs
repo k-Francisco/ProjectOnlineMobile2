@@ -1,4 +1,5 @@
 ﻿using LineResult = ProjectOnlineMobile2.Models.TLL.Result;
+using TimesheetPeriodsResult = ProjectOnlineMobile2.Models.TSPL.Result;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -19,6 +20,8 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _timesheetPeriods, value); }
         }
 
+        private List<TimesheetPeriodsResult> _periodList { get; set; }
+
         private ObservableCollection<LineResult> _periodLines;
         public ObservableCollection<LineResult> PeriodLines
         {
@@ -34,6 +37,7 @@ namespace ProjectOnlineMobile2.ViewModels
         public TimesheetPageViewModel()
         {
             TimesheetPeriods = new ObservableCollection<String>();
+            _periodList = new List<TimesheetPeriodsResult>();
             PeriodLines = new ObservableCollection<LineResult>();
             SelectedItemChangedCommand = new Command(ExecuteSelectedItemChangedCommand);
             TimesheetLineClicked = new Command<LineResult>(ExecuteTimesheetLineClicked);
@@ -42,20 +46,45 @@ namespace ProjectOnlineMobile2.ViewModels
                 CreateTimesheet(periodId);
             });
 
-            if (NetStandardSingleton.Instance.periods.Count is 0)
-            {
-                GetTimesheetPeriod();
-            }
-            else
-            {
-                AddPeriods();
-            }
+            MessagingCenter.Instance.Subscribe<List<TimesheetPeriodsResult>>(this, "DisplayTimesheetPeriods", (periods) => {
+                foreach (var item in periods)
+                {
+                    _periodList.Add(item);
+                    TimesheetPeriods.Add(item.Name + " ( " + item.Start.ToShortDateString() + "-" + item.End.ToShortDateString() + " )");
+                }
+
+                for (int i = 0; i < periods.Count; i++)
+                {
+                    if (DateTime.Compare(DateTime.Now, periods[i].Start) == 0)
+                    {
+                        SelectedIndex = i;
+                        ExecuteSelectedItemChangedCommand();
+                        break;
+                    }
+                    else if (DateTime.Compare(DateTime.Now, periods[i].Start) > 0 &&
+                            DateTime.Compare(DateTime.Now, periods[i].End) < 0)
+                    {
+                        SelectedIndex = i;
+                        ExecuteSelectedItemChangedCommand();
+                        break;
+                    }
+                }
+            });
+
+            //if (NetStandardSingleton.Instance.periods.Count is 0)
+            //{
+            //    GetTimesheetPeriod();
+            //}
+            //else
+            //{
+            //    AddPeriods();
+            //}
             
         }
 
         private void ExecuteTimesheetLineClicked(LineResult timesheetLine)
         {
-            string[] ids = { NetStandardSingleton.Instance.periods[SelectedIndex].Id, timesheetLine.Id };
+            string[] ids = { _periodList[SelectedIndex].Id, timesheetLine.Id };
             MessagingCenter.Send<LineResult>(timesheetLine, "PushTimesheetWorkPage");
             MessagingCenter.Send<String[]>(ids, "TimesheetWork");
         }
@@ -79,7 +108,7 @@ namespace ProjectOnlineMobile2.ViewModels
             try
             {
                 PeriodLines.Clear();
-                var lines = await PSapi.GetTimesheetLinesByPeriod(NetStandardSingleton.Instance.periods[SelectedIndex].Id);
+                var lines = await PSapi.GetTimesheetLinesByPeriod(_periodList[SelectedIndex].Id);
                 foreach (var item in lines.D.Results)
                 {
                     PeriodLines.Add(item);
@@ -96,35 +125,33 @@ namespace ProjectOnlineMobile2.ViewModels
             var timesheetperiod = await PSapi.GetAllTimesheetPeriods();
             foreach (var item in timesheetperiod.D.Results)
             {
-                NetStandardSingleton.Instance.periods.Add(item);
-            }
-
-            AddPeriods();
-        }
-
-        private void AddPeriods()
-        {
-            foreach (var item in NetStandardSingleton.Instance.periods)
-            {
-                TimesheetPeriods.Add(item.Name + " ( " + item.Start.ToShortDateString() + "-" + item.End.ToShortDateString() + " )");
-            }
-
-            for (int i = 0; i < NetStandardSingleton.Instance.periods.Count; i++)
-            {
-                if (DateTime.Compare(DateTime.Now, NetStandardSingleton.Instance.periods[i].Start) == 0)
-                {
-                    SelectedIndex = i;
-                    ExecuteSelectedItemChangedCommand();
-                    break;
-                }
-                else if (DateTime.Compare(DateTime.Now, NetStandardSingleton.Instance.periods[i].Start) > 0 &&
-                        DateTime.Compare(DateTime.Now, NetStandardSingleton.Instance.periods[i].End) < 0)
-                {
-                    SelectedIndex = i;
-                    ExecuteSelectedItemChangedCommand();
-                    break;
-                }
+                _periodList.Add(item);
             }
         }
+
+        //private void AddPeriods()
+        //{
+        //    foreach (var item in NetStandardSingleton.Instance.periods)
+        //    {
+        //        TimesheetPeriods.Add(item.Name + " ( " + item.Start.ToShortDateString() + "-" + item.End.ToShortDateString() + " )");
+        //    }
+
+        //    for (int i = 0; i < NetStandardSingleton.Instance.periods.Count; i++)
+        //    {
+        //        if (DateTime.Compare(DateTime.Now, NetStandardSingleton.Instance.periods[i].Start) == 0)
+        //        {
+        //            SelectedIndex = i;
+        //            ExecuteSelectedItemChangedCommand();
+        //            break;
+        //        }
+        //        else if (DateTime.Compare(DateTime.Now, NetStandardSingleton.Instance.periods[i].Start) > 0 &&
+        //                DateTime.Compare(DateTime.Now, NetStandardSingleton.Instance.periods[i].End) < 0)
+        //        {
+        //            SelectedIndex = i;
+        //            ExecuteSelectedItemChangedCommand();
+        //            break;
+        //        }
+        //    }
+        //}
     }
 }

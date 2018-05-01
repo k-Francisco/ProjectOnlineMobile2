@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
@@ -19,24 +20,24 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
     {
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
-        [JsonProperty("Baseline")]
-        public Baseline Baseline { get; set; }
-        [JsonProperty("Project")]
-        public Project Project { get; set; }
-        [JsonProperty("Resource")]
-        public Resource Resource { get; set; }
-        [JsonProperty("Task")]
-        public Task Task { get; set; }
-        [JsonProperty("TimephasedData")]
-        public TimephasedData TimephasedData { get; set; }
+        //[JsonProperty("Baseline")]
+        //public Baseline Baseline { get; set; }
+        //[JsonProperty("Project")]
+        //public Project Project { get; set; }
+        //[JsonProperty("Resource")]
+        //public Resource Resource { get; set; }
+        //[JsonProperty("Task")]
+        //public Task Task { get; set; }
+        //[JsonProperty("TimephasedData")]
+        //public TimephasedData TimephasedData { get; set; }
         [JsonProperty("ProjectId")]
         public string ProjectId { get; set; }
         [JsonProperty("AssignmentId")]
         public string AssignmentId { get; set; }
         [JsonProperty("AssignmentActualCost")]
         public string AssignmentActualCost { get; set; }
-        [JsonProperty("AssignmentActualFinishDate")]
-        public object AssignmentActualFinishDate { get; set; }
+        //[JsonProperty("AssignmentActualFinishDate")]
+        //public object AssignmentActualFinishDate { get; set; }
         [JsonProperty("AssignmentActualOvertimeCost")]
         public string AssignmentActualOvertimeCost { get; set; }
         [JsonProperty("AssignmentActualOvertimeWork")]
@@ -45,14 +46,14 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         public string AssignmentActualRegularCost { get; set; }
         [JsonProperty("AssignmentActualRegularWork")]
         public string AssignmentActualRegularWork { get; set; }
-        [JsonProperty("AssignmentActualStartDate")]
-        public object AssignmentActualStartDate { get; set; }
+        //[JsonProperty("AssignmentActualStartDate")]
+        //public object AssignmentActualStartDate { get; set; }
         [JsonProperty("AssignmentActualWork")]
         public string AssignmentActualWork { get; set; }
         [JsonProperty("AssignmentACWP")]
         public string AssignmentACWP { get; set; }
-        [JsonProperty("AssignmentAllUpdatesApplied")]
-        public object AssignmentAllUpdatesApplied { get; set; }
+        //[JsonProperty("AssignmentAllUpdatesApplied")]
+        //public object AssignmentAllUpdatesApplied { get; set; }
         [JsonProperty("AssignmentBCWP")]
         public string AssignmentBCWP { get; set; }
         [JsonProperty("AssignmentBCWS")]
@@ -133,8 +134,8 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         public string AssignmentSV { get; set; }
         [JsonProperty("AssignmentType")]
         public int AssignmentType { get; set; }
-        [JsonProperty("AssignmentUpdatesAppliedDate")]
-        public object AssignmentUpdatesAppliedDate { get; set; }
+        //[JsonProperty("AssignmentUpdatesAppliedDate")]
+        //public object AssignmentUpdatesAppliedDate { get; set; }
         [JsonProperty("AssignmentVAC")]
         public string AssignmentVAC { get; set; }
         [JsonProperty("AssignmentWork")]
@@ -149,6 +150,7 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         public string ResourceId { get; set; }
         [JsonProperty("ResourceName")]
         public string ResourceName { get; set; }
+        [Key]
         [JsonProperty("TaskId")]
         public string TaskId { get; set; }
         [JsonProperty("TaskIsActive")]
@@ -161,16 +163,16 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         public string TypeDescription { get; set; }
         [JsonProperty("TypeName")]
         public string TypeName { get; set; }
-        [JsonProperty("RBS_R")]
-        public object RBS { get; set; }
-        [JsonProperty("CostType_R")]
-        public object CostType { get; set; }
-        [JsonProperty("Health_T")]
-        public object Health { get; set; }
-        [JsonProperty("ResourceDepartments_R")]
-        public object ResourceDepartments { get; set; }
-        [JsonProperty("FlagStatus_T")]
-        public object FlagStatus { get; set; }
+        //[JsonProperty("RBS_R")]
+        //public object RBS { get; set; }
+        //[JsonProperty("CostType_R")]
+        //public object CostType { get; set; }
+        //[JsonProperty("Health_T")]
+        //public object Health { get; set; }
+        //[JsonProperty("ResourceDepartments_R")]
+        //public object ResourceDepartments { get; set; }
+        //[JsonProperty("FlagStatus_T")]
+        //public object FlagStatus { get; set; }
     }
     public class Metadata
     {
@@ -181,35 +183,41 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         [JsonProperty("type")]
         public string Type { get; set; }
     }
-    public class Baseline
-    {
-        [JsonProperty("__deferred")]
-        public Deferred Deferred { get; set; }
-    }
-    public class Deferred
-    {
-        [JsonProperty("uri")]
-        public string Uri { get; set; }
-    }
-    public class Project
-    {
-        [JsonProperty("__deferred")]
-        public Deferred Deferred { get; set; }
-    }
-    public class Resource
-    {
-        [JsonProperty("__deferred")]
-        public Deferred Deferred { get; set; }
-    }
-    public class Task
-    {
-        [JsonProperty("__deferred")]
-        public Deferred Deferred { get; set; }
-    }
-    public class TimephasedData
-    {
-        [JsonProperty("__deferred")]
-        public Deferred Deferred { get; set; }
-    }
+    //public class Baseline
+    //{
+    //    [Key]
+    //    [JsonProperty("__deferred")]
+    //    public Deferred Deferred { get; set; }
+    //}
+    //public class Deferred
+    //{
+    //    [Key]
+    //    [JsonProperty("uri")]
+    //    public string Uri { get; set; }
+    //}
+    //public class Project
+    //{
+    //    [Key]
+    //    [JsonProperty("__deferred")]
+    //    public Deferred Deferred { get; set; }
+    //}
+    //public class Resource
+    //{
+    //    [Key]
+    //    [JsonProperty("__deferred")]
+    //    public Deferred Deferred { get; set; }
+    //}
+    //public class Task
+    //{
+    //    [Key]
+    //    [JsonProperty("__deferred")]
+    //    public Deferred Deferred { get; set; }
+    //}
+    //public class TimephasedData
+    //{
+    //    [Key]
+    //    [JsonProperty("__deferred")]
+    //    public Deferred Deferred { get; set; }
+    //}
 
 }

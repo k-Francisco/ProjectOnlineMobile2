@@ -40,31 +40,31 @@ namespace ProjectOnlineMobile2.Services
             _client2.DefaultRequestHeaders.Accept.Add(mediaType);
         }
 
-        public async Task<ProjectServerProject> GetProjectByGuid(string guid)
-        {
-            try
-            {
-                return await RestService.For<IProjectOnlineApi>(_client).GetProjectByGuid(guid);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("GetProjectByGuid", e.Message);
-                return null;
-            }
-        }
+        //public async Task<ProjectServerProject> GetProjectByGuid(string guid)
+        //{
+        //    try
+        //    {
+        //        return await RestService.For<IProjectOnlineApi>(_client).GetProjectByGuid(guid);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Debug.WriteLine("GetProjectByGuid", e.Message);
+        //        return null;
+        //    }
+        //}
 
-        public async Task<ProjectServerProject> GetProjectByName(string projectName)
-        {
-            try
-            {
-                return await RestService.For<IProjectOnlineApi>(_client).GetProjectByName(projectName);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("GetProjectByName", e.Message);
-                return null;
-            }
-        }
+        //public async Task<ProjectServerProject> GetProjectByName(string projectName)
+        //{
+        //    try
+        //    {
+        //        return await RestService.For<IProjectOnlineApi>(_client).GetProjectByName(projectName);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Debug.WriteLine("GetProjectByName", e.Message);
+        //        return null;
+        //    }
+        //}
 
         public async Task<ProjectServerProjectList> GetAllProjects()
         {

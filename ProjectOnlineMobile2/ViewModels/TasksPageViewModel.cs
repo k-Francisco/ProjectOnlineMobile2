@@ -27,15 +27,20 @@ namespace ProjectOnlineMobile2.ViewModels
         public TasksPageViewModel()
         {
             Tasks = new ObservableCollection<Result>();
-
-            if(NetStandardSingleton.Instance.projects is null)
-            {
-                GetAllProjectsAndUserTasks();
-            }
-            else
-            {
-                VerifyTaskCount();
-            }
+            MessagingCenter.Instance.Subscribe<List<Result>>(this, "DisplayUserTasks", (tasks) => {
+                foreach (var item in tasks)
+                {
+                    Tasks.Add(item);
+                }
+            });
+            //if(NetStandardSingleton.Instance.projects is null)
+            //{
+            //    GetAllProjectsAndUserTasks();
+            //}
+            //else
+            //{
+            //    VerifyTaskCount();
+            //}
         }
 
         //
@@ -43,45 +48,45 @@ namespace ProjectOnlineMobile2.ViewModels
         //
         private void VerifyTaskCount()
         {
-            if (NetStandardSingleton.Instance.userTasks.Count is 0)
-            {
-                GetTasks();
-            }
-            else
-            {
-                foreach (var item in NetStandardSingleton.Instance.userTasks)
-                {
-                    Tasks.Add(item);
-                }
-            }
+            //if (NetStandardSingleton.Instance.userTasks.Count is 0)
+            //{
+            //    GetTasks();
+            //}
+            //else
+            //{
+            //    foreach (var item in NetStandardSingleton.Instance.userTasks)
+            //    {
+            //        Tasks.Add(item);
+            //    }
+            //}
         }
 
         private async void GetAllProjectsAndUserTasks()
         {
-            var projects = await PSapi.GetAllProjects();
-            MessagingCenter.Instance.Send<ProjectServerProjectList>(projects, "SetProjects");
-            VerifyTaskCount();
+            //var projects = await PSapi.GetAllProjects();
+            //MessagingCenter.Instance.Send<ProjectServerProjectList>(projects, "SetProjects");
+            //VerifyTaskCount();
         }
 
-        private async void GetTasks()
-        {
-            try
-            {
-                foreach (var project in NetStandardSingleton.Instance.projects.D.Results)
-                {
-                    var resourceAssignments = await PSapi.GetResourceAssignment(project.ProjectId, userName);
-                    //Debug.WriteLine("GetAllTasks", resourceAssignments.D.Results.Count + "");
-                    foreach (var item in resourceAssignments.D.Results)
-                    {
-                        NetStandardSingleton.Instance.userTasks.Add(item);
-                        Tasks.Add(item);
-                    }
-                }
-            }
-            catch(Exception e)
-            {
-                Debug.WriteLine("GetTasks", e.Message);
-            }
-        }
+        //private async void GetTasks()
+        //{
+        //    try
+        //    {
+        //        foreach (var project in NetStandardSingleton.Instance.projects)
+        //        {
+        //            var resourceAssignments = await PSapi.GetResourceAssignment(project.ProjectId, userName);
+        //            //Debug.WriteLine("GetAllTasks", resourceAssignments.D.Results.Count + "");
+        //            foreach (var item in resourceAssignments.D.Results)
+        //            {
+        //                NetStandardSingleton.Instance.userTasks.Add(item);
+        //                Tasks.Add(item);
+        //            }
+        //        }
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        Debug.WriteLine("GetTasks", e.Message);
+        //    }
+        //}
     }
 }

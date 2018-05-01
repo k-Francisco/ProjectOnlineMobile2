@@ -22,34 +22,14 @@ namespace ProjectOnlineMobile2.ViewModels
         public ProjectPageViewModel()
         {
             ProjectList = new ObservableCollection<Result>();
-            if (NetStandardSingleton.Instance.projects is null)
-            {
-                GetAllProjects();
-            }
-            else
-            {
-                foreach (var item in NetStandardSingleton.Instance.projects.D.Results)
+
+            MessagingCenter.Instance.Subscribe<List<Result>>(this, "DisplayProjects", (projects) => {
+                foreach (var item in projects)
                 {
                     ProjectList.Add(item);
                 }
-            }
+            });
         }
 
-        private async void GetAllProjects()
-        {
-            try {
-                var projects = await PSapi.GetAllProjects();
-                MessagingCenter.Instance.Send<ProjectServerProjectList>(projects, "SetProjects");
-                foreach (var project in projects.D.Results)
-                {
-                    ProjectList.Add(project);
-                }
-            }
-            catch(Exception e)
-            {
-                Debug.WriteLine("ProjectPage-GetAllProjects", e.Message);
-            }
-
-        }
     }
 }

@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
   <Jars>
-    <Jar>obj\Debug\lp\0\jl\formsviewgroup.jar</Jar>
-    <Jar>obj\Debug\lp\17\jl\arch-core-common.jar</Jar>
-    <Jar>obj\Debug\lp\18\jl\arch-lifecycle-common.jar</Jar>
-    <Jar>obj\Debug\lp\21\jl\support-annotations.jar</Jar>
     <Jar>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\0\jl\formsviewgroup.jar</Jar>
     <Jar>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\17\jl\arch-core-common.jar</Jar>
     <Jar>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\18\jl\arch-lifecycle-common.jar</Jar>
@@ -28,6 +24,11 @@
   </Jars>
   <ResolvedResourceDirectories>
     <ResolvedResourceDirectory>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\8\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\43\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\44\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\40\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\41\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\42\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\22\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\25\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\27\jl\res</ResolvedResourceDirectory>
@@ -40,11 +41,21 @@
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
     <ResolvedAssetDirectory>obj\Debug\lp\8\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\lp\43\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\lp\44\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\lp\40\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\lp\41\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\lp\42\jl\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Debug\lp\29\jl\assets</ResolvedAssetDirectory>
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
     <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\8.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\43.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\44.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\40.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\41.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\42.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\22.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\25.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\27.stamp</ResolvedResourceDirectoryStamp>

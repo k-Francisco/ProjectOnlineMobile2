@@ -62,22 +62,6 @@ namespace ProjectOnlineMobile2.Services
         }
 
         /// <inheritdoc />
-        public virtual Task<ProjectServerProject> GetProjectByGuid(string guid)
-        {
-            var arguments = new object[] { guid };
-            var func = methodImpls.GetOrAdd("GetProjectByGuid(string guid)", _ => requestBuilder.BuildRestResultFuncForMethod("GetProjectByGuid", new Type[] { typeof(string) }));
-            return (Task<ProjectServerProject>)func(Client, arguments);
-        }
-
-        /// <inheritdoc />
-        public virtual Task<ProjectServerProject> GetProjectByName(string projectName)
-        {
-            var arguments = new object[] { projectName };
-            var func = methodImpls.GetOrAdd("GetProjectByName(string projectName)", _ => requestBuilder.BuildRestResultFuncForMethod("GetProjectByName", new Type[] { typeof(string) }));
-            return (Task<ProjectServerProject>)func(Client, arguments);
-        }
-
-        /// <inheritdoc />
         public virtual Task<ProjectServerProjectList> GetAllProjects()
         {
             var arguments = new object[] {  };

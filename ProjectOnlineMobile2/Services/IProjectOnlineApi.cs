@@ -19,11 +19,11 @@ namespace ProjectOnlineMobile2.Services
 {
     public interface IProjectOnlineApi
     {
-        [Get("/_api/ProjectData/Projects(guid'{guid}')")]
-        Task<ProjectServerProject> GetProjectByGuid(string guid);
+        //[Get("/_api/ProjectData/Projects(guid'{guid}')")]
+        //Task<ProjectServerProject> GetProjectByGuid(string guid);
 
-        [Get("/_api/ProjectData/Projects?$filter=ProjectName eq '{projectName}'")]
-        Task<ProjectServerProject> GetProjectByName(string projectName);
+        //[Get("/_api/ProjectData/Projects?$filter=ProjectName eq '{projectName}'")]
+        //Task<ProjectServerProject> GetProjectByName(string projectName);
 
         [Get("/_api/ProjectData/Projects?$filter=ProjectLastPublishedDate ne null")]
         Task<ProjectServerProjectList> GetAllProjects();
