@@ -128,7 +128,7 @@ namespace ProjectOnlineMobile2.Models.PSPL
         //[JsonProperty("ProjectCV")]
         //public string ProjectCV { get; set; }
         //[JsonProperty("ProjectCVP")]
-        public string ProjectCVP { get; set; }
+        //public string ProjectCVP { get; set; }
         [JsonProperty("ProjectDescription")]
         public string ProjectDescription { get; set; }
         [JsonProperty("ProjectDuration")]
@@ -249,6 +249,12 @@ namespace ProjectOnlineMobile2.Models.PSPL
         //public object ProjectDepartments { get; set; }
         //[JsonProperty("dsdsdsd")]
         //public object Dsdsdsd { get; set; }
+
+        public double PercentCompletedInDecimal
+        {
+            get { return Convert.ToDouble((Convert.ToDouble(ProjectPercentCompleted) / 100)); }
+        }
+
     }
     //public class Metadata
     //{

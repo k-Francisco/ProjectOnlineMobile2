@@ -15,6 +15,29 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+            <StackLayout Orientation="Vertical"
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Grid.Row="0">
+
+                <Image Source="user.png"
+                       HeightRequest="100"
+                       WidthRequest="100"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+
+                <Label Text="{Binding UserName}"
+                       FontAttributes="Bold"
+                       FontSize="Large"
+                       HorizontalOptions="Center"/>
+
+                <Label Text="{Binding UserEmail}"
+                       FontSize="Small"
+                       HorizontalOptions="Center"/>
+
+            </StackLayout>
+            
+
             <Grid CompressedLayout.IsHeadless="True"
                 Grid.Row="1"
                 RowSpacing="0"

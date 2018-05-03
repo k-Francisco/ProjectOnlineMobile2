@@ -13,7 +13,7 @@ namespace ProjectOnlineMobile2.Pages
 			InitializeComponent ();
 		}
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
         }

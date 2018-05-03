@@ -2394,26 +2394,26 @@ namespace ProjectOnlineMobile2.Android
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
-			// aapt resource value: 0x7f020136
-			public const int avd_hide_password_1 = 2130837814;
-			
 			// aapt resource value: 0x7f020137
-			public const int avd_hide_password_2 = 2130837815;
+			public const int avd_hide_password_1 = 2130837815;
 			
 			// aapt resource value: 0x7f020138
-			public const int avd_hide_password_3 = 2130837816;
+			public const int avd_hide_password_2 = 2130837816;
+			
+			// aapt resource value: 0x7f020139
+			public const int avd_hide_password_3 = 2130837817;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
-			// aapt resource value: 0x7f020139
-			public const int avd_show_password_1 = 2130837817;
-			
 			// aapt resource value: 0x7f02013a
-			public const int avd_show_password_2 = 2130837818;
+			public const int avd_show_password_1 = 2130837818;
 			
 			// aapt resource value: 0x7f02013b
-			public const int avd_show_password_3 = 2130837819;
+			public const int avd_show_password_2 = 2130837819;
+			
+			// aapt resource value: 0x7f02013c
+			public const int avd_show_password_3 = 2130837820;
 			
 			// aapt resource value: 0x7f020056
 			public const int design_bottom_navigation_item_background = 2130837590;
@@ -3069,11 +3069,11 @@ namespace ProjectOnlineMobile2.Android
 			// aapt resource value: 0x7f02012f
 			public const int notification_icon_background = 2130837807;
 			
-			// aapt resource value: 0x7f020134
-			public const int notification_template_icon_bg = 2130837812;
-			
 			// aapt resource value: 0x7f020135
-			public const int notification_template_icon_low_bg = 2130837813;
+			public const int notification_template_icon_bg = 2130837813;
+			
+			// aapt resource value: 0x7f020136
+			public const int notification_template_icon_low_bg = 2130837814;
 			
 			// aapt resource value: 0x7f020130
 			public const int notification_tile_bg = 2130837808;
@@ -3086,6 +3086,9 @@ namespace ProjectOnlineMobile2.Android
 			
 			// aapt resource value: 0x7f020133
 			public const int tooltip_frame_light = 2130837811;
+			
+			// aapt resource value: 0x7f020134
+			public const int user = 2130837812;
 			
 			static Drawable()
 			{
@@ -3168,6 +3171,9 @@ namespace ProjectOnlineMobile2.Android
 			
 			// aapt resource value: 0x7f08005c
 			public const int action_mode_close_button = 2131230812;
+			
+			// aapt resource value: 0x7f0800da
+			public const int action_save = 2131230938;
 			
 			// aapt resource value: 0x7f0800c2
 			public const int action_text = 2131230914;
@@ -4079,6 +4085,9 @@ namespace ProjectOnlineMobile2.Android
 			// aapt resource value: 0x7f0f0000
 			public const int nav_menu = 2131689472;
 			
+			// aapt resource value: 0x7f0f0001
+			public const int save_work_menu = 2131689473;
+			
 			static Menu()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -4283,6 +4292,9 @@ namespace ProjectOnlineMobile2.Android
 			
 			// aapt resource value: 0x7f09003a
 			public const int path_password_strike_through = 2131296314;
+			
+			// aapt resource value: 0x7f090042
+			public const int save = 2131296322;
 			
 			// aapt resource value: 0x7f090026
 			public const int search_menu_title = 2131296294;

@@ -39,7 +39,7 @@ namespace ProjectOnlineMobile2.Android.Fragments
             webView.Settings.DomStorageEnabled = true;
             webView.ClearCache(true);
             CookieManager.Instance.RemoveSessionCookie();
-            webView.LoadUrl("https://sharepointevo.sharepoint.com/_forms/default.aspx?wa=wsignin1.0");
+            webView.LoadUrl("https://sharepointevo.sharepoint.com");
             webView.SetWebViewClient(new CustomWebView((Activity as LoginActivity)));
 
             return rootView;

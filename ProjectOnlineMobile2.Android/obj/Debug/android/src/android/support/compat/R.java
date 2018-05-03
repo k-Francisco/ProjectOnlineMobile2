@@ -3371,6 +3371,7 @@ containing a value of this type.
         public static int action_mode_bar=0x7f080079;
         public static int action_mode_bar_stub=0x7f080078;
         public static int action_mode_close_button=0x7f08005c;
+        public static int action_save=0x7f0800da;
         public static int action_text=0x7f0800c2;
         public static int actions=0x7f0800d0;
         public static int activity_chooser_view_content=0x7f08005d;
@@ -3665,6 +3666,7 @@ containing a value of this type.
     }
     public static final class menu {
         public static int nav_menu=0x7f0f0000;
+        public static int save_work_menu=0x7f0f0001;
     }
     public static final class string {
         public static int abc_action_bar_home_description=0x7f090015;
@@ -3731,6 +3733,7 @@ containing a value of this type.
         public static int path_password_eye_mask_strike_through=0x7f090038;
         public static int path_password_eye_mask_visible=0x7f090039;
         public static int path_password_strike_through=0x7f09003a;
+        public static int save=0x7f090042;
         public static int search_menu_title=0x7f090026;
         public static int status_bar_notification_info_overflow=0x7f09003b;
     }

@@ -33,6 +33,8 @@ namespace ProjectOnlineMobile2.Android.Activities
 
             _timesheetWorkPage = new TimesheetWorkPage().CreateSupportFragment(this);
 
+            MessagingCenter.Instance.Send<String>("", "SendTimesheetIds");
+
             var toolbar = FindViewById<Toolbar>(Resource.Id.work_toolbar);
             if (toolbar != null)
             {
@@ -47,12 +49,21 @@ namespace ProjectOnlineMobile2.Android.Activities
                 .Commit();
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.save_work_menu, menu);
+            return true;
+        }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
             {
                 case global::Android.Resource.Id.Home:
                     Finish();
+                    break;
+                case Resource.Id.action_save:
+                    MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
                     break;
             }
 

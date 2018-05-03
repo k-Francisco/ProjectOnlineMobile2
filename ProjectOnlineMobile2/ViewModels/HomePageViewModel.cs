@@ -13,6 +13,7 @@ using ProjectOnlineMobile2.Models.ResourceAssignmentModel;
 using System.Threading.Tasks;
 using ProjectOnlineMobile2.Models;
 using ProjectOnlineMobile2.Models.TSPL;
+using System.Collections.ObjectModel;
 
 namespace ProjectOnlineMobile2.ViewModels
 {
@@ -22,8 +23,20 @@ namespace ProjectOnlineMobile2.ViewModels
         public ICommand GoToProjectsPage { get; set; }
         public ICommand GoToTasksPage { get; set; }
         public ICommand GoToTimesheetPage { get; set; }
-        
-        public string userName { get; set; }
+
+        private string _userName;
+        public string UserName
+        {
+            get { return _userName; }
+            set { SetProperty(ref _userName, value); }
+        }
+
+        private string _userEmail;
+        public string UserEmail
+        {
+            get { return _userEmail; }
+            set { SetProperty(ref _userEmail, value); }
+        }
 
         public HomePageViewModel()
         {
@@ -32,8 +45,12 @@ namespace ProjectOnlineMobile2.ViewModels
             GoToTimesheetPage = new Command(ExecuteGoToTimesheetPage);
 
             MessagingCenter.Instance.Subscribe<SavedChangesRepository>(this, "database", (repo) => {
-                this.savedChangesRepo = repo;
+                savedChangesRepo = repo;
                 OfflineSync();
+            });
+
+            MessagingCenter.Instance.Subscribe<ObservableCollection<LineWorkChangesModel>>(this, "SaveWorkChanges", (changes)=> {
+                ExecuteSaveWorkChanges(changes);
             });
         }
 
@@ -44,13 +61,18 @@ namespace ProjectOnlineMobile2.ViewModels
                 var savedProjects = await savedChangesRepo.GetProjects();
                 var savedTasks = await savedChangesRepo.GetUserTasks();
                 var savedPeriods = await savedChangesRepo.GetTimesheetPeriods();
+                var savedWork = await savedChangesRepo.GetChangesAsync();
 
                 if (IsConnectedToInternet())
                 {
-                    GetUserInfo();
-                    var projectsResult = await CheckProjectChanges(savedProjects);
-                    CheckUserTaskChanges(savedTasks,savedProjects, projectsResult);
-                    CheckPeriodChanges(savedPeriods);
+                    var isUserInfoDone = await GetUserInfo();
+                    if (isUserInfoDone)
+                    {
+                        var projectsResult = await CheckProjectChanges(savedProjects);
+                        CheckUserTaskChanges(savedTasks, savedProjects, projectsResult);
+                        CheckPeriodChanges(savedPeriods);
+                        CheckWorkChanges(savedWork);
+                    }
                 }
                 else
                 {
@@ -64,6 +86,60 @@ namespace ProjectOnlineMobile2.ViewModels
                 Debug.WriteLine("OfflineSync", e.Message);
             }
             
+        }
+
+        private async void ExecuteSaveWorkChanges(ObservableCollection<LineWorkChangesModel> changes)
+        {
+            try
+            {
+                foreach (var item in changes)
+                {
+                    var success = await savedChangesRepo.AddEntryAsync(item);
+                    if (success)
+                        Debug.WriteLine("ExecuteSaveWorkChanges-offline", "success");
+                    else
+                    {
+                        Debug.WriteLine("ExecuteSaveWorkChanges-offline", "failed");
+                        MessagingCenter.Instance.Send<String>("There was an error uploading the changes", "Toast");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessagingCenter.Instance.Send<String>("There was an error uploading the changes", "Toast");
+                Debug.WriteLine("ExecuteSaveWorkChanges-offline", e.Message);
+            }
+        }
+
+        private async void CheckWorkChanges(List<LineWorkChangesModel> savedWork)
+        {
+            if(savedWork != null && savedWork.Any())
+            {
+                MessagingCenter.Instance.Send<String>("Uploading timesheet changes", "Toast");
+                try
+                {
+                    var formDigest = await SPapi.GetFormDigest();
+
+                    foreach (var item in savedWork)
+                    {
+                        var body = "{'parameters':{'ActualWork':'" + item.ActualHours + "', " +
+                            "'PlannedWork':'" + item.PlannedHours + "', " +
+                            "'Start':'" + item.StartDate + "', " +
+                            "'NonBillableOvertimeWork':'0h', " +
+                            "'NonBillableWork':'0h', " +
+                            "'OvertimeWork':'0h'}}";
+                        var response = await PSapi.AddTimesheetLineWork(item.PeriodId, item.LineId, body, formDigest.D.GetContextWebInformation.FormDigestValue);
+                        if (response)
+                            await savedChangesRepo.RemoveEntryAsync(item.StartDate);
+                        else
+                            MessagingCenter.Instance.Send<String>("There was an error uploading the changes", "Toast");
+                    }
+                }
+                catch(Exception e)
+                {
+                    Debug.WriteLine("CheckWorkChanges", e.Message);
+                }
+            }
         }
 
         private async void CheckPeriodChanges(List<Models.TSPL.Result> savedPeriods)
@@ -117,32 +193,56 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 if (projectsResult)
                 {
-                    Debug.WriteLine("CheckUserTaskChanges", "true siya");
-                    foreach (var item in savedProjects)
+                    if(savedProjects.Any() && savedProjects != null)
                     {
-                        Debug.WriteLine("CheckUserTaskChanges", userName + " user");
-                        var tasks = await PSapi.GetResourceAssignment(item.ProjectId, userName);
-                        foreach (var assignments in tasks.D.Results)
+                        foreach (var item in savedProjects)
                         {
-                            userTasks.Add(assignments);
+                            var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
+                            foreach (var assignments in tasks.D.Results)
+                            {
+                                userTasks.Add(assignments);
+                            }
+                        }
+
+                        if (userTasks.Any())
+                        {
+                            var isTheSame = savedTasks.SequenceEqual(userTasks);
+
+                            if (isTheSame)
+                            {
+                                MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
+                            }
+                            else
+                            {
+                                foreach (var item in savedTasks)
+                                {
+                                    await savedChangesRepo.RemoveTask(item);
+                                }
+
+                                foreach (var item in userTasks)
+                                {
+                                    await savedChangesRepo.AddUserTask(item);
+                                }
+
+                                MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
+                            }
                         }
                     }
-
-                    if (userTasks.Any())
+                    else
                     {
-                        var isTheSame = savedTasks.SequenceEqual(userTasks);
+                        var projects = await PSapi.GetAllProjects();
 
-                        if (isTheSame)
+                        foreach (var item in projects.D.Results)
                         {
-                            MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
-                        }
-                        else
-                        {
-                            foreach (var item in savedTasks)
+                            var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
+                            foreach (var assignments in tasks.D.Results)
                             {
-                                await savedChangesRepo.RemoveTask(item);
+                                userTasks.Add(assignments);
                             }
+                        }
 
+                        if (userTasks.Any())
+                        {
                             foreach (var item in userTasks)
                             {
                                 await savedChangesRepo.AddUserTask(item);
@@ -150,37 +250,63 @@ namespace ProjectOnlineMobile2.ViewModels
 
                             MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
                         }
-                    }
 
+                    }
                 }
                 else
                 {
                     var newSavedProjects = await savedChangesRepo.GetProjects();
 
-                    foreach (var item in newSavedProjects)
+                    if(newSavedProjects.Any() && newSavedProjects != null)
                     {
-                        var tasks = await PSapi.GetResourceAssignment(item.ProjectId, userName);
-                        foreach (var assignments in tasks.D.Results)
+                        foreach (var item in newSavedProjects)
                         {
-                            userTasks.Add(assignments);
+                            var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
+                            foreach (var assignments in tasks.D.Results)
+                            {
+                                userTasks.Add(assignments);
+                            }
+                        }
+
+                        if (userTasks.Any())
+                        {
+                            var isTheSame = savedTasks.SequenceEqual(userTasks);
+
+                            if (isTheSame)
+                            {
+                                MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
+                            }
+                            else
+                            {
+                                foreach (var item in savedTasks)
+                                {
+                                    await savedChangesRepo.RemoveTask(item);
+                                }
+
+                                foreach (var item in userTasks)
+                                {
+                                    await savedChangesRepo.AddUserTask(item);
+                                }
+
+                                MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
+                            }
                         }
                     }
-
-                    if (userTasks.Any())
+                    else
                     {
-                        var isTheSame = savedTasks.SequenceEqual(userTasks);
+                        var projects = await PSapi.GetAllProjects();
 
-                        if (isTheSame)
+                        foreach (var item in projects.D.Results)
                         {
-                            MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
-                        }
-                        else
-                        {
-                            foreach (var item in savedTasks)
+                            var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
+                            foreach (var assignments in tasks.D.Results)
                             {
-                                await savedChangesRepo.RemoveTask(item);
+                                userTasks.Add(assignments);
                             }
+                        }
 
+                        if (userTasks.Any())
+                        {
                             foreach (var item in userTasks)
                             {
                                 await savedChangesRepo.AddUserTask(item);
@@ -203,20 +329,24 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 var projects = await PSapi.GetAllProjects();
 
-                if(savedProjects != null || savedProjects.Any())
+                if(savedProjects != null && savedProjects.Any())
                 {
-                    var isTheSame = savedProjects.SequenceEqual(savedProjects);
+                    var isTheSame = savedProjects.SequenceEqual(projects.D.Results);
 
                     if (isTheSame)
                     {
-                        MessagingCenter.Instance.Send<List<ProjectResult>>(projects.D.Results, "DisplayProjects");
+                        MessagingCenter.Instance.Send<List<ProjectResult>>(savedProjects, "DisplayProjects");
                         return isTheSame;
                     }
                     else
                     {
                         foreach (var item in savedProjects)
                         {
-                            await savedChangesRepo.RemoveProjects(item);
+                            var isRemoved = await savedChangesRepo.RemoveProjects(item);
+                            if (isRemoved)
+                                Debug.WriteLine("CheckProjectChanges-null", isRemoved + "ang result");
+                            else
+                                Debug.WriteLine("CheckProjectChanges-null", isRemoved + "ang result");
                         }
 
                         foreach (var item in projects.D.Results)
@@ -231,7 +361,7 @@ namespace ProjectOnlineMobile2.ViewModels
                 {
                     foreach (var item in projects.D.Results)
                     {
-                        await savedChangesRepo.AddProjects(item);
+                        var isAdded = await savedChangesRepo.AddProjects(item);
                     }
                     MessagingCenter.Instance.Send<List<ProjectResult>>(projects.D.Results, "DisplayProjects");
                     return false;
@@ -245,12 +375,21 @@ namespace ProjectOnlineMobile2.ViewModels
             }
         }
 
-        
-        private async void GetUserInfo()
+        private async Task<bool> GetUserInfo()
         {
-            var user = await SPapi.GetCurrentUser();
-            userName = user.D.Title;
-            MessagingCenter.Instance.Send<UserModel>(user, "UserInfo");
+            try
+            {
+                var user = await SPapi.GetCurrentUser();
+                UserName = user.D.Title;
+                UserEmail = user.D.Email;
+                MessagingCenter.Instance.Send<UserModel>(user, "UserInfo");
+                return true;
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("GetUserInfo", e.Message);
+                return false;
+            }
         }
 
         private void ExecuteGoToTimesheetPage()

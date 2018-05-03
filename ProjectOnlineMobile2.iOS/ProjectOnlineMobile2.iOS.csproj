@@ -216,6 +216,7 @@
   <ItemGroup>
     <Content Include="Entitlements.plist" />
     <BundleResource Include="Resources\arrow_down.png" />
+    <BundleResource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectOnlineMobile2\ProjectOnlineMobile2.csproj">

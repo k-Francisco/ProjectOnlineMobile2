@@ -36,6 +36,7 @@ namespace ProjectOnlineMobile2.Database
             catch (Exception e)
             {
                 Debug.WriteLine("AddEntryAsync", e.Message);
+                Debug.WriteLine("ExecuteSaveWorkChanges", e.InnerException.Message);
                 return false;
             }
         }
@@ -122,7 +123,7 @@ namespace ProjectOnlineMobile2.Database
             }
             catch (Exception e)
             {
-                Debug.WriteLine("GetProjects", e.Message);
+                Debug.WriteLine("GetProjectsDatabase", e.Message);
                 return null;
             }
         }
@@ -137,7 +138,7 @@ namespace ProjectOnlineMobile2.Database
             }
             catch (Exception e)
             {
-                Debug.WriteLine("GetTimesheetPeriods", e.Message);
+                Debug.WriteLine("GetTimesheetPeriodsDatabase", e.Message);
                 return null;
             }
         }
@@ -152,7 +153,7 @@ namespace ProjectOnlineMobile2.Database
             }
             catch (Exception e)
             {
-                Debug.WriteLine("GetUserTasks", e.Message);
+                Debug.WriteLine("GetUserTasksDatabase", e.Message);
                 return null;
             }
         }

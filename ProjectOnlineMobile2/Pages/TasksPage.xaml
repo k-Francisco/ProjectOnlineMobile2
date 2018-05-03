@@ -54,7 +54,7 @@
                                            Grid.Column="0"/>
 
                                     <controls:CustomProgressBar HorizontalOptions="FillAndExpand"
-                                                                Progress="0.5"
+                                                                Progress="{Binding PercentCompletedInDecimal}"
                                                                 ProgressColor="#31752F"
                                                                 BackgroundColor="#A9A9A9"
                                                                 Grid.Column="0" Grid.ColumnSpan="2"
@@ -124,7 +124,7 @@
                                            FontSize="Micro"
                                            Grid.Row="0" Grid.Column="0"/>
 
-                                    <Label Text="{Binding AssignmentWork, StringFormat='{}{0:G29}'}}"
+                                    <Label Text="{Binding FormattedAssignmentWork}}"
                                            FontSize="Medium"
                                            TextColor="Black"
                                            Grid.Row="1" Grid.Column="0"/>
@@ -133,7 +133,7 @@
                                            FontSize="Micro"
                                            Grid.Row="0" Grid.Column="1"/>
 
-                                    <Label Text="{Binding AssignmentActualWork, StringFormat='{0:G2}'}"
+                                    <Label Text="{Binding FormattedAssignmentActualWork}"
                                            FontSize="Medium"
                                            TextColor="Black"
                                            Grid.Row="1" Grid.Column="1"/>
@@ -142,7 +142,7 @@
                                            FontSize="Micro"
                                            Grid.Row="0" Grid.Column="2"/>
 
-                                    <Label Text="{Binding AssignmentRemainingWork, StringFormat='{0:G29}'}"
+                                    <Label Text="{Binding FormattedAssignmentRemainingWork}"
                                            FontSize="Medium"
                                            TextColor="Black"
                                            Grid.Row="1" Grid.Column="2"/>

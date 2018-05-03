@@ -173,6 +173,25 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         //public object ResourceDepartments { get; set; }
         //[JsonProperty("FlagStatus_T")]
         //public object FlagStatus { get; set; }
+
+        public Double PercentCompletedInDecimal
+        {
+            get { return Convert.ToDouble((Convert.ToDouble(AssignmentPercentWorkCompleted) / 100)); }
+        }
+
+        public string FormattedAssignmentWork
+        {
+            get { return String.Format("{0:0.0}h", Double.Parse(AssignmentWork)); }
+        }
+        public string FormattedAssignmentActualWork
+        {
+            get { return String.Format("{0:0.0}h", Double.Parse(AssignmentActualWork)); }
+        }
+        public string FormattedAssignmentRemainingWork
+        {
+            get { return String.Format("{0:0.0}h", Double.Parse(AssignmentRemainingWork)); }
+        }
+
     }
     public class Metadata
     {

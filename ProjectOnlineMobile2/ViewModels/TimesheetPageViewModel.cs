@@ -30,7 +30,7 @@ namespace ProjectOnlineMobile2.ViewModels
         }
 
         public int SelectedIndex { get; set; }
-
+        public string periodId, lineId;
         public ICommand SelectedItemChangedCommand { get; set; }
         public ICommand TimesheetLineClicked { get; set; }
 
@@ -44,6 +44,12 @@ namespace ProjectOnlineMobile2.ViewModels
 
             MessagingCenter.Instance.Subscribe<String>(this,"CreateTimesheet", (periodId) => {
                 CreateTimesheet(periodId);
+            });
+
+            //for android 
+            MessagingCenter.Instance.Subscribe<String>(this, "SendTimesheetIds", (s) =>{
+                string[] ids = { periodId, lineId};
+                MessagingCenter.Send<String[]>(ids, "TimesheetWork");
             });
 
             MessagingCenter.Instance.Subscribe<List<TimesheetPeriodsResult>>(this, "DisplayTimesheetPeriods", (periods) => {
@@ -70,20 +76,13 @@ namespace ProjectOnlineMobile2.ViewModels
                     }
                 }
             });
-
-            //if (NetStandardSingleton.Instance.periods.Count is 0)
-            //{
-            //    GetTimesheetPeriod();
-            //}
-            //else
-            //{
-            //    AddPeriods();
-            //}
             
         }
 
         private void ExecuteTimesheetLineClicked(LineResult timesheetLine)
         {
+            periodId = _periodList[SelectedIndex].Id;
+            lineId = timesheetLine.Id;
             string[] ids = { _periodList[SelectedIndex].Id, timesheetLine.Id };
             MessagingCenter.Send<LineResult>(timesheetLine, "PushTimesheetWorkPage");
             MessagingCenter.Send<String[]>(ids, "TimesheetWork");
@@ -120,38 +119,5 @@ namespace ProjectOnlineMobile2.ViewModels
             }
         }
 
-        private async void GetTimesheetPeriod()
-        {
-            var timesheetperiod = await PSapi.GetAllTimesheetPeriods();
-            foreach (var item in timesheetperiod.D.Results)
-            {
-                _periodList.Add(item);
-            }
-        }
-
-        //private void AddPeriods()
-        //{
-        //    foreach (var item in NetStandardSingleton.Instance.periods)
-        //    {
-        //        TimesheetPeriods.Add(item.Name + " ( " + item.Start.ToShortDateString() + "-" + item.End.ToShortDateString() + " )");
-        //    }
-
-        //    for (int i = 0; i < NetStandardSingleton.Instance.periods.Count; i++)
-        //    {
-        //        if (DateTime.Compare(DateTime.Now, NetStandardSingleton.Instance.periods[i].Start) == 0)
-        //        {
-        //            SelectedIndex = i;
-        //            ExecuteSelectedItemChangedCommand();
-        //            break;
-        //        }
-        //        else if (DateTime.Compare(DateTime.Now, NetStandardSingleton.Instance.periods[i].Start) > 0 &&
-        //                DateTime.Compare(DateTime.Now, NetStandardSingleton.Instance.periods[i].End) < 0)
-        //        {
-        //            SelectedIndex = i;
-        //            ExecuteSelectedItemChangedCommand();
-        //            break;
-        //        }
-        //    }
-        //}
     }
 }

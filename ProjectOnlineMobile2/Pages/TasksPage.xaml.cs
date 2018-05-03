@@ -21,7 +21,6 @@ namespace ProjectOnlineMobile2.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Instance.Send<String>("", "GetTasks");
         }
     }
 }

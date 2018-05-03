@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -24,6 +25,7 @@ namespace ProjectOnlineMobile2.ViewModels
             ProjectList = new ObservableCollection<Result>();
 
             MessagingCenter.Instance.Subscribe<List<Result>>(this, "DisplayProjects", (projects) => {
+
                 foreach (var item in projects)
                 {
                     ProjectList.Add(item);

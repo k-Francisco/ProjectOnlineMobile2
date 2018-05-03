@@ -51,7 +51,8 @@
                                            WidthRequest="4"
                                            HorizontalOptions="End"
                                            VerticalOptions="Center"
-                                           Grid.Column="1"/>
+                                           Grid.Column="1"
+                                           IsVisible="False"/>
 
                                 </Grid>
 
@@ -65,9 +66,9 @@
                                     </Grid.ColumnDefinitions>
 
                                     <controls:CustomProgressBar HorizontalOptions="FillAndExpand"
-                                                                Progress="0.5"
                                                                 ProgressColor="#31752F"
                                                                 BackgroundColor="#A9A9A9"
+                                                                Progress="{Binding PercentCompletedInDecimal}"
                                                                 Grid.Column="0" Grid.ColumnSpan="3">
                                         <controls:CustomProgressBar.VerticalOptions>
                                             <OnPlatform x:TypeArguments="LayoutOptions">

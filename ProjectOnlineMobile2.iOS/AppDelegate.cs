@@ -11,6 +11,7 @@ using Xamarin.SideMenu;
 using ProjectOnlineMobile2.Database;
 using System.IO;
 
+[assembly: Preserve(typeof(System.Linq.Queryable), AllMembers = true)]
 namespace ProjectOnlineMobile2.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -24,8 +25,9 @@ namespace ProjectOnlineMobile2.iOS
         public static UIStoryboard Storyboard = UIStoryboard.FromName("Main", null);
 
         public UINavigationController navigationController;
-        SideMenuManager _sideMenuManager;
+        //SideMenuManager _sideMenuManager;
         UIViewController controller;
+        private UIViewController _projectPage, _tasksPage, _timesheetPage;
         public override UIWindow Window
         {
             get;
@@ -51,8 +53,15 @@ namespace ProjectOnlineMobile2.iOS
             shared = this;
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            _sideMenuManager = new SideMenuManager();
-            
+            _projectPage = new ProjectPage().CreateViewController();
+            _projectPage.Title = "Projects";
+            _tasksPage = new TasksPage().CreateViewController();
+            _tasksPage.Title = "Tasks";
+            _timesheetPage = new TimesheetPage().CreateViewController();
+            _timesheetPage.Title = "Timesheet";
+
+            //_sideMenuManager = new SideMenuManager();
+
             if (String.IsNullOrWhiteSpace(Settings.CookieString))
             {
                 controller = Storyboard.InstantiateViewController("ViewController") as ViewController;
@@ -122,21 +131,15 @@ namespace ProjectOnlineMobile2.iOS
         {
             if (page.Equals("ProjectPage"))
             {
-                var controller = new ProjectPage().CreateViewController();
-                controller.Title = "Projects";
-                navigationController.PushViewController(controller, true);
+                navigationController.PushViewController(_projectPage, true);
             }
             else if (page.Equals("TasksPage"))
             {
-                var controller = new TasksPage().CreateViewController();
-                controller.Title = "Tasks";
-                navigationController.PushViewController(controller, true);
+                navigationController.PushViewController(_tasksPage, true);
             }
             else if (page.Equals("TimesheetPage"))
             {
-                var controller = new TimesheetPage().CreateViewController();
-                controller.Title = "Timesheet";
-                navigationController.PushViewController(controller, true);
+                navigationController.PushViewController(_timesheetPage, true);
             }
         }
 

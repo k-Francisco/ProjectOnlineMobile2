@@ -328,6 +328,8 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_more.png" />
     <AndroidResource Include="Resources\drawable\frame_shadow.xml" />
     <AndroidResource Include="Resources\drawable-hdpi\arrow_down.png" />
+    <AndroidResource Include="Resources\menu\save_work_menu.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\user.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectOnlineMobile2\ProjectOnlineMobile2.csproj">

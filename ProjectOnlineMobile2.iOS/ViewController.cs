@@ -37,7 +37,7 @@ namespace ProjectOnlineMobile2.iOS
             this.NavigationController.NavigationBarHidden = true;
 
 
-            var url = "https://sharepointevo.sharepoint.com/_forms/default.aspx?wa=wsignin1.0";
+            var url = "https://sharepointevo.sharepoint.com";
             var request = new NSMutableUrlRequest(new NSUrl(url));
             webView.Frame = View.Frame;
             webView.LoadRequest(request);

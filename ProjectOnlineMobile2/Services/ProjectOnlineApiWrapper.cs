@@ -212,6 +212,7 @@ namespace ProjectOnlineMobile2.Services
             catch(Exception e)
             {
                 Debug.WriteLine("AddTimesheetLineWork", e.Message);
+                Debug.WriteLine("AddTimesheetLineWork", e.InnerException.Message);
                 return isSuccess;
             }
         }

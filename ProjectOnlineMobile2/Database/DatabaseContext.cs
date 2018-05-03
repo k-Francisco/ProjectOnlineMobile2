@@ -30,12 +30,14 @@ namespace ProjectOnlineMobile2.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<LineWorkChangesModel>().HasKey(k => k.StartDate);
         }
 
         public DatabaseContext(String path)
         {
             _databasePath = path;
             Database.EnsureCreated();
+            
             //if(Device.RuntimePlatform == Device.iOS)
             //{
             //    Snapshot.MaxGenericTypes = 2;

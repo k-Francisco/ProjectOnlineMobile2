@@ -77,8 +77,12 @@ namespace ProjectOnlineMobile2.Android
                 DisplayAlertDialog(periodId);
             });
 
-            MessagingCenter.Instance.Subscribe<UserModel>(this, "UserInfo", (user)=> {
+            MessagingCenter.Instance.Subscribe<UserModel>(this, "UserInfo", (user) => {
                 GetUserInfo(user);
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "Toast", (message) => {
+                DisplayWorkChangesToast(message);
             });
 
             //initialize the db
@@ -121,6 +125,11 @@ namespace ProjectOnlineMobile2.Android
                 ListItemClicked(0);
             }
 
+        }
+
+        private void DisplayWorkChangesToast(string message)
+        {
+            Toast.MakeText(this, message, ToastLength.Short).Show();
         }
 
         private void DisplayAlertDialog(string periodId)
