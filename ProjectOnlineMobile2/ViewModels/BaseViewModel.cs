@@ -18,7 +18,6 @@ namespace ProjectOnlineMobile2.ViewModels
 
         protected SharepointApiWrapper SPapi { get; private set; }
         protected ProjectOnlineApiWrapper PSapi { get; private set; }
-        protected SavedChangesRepository savedChangesRepo { get; set; }
 
 
         public BaseViewModel() {

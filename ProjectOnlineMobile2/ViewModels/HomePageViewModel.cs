@@ -44,13 +44,7 @@ namespace ProjectOnlineMobile2.ViewModels
             GoToTasksPage = new Command(ExecuteGoToTasksPage);
             GoToTimesheetPage = new Command(ExecuteGoToTimesheetPage);
 
-            MessagingCenter.Instance.Subscribe<SavedChangesRepository>(this, "database", (repo) => {
-                if(savedChangesRepo == null)
-                {
-                    savedChangesRepo = repo;
-                }
-                GetUserInfo();
-            });
+            GetUserInfo();
 
         }
 

@@ -87,10 +87,8 @@ namespace ProjectOnlineMobile2.iOS
                 PushTimesheetWorkPage(timesheetLine);
             });
 
-            SQLitePCL.Batteries.Init();
             var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"..","Library","savedchanges.db");
-            var savedChangesRepository = new SavedChangesRepository(dbPath);
-            MessagingCenter.Send<SavedChangesRepository>(savedChangesRepository, "database");
+
 
             navigationController = new UINavigationController();
             Window.RootViewController = navigationController;

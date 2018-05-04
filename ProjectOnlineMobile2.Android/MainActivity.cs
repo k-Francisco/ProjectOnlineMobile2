@@ -87,8 +87,6 @@ namespace ProjectOnlineMobile2.Android
 
             //initialize the db
             var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal),"savedChangesDB.db");
-            var savedChangesRepository = new SavedChangesRepository(dbPath);
-            MessagingCenter.Send<SavedChangesRepository>(savedChangesRepository, "database");
 
             //handle navigation
             navigationView.NavigationItemSelected += (sender, e) =>
