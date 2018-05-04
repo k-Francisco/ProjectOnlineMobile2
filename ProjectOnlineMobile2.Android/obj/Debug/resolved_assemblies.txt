@@ -25,7 +25,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Plugin.Settings.Abstractions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Plugin.Settings.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\ProjectOnlineMobile2.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Refit.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Remotion.Linq.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\SQLitePCLRaw.batteries_green.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\SQLitePCLRaw.batteries_v2.dll
@@ -106,19 +105,8 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Xml.XPath.XDocument.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.ComponentModel.Annotations.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.ComponentModel.DataAnnotations.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Runtime.Numerics.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Xml.XmlDocument.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Xml.XDocument.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.ComponentModel.TypeConverter.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Dynamic.Runtime.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Linq.Expressions.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Runtime.Serialization.Formatters.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.ObjectModel.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Text.RegularExpressions.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Xml.ReaderWriter.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Text.Encoding.Extensions.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Net.Primitives.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Reflection.TypeExtensions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Linq.Queryable.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.Diagnostics.Tracing.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\System.ServiceModel.Internals.dll

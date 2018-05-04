@@ -6,6 +6,5 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)xamarin.forms\3.0.0.354232-pre3\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('$(NuGetPackageRoot)xamarin.forms\3.0.0.354232-pre3\build\netstandard2.0\Xamarin.Forms.targets')" />
     <Import Project="$(NuGetPackageRoot)netstandard.library\2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('$(NuGetPackageRoot)netstandard.library\2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
-    <Import Project="$(NuGetPackageRoot)refit\4.3.0\build\netstandard1.4\refit.targets" Condition="Exists('$(NuGetPackageRoot)refit\4.3.0\build\netstandard1.4\refit.targets')" />
   </ImportGroup>
 </Project>

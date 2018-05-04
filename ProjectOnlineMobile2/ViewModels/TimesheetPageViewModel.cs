@@ -13,14 +13,14 @@ namespace ProjectOnlineMobile2.ViewModels
 {
     public class TimesheetPageViewModel : BaseViewModel
     {
-        private ObservableCollection<String> _timesheetPeriods;
-        public ObservableCollection<String> TimesheetPeriods
+
+        private ObservableCollection<TimesheetPeriodsResult> _periodList;
+        public ObservableCollection<TimesheetPeriodsResult> PeriodList
         {
-            get { return _timesheetPeriods; }
-            set { SetProperty(ref _timesheetPeriods, value); }
+            get { return _periodList; }
+            set { SetProperty(ref _periodList, value); }
         }
 
-        private List<TimesheetPeriodsResult> _periodList { get; set; }
 
         private ObservableCollection<LineResult> _periodLines;
         public ObservableCollection<LineResult> PeriodLines
@@ -29,20 +29,27 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _periodLines, value); }
         }
 
-        public int SelectedIndex { get; set; }
+        private int _selectedIndex;
+        public int SelectedIndex
+        {
+            get { return _selectedIndex; }
+            set { SetProperty(ref _selectedIndex, value); }
+        }
+
         public string periodId, lineId;
         public ICommand SelectedItemChangedCommand { get; set; }
         public ICommand TimesheetLineClicked { get; set; }
 
         public TimesheetPageViewModel()
         {
-            TimesheetPeriods = new ObservableCollection<String>();
-            _periodList = new List<TimesheetPeriodsResult>();
+            PeriodList = new ObservableCollection<TimesheetPeriodsResult>();
             PeriodLines = new ObservableCollection<LineResult>();
+
             SelectedItemChangedCommand = new Command(ExecuteSelectedItemChangedCommand);
             TimesheetLineClicked = new Command<LineResult>(ExecuteTimesheetLineClicked);
 
-            MessagingCenter.Instance.Subscribe<String>(this,"CreateTimesheet", (periodId) => {
+            MessagingCenter.Instance.Subscribe<String>(this, "CreateTimesheet", (periodId) =>
+            {
                 CreateTimesheet(periodId);
             });
 
@@ -52,31 +59,59 @@ namespace ProjectOnlineMobile2.ViewModels
                 MessagingCenter.Send<String[]>(ids, "TimesheetWork");
             });
 
-            MessagingCenter.Instance.Subscribe<List<TimesheetPeriodsResult>>(this, "DisplayTimesheetPeriods", (periods) => {
-                foreach (var item in periods)
+            GetTimesheetPeriods();
+            
+        }
+
+        private async void CreateTimesheet(string periodId)
+        {
+            if (IsConnectedToInternet())
+            {
+                var formDigest = await SPapi.GetFormDigest();
+
+                if (await PSapi.CreateTimesheet(periodId, formDigest.D.GetContextWebInformation.FormDigestValue))
                 {
-                    _periodList.Add(item);
-                    TimesheetPeriods.Add(item.Name + " ( " + item.Start.ToShortDateString() + "-" + item.End.ToShortDateString() + " )");
+                    ExecuteSelectedItemChangedCommand();
+                }
+                else
+                {
+                    //prompt user error
+                }
+            }
+            else
+            {
+                //prompt user that the device is not connected to the internet
+            }
+        }
+
+        private async void GetTimesheetPeriods()
+        {
+            if (IsConnectedToInternet())
+            {
+                //TODO: check if the collections in database and in the cloud are equal
+
+                var periods = await PSapi.GetAllTimesheetPeriods();
+                foreach (var item in periods.D.Results)
+                {
+                    PeriodList.Add(item);
                 }
 
-                for (int i = 0; i < periods.Count; i++)
+                for (int i = 0; i < PeriodList.Count; i++)
                 {
-                    if (DateTime.Compare(DateTime.Now, periods[i].Start) == 0)
-                    {
-                        SelectedIndex = i;
-                        ExecuteSelectedItemChangedCommand();
-                        break;
-                    }
-                    else if (DateTime.Compare(DateTime.Now, periods[i].Start) > 0 &&
-                            DateTime.Compare(DateTime.Now, periods[i].End) < 0)
+                    if (DateTime.Compare(DateTime.Now, PeriodList[i].Start) >= 0 &&
+                            DateTime.Compare(DateTime.Now, PeriodList[i].End) < 0)
                     {
                         SelectedIndex = i;
                         ExecuteSelectedItemChangedCommand();
                         break;
                     }
                 }
-            });
-            
+
+            }
+            else
+            {
+                //TODO: retrieve items in the db
+            }
         }
 
         private void ExecuteTimesheetLineClicked(LineResult timesheetLine)
@@ -88,32 +123,18 @@ namespace ProjectOnlineMobile2.ViewModels
             MessagingCenter.Send<String[]>(ids, "TimesheetWork");
         }
 
-        private async void CreateTimesheet(string periodId)
-        {
-            try
-            {
-                var webContextInfo = await SPapi.GetFormDigest();
-                var createTimesheet = await PSapi.CreateTimesheet(periodId, webContextInfo.D.GetContextWebInformation.FormDigestValue);
-                Debug.WriteLine("CreateTimesheet", createTimesheet);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("CreateTimesheetFromViewModel", e.Message);
-            }
-        }
-
         private async void ExecuteSelectedItemChangedCommand()
         {
             try
             {
                 PeriodLines.Clear();
-                var lines = await PSapi.GetTimesheetLinesByPeriod(_periodList[SelectedIndex].Id);
+                var lines = await PSapi.GetTimesheetLinesByPeriod(PeriodList[SelectedIndex].Id);
                 foreach (var item in lines.D.Results)
                 {
                     PeriodLines.Add(item);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.WriteLine("ExecuteSelectedItemChangedCommand", e.Message);
             }

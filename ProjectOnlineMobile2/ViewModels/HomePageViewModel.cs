@@ -45,337 +45,280 @@ namespace ProjectOnlineMobile2.ViewModels
             GoToTimesheetPage = new Command(ExecuteGoToTimesheetPage);
 
             MessagingCenter.Instance.Subscribe<SavedChangesRepository>(this, "database", (repo) => {
-                savedChangesRepo = repo;
-                OfflineSync();
+                if(savedChangesRepo == null)
+                {
+                    savedChangesRepo = repo;
+                }
+                GetUserInfo();
             });
 
-            MessagingCenter.Instance.Subscribe<ObservableCollection<LineWorkChangesModel>>(this, "SaveWorkChanges", (changes)=> {
-                ExecuteSaveWorkChanges(changes);
-            });
         }
 
-        private async void OfflineSync()
-        {
-            try
-            {
-                var savedProjects = await savedChangesRepo.GetProjects();
-                var savedTasks = await savedChangesRepo.GetUserTasks();
-                var savedPeriods = await savedChangesRepo.GetTimesheetPeriods();
-                var savedWork = await savedChangesRepo.GetChangesAsync();
+        //private async void CheckWorkChanges(List<LineWorkChangesModel> savedWork)
+        //{
+        //    if(savedWork != null && savedWork.Any())
+        //    {
+        //        MessagingCenter.Instance.Send<String>("Uploading timesheet changes", "Toast");
+        //        try
+        //        {
+        //            var formDigest = await SPapi.GetFormDigest();
 
-                if (IsConnectedToInternet())
-                {
-                    var isUserInfoDone = await GetUserInfo();
-                    if (isUserInfoDone)
-                    {
-                        var projectsResult = await CheckProjectChanges(savedProjects);
-                        CheckUserTaskChanges(savedTasks, savedProjects, projectsResult);
-                        CheckPeriodChanges(savedPeriods);
-                        CheckWorkChanges(savedWork);
-                    }
-                }
-                else
-                {
-                    MessagingCenter.Instance.Send<List<ProjectResult>>(savedProjects, "DisplayProjects");
-                    MessagingCenter.Instance.Send<List<TasksResult>>(savedTasks, "DisplayUserTasks");
-                    MessagingCenter.Instance.Send<List<Models.TSPL.Result>>(savedPeriods, "DisplayTimesheetPeriods");
-                }
-            }
-            catch(Exception e)
-            {
-                Debug.WriteLine("OfflineSync", e.Message);
-            }
-            
-        }
+        //            foreach (var item in savedWork)
+        //            {
+        //                var body = "{'parameters':{'ActualWork':'" + item.ActualHours + "', " +
+        //                    "'PlannedWork':'" + item.PlannedHours + "', " +
+        //                    "'Start':'" + item.StartDate + "', " +
+        //                    "'NonBillableOvertimeWork':'0h', " +
+        //                    "'NonBillableWork':'0h', " +
+        //                    "'OvertimeWork':'0h'}}";
+        //                var response = await PSapi.AddTimesheetLineWork(item.PeriodId, item.LineId, body, formDigest.D.GetContextWebInformation.FormDigestValue);
+        //                if (response)
+        //                    await savedChangesRepo.RemoveEntryAsync(item.StartDate);
+        //                else
+        //                    MessagingCenter.Instance.Send<String>("There was an error uploading the changes", "Toast");
+        //            }
+        //        }
+        //        catch(Exception e)
+        //        {
+        //            Debug.WriteLine("CheckWorkChanges", e.Message);
+        //        }
+        //    }
+        //}
 
-        private async void ExecuteSaveWorkChanges(ObservableCollection<LineWorkChangesModel> changes)
-        {
-            try
-            {
-                foreach (var item in changes)
-                {
-                    var success = await savedChangesRepo.AddEntryAsync(item);
-                    if (success)
-                        Debug.WriteLine("ExecuteSaveWorkChanges-offline", "success");
-                    else
-                    {
-                        Debug.WriteLine("ExecuteSaveWorkChanges-offline", "failed");
-                        MessagingCenter.Instance.Send<String>("There was an error uploading the changes", "Toast");
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                MessagingCenter.Instance.Send<String>("There was an error uploading the changes", "Toast");
-                Debug.WriteLine("ExecuteSaveWorkChanges-offline", e.Message);
-            }
-        }
+        //private async void CheckPeriodChanges(List<Models.TSPL.Result> savedPeriods)
+        //{
+        //    try
+        //    {
+        //        var periods = await PSapi.GetAllTimesheetPeriods();
 
-        private async void CheckWorkChanges(List<LineWorkChangesModel> savedWork)
-        {
-            if(savedWork != null && savedWork.Any())
-            {
-                MessagingCenter.Instance.Send<String>("Uploading timesheet changes", "Toast");
-                try
-                {
-                    var formDigest = await SPapi.GetFormDigest();
+        //        if(savedPeriods != null || savedPeriods.Any())
+        //        {
+        //            var isTheSame = savedPeriods.SequenceEqual(periods.D.Results);
 
-                    foreach (var item in savedWork)
-                    {
-                        var body = "{'parameters':{'ActualWork':'" + item.ActualHours + "', " +
-                            "'PlannedWork':'" + item.PlannedHours + "', " +
-                            "'Start':'" + item.StartDate + "', " +
-                            "'NonBillableOvertimeWork':'0h', " +
-                            "'NonBillableWork':'0h', " +
-                            "'OvertimeWork':'0h'}}";
-                        var response = await PSapi.AddTimesheetLineWork(item.PeriodId, item.LineId, body, formDigest.D.GetContextWebInformation.FormDigestValue);
-                        if (response)
-                            await savedChangesRepo.RemoveEntryAsync(item.StartDate);
-                        else
-                            MessagingCenter.Instance.Send<String>("There was an error uploading the changes", "Toast");
-                    }
-                }
-                catch(Exception e)
-                {
-                    Debug.WriteLine("CheckWorkChanges", e.Message);
-                }
-            }
-        }
+        //            if (isTheSame)
+        //            {
+        //                MessagingCenter.Instance.Send<List<Models.TSPL.Result>>(periods.D.Results, "DisplayTimesheetPeriods");
+        //            }
+        //            else
+        //            {
+        //                foreach (var item in savedPeriods)
+        //                {
+        //                    await savedChangesRepo.RemoveTimesheetPeriods(item);
+        //                }
 
-        private async void CheckPeriodChanges(List<Models.TSPL.Result> savedPeriods)
-        {
-            try
-            {
-                var periods = await PSapi.GetAllTimesheetPeriods();
+        //                foreach (var item in periods.D.Results)
+        //                {
+        //                    await savedChangesRepo.AddTimesheetPeriods(item);
+        //                }
 
-                if(savedPeriods != null || savedPeriods.Any())
-                {
-                    var isTheSame = savedPeriods.SequenceEqual(periods.D.Results);
+        //                MessagingCenter.Instance.Send<List<Models.TSPL.Result>>(periods.D.Results, "DisplayTimesheetPeriods");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in periods.D.Results)
+        //            {
+        //                await savedChangesRepo.AddTimesheetPeriods(item);
+        //            }
+        //            MessagingCenter.Instance.Send<List<Models.TSPL.Result>>(periods.D.Results, "DisplayTimesheetPeriods");
+        //        }
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        Debug.WriteLine("CheckPeriodChanges", e.Message);
+        //    }
+        //}
 
-                    if (isTheSame)
-                    {
-                        MessagingCenter.Instance.Send<List<Models.TSPL.Result>>(periods.D.Results, "DisplayTimesheetPeriods");
-                    }
-                    else
-                    {
-                        foreach (var item in savedPeriods)
-                        {
-                            await savedChangesRepo.RemoveTimesheetPeriods(item);
-                        }
+        //private async void CheckUserTaskChanges(List<TasksResult> savedTasks, List<ProjectResult> savedProjects, bool projectsResult)
+        //{
+        //    List<TasksResult> userTasks = new List<TasksResult>();
+        //    try
+        //    {
+        //        if (projectsResult)
+        //        {
+        //            if(savedProjects.Any() && savedProjects != null)
+        //            {
+        //                foreach (var item in savedProjects)
+        //                {
+        //                    var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
+        //                    foreach (var assignments in tasks.D.Results)
+        //                    {
+        //                        userTasks.Add(assignments);
+        //                    }
+        //                }
 
-                        foreach (var item in periods.D.Results)
-                        {
-                            await savedChangesRepo.AddTimesheetPeriods(item);
-                        }
+        //                if (userTasks.Any())
+        //                {
+        //                    var isTheSame = savedTasks.SequenceEqual(userTasks);
 
-                        MessagingCenter.Instance.Send<List<Models.TSPL.Result>>(periods.D.Results, "DisplayTimesheetPeriods");
-                    }
-                }
-                else
-                {
-                    foreach (var item in periods.D.Results)
-                    {
-                        await savedChangesRepo.AddTimesheetPeriods(item);
-                    }
-                    MessagingCenter.Instance.Send<List<Models.TSPL.Result>>(periods.D.Results, "DisplayTimesheetPeriods");
-                }
-            }
-            catch(Exception e)
-            {
-                Debug.WriteLine("CheckPeriodChanges", e.Message);
-            }
-        }
+        //                    if (isTheSame)
+        //                    {
+        //                        MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
+        //                    }
+        //                    else
+        //                    {
+        //                        foreach (var item in savedTasks)
+        //                        {
+        //                            await savedChangesRepo.RemoveTask(item);
+        //                        }
 
-        private async void CheckUserTaskChanges(List<TasksResult> savedTasks, List<ProjectResult> savedProjects, bool projectsResult)
-        {
-            List<TasksResult> userTasks = new List<TasksResult>();
-            try
-            {
-                if (projectsResult)
-                {
-                    if(savedProjects.Any() && savedProjects != null)
-                    {
-                        foreach (var item in savedProjects)
-                        {
-                            var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
-                            foreach (var assignments in tasks.D.Results)
-                            {
-                                userTasks.Add(assignments);
-                            }
-                        }
+        //                        foreach (var item in userTasks)
+        //                        {
+        //                            await savedChangesRepo.AddUserTask(item);
+        //                        }
 
-                        if (userTasks.Any())
-                        {
-                            var isTheSame = savedTasks.SequenceEqual(userTasks);
+        //                        MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                var projects = await PSapi.GetAllProjects();
 
-                            if (isTheSame)
-                            {
-                                MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
-                            }
-                            else
-                            {
-                                foreach (var item in savedTasks)
-                                {
-                                    await savedChangesRepo.RemoveTask(item);
-                                }
+        //                foreach (var item in projects.D.Results)
+        //                {
+        //                    var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
+        //                    foreach (var assignments in tasks.D.Results)
+        //                    {
+        //                        userTasks.Add(assignments);
+        //                    }
+        //                }
 
-                                foreach (var item in userTasks)
-                                {
-                                    await savedChangesRepo.AddUserTask(item);
-                                }
+        //                if (userTasks.Any())
+        //                {
+        //                    foreach (var item in userTasks)
+        //                    {
+        //                        await savedChangesRepo.AddUserTask(item);
+        //                    }
 
-                                MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        var projects = await PSapi.GetAllProjects();
+        //                    MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
+        //                }
 
-                        foreach (var item in projects.D.Results)
-                        {
-                            var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
-                            foreach (var assignments in tasks.D.Results)
-                            {
-                                userTasks.Add(assignments);
-                            }
-                        }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            var newSavedProjects = await savedChangesRepo.GetProjects();
 
-                        if (userTasks.Any())
-                        {
-                            foreach (var item in userTasks)
-                            {
-                                await savedChangesRepo.AddUserTask(item);
-                            }
+        //            if(newSavedProjects.Any() && newSavedProjects != null)
+        //            {
+        //                foreach (var item in newSavedProjects)
+        //                {
+        //                    var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
+        //                    foreach (var assignments in tasks.D.Results)
+        //                    {
+        //                        userTasks.Add(assignments);
+        //                    }
+        //                }
 
-                            MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
-                        }
+        //                if (userTasks.Any())
+        //                {
+        //                    var isTheSame = savedTasks.SequenceEqual(userTasks);
 
-                    }
-                }
-                else
-                {
-                    var newSavedProjects = await savedChangesRepo.GetProjects();
+        //                    if (isTheSame)
+        //                    {
+        //                        MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
+        //                    }
+        //                    else
+        //                    {
+        //                        foreach (var item in savedTasks)
+        //                        {
+        //                            await savedChangesRepo.RemoveTask(item);
+        //                        }
 
-                    if(newSavedProjects.Any() && newSavedProjects != null)
-                    {
-                        foreach (var item in newSavedProjects)
-                        {
-                            var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
-                            foreach (var assignments in tasks.D.Results)
-                            {
-                                userTasks.Add(assignments);
-                            }
-                        }
+        //                        foreach (var item in userTasks)
+        //                        {
+        //                            await savedChangesRepo.AddUserTask(item);
+        //                        }
 
-                        if (userTasks.Any())
-                        {
-                            var isTheSame = savedTasks.SequenceEqual(userTasks);
+        //                        MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                var projects = await PSapi.GetAllProjects();
 
-                            if (isTheSame)
-                            {
-                                MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
-                            }
-                            else
-                            {
-                                foreach (var item in savedTasks)
-                                {
-                                    await savedChangesRepo.RemoveTask(item);
-                                }
+        //                foreach (var item in projects.D.Results)
+        //                {
+        //                    var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
+        //                    foreach (var assignments in tasks.D.Results)
+        //                    {
+        //                        userTasks.Add(assignments);
+        //                    }
+        //                }
 
-                                foreach (var item in userTasks)
-                                {
-                                    await savedChangesRepo.AddUserTask(item);
-                                }
+        //                if (userTasks.Any())
+        //                {
+        //                    foreach (var item in userTasks)
+        //                    {
+        //                        await savedChangesRepo.AddUserTask(item);
+        //                    }
 
-                                MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        var projects = await PSapi.GetAllProjects();
+        //                    MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Debug.WriteLine("CheckUserTaskChanges", e.Message);
+        //    }
+        //}
 
-                        foreach (var item in projects.D.Results)
-                        {
-                            var tasks = await PSapi.GetResourceAssignment(item.ProjectId, UserName);
-                            foreach (var assignments in tasks.D.Results)
-                            {
-                                userTasks.Add(assignments);
-                            }
-                        }
+        //private async Task<bool> CheckProjectChanges(List<ProjectResult> savedProjects)
+        //{
+        //    try
+        //    {
+        //        var projects = await PSapi.GetAllProjects();
 
-                        if (userTasks.Any())
-                        {
-                            foreach (var item in userTasks)
-                            {
-                                await savedChangesRepo.AddUserTask(item);
-                            }
+        //        if(savedProjects != null && savedProjects.Any())
+        //        {
+        //            var isTheSame = savedProjects.SequenceEqual(projects.D.Results);
 
-                            MessagingCenter.Instance.Send<List<TasksResult>>(userTasks, "DisplayUserTasks");
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("CheckUserTaskChanges", e.Message);
-            }
-        }
+        //            if (isTheSame)
+        //            {
+        //                MessagingCenter.Instance.Send<List<ProjectResult>>(savedProjects, "DisplayProjects");
+        //                return isTheSame;
+        //            }
+        //            else
+        //            {
+        //                foreach (var item in savedProjects)
+        //                {
+        //                    var isRemoved = await savedChangesRepo.RemoveProjects(item);
+        //                    if (isRemoved)
+        //                        Debug.WriteLine("CheckProjectChanges-null", isRemoved + "ang result");
+        //                    else
+        //                        Debug.WriteLine("CheckProjectChanges-null", isRemoved + "ang result");
+        //                }
 
-        private async Task<bool> CheckProjectChanges(List<ProjectResult> savedProjects)
-        {
-            try
-            {
-                var projects = await PSapi.GetAllProjects();
-
-                if(savedProjects != null && savedProjects.Any())
-                {
-                    var isTheSame = savedProjects.SequenceEqual(projects.D.Results);
-
-                    if (isTheSame)
-                    {
-                        MessagingCenter.Instance.Send<List<ProjectResult>>(savedProjects, "DisplayProjects");
-                        return isTheSame;
-                    }
-                    else
-                    {
-                        foreach (var item in savedProjects)
-                        {
-                            var isRemoved = await savedChangesRepo.RemoveProjects(item);
-                            if (isRemoved)
-                                Debug.WriteLine("CheckProjectChanges-null", isRemoved + "ang result");
-                            else
-                                Debug.WriteLine("CheckProjectChanges-null", isRemoved + "ang result");
-                        }
-
-                        foreach (var item in projects.D.Results)
-                        {
-                            await savedChangesRepo.AddProjects(item);
-                        }
-                        MessagingCenter.Instance.Send<List<ProjectResult>>(projects.D.Results, "DisplayProjects");
-                        return false;
-                    }
-                }
-                else
-                {
-                    foreach (var item in projects.D.Results)
-                    {
-                        var isAdded = await savedChangesRepo.AddProjects(item);
-                    }
-                    MessagingCenter.Instance.Send<List<ProjectResult>>(projects.D.Results, "DisplayProjects");
-                    return false;
-                }
+        //                foreach (var item in projects.D.Results)
+        //                {
+        //                    await savedChangesRepo.AddProjects(item);
+        //                }
+        //                MessagingCenter.Instance.Send<List<ProjectResult>>(projects.D.Results, "DisplayProjects");
+        //                return false;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            foreach (var item in projects.D.Results)
+        //            {
+        //                var isAdded = await savedChangesRepo.AddProjects(item);
+        //            }
+        //            MessagingCenter.Instance.Send<List<ProjectResult>>(projects.D.Results, "DisplayProjects");
+        //            return false;
+        //        }
                 
-            }
-            catch(Exception e)
-            {
-                Debug.WriteLine("CheckProjectChanges", e.Message);
-                return true;
-            }
-        }
+        //    }
+        //    catch(Exception e)
+        //    {
+        //        Debug.WriteLine("CheckProjectChanges", e.Message);
+        //        return true;
+        //    }
+        //}
 
-        private async Task<bool> GetUserInfo()
+        private async void GetUserInfo()
         {
             try
             {
@@ -383,12 +326,10 @@ namespace ProjectOnlineMobile2.ViewModels
                 UserName = user.D.Title;
                 UserEmail = user.D.Email;
                 MessagingCenter.Instance.Send<UserModel>(user, "UserInfo");
-                return true;
             }
             catch(Exception e)
             {
                 Debug.WriteLine("GetUserInfo", e.Message);
-                return false;
             }
         }
 

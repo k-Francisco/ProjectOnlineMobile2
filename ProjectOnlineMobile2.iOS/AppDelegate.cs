@@ -143,8 +143,6 @@ namespace ProjectOnlineMobile2.iOS
             }
         }
 
-
-
         //public async void GetUserInfo()
         //{
         //    try

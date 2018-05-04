@@ -24,13 +24,18 @@ namespace ProjectOnlineMobile2.Models.TSPL
         //public TimeSheet TimeSheet { get; set; }
         [JsonProperty("End")]
         public DateTime End { get; set; }
-        [Key]
         [JsonProperty("Id")]
         public string Id { get; set; }
         [JsonProperty("Name")]
         public string Name { get; set; }
         [JsonProperty("Start")]
         public DateTime Start { get; set; }
+
+        public override string ToString()
+        {
+            return Name + " ( " + Start.ToShortDateString() + "-" + End.ToShortDateString() + " )";
+        }
+
     }
     //public class Metadata
     //{

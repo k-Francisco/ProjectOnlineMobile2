@@ -20,7 +20,6 @@ Plugin.Connectivity
 Plugin.Settings.Abstractions
 Plugin.Settings
 ProjectOnlineMobile2
-Refit
 Remotion.Linq
 SQLitePCLRaw.batteries_green
 SQLitePCLRaw.batteries_v2

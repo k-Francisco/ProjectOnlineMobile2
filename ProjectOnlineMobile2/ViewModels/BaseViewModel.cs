@@ -20,8 +20,6 @@ namespace ProjectOnlineMobile2.ViewModels
         protected ProjectOnlineApiWrapper PSapi { get; private set; }
         protected SavedChangesRepository savedChangesRepo { get; set; }
 
-        ////used to identify the user
-        //public string userName = "";
 
         public BaseViewModel() {
             if (SPapi == null)
@@ -29,10 +27,6 @@ namespace ProjectOnlineMobile2.ViewModels
 
             if (PSapi == null)
                 PSapi = new ProjectOnlineApiWrapper();
-
-            //MessagingCenter.Instance.Subscribe<String>(this, "UserName", (user) => {
-            //    this.userName = user;
-            //});
 
         }
 

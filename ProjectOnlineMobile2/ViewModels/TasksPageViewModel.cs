@@ -21,72 +21,25 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _tasks, value); }
         }
 
-        //
-        //constructor
-        //
         public TasksPageViewModel()
         {
             Tasks = new ObservableCollection<Result>();
-            MessagingCenter.Instance.Subscribe<List<Result>>(this, "DisplayUserTasks", (tasks) => {
-                foreach (var item in tasks)
-                {
-                    Tasks.Add(item);
-                }
-            });
-            //if(NetStandardSingleton.Instance.projects is null)
-            //{
-            //    GetAllProjectsAndUserTasks();
-            //}
-            //else
-            //{
-            //    VerifyTaskCount();
-            //}
+            GetUserTasks();
         }
 
-        //
-        //functions
-        //
-        private void VerifyTaskCount()
+        private void GetUserTasks()
         {
-            //if (NetStandardSingleton.Instance.userTasks.Count is 0)
-            //{
-            //    GetTasks();
-            //}
-            //else
-            //{
-            //    foreach (var item in NetStandardSingleton.Instance.userTasks)
-            //    {
-            //        Tasks.Add(item);
-            //    }
-            //}
+            if (IsConnectedToInternet())
+            {
+                //TODO: Get the projects from the db and then retrieve the user's tasks by project
+                //TODO: Check if the collections in the db and in the cloud are equal
+            }
+            else
+            {
+                //retrieve from the db
+            }
         }
 
-        private async void GetAllProjectsAndUserTasks()
-        {
-            //var projects = await PSapi.GetAllProjects();
-            //MessagingCenter.Instance.Send<ProjectServerProjectList>(projects, "SetProjects");
-            //VerifyTaskCount();
-        }
-
-        //private async void GetTasks()
-        //{
-        //    try
-        //    {
-        //        foreach (var project in NetStandardSingleton.Instance.projects)
-        //        {
-        //            var resourceAssignments = await PSapi.GetResourceAssignment(project.ProjectId, userName);
-        //            //Debug.WriteLine("GetAllTasks", resourceAssignments.D.Results.Count + "");
-        //            foreach (var item in resourceAssignments.D.Results)
-        //            {
-        //                NetStandardSingleton.Instance.userTasks.Add(item);
-        //                Tasks.Add(item);
-        //            }
-        //        }
-        //    }
-        //    catch(Exception e)
-        //    {
-        //        Debug.WriteLine("GetTasks", e.Message);
-        //    }
-        //}
+        
     }
 }

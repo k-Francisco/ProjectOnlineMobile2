@@ -24,14 +24,43 @@ namespace ProjectOnlineMobile2.ViewModels
         {
             ProjectList = new ObservableCollection<Result>();
 
-            MessagingCenter.Instance.Subscribe<List<Result>>(this, "DisplayProjects", (projects) => {
-
-                foreach (var item in projects)
-                {
-                    ProjectList.Add(item);
-                }
-            });
+            GetProjects();
         }
 
+        private async void GetProjects()
+        {
+            if (IsConnectedToInternet())
+            {
+                try
+                {
+                    var projects = await PSapi.GetAllProjects();
+
+                    if (projects.D.Results.Any())
+                    {
+                        //TODO: check the collections form the database and server if it matches
+
+                        foreach (var item in projects.D.Results)
+                        {
+                            ProjectList.Add(item);
+                        }
+                    }
+                }
+                catch(Exception e)
+                {
+                    Debug.WriteLine("GetProjects-online", e.Message);
+                }
+            }
+            else
+            {
+                try
+                {
+                    //Retrieve items from the db
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("GetProjects-offline", e.Message);
+                }
+            }
+        }
     }
 }

@@ -42,14 +42,21 @@ namespace ProjectOnlineMobile2.ViewModels
             LineWorkChanges = new ObservableCollection<LineWorkChangesModel>();
             WorkTextChanged = new Command<LineWorkResult>(ExecuteWorkTextChanged);
 
-            MessagingCenter.Instance.Subscribe<String[]>(this, "TimesheetWork", (ids) => {
+            MessagingCenter.Instance.Subscribe<String[]>(this, "TimesheetWork", (ids) =>
+            {
                 _periodId = ids[0];
                 _lineId = ids[1];
                 ExecuteGetTimesheetLineWork();
             });
 
-            MessagingCenter.Instance.Subscribe<String>(this, "SaveTimesheetWorkChanges", (s) => {
+            MessagingCenter.Instance.Subscribe<String>(this, "SaveTimesheetWorkChanges", (s) =>
+            {
                 ExecuteSaveTimesheetWorkChanges();
+            });
+
+            //for android
+            MessagingCenter.Instance.Subscribe<String>(this, "ClearCollection", (s)=> {
+                LineWorkChanges.Clear();
             });
 
         }
@@ -61,22 +68,8 @@ namespace ProjectOnlineMobile2.ViewModels
                 if (IsConnectedToInternet())
                 {
                     var formDigest = await SPapi.GetFormDigest();
-
-                    TokenService tokenService = new TokenService();
-                    HttpClientHandler handler = new HttpClientHandler();
-                    handler.CookieContainer = new CookieContainer();
-                    handler.CookieContainer.Add(new Cookie("rtFa", tokenService.ExtractRtFa(), "/", "sharepointevo.sharepoint.com"));
-                    handler.CookieContainer.Add(new Cookie("FedAuth", tokenService.ExtractFedAuth(), "/", "sharepointevo.sharepoint.com"));
-
-                    Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", tokenService.ExtractRtFa());
-                    Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", tokenService.ExtractFedAuth());
-
-                    MediaTypeWithQualityHeaderValue mediaType = new MediaTypeWithQualityHeaderValue("application/json");
-                    mediaType.Parameters.Add(new NameValueHeaderValue("odata", "verbose"));
-
-                    HttpClient client = new HttpClient(handler);
-                    client.DefaultRequestHeaders.Accept.Add(mediaType);
-                    client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest.D.GetContextWebInformation.FormDigestValue);
+                    Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", formDigest.D.GetContextWebInformation.FormDigestValue);
+                    Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", formDigest.D.GetContextWebInformation.FormDigestTimeoutSeconds.ToString() + " wa");
 
                     foreach (var item in LineWorkChanges)
                     {
@@ -87,32 +80,20 @@ namespace ProjectOnlineMobile2.ViewModels
                             "'NonBillableWork':'0h', " +
                             "'OvertimeWork':'0h'}}";
 
-                        var contents = new StringContent(body);
-                        contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
-
-                        var response = await client.PostAsync("https://sharepointevo.sharepoint.com/sites/mobility/_api/ProjectServer/TimesheetPeriods('" + _periodId + "')" +
-                    "/Timesheet/Lines('" + _lineId + "')/Work/Add", contents);
-
-                        var postResponse = response.EnsureSuccessStatusCode();
-                        if (postResponse.IsSuccessStatusCode)
+                        var response = await PSapi.AddTimesheetLineWork(_periodId, _lineId, body, formDigest.D.GetContextWebInformation.FormDigestValue).ConfigureAwait(false);
+                        
+                        if (response)
                             Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", "Success");
                         else
                             Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", "Failed");
-
-                        //var response = await PSapi.AddTimesheetLineWork(_periodId, _lineId, body, formDigest.D.GetContextWebInformation.FormDigestValue);
-
-                        //if (!response)
-                        //    MessagingCenter.Instance.Send<String>("There was an error uploading the changes", "Toast");
-
-                        //Debug.WriteLine("ExecuteSaveTimesheetWorkChanges-online", response);
                     }
                 }
                 else
                 {
-                    MessagingCenter.Instance.Send<ObservableCollection<LineWorkChangesModel>>(LineWorkChanges, "SaveWorkChanges");
+                    //TODO: save it to the db
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", e.Message);
             }
@@ -170,10 +151,17 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private async void ExecuteGetTimesheetLineWork()
         {
-            var workHours = await PSapi.GetTimesheetLineWork(_periodId, _lineId);
-            foreach (var item in workHours.D.Results)
+            if (IsConnectedToInternet())
             {
-                LineWork.Add(item);
+                var workHours = await PSapi.GetTimesheetLineWork(_periodId, _lineId);
+                foreach (var item in workHours.D.Results)
+                {
+                    LineWork.Add(item);
+                }
+            }
+            else
+            {
+                //retrieve items from the db
             }
         }
     }

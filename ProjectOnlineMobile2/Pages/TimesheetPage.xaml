@@ -134,7 +134,7 @@
                                    Image="arrow_down"
                                    Title="Select Period"
                                    Margin="16"
-                                   ItemsSource="{Binding TimesheetPeriods}"
+                                   ItemsSource="{Binding PeriodList}"
                                    SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                 <controls:CustomPicker.Behaviors>
                     <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedItemChangedCommand}"/>

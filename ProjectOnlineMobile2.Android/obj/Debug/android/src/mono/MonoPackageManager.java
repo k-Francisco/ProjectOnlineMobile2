@@ -129,7 +129,6 @@ class MonoPackageManager_Resources {
 		"Plugin.Settings.Abstractions.dll",
 		"Plugin.Settings.dll",
 		"ProjectOnlineMobile2.dll",
-		"Refit.dll",
 		"Remotion.Linq.dll",
 		"SQLitePCLRaw.batteries_green.dll",
 		"SQLitePCLRaw.batteries_v2.dll",

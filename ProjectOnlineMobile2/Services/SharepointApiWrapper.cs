@@ -1,5 +1,5 @@
-﻿using ProjectOnlineMobile2.Models;
-using Refit;
+﻿using Newtonsoft.Json;
+using ProjectOnlineMobile2.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,23 +28,15 @@ namespace ProjectOnlineMobile2.Services
                 _client.DefaultRequestHeaders.Accept.Add(mediaType);
             }
 
-            //if(webInfo == null)
-            //{
-            //    GetWebInfo();
-            //}
         }
-
-        //private async void GetWebInfo()
-        //{
-        //    webInfo = await GetFormDigest();
-        //}
 
         public async Task<UserModel> GetCurrentUser()
         {
             
             try
             {
-                return await RestService.For<ISharepointApi>(_client).GetCurrentUser();
+                var response = await _client.GetStringAsync(_sharepointUrl + "/_api/web/currentUser?");
+                return JsonConvert.DeserializeObject<UserModel>(response);
             }
             catch(Exception e)
             {
@@ -57,7 +49,15 @@ namespace ProjectOnlineMobile2.Services
         {
             try
             {
-                return await RestService.For<ISharepointApi>(_client).GetFormDigest();
+                var contents = new StringContent("", Encoding.UTF8, "application/json");
+
+                var response = await _client.PostAsync(_sharepointUrl+"/sites/mobility/_api/contextinfo",contents);
+                var postResponse = response.EnsureSuccessStatusCode();
+
+                if (postResponse.IsSuccessStatusCode)
+                    return JsonConvert.DeserializeObject<FormDigestModel>(await postResponse.Content.ReadAsStringAsync());
+                else
+                    return null;
             }
             catch (Exception e)
             {
