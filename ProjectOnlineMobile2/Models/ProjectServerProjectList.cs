@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
+using Realms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ProjectOnlineMobile2.Models.PSPL
@@ -16,7 +16,7 @@ namespace ProjectOnlineMobile2.Models.PSPL
         [JsonProperty("results")]
         public List<Result> Results { get; set; }
     }
-    public class Result
+    public class Result : RealmObject
     {
         //[JsonProperty("__metadata")]
         //public Metadata Metadata { get; set; }
@@ -36,7 +36,6 @@ namespace ProjectOnlineMobile2.Models.PSPL
         //public StagesInfo StagesInfo { get; set; }
         //[JsonProperty("Tasks")]
         //public Tasks Tasks { get; set; }
-        [Key]
         [JsonProperty("ProjectId")]
         public string ProjectId { get; set; }
         //[JsonProperty("EnterpriseProjectTypeDescription")]
@@ -122,7 +121,7 @@ namespace ProjectOnlineMobile2.Models.PSPL
         //[JsonProperty("ProjectCPI")]
         //public string ProjectCPI { get; set; }
         [JsonProperty("ProjectCreatedDate")]
-        public DateTime ProjectCreatedDate { get; set; }
+        public DateTimeOffset ProjectCreatedDate { get; set; }
         //[JsonProperty("ProjectCurrency")]
         //public string ProjectCurrency { get; set; }
         //[JsonProperty("ProjectCV")]
@@ -146,7 +145,7 @@ namespace ProjectOnlineMobile2.Models.PSPL
         //[JsonProperty("ProjectEnterpriseFeatures")]
         //public bool ProjectEnterpriseFeatures { get; set; }
         [JsonProperty("ProjectFinishDate")]
-        public DateTime ProjectFinishDate { get; set; }
+        public DateTimeOffset ProjectFinishDate { get; set; }
         //[JsonProperty("ProjectFinishVariance")]
         //public string ProjectFinishVariance { get; set; }
         //[JsonProperty("ProjectFixedCost")]
@@ -160,7 +159,7 @@ namespace ProjectOnlineMobile2.Models.PSPL
         //[JsonProperty("ProjectLateStart")]
         //public DateTime ProjectLateStart { get; set; }
         [JsonProperty("ProjectLastPublishedDate")]
-        public DateTime ProjectLastPublishedDate { get; set; }
+        public DateTimeOffset ProjectLastPublishedDate { get; set; }
         //[JsonProperty("ProjectManagerName")]
         //public object ProjectManagerName { get; set; }
         //[JsonProperty("ProjectModifiedDate")]

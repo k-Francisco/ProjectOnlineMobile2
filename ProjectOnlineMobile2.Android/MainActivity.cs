@@ -23,7 +23,6 @@ using ProjectOnlineMobile2.Models.TLL;
 using Android.Content;
 using ProjectOnlineMobile2.Android.Activities;
 using System.IO;
-using ProjectOnlineMobile2.Database;
 
 namespace ProjectOnlineMobile2.Android
 {
@@ -77,16 +76,13 @@ namespace ProjectOnlineMobile2.Android
                 DisplayAlertDialog(periodId);
             });
 
-            MessagingCenter.Instance.Subscribe<UserModel>(this, "UserInfo", (user) => {
+            MessagingCenter.Instance.Subscribe<ProjectOnlineMobile2.Models.D_User>(this, "UserInfo", (user) => {
                 GetUserInfo(user);
             });
 
             MessagingCenter.Instance.Subscribe<String>(this, "Toast", (message) => {
                 DisplayWorkChangesToast(message);
             });
-
-            //initialize the db
-            var dbPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal),"savedChangesDB.db");
 
             //handle navigation
             navigationView.NavigationItemSelected += (sender, e) =>
@@ -155,10 +151,10 @@ namespace ProjectOnlineMobile2.Android
             StartActivity(intent);
         }
 
-        private void GetUserInfo(UserModel user)
+        private void GetUserInfo(ProjectOnlineMobile2.Models.D_User user)
         {
-            userName.Text = user.D.Title;
-            userEmail.Text = user.D.Email;
+            userName.Text = user.Title;
+            userEmail.Text = user.Email;
         }
 
         int oldPosition = -1;

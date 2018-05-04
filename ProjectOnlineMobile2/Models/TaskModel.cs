@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ProjectOnlineMobile2.Models.TaskModel
@@ -126,7 +125,6 @@ namespace ProjectOnlineMobile2.Models.TaskModel
         public int FreeSlackMilliseconds { get; set; }
         [JsonProperty("FreeSlackTimeSpan")]
         public string FreeSlackTimeSpan { get; set; }
-        [Key]
         [JsonProperty("Id")]
         public string Id { get; set; }
         [JsonProperty("IgnoreResourceCalendar")]

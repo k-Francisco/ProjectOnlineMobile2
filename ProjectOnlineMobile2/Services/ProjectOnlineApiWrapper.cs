@@ -91,18 +91,21 @@ namespace ProjectOnlineMobile2.Services
         //    }
         //}
 
-        //public async Task<ResourceAssignmentModel> GetResourceAssignment(string projectUID, string resourceName)
-        //{
-        //    try
-        //    {
-        //        return await RestService.For<IProjectOnlineApi>(_client).GetResourceAssignment(projectUID, resourceName);
-        //    }
-        //    catch(Exception e)
-        //    {
-        //        Debug.WriteLine("GetResourceAssignment", e.Message);
-        //        return null;
-        //    }
-        //}
+        public async Task<ResourceAssignmentModel> GetResourceAssignment(string projectUID, string resourceName)
+        {
+            try
+            {
+                var response = await _client.GetStringAsync(_projectOnlineUrl +
+                    "/_api/ProjectData/Projects(guid'"+ projectUID +"')/Assignments?$filter=ResourceName eq '"+ resourceName +"'");
+
+                return JsonConvert.DeserializeObject<ResourceAssignmentModel>(response);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("GetResourceAssignment", e.Message);
+                return null;
+            }
+        }
 
         public async Task<TimeSheetPeriodList> GetAllTimesheetPeriods()
         {

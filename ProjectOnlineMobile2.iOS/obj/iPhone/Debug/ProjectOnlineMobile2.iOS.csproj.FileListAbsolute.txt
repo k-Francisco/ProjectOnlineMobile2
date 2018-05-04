@@ -3,9 +3,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Deb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\ProjectOnlineMobile2.iOS.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.AspNetCore.WebUtilities.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.Data.Sqlite.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.EntityFrameworkCore.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.EntityFrameworkCore.Sqlite.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.Extensions.Caching.Abstractions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.Extensions.Caching.Memory.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
@@ -22,6 +19,9 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Deb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Settings.Abstractions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Settings.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\ProjectOnlineMobile2.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Realm.DataBinding.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Realm.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Realm.Sync.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Remotion.Linq.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\SQLitePCLRaw.batteries_green.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\SQLitePCLRaw.batteries_v2.dll
@@ -41,9 +41,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Deb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\ProjectOnlineMobile2.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.AspNetCore.WebUtilities.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.Data.Sqlite.xml
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.EntityFrameworkCore.xml
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.EntityFrameworkCore.Relational.xml
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.EntityFrameworkCore.Sqlite.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.Extensions.Caching.Abstractions.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.Extensions.Caching.Memory.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
@@ -64,6 +61,11 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Deb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Settings.Abstractions.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Settings.Abstractions.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Plugin.Settings.Abstractions.dll.mdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Realm.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Realm.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Realm.DataBinding.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Realm.Sync.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Realm.Sync.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\Remotion.Linq.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\System.Collections.Immutable.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Debug\System.Diagnostics.DiagnosticSource.xml

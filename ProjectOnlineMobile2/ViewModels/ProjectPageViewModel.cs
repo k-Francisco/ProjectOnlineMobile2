@@ -29,6 +29,8 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private async void GetProjects()
         {
+            var savedProjects = realm.All<Result>().ToList();
+
             if (IsConnectedToInternet())
             {
                 try
@@ -37,11 +39,46 @@ namespace ProjectOnlineMobile2.ViewModels
 
                     if (projects.D.Results.Any())
                     {
-                        //TODO: check the collections form the database and server if it matches
-
-                        foreach (var item in projects.D.Results)
+                        if (savedProjects.Any())
                         {
-                            ProjectList.Add(item);
+                            var isTheSame = savedProjects.SequenceEqual(projects.D.Results);
+                            if (isTheSame)
+                            {
+                                foreach (var item in savedProjects)
+                                {
+                                    ProjectList.Add(item);
+                                }
+                            }
+                            else
+                            {
+                                realm.Write(()=> {
+                                    realm.RemoveAll<Result>();
+                                });
+                                
+                                foreach (var item in projects.D.Results)
+                                {
+                                    realm.Write(()=> {
+                                        realm.Add(item);
+                                    });
+                                    ProjectList.Add(item);
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            realm.Write(() => {
+                                realm.RemoveAll<Result>();
+                            });
+
+                            foreach (var item in projects.D.Results)
+                            {
+                                realm.Write(() => {
+                                    realm.Add(item);
+                                });
+                                ProjectList.Add(item);
+                            }
+
                         }
                     }
                 }
@@ -54,7 +91,10 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 try
                 {
-                    //Retrieve items from the db
+                    foreach (var item in savedProjects)
+                    {
+                        ProjectList.Add(item);
+                    }
                 }
                 catch (Exception e)
                 {

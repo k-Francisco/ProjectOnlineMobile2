@@ -8,7 +8,6 @@ using ProjectOnlineMobile2.Services;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.SideMenu;
-using ProjectOnlineMobile2.Database;
 using System.IO;
 
 [assembly: Preserve(typeof(System.Linq.Queryable), AllMembers = true)]
@@ -86,9 +85,6 @@ namespace ProjectOnlineMobile2.iOS
             MessagingCenter.Instance.Subscribe<LineResult>(this, "PushTimesheetWorkPage", (timesheetLine) => {
                 PushTimesheetWorkPage(timesheetLine);
             });
-
-            var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"..","Library","savedchanges.db");
-
 
             navigationController = new UINavigationController();
             Window.RootViewController = navigationController;

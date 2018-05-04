@@ -1,9 +1,6 @@
 FormsViewGroup
 Microsoft.AspNetCore.WebUtilities
 Microsoft.Data.Sqlite
-Microsoft.EntityFrameworkCore
-Microsoft.EntityFrameworkCore.Relational
-Microsoft.EntityFrameworkCore.Sqlite
 Microsoft.Extensions.Caching.Abstractions
 Microsoft.Extensions.Caching.Memory
 Microsoft.Extensions.Configuration.Abstractions
@@ -20,6 +17,9 @@ Plugin.Connectivity
 Plugin.Settings.Abstractions
 Plugin.Settings
 ProjectOnlineMobile2
+Realm.DataBinding
+Realm
+Realm.Sync
 Remotion.Linq
 SQLitePCLRaw.batteries_green
 SQLitePCLRaw.batteries_v2

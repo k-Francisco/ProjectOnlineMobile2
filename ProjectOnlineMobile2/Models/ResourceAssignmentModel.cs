@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
+using Realms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
@@ -14,12 +14,12 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
     public class D
     {
         [JsonProperty("results")]
-        public List<Result> Results { get; set; }
+        public List<AssignmentResult> Results { get; set; }
     }
-    public class Result
+    public class AssignmentResult : RealmObject
     {
-        [JsonProperty("__metadata")]
-        public Metadata Metadata { get; set; }
+        //[JsonProperty("__metadata")]
+        //public Metadata Metadata { get; set; }
         //[JsonProperty("Baseline")]
         //public Baseline Baseline { get; set; }
         //[JsonProperty("Project")]
@@ -75,7 +75,7 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         [JsonProperty("AssignmentCostVariance")]
         public string AssignmentCostVariance { get; set; }
         [JsonProperty("AssignmentCreatedDate")]
-        public DateTime AssignmentCreatedDate { get; set; }
+        public DateTimeOffset AssignmentCreatedDate { get; set; }
         [JsonProperty("AssignmentCreatedRevisionCounter")]
         public int AssignmentCreatedRevisionCounter { get; set; }
         [JsonProperty("AssignmentCV")]
@@ -83,7 +83,7 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         [JsonProperty("AssignmentDelay")]
         public string AssignmentDelay { get; set; }
         [JsonProperty("AssignmentFinishDate")]
-        public DateTime AssignmentFinishDate { get; set; }
+        public DateTimeOffset AssignmentFinishDate { get; set; }
         [JsonProperty("AssignmentFinishVariance")]
         public string AssignmentFinishVariance { get; set; }
         [JsonProperty("AssignmentIsOverallocated")]
@@ -95,7 +95,7 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         [JsonProperty("AssignmentMaterialWork")]
         public string AssignmentMaterialWork { get; set; }
         [JsonProperty("AssignmentModifiedDate")]
-        public DateTime AssignmentModifiedDate { get; set; }
+        public DateTimeOffset AssignmentModifiedDate { get; set; }
         [JsonProperty("AssignmentModifiedRevisionCounter")]
         public int AssignmentModifiedRevisionCounter { get; set; }
         [JsonProperty("AssignmentOvertimeCost")]
@@ -127,7 +127,7 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         [JsonProperty("AssignmentResourceType")]
         public int AssignmentResourceType { get; set; }
         [JsonProperty("AssignmentStartDate")]
-        public DateTime AssignmentStartDate { get; set; }
+        public DateTimeOffset AssignmentStartDate { get; set; }
         [JsonProperty("AssignmentStartVariance")]
         public string AssignmentStartVariance { get; set; }
         [JsonProperty("AssignmentSV")]
@@ -150,7 +150,6 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         public string ResourceId { get; set; }
         [JsonProperty("ResourceName")]
         public string ResourceName { get; set; }
-        [Key]
         [JsonProperty("TaskId")]
         public string TaskId { get; set; }
         [JsonProperty("TaskIsActive")]

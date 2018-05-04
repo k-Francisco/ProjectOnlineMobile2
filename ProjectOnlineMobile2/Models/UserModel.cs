@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Realms;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,14 +11,14 @@ namespace ProjectOnlineMobile2.Models
         [JsonProperty("d")]
         public D_User D { get; set; }
     }
-    public class D_User
+    public class D_User : RealmObject
     {
-        [JsonProperty("__metadata")]
-        public Metadata_User Metadata { get; set; }
-        [JsonProperty("Alerts")]
-        public Alerts Alerts { get; set; }
-        [JsonProperty("Groups")]
-        public Groups Groups { get; set; }
+        //[JsonProperty("__metadata")]
+        //public Metadata_User Metadata { get; set; }
+        //[JsonProperty("Alerts")]
+        //public Alerts Alerts { get; set; }
+        //[JsonProperty("Groups")]
+        //public Groups Groups { get; set; }
         [JsonProperty("Id")]
         public int Id { get; set; }
         [JsonProperty("IsHiddenInUI")]
@@ -36,8 +37,8 @@ namespace ProjectOnlineMobile2.Models
         public bool IsShareByEmailGuestUser { get; set; }
         [JsonProperty("IsSiteAdmin")]
         public bool IsSiteAdmin { get; set; }
-        [JsonProperty("UserId")]
-        public UserId UserId { get; set; }
+        //[JsonProperty("UserId")]
+        //public UserId UserId { get; set; }
     }
     public class Metadata_User
     {

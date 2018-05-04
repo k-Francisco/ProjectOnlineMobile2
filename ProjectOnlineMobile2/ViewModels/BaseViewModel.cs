@@ -1,7 +1,7 @@
 ﻿using Plugin.Connectivity;
-using ProjectOnlineMobile2.Database;
 using ProjectOnlineMobile2.Models.PSPL;
 using ProjectOnlineMobile2.Services;
+using Realms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,7 +18,7 @@ namespace ProjectOnlineMobile2.ViewModels
 
         protected SharepointApiWrapper SPapi { get; private set; }
         protected ProjectOnlineApiWrapper PSapi { get; private set; }
-
+        protected Realm realm { get; set; }
 
         public BaseViewModel() {
             if (SPapi == null)
@@ -26,6 +26,9 @@ namespace ProjectOnlineMobile2.ViewModels
 
             if (PSapi == null)
                 PSapi = new ProjectOnlineApiWrapper();
+
+            if (realm == null)
+                realm = Realm.GetInstance();
 
         }
 
