@@ -5,7 +5,7 @@ using Android.Support.V4.Widget;
 using Android.Views;
 
 using Android.Support.V7.App;
-using LineResult = ProjectOnlineMobile2.Models.TLL.Result;
+using LineResult = ProjectOnlineMobile2.Models.TLL.TimesheetLineResult;
 using Fragment = Android.Support.V4.App.Fragment;
 using AlertDialog = Android.Support.V7.App.AlertDialog;
 using Android.Support.Design.Widget;
@@ -61,13 +61,6 @@ namespace ProjectOnlineMobile2.Android
             userName = navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.tvUserName);
             userEmail = navigationView.GetHeaderView(0).FindViewById<TextView>(Resource.Id.tvUserEmail);
 
-
-            Forms.Init(this, savedInstanceState);
-            _homePage = new HomePage().CreateSupportFragment(this);
-            _timesheetPage = new TimesheetPage().CreateSupportFragment(this);
-            _projectsPage = new ProjectPage().CreateSupportFragment(this);
-            _tasksPage = new TasksPage().CreateSupportFragment(this);
-
             MessagingCenter.Instance.Subscribe<LineResult>(this, "PushTimesheetWorkPage", (timesheetLine) => {
                 PushTimesheetWorkPage(timesheetLine);
             });
@@ -83,6 +76,11 @@ namespace ProjectOnlineMobile2.Android
             MessagingCenter.Instance.Subscribe<String>(this, "Toast", (message) => {
                 DisplayWorkChangesToast(message);
             });
+
+
+            Forms.Init(this, savedInstanceState);
+            _homePage = new HomePage().CreateSupportFragment(this);
+            
 
             //handle navigation
             navigationView.NavigationItemSelected += (sender, e) =>
@@ -170,14 +168,23 @@ namespace ProjectOnlineMobile2.Android
             switch (position)
             {
                 case 0:
+                    if(_projectsPage == null)
+                        _projectsPage = new ProjectPage().CreateSupportFragment(this);
+
                     fragment = _projectsPage;
                     SupportActionBar.Title = "Projects";
                     break;
                 case 1:
+                    if(_tasksPage == null)
+                        _tasksPage = new TasksPage().CreateSupportFragment(this);
+
                     fragment = _tasksPage;
                     SupportActionBar.Title = "My Tasks";
                     break;
                 case 2:
+                    if(_timesheetPage == null)
+                        _timesheetPage = new TimesheetPage().CreateSupportFragment(this);
+
                     fragment = _timesheetPage;
                     SupportActionBar.Title = "Timesheet";
                     break;

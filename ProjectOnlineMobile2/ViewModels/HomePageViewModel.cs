@@ -58,7 +58,7 @@ namespace ProjectOnlineMobile2.ViewModels
                         realm.Write(()=> {
                             realm.Add<ProjectOnlineMobile2.Models.D_User>(user.D);
                         });
-                        MessagingCenter.Instance.Send<UserModel>(user, "UserInfo");
+                        MessagingCenter.Instance.Send<ProjectOnlineMobile2.Models.D_User>(user.D, "UserInfo");
                     }
                     else
                     {

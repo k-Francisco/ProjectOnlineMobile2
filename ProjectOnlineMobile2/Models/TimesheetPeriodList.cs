@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Realms;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,26 +14,26 @@ namespace ProjectOnlineMobile2.Models.TSPL
     public class D
     {
         [JsonProperty("results")]
-        public List<Result> Results { get; set; }
+        public List<TimesheetPeriodResult> Results { get; set; }
     }
-    public class Result
+    public class TimesheetPeriodResult : RealmObject
     {
         //[JsonProperty("__metadata")]
         //public Metadata Metadata { get; set; }
         //[JsonProperty("TimeSheet")]
         //public TimeSheet TimeSheet { get; set; }
         [JsonProperty("End")]
-        public DateTime End { get; set; }
+        public DateTimeOffset End { get; set; }
         [JsonProperty("Id")]
         public string Id { get; set; }
         [JsonProperty("Name")]
         public string Name { get; set; }
         [JsonProperty("Start")]
-        public DateTime Start { get; set; }
+        public DateTimeOffset Start { get; set; }
 
         public override string ToString()
         {
-            return Name + " ( " + Start.ToShortDateString() + "-" + End.ToShortDateString() + " )";
+            return Name + " ( " + Start.DateTime.ToShortDateString() + "-" + End.DateTime.ToShortDateString() + " )";
         }
 
     }

@@ -1,13 +1,15 @@
-﻿using LineResult = ProjectOnlineMobile2.Models.TLL.Result;
-using TimesheetPeriodsResult = ProjectOnlineMobile2.Models.TSPL.Result;
+﻿using LineResult = ProjectOnlineMobile2.Models.TLL.TimesheetLineResult;
+using TimesheetPeriodsResult = ProjectOnlineMobile2.Models.TSPL.TimesheetPeriodResult;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Collections.ObjectModel;
 using System;
-using ProjectOnlineMobile2.Services;
+using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
+using ProjectOnlineMobile2.Models;
+using ProjectOnlineMobile2.Models.TLL;
 
 namespace ProjectOnlineMobile2.ViewModels
 {
@@ -86,31 +88,64 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private async void GetTimesheetPeriods()
         {
-            if (IsConnectedToInternet())
+            var savedPeriods = realm.All<TimesheetPeriodsResult>().ToList();
+
+            try
             {
-                //TODO: check if the collections in database and in the cloud are equal
-
-                var periods = await PSapi.GetAllTimesheetPeriods();
-                foreach (var item in periods.D.Results)
+                if (IsConnectedToInternet())
                 {
-                    PeriodList.Add(item);
-                }
+                    var periods = await PSapi.GetAllTimesheetPeriods();
 
-                for (int i = 0; i < PeriodList.Count; i++)
-                {
-                    if (DateTime.Compare(DateTime.Now, PeriodList[i].Start) >= 0 &&
-                            DateTime.Compare(DateTime.Now, PeriodList[i].End) < 0)
+                    var isTheSame = savedPeriods.SequenceEqual(periods.D.Results);
+
+                    if (isTheSame)
                     {
-                        SelectedIndex = i;
-                        ExecuteSelectedItemChangedCommand();
-                        break;
+                        foreach (var item in savedPeriods)
+                        {
+                            PeriodList.Add(item);
+                        }
+                    }
+                    else
+                    {
+                        realm.Write(() => {
+                            realm.RemoveAll<TimesheetPeriodsResult>();
+                        });
+
+                        foreach (var item in periods.D.Results)
+                        {
+                            realm.Write(() => {
+                                realm.Add(item);
+                            });
+
+                            PeriodList.Add(item);
+                        }
+                    }
+
+                }
+                else
+                {
+                    foreach (var item in savedPeriods)
+                    {
+                        PeriodList.Add(item);
                     }
                 }
 
+                if (PeriodList.Any())
+                {
+                    for (int i = 0; i < PeriodList.Count; i++)
+                    {
+                        if (DateTime.Compare(DateTime.Now, PeriodList[i].Start.DateTime) >= 0 &&
+                                DateTime.Compare(DateTime.Now, PeriodList[i].End.DateTime) < 0)
+                        {
+                            SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
             }
-            else
+            catch(Exception e)
             {
-                //TODO: retrieve items in the db
+                Debug.WriteLine("GetTimesheetPeriods",e.Message);
             }
         }
 
@@ -125,13 +160,102 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private async void ExecuteSelectedItemChangedCommand()
         {
+            PeriodLines.Clear();
+
+            var savedLines = realm.All<SavedLinesModel>().Where(p => p.periodId == PeriodList[SelectedIndex].Id);
+
+            var isTheSame = true;
+
             try
             {
-                PeriodLines.Clear();
-                var lines = await PSapi.GetTimesheetLinesByPeriod(PeriodList[SelectedIndex].Id);
-                foreach (var item in lines.D.Results)
+                if (IsConnectedToInternet())
                 {
-                    PeriodLines.Add(item);
+                    var lines = await PSapi.GetTimesheetLinesByPeriod(PeriodList[SelectedIndex].Id);
+
+                    if (!savedLines.Any())
+                    {
+                        realm.Write(()=> {
+                            foreach (var item in lines.D.Results)
+                            {
+                                realm.Add(new SavedLinesModel() {
+                                    periodId = PeriodList[SelectedIndex].Id,
+                                    line = item
+                                });
+                                PeriodLines.Add(item);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        var newSavedLines = realm.All<SavedLinesModel>();
+                        foreach (var item in newSavedLines)
+                        {
+                            if (item.periodId.Equals(PeriodList[SelectedIndex].Id))
+                            {
+                                foreach (var item2 in lines.D.Results)
+                                {
+                                    if (!item.line.Equals(item2))
+                                    {
+                                        isTheSame = false;
+                                        break;
+                                    }
+                                }
+                                if (!isTheSame)
+                                    break;
+                            }
+                        }
+
+                        if (isTheSame)
+                        {
+                            foreach (var item in newSavedLines)
+                            {
+                                PeriodLines.Add(item.line);
+                            }
+                        }
+                        else
+                        {
+                            foreach (var item in newSavedLines)
+                            {
+                                realm.Write(() =>
+                                {
+                                    realm.Remove(item);
+                                });
+                            }
+
+                            foreach (var item in lines.D.Results)
+                            {
+                                realm.Write(() =>
+                                {
+                                    realm.Add(item);
+                                });
+                            }
+
+                            realm.Refresh();
+
+                            var newSavedLine2 = realm.All<SavedLinesModel>();
+                            foreach (var item in newSavedLine2)
+                            {
+                                if(item.periodId.Equals(PeriodList[SelectedIndex].Id))
+                                    PeriodLines.Add(item.line);
+                            }
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    if (savedLines != null)
+                    {
+                        foreach (var item in savedLines)
+                        {
+                            PeriodLines.Add(item.line);
+                        }
+                    }
+                    else
+                    {
+                        //display that the list is empty and the user might want to connect to the internet
+                    }
                 }
             }
             catch (Exception e)

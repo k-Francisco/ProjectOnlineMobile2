@@ -48,11 +48,6 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Label Text="Percent complete"
-                                           FontSize="Micro"
-                                           Grid.Row="0"
-                                           Grid.Column="0"/>
-
                                     <controls:CustomProgressBar HorizontalOptions="FillAndExpand"
                                                                 Progress="{Binding PercentCompletedInDecimal}"
                                                                 ProgressColor="#31752F"
@@ -97,7 +92,7 @@
                                            TextColor="Black"
                                            Grid.Row="1" Grid.Column="0"/>
 
-                                    <Label Text="Start"
+                                    <Label Text="Finish"
                                            FontSize="Micro"
                                            Grid.Row="0" Grid.Column="1"/>
 

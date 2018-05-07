@@ -53,7 +53,7 @@ namespace ProjectOnlineMobile2.ViewModels
                             }
                         }
 
-                        var isTheSame = savedTasks.SequenceEqual(tempCollection);
+                        var isTheSame = savedTasks.ToList().SequenceEqual(tempCollection);
 
                         if (isTheSame)
                         {

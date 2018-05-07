@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Realms;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,21 +12,21 @@ namespace ProjectOnlineMobile2.Models.TLL
         [JsonProperty("d")]
         public D D { get; set; }
     }
-    public class D
+    public class D 
     {
         [JsonProperty("results")]
-        public List<Result> Results { get; set; }
+        public List<TimesheetLineResult> Results { get; set; }
     }
-    public class Result
+    public class TimesheetLineResult : RealmObject
     {
-        [JsonProperty("__metadata")]
-        public Metadata Metadata { get; set; }
-        [JsonProperty("Assignment")]
-        public Assignment Assignment { get; set; }
-        [JsonProperty("TimeSheet")]
-        public TimeSheet TimeSheet { get; set; }
-        [JsonProperty("Work")]
-        public Work Work { get; set; }
+        //[JsonProperty("__metadata")]
+        //public Metadata Metadata { get; set; }
+        //[JsonProperty("Assignment")]
+        //public Assignment Assignment { get; set; }
+        //[JsonProperty("TimeSheet")]
+        //public TimeSheet TimeSheet { get; set; }
+        //[JsonProperty("Work")]
+        //public Work Work { get; set; }
         [JsonProperty("Comment")]
         public string Comment { get; set; }
         [JsonProperty("Id")]

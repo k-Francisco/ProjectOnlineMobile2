@@ -52,12 +52,7 @@ namespace ProjectOnlineMobile2.iOS
             shared = this;
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
-            _projectPage = new ProjectPage().CreateViewController();
-            _projectPage.Title = "Projects";
-            _tasksPage = new TasksPage().CreateViewController();
-            _tasksPage.Title = "Tasks";
-            _timesheetPage = new TimesheetPage().CreateViewController();
-            _timesheetPage.Title = "Timesheet";
+            
 
             //_sideMenuManager = new SideMenuManager();
 
@@ -125,31 +120,31 @@ namespace ProjectOnlineMobile2.iOS
         {
             if (page.Equals("ProjectPage"))
             {
+                if(_projectPage == null)
+                    _projectPage = new ProjectPage().CreateViewController();
+                _projectPage.Title = "Projects";
+
                 navigationController.PushViewController(_projectPage, true);
             }
             else if (page.Equals("TasksPage"))
             {
+                if(_tasksPage == null)
+                    _tasksPage = new TasksPage().CreateViewController();
+                    _tasksPage.Title = "Tasks";
+
                 navigationController.PushViewController(_tasksPage, true);
             }
             else if (page.Equals("TimesheetPage"))
             {
+                if(_timesheetPage == null)
+                    _timesheetPage = new TimesheetPage().CreateViewController();
+                    _timesheetPage.Title = "Timesheet";
+
                 navigationController.PushViewController(_timesheetPage, true);
             }
         }
 
-        //public async void GetUserInfo()
-        //{
-        //    try
-        //    {
-        //        var sharepointApi = new SharepointApiWrapper();
-        //        UserModel user = await sharepointApi.GetCurrentUser();
-        //        MessagingCenter.Instance.Send<String>(user.D.Title, "UserName");
-        //    }
-        //    catch(Exception e)
-        //    {
-        //        Debug.WriteLine("GetUserInfo", e.Message);
-        //    }
-        //}
+       
 
         //public void SetupSideMenu(UIViewController controller)
         //{
