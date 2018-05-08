@@ -6,9 +6,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\FormsViewGroup.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.AspNetCore.WebUtilities.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.Data.Sqlite.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.EntityFrameworkCore.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.EntityFrameworkCore.Sqlite.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.Extensions.Caching.Abstractions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.Extensions.Caching.Memory.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.Extensions.Configuration.Abstractions.dll
@@ -25,7 +22,9 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Plugin.Settings.Abstractions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Plugin.Settings.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\ProjectOnlineMobile2.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Refit.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Realm.DataBinding.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Realm.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Realm.Sync.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Remotion.Linq.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\SQLitePCLRaw.batteries_green.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\SQLitePCLRaw.batteries_v2.dll
@@ -66,9 +65,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\FormsViewGroup.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.AspNetCore.WebUtilities.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.Data.Sqlite.xml
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.EntityFrameworkCore.xml
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.EntityFrameworkCore.Relational.xml
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.EntityFrameworkCore.Sqlite.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.Extensions.Caching.Abstractions.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.Extensions.Caching.Memory.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.Extensions.Configuration.Abstractions.xml
@@ -91,7 +87,11 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Plugin.Settings.Abstractions.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Plugin.Settings.Abstractions.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Plugin.Settings.Abstractions.dll.mdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Refit.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Realm.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Realm.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Realm.DataBinding.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Realm.Sync.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Realm.Sync.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Remotion.Linq.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\System.Collections.Immutable.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\System.Diagnostics.DiagnosticSource.xml
@@ -147,6 +147,8 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\res\drawable-hdpi\ic_more.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\res\drawable\frame_shadow.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\res\drawable-hdpi\arrow_down.png
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\res\menu\save_work_menu.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\res\drawable-hdpi\user.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\R.cs.flag
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\uploadflags.txt
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\Microsoft.CSharp.pdb
@@ -168,13 +170,15 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\System.IO.Compression.FileSystem.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\System.ComponentModel.Composition.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\System.Web.Services.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\System.ComponentModel.DataAnnotations.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Release\System.ServiceModel.Internals.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\Microsoft.CSharp.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\Mono.Android.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\mscorlib.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\Plugin.Connectivity.Abstractions.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\ProjectOnlineMobile2.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\Realm.DataBinding.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\Realm.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\Realm.Sync.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\System.Core.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\System.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\System.IdentityModel.pdb
@@ -193,7 +197,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\System.IO.Compression.FileSystem.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\System.ComponentModel.Composition.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\System.Web.Services.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\System.ComponentModel.DataAnnotations.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\System.ServiceModel.Internals.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\ProjectOnlineMobile2.Android.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\linksrc\FormsViewGroup.dll.mdb
@@ -214,7 +217,9 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\mscorlib.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Plugin.Connectivity.Abstractions.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\ProjectOnlineMobile2.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.ComponentModel.DataAnnotations.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Realm.DataBinding.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Realm.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Realm.Sync.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Core.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Data.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Net.Http.pdb
@@ -222,7 +227,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Runtime.Serialization.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.ServiceModel.Internals.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Transactions.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Xml.Linq.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Xml.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Xamarin.Forms.Core.pdb

@@ -4,9 +4,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Microsoft.AspNetCore.WebUtilities.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Microsoft.CSharp.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Microsoft.Data.Sqlite.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Microsoft.EntityFrameworkCore.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Microsoft.EntityFrameworkCore.Sqlite.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Microsoft.Extensions.Caching.Abstractions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Microsoft.Extensions.Caching.Memory.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Microsoft.Extensions.Configuration.Abstractions.dll
@@ -25,7 +22,9 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Plugin.Settings.Abstractions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Plugin.Settings.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\ProjectOnlineMobile2.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Refit.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Realm.DataBinding.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Realm.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Realm.Sync.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Remotion.Linq.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\SQLitePCLRaw.batteries_green.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\SQLitePCLRaw.batteries_v2.dll
@@ -69,8 +68,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Releas
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Xamarin.Forms.Xaml.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Data.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Numerics.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Transactions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\Mono.Security.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.ComponentModel.DataAnnotations.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.Reflection.TypeExtensions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Release\android\assets\System.ServiceModel.Internals.dll

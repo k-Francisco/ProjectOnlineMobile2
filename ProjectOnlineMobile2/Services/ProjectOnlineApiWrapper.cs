@@ -202,11 +202,13 @@ namespace ProjectOnlineMobile2.Services
             try
             {
                 var result = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')" +
-                    "/Timesheet/Lines('" + lineId + "')/Work/Add", contents);
+                    "/Timesheet/Lines('" + lineId + "')/Work/add", contents);
 
                 var postResult = result.EnsureSuccessStatusCode();
                 if (postResult.IsSuccessStatusCode)
                     isSuccess = true;
+
+                _client.DefaultRequestHeaders.Remove("X-RequestDigest");
 
                 return isSuccess;
             }

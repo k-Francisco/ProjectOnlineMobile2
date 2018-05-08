@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Realms;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,12 +14,12 @@ namespace ProjectOnlineMobile2.Models.TLWM
     public class D
     {
         [JsonProperty("results")]
-        public List<Result> Results { get; set; }
+        public List<WorkResult> Results { get; set; }
     }
-    public class Result
+    public class WorkResult : RealmObject
     {
-        [JsonProperty("__metadata")]
-        public Metadata Metadata { get; set; }
+        //[JsonProperty("__metadata")]
+        //public Metadata Metadata { get; set; }
         [JsonProperty("ActualWork")]
         public string ActualWork { get; set; }
         [JsonProperty("ActualWorkMilliseconds")]
@@ -26,9 +27,9 @@ namespace ProjectOnlineMobile2.Models.TLWM
         [JsonProperty("ActualWorkTimeSpan")]
         public string ActualWorkTimeSpan { get; set; }
         [JsonProperty("Comment")]
-        public object Comment { get; set; }
+        public string Comment { get; set; }
         [JsonProperty("End")]
-        public DateTime End { get; set; }
+        public DateTimeOffset End { get; set; }
         [JsonProperty("Id")]
         public string Id { get; set; }
         [JsonProperty("NonBillableOvertimeWork")]
@@ -56,11 +57,26 @@ namespace ProjectOnlineMobile2.Models.TLWM
         [JsonProperty("PlannedWorkTimeSpan")]
         public string PlannedWorkTimeSpan { get; set; }
         [JsonProperty("Start")]
-        public DateTime Start { get; set; }
+        public DateTimeOffset Start { get; set; }
 
         //custom
         public string EntryTextActualHours { get; set; }
         public string EntryTextPlannedHours { get; set; }
+
+        public override bool Equals(object obj)
+        {
+
+            var other = obj as WorkResult;
+
+            if (other == null)
+                return false;
+
+            if (!ActualWork.Equals(other.ActualWork) && !PlannedWork.Equals(other.PlannedWork))
+                return false;
+
+            return true;
+        }
+
     }
     public class Metadata
     {

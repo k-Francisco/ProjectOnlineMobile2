@@ -1,5 +1,5 @@
 ﻿using System;
-using LineWorkResult = ProjectOnlineMobile2.Models.TLWM.Result;
+using LineWorkResult = ProjectOnlineMobile2.Models.TLWM.WorkResult;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -12,6 +12,7 @@ using ProjectOnlineMobile2.Services;
 using System.Net.Http;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Linq;
 
 namespace ProjectOnlineMobile2.ViewModels
 {
@@ -49,6 +50,13 @@ namespace ProjectOnlineMobile2.ViewModels
                 ExecuteGetTimesheetLineWork();
             });
 
+            MessagingCenter.Instance.Subscribe<String>(this, "ClearRealm", (s) =>
+            {
+                realm.Write(() => {
+                    realm.RemoveAll<SavedTimesheetLineWork>();
+                });
+            });
+
             MessagingCenter.Instance.Subscribe<String>(this, "SaveTimesheetWorkChanges", (s) =>
             {
                 ExecuteSaveTimesheetWorkChanges();
@@ -68,8 +76,6 @@ namespace ProjectOnlineMobile2.ViewModels
                 if (IsConnectedToInternet())
                 {
                     var formDigest = await SPapi.GetFormDigest();
-                    Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", formDigest.D.GetContextWebInformation.FormDigestValue);
-                    Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", formDigest.D.GetContextWebInformation.FormDigestTimeoutSeconds.ToString() + " wa");
 
                     foreach (var item in LineWorkChanges)
                     {
@@ -83,9 +89,14 @@ namespace ProjectOnlineMobile2.ViewModels
                         var response = await PSapi.AddTimesheetLineWork(_periodId, _lineId, body, formDigest.D.GetContextWebInformation.FormDigestValue).ConfigureAwait(false);
                         
                         if (response)
-                            Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", "Success");
+                        {
+                            MessagingCenter.Instance.Send<String>("Successfully saved work", "Toast");
+                            LineWorkChanges.Clear();
+                        }
                         else
-                            Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", "Failed");
+                        {
+                            MessagingCenter.Instance.Send<String>("Unable to save work due to an encountered problem. Please try again", "Toast");
+                        }
                     }
                 }
                 else
@@ -107,7 +118,7 @@ namespace ProjectOnlineMobile2.ViewModels
                 bool isDateModified = false;
                 for (int i = 0; i < tempCollection.Count; i++)
                 {
-                    if (DateTime.Compare(obj.Start, tempCollection[i].StartDate) == 0)
+                    if (DateTime.Compare(obj.Start.DateTime, tempCollection[i].StartDate) == 0)
                     {
                         if (string.IsNullOrWhiteSpace(obj.EntryTextActualHours))
                             LineWorkChanges[i].ActualHours = obj.ActualWork;
@@ -128,7 +139,7 @@ namespace ProjectOnlineMobile2.ViewModels
 
                 if (!isDateModified)
                     LineWorkChanges.Add(new LineWorkChangesModel() {
-                        StartDate = obj.Start,
+                        StartDate = obj.Start.DateTime,
                         ActualHours = obj.EntryTextActualHours,
                         PlannedHours = obj.EntryTextPlannedHours,
                         PeriodId = _periodId,
@@ -139,7 +150,7 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 LineWorkChanges.Add(new LineWorkChangesModel()
                 {
-                    StartDate = obj.Start,
+                    StartDate = obj.Start.DateTime,
                     ActualHours = obj.EntryTextActualHours,
                     PlannedHours = obj.EntryTextPlannedHours,
                     PeriodId = _periodId,
@@ -151,17 +162,71 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private async void ExecuteGetTimesheetLineWork()
         {
-            if (IsConnectedToInternet())
+            try
             {
-                var workHours = await PSapi.GetTimesheetLineWork(_periodId, _lineId);
-                foreach (var item in workHours.D.Results)
+                var savedLineWork = realm.All<SavedTimesheetLineWork>()
+                    .Where(p => p.PeriodId == _periodId && p.LineId == _lineId)
+                    .ToList()
+                    .OrderBy(p => p.WorkModel.Start.DateTime);
+
+                if (IsConnectedToInternet())
                 {
-                    LineWork.Add(item);
+                    var workHours = await PSapi.GetTimesheetLineWork(_periodId, _lineId);
+
+                    if (!savedLineWork.Any())
+                    {
+
+                        foreach (var item in workHours.D.Results)
+                        {
+
+                            var save = new SavedTimesheetLineWork()
+                            {
+                                PeriodId = _periodId,
+                                LineId = _lineId,
+                                WorkModel = item
+                            };
+                            realm.Write(() =>
+                            {
+                                realm.Add(save);
+                            });
+
+                            LineWork.Add(item);
+                        }
+
+                    }
+                    else
+                    {
+                        realm.Write(() => {
+                            realm.RemoveAll<SavedTimesheetLineWork>();
+                        });
+
+                        foreach (var item in workHours.D.Results)
+                        {
+                            var save = new SavedTimesheetLineWork()
+                            {
+                                PeriodId = _periodId,
+                                LineId = _lineId,
+                                WorkModel = item
+                            };
+                            realm.Write(() => {
+                                realm.Add(save);
+                            });
+                            LineWork.Add(save.WorkModel);
+                        }
+                    }
+
+                }
+                else
+                {
+                    foreach (var item in savedLineWork)
+                    {
+                        LineWork.Add(item.WorkModel);
+                    }
                 }
             }
-            else
+            catch(Exception e)
             {
-                //retrieve items from the db
+                Debug.WriteLine("ExecuteGetTimesheetLineWork", e.Message);
             }
         }
     }

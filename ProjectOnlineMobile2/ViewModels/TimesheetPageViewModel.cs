@@ -138,6 +138,7 @@ namespace ProjectOnlineMobile2.ViewModels
                                 DateTime.Compare(DateTime.Now, PeriodList[i].End.DateTime) < 0)
                         {
                             SelectedIndex = i;
+                            ExecuteSelectedItemChangedCommand();
                             break;
                         }
                     }
@@ -245,16 +246,14 @@ namespace ProjectOnlineMobile2.ViewModels
                 }
                 else
                 {
-                    if (savedLines != null)
+                    var newSavedLines = realm.All<SavedLinesModel>();
+
+                    foreach (var item in newSavedLines)
                     {
-                        foreach (var item in savedLines)
+                        if (item.periodId.Equals(PeriodList[SelectedIndex].Id))
                         {
                             PeriodLines.Add(item.line);
                         }
-                    }
-                    else
-                    {
-                        //display that the list is empty and the user might want to connect to the internet
                     }
                 }
             }

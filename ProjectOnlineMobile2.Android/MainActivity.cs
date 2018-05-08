@@ -85,12 +85,15 @@ namespace ProjectOnlineMobile2.Android
             //handle navigation
             navigationView.NavigationItemSelected += (sender, e) =>
             {
-                if (previousItem != null)
+                if (previousItem != null && e.MenuItem.ItemId != Resource.Id.nav_logout)
+                {
                     previousItem.SetChecked(false);
+                    previousItem = e.MenuItem;
+                }
 
-                navigationView.SetCheckedItem(e.MenuItem.ItemId);
+                if(e.MenuItem.ItemId == Resource.Id.nav_logout)
+                    navigationView.SetCheckedItem(e.MenuItem.ItemId);
 
-                previousItem = e.MenuItem;
 
                 switch (e.MenuItem.ItemId)
                 {
@@ -102,6 +105,9 @@ namespace ProjectOnlineMobile2.Android
                         break;
                     case Resource.Id.nav_timesheets:
                         ListItemClicked(2);
+                        break;
+                    case Resource.Id.nav_logout:
+                        DisplayLogoutDialog();
                         break;
                 }
 
@@ -117,6 +123,26 @@ namespace ProjectOnlineMobile2.Android
                 ListItemClicked(0);
             }
 
+        }
+
+        private void DisplayLogoutDialog()
+        {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.SetTitle("");
+            alert.SetMessage("Are you sure you want to log out?");
+            alert.SetPositiveButton("Ok", (senderAlert, args) => {
+                MessagingCenter.Instance.Send<String>("", "Logout");
+                Intent intent = new Intent(this, typeof(LoginActivity));
+                StartActivity(intent);
+                this.Finish();
+            });
+
+            alert.SetNegativeButton("Cancel", (senderAlert, args) => {
+
+            });
+
+            Dialog dialog = alert.Create();
+            dialog.Show();
         }
 
         private void DisplayWorkChangesToast(string message)

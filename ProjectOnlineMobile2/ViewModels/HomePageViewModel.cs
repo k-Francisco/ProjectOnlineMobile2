@@ -40,6 +40,10 @@ namespace ProjectOnlineMobile2.ViewModels
 
             GetUserInfo();
 
+            MessagingCenter.Instance.Subscribe<String>(this, "Logout", (s)=> {
+                realm.RemoveAll();
+            });
+
         }
 
         private async void GetUserInfo()
