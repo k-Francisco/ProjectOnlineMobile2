@@ -60,7 +60,7 @@ namespace ProjectOnlineMobile2.Android.Activities
             switch (item.ItemId)
             {
                 case global::Android.Resource.Id.Home:
-                    MessagingCenter.Instance.Send<String>("", "ClearCollection");
+                    MessagingCenter.Instance.Send<String>("", "Clear");
                     Finish();
                     break;
                 case Resource.Id.action_save:

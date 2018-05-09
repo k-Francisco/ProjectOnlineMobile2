@@ -13,6 +13,7 @@ using System.Net.Http;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Linq;
+using ProjectOnlineMobile2.Models.TSPL;
 
 namespace ProjectOnlineMobile2.ViewModels
 {
@@ -25,8 +26,8 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _lineWork, value); }
         }
 
-        private ObservableCollection<LineWorkChangesModel> _lineWorkChanges;
-        public ObservableCollection<LineWorkChangesModel> LineWorkChanges
+        private List<LineWorkChangesModel> _lineWorkChanges;
+        public List<LineWorkChangesModel> LineWorkChanges
         {
             get { return _lineWorkChanges; }
             set { SetProperty(ref _lineWorkChanges, value); }
@@ -40,8 +41,10 @@ namespace ProjectOnlineMobile2.ViewModels
         public TimesheetWorkPageViewModel()
         {
             LineWork = new ObservableCollection<LineWorkResult>();
-            LineWorkChanges = new ObservableCollection<LineWorkChangesModel>();
+            LineWorkChanges = new List<LineWorkChangesModel>();
             WorkTextChanged = new Command<LineWorkResult>(ExecuteWorkTextChanged);
+
+            LineWorkChanges.Clear();
 
             MessagingCenter.Instance.Subscribe<String[]>(this, "TimesheetWork", (ids) =>
             {
@@ -50,21 +53,25 @@ namespace ProjectOnlineMobile2.ViewModels
                 ExecuteGetTimesheetLineWork();
             });
 
-            MessagingCenter.Instance.Subscribe<String>(this, "ClearRealm", (s) =>
-            {
-                realm.Write(() => {
-                    realm.RemoveAll<SavedTimesheetLineWork>();
-                });
-            });
-
             MessagingCenter.Instance.Subscribe<String>(this, "SaveTimesheetWorkChanges", (s) =>
             {
                 ExecuteSaveTimesheetWorkChanges();
             });
 
             //for android
-            MessagingCenter.Instance.Subscribe<String>(this, "ClearCollection", (s)=> {
-                LineWorkChanges.Clear();
+            MessagingCenter.Instance.Subscribe<String>(this, "Clear", (s) =>
+            {
+                var savedLineWork = realm.All<SavedTimesheetLineWork>()
+                    .Where(p => p.PeriodId == _periodId && p.LineId == _lineId)
+                    .ToList();
+
+                foreach (var item in savedLineWork)
+                {
+                    realm.Write(()=> {
+                        item.WorkModel.EntryTextActualHours = string.Empty;
+                        item.WorkModel.EntryTextPlannedHours = string.Empty;
+                    });
+                }
             });
 
         }
@@ -158,70 +165,124 @@ namespace ProjectOnlineMobile2.ViewModels
                 });
             }
 
+            foreach (var item in LineWorkChanges)
+            {
+                Debug.WriteLine("",item.StartDate.Date.ToShortDateString() + " - " + item.ActualHours + "/" + item.PlannedHours + " -- " + item.PeriodId + "/" + item.LineId );
+            }
+
         }
 
         private async void ExecuteGetTimesheetLineWork()
         {
             try
             {
+                var savedPeriod = realm.All<TimesheetPeriodResult>()
+                    .Where(p => p.Id.Equals(_periodId))
+                    .FirstOrDefault();
+
                 var savedLineWork = realm.All<SavedTimesheetLineWork>()
                     .Where(p => p.PeriodId == _periodId && p.LineId == _lineId)
                     .ToList()
                     .OrderBy(p => p.WorkModel.Start.DateTime);
 
+                foreach (var item in savedLineWork)
+                {
+                    LineWork.Add(item.WorkModel);
+                }
+
+                List<LineWorkResult> tempDates = new List<LineWorkResult>();
+
                 if (IsConnectedToInternet())
                 {
                     var workHours = await PSapi.GetTimesheetLineWork(_periodId, _lineId);
 
+                    for (int i = 1; i <= savedPeriod.End.Day - savedPeriod.Start.Day; i++)
+                    {
+                        tempDates.Add(new LineWorkResult() {
+                            Start = savedPeriod.Start.AddDays(i).DateTime,
+                            End = savedPeriod.Start.AddDays(i).DateTime,
+                            ActualWork = "0h",
+                            PlannedWork = "0h",
+                        });
+                    }
+
+                    foreach (var item in workHours.D.Results)
+                    {
+                        foreach (var item2 in tempDates)
+                        {
+                            if (item.Start.DateTime.ToShortDateString().Equals(item2.Start.DateTime.ToShortDateString()))
+                            {
+                                item2.ActualWork = item.ActualWork;
+                                item2.ActualWorkMilliseconds = item.ActualWorkMilliseconds;
+                                item2.ActualWorkTimeSpan = item.ActualWorkTimeSpan;
+                                item2.End = item.End;
+                                item2.ActualWorkMilliseconds = item.ActualWorkMilliseconds;
+                                item2.ActualWorkTimeSpan = item.ActualWorkTimeSpan;
+                                item2.Comment = item.Comment;
+                                item2.Id = item.Id;
+                                item2.NonBillableOvertimeWork = item.NonBillableOvertimeWork;
+                                item2.NonBillableOvertimeWorkMilliseconds = item.NonBillableOvertimeWorkMilliseconds;
+                                item2.NonBillableOvertimeWorkTimeSpan = item.NonBillableOvertimeWorkTimeSpan;
+                                item2.NonBillableWork = item.NonBillableWork;
+                                item2.NonBillableWorkMilliseconds = item.NonBillableWorkMilliseconds;
+                                item2.NonBillableWorkTimeSpan = item.NonBillableWorkTimeSpan;
+                                item2.OvertimeWork = item.OvertimeWork;
+                                item2.OvertimeWorkMilliseconds = item.OvertimeWorkMilliseconds;
+                                item2.OvertimeWorkTimeSpan = item.OvertimeWorkTimeSpan;
+                                item2.PlannedWork = item.PlannedWork;
+                                item2.PlannedWorkMilliseconds = item.PlannedWorkMilliseconds;
+                                item2.PlannedWorkTimeSpan = item.PlannedWorkTimeSpan;
+                            }
+                        }
+                    }
+
                     if (!savedLineWork.Any())
                     {
-
-                        foreach (var item in workHours.D.Results)
+                        foreach (var item in tempDates)
                         {
-
-                            var save = new SavedTimesheetLineWork()
-                            {
-                                PeriodId = _periodId,
-                                LineId = _lineId,
-                                WorkModel = item
-                            };
-                            realm.Write(() =>
-                            {
-                                realm.Add(save);
-                            });
-
                             LineWork.Add(item);
+                            realm.Write(()=> {
+                                realm.Add(new SavedTimesheetLineWork() {
+                                    PeriodId = _periodId,
+                                    LineId = _lineId,
+                                    WorkModel = item
+                                });
+                            });
                         }
-
                     }
                     else
                     {
-                        realm.Write(() => {
-                            realm.RemoveAll<SavedTimesheetLineWork>();
-                        });
-
-                        foreach (var item in workHours.D.Results)
+                        foreach (var item in savedLineWork)
                         {
-                            var save = new SavedTimesheetLineWork()
-                            {
-                                PeriodId = _periodId,
-                                LineId = _lineId,
-                                WorkModel = item
-                            };
-                            realm.Write(() => {
-                                realm.Add(save);
+                            var temp = tempDates
+                                .Where(p => p.Start.DateTime.ToShortDateString().Equals(item.WorkModel.Start.DateTime.ToShortDateString()))
+                                .FirstOrDefault();
+
+                            realm.Write(()=> {
+                                item.WorkModel.ActualWork = temp.ActualWork;
+                                item.WorkModel.ActualWorkMilliseconds = temp.ActualWorkMilliseconds;
+                                item.WorkModel.ActualWorkTimeSpan = temp.ActualWorkTimeSpan;
+                                item.WorkModel.End = temp.End;
+                                item.WorkModel.ActualWorkMilliseconds = temp.ActualWorkMilliseconds;
+                                item.WorkModel.ActualWorkTimeSpan = temp.ActualWorkTimeSpan;
+                                item.WorkModel.Comment = temp.Comment;
+                                item.WorkModel.Id = temp.Id;
+                                item.WorkModel.NonBillableOvertimeWork = temp.NonBillableOvertimeWork;
+                                item.WorkModel.NonBillableOvertimeWorkMilliseconds = temp.NonBillableOvertimeWorkMilliseconds;
+                                item.WorkModel.NonBillableOvertimeWorkTimeSpan = temp.NonBillableOvertimeWorkTimeSpan;
+                                item.WorkModel.NonBillableWork = temp.NonBillableWork;
+                                item.WorkModel.NonBillableWorkMilliseconds = temp.NonBillableWorkMilliseconds;
+                                item.WorkModel.NonBillableWorkTimeSpan = temp.NonBillableWorkTimeSpan;
+                                item.WorkModel.OvertimeWork = temp.OvertimeWork;
+                                item.WorkModel.OvertimeWorkMilliseconds = temp.OvertimeWorkMilliseconds;
+                                item.WorkModel.OvertimeWorkTimeSpan = temp.OvertimeWorkTimeSpan;
+                                item.WorkModel.PlannedWork = temp.PlannedWork;
+                                item.WorkModel.PlannedWorkMilliseconds = temp.PlannedWorkMilliseconds;
+                                item.WorkModel.PlannedWorkTimeSpan = temp.PlannedWorkTimeSpan;
                             });
-                            LineWork.Add(save.WorkModel);
                         }
                     }
 
-                }
-                else
-                {
-                    foreach (var item in savedLineWork)
-                    {
-                        LineWork.Add(item.WorkModel);
-                    }
                 }
             }
             catch(Exception e)

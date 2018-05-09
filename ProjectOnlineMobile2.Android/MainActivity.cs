@@ -74,7 +74,14 @@ namespace ProjectOnlineMobile2.Android
             });
 
             MessagingCenter.Instance.Subscribe<String>(this, "Toast", (message) => {
-                DisplayWorkChangesToast(message);
+                try
+                {
+                    DisplayWorkChangesToast(message);
+                }
+                catch(Exception e)
+                {
+                    System.Diagnostics.Debug.WriteLine("Main Activity",e.InnerException.Message);
+                }
             });
 
 
@@ -131,7 +138,7 @@ namespace ProjectOnlineMobile2.Android
             alert.SetTitle("");
             alert.SetMessage("Are you sure you want to log out?");
             alert.SetPositiveButton("Ok", (senderAlert, args) => {
-                MessagingCenter.Instance.Send<String>("", "Logout");
+                MessagingCenter.Instance.Send<String>("true", "ClearAll");
                 Intent intent = new Intent(this, typeof(LoginActivity));
                 StartActivity(intent);
                 this.Finish();
@@ -147,7 +154,15 @@ namespace ProjectOnlineMobile2.Android
 
         private void DisplayWorkChangesToast(string message)
         {
-            Toast.MakeText(this, message, ToastLength.Short).Show();
+            try
+            {
+                Toast.MakeText(this, message, ToastLength.Short).Show();
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("DisplayWorkChangesToast", e.InnerException.Message);
+            }
+            
         }
 
         private void DisplayAlertDialog(string periodId)
@@ -230,6 +245,11 @@ namespace ProjectOnlineMobile2.Android
                     return true;
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        protected override void OnDestroy()
+        {
+            MessagingCenter.Instance.Send<String>("", "Clear");
         }
     }
 }

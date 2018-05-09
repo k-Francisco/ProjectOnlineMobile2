@@ -7,7 +7,7 @@ using ProjectResult = ProjectOnlineMobile2.Models.PSPL.Result;
 using System.Windows.Input;
 using Xamarin.Forms;
 using ProjectOnlineMobile2.Models;
-
+using ProjectOnlineMobile2.Services;
 
 namespace ProjectOnlineMobile2.ViewModels
 {
@@ -40,8 +40,11 @@ namespace ProjectOnlineMobile2.ViewModels
 
             GetUserInfo();
 
-            MessagingCenter.Instance.Subscribe<String>(this, "Logout", (s)=> {
-                realm.RemoveAll();
+            MessagingCenter.Instance.Subscribe<String>(this, "ClearAll", (s)=> {
+                realm.Write(()=> {
+                    realm.RemoveAll();
+                });
+                Settings.ClearAll();
             });
 
         }

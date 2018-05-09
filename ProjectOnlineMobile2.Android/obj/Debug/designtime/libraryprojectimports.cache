@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
   <Jars>
+    <Jar>obj\Debug\lp\0\jl\formsviewgroup.jar</Jar>
+    <Jar>obj\Debug\lp\37\jl\arch-core-common.jar</Jar>
+    <Jar>obj\Debug\lp\38\jl\arch-lifecycle-common.jar</Jar>
+    <Jar>obj\Debug\lp\41\jl\support-annotations.jar</Jar>
     <Jar>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\0\jl\formsviewgroup.jar</Jar>
     <Jar>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\37\jl\arch-core-common.jar</Jar>
     <Jar>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\lp\38\jl\arch-lifecycle-common.jar</Jar>

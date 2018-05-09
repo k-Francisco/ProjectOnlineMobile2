@@ -112,6 +112,7 @@ namespace ProjectOnlineMobile2.Services
             try
             {
                 var response = await _client.GetStringAsync(_projectOnlineUrl + "/_api/ProjectServer/timesheetperiods");
+
                 return JsonConvert.DeserializeObject<TimeSheetPeriodList>(response);
             }
             catch (Exception e)

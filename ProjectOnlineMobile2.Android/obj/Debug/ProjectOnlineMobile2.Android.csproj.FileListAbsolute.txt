@@ -1,7 +1,3 @@
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\ProjectOnlineMobile2.Android.csprojResolveAssemblyReference.cache
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\ProjectOnlineMobile2.Android.csproj.CoreCompileInputs.cache
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\ProjectOnlineMobile2.Android.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\ProjectOnlineMobile2.Android.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\ProjectOnlineMobile2.Android.dll.config
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\ProjectOnlineMobile2.Android.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\ProjectOnlineMobile2.Android.pdb
@@ -108,7 +104,11 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\Xamarin.Forms.Platform.Android.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\Xamarin.Forms.Xaml.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\Xamarin.Forms.Xaml.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\ProjectOnlineMobile2.Android.csprojAssemblyReference.cache
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\ProjectOnlineMobile2.Android.csproj.CoreCompileInputs.cache
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\ProjectOnlineMobile2.Android.csproj.CopyComplete
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\ProjectOnlineMobile2.Android.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\ProjectOnlineMobile2.Android.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\bin\com.company.ProjectOnlineMobile2.Android.apk
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\values-v21\styles.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\layout\toolbar.xml
@@ -150,6 +150,7 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\menu\save_work_menu.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\res\drawable-hdpi\user.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\R.cs.flag
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\R.txt
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\uploadflags.txt
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\Microsoft.CSharp.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\Mono.Android.pdb
@@ -162,14 +163,13 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.Runtime.Serialization.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.Xml.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.Xml.Linq.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.ComponentModel.Composition.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.Data.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.Numerics.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.Transactions.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\Mono.Data.Tds.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\Mono.Security.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.IO.Compression.FileSystem.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.ComponentModel.Composition.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.Web.Services.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\Mono.Security.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\System.ServiceModel.Internals.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Microsoft.CSharp.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Mono.Android.pdb
@@ -189,14 +189,13 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\System.Xml.Linq.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Xamarin.Forms.Core.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Xamarin.Forms.Xaml.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\System.ComponentModel.Composition.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\System.Data.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\System.Numerics.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\System.Transactions.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Mono.Data.Tds.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Mono.Security.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\System.IO.Compression.FileSystem.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\System.ComponentModel.Composition.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\System.Web.Services.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Mono.Security.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\System.ServiceModel.Internals.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\ProjectOnlineMobile2.Android.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb
@@ -213,7 +212,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Xamarin.Forms.Platform.Android.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Microsoft.CSharp.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Mono.Android.pdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Mono.Data.Tds.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Mono.Security.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\mscorlib.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Plugin.Connectivity.Abstractions.pdb
@@ -239,6 +237,7 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\bin\Debug\ProjectOnlineMobile2.Android.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\ProjectOnlineMobile2.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\ProjectOnlineMobile2.Android.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\FormsViewGroup.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Android\obj\Debug\linksrc\Plugin.Connectivity.dll.mdb
