@@ -177,6 +177,59 @@ namespace ProjectOnlineMobile2.Services
             }
         }
 
+        public async Task<bool> SubmitTimesheet(string periodId, string comment, string formDigest)
+        {
+            var contents = new StringContent("", Encoding.UTF8, "application/json");
+
+            try
+            {
+
+                if (!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
+                    _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
+
+                Debug.WriteLine("SubmitTimesheet", periodId);
+                var response = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')/Timesheet/submit('" + comment + "')", contents);
+                var postResponse = response.EnsureSuccessStatusCode();
+
+                if (postResponse.IsSuccessStatusCode)
+                    return true;
+
+                return false;
+
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("SubmitTimesheet", e.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> RecallTimesheet(string periodId, string formDigest)
+        {
+            var contents = new StringContent("", Encoding.UTF8, "application/json");
+
+            try
+            {
+
+                if (!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
+                    _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
+
+                var response = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')/Timesheet/recall()", contents);
+                var postResponse = response.EnsureSuccessStatusCode();
+
+                if (postResponse.IsSuccessStatusCode)
+                    return true;
+
+                return false;
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("RecallTimesheet", e.Message);
+                return false;
+            }
+        }
+
         public async Task<TimesheetLineWorkModel> GetTimesheetLineWork(string periodId, string lineId)
         {
             try

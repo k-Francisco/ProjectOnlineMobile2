@@ -8,6 +8,7 @@ using Android.Support.V7.App;
 using LineResult = ProjectOnlineMobile2.Models.TLL.TimesheetLineResult;
 using Fragment = Android.Support.V4.App.Fragment;
 using AlertDialog = Android.Support.V7.App.AlertDialog;
+
 using Android.Support.Design.Widget;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using ProjectOnlineMobile2.Android.Fragments;
@@ -34,7 +35,7 @@ namespace ProjectOnlineMobile2.Android
         NavigationView navigationView;
         TextView userEmail, userName;
         private Fragment _projectsPage, _tasksPage, _timesheetPage, _homePage;
-
+        IMenu menu;
         IMenuItem previousItem;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -48,7 +49,7 @@ namespace ProjectOnlineMobile2.Android
                 SupportActionBar.SetDisplayHomeAsUpEnabled(true);
                 SupportActionBar.SetHomeButtonEnabled(true);
             }
-
+            
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
             //Set hamburger items menu
@@ -76,7 +77,7 @@ namespace ProjectOnlineMobile2.Android
             MessagingCenter.Instance.Subscribe<String>(this, "Toast", (message) => {
                 try
                 {
-                    DisplayWorkChangesToast(message);
+                    DisplayToastMessage(message);
                 }
                 catch(Exception e)
                 {
@@ -152,17 +153,9 @@ namespace ProjectOnlineMobile2.Android
             dialog.Show();
         }
 
-        private void DisplayWorkChangesToast(string message)
+        private void DisplayToastMessage(string message)
         {
-            try
-            {
-                Toast.MakeText(this, message, ToastLength.Short).Show();
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("DisplayWorkChangesToast", e.InnerException.Message);
-            }
-            
+            Toast.MakeText(this, message, ToastLength.Short).Show();
         }
 
         private void DisplayAlertDialog(string periodId)
@@ -176,6 +169,27 @@ namespace ProjectOnlineMobile2.Android
 
             alert.SetNegativeButton("Cancel", (senderAlert, args) => {
                 
+            });
+
+            Dialog dialog = alert.Create();
+            dialog.Show();
+        }
+
+        private void DisplaySubmitDialog()
+        {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+            EditText commentInput = new EditText(this);
+            alert.SetView(commentInput);
+            alert.SetTitle("Comment");
+
+            alert.SetPositiveButton("Submit", (senderAlert, args) => {
+                var comment = commentInput.Text.ToString();
+                MessagingCenter.Instance.Send<String>(comment, "SubmitTimesheet");
+            });
+
+            alert.SetNegativeButton("Cancel", (senderAlert, args) => {
+
             });
 
             Dialog dialog = alert.Create();
@@ -212,6 +226,9 @@ namespace ProjectOnlineMobile2.Android
                     if(_projectsPage == null)
                         _projectsPage = new ProjectPage().CreateSupportFragment(this);
 
+                    if (menu != null)
+                        menu.Clear();
+
                     fragment = _projectsPage;
                     SupportActionBar.Title = "Projects";
                     break;
@@ -219,12 +236,18 @@ namespace ProjectOnlineMobile2.Android
                     if(_tasksPage == null)
                         _tasksPage = new TasksPage().CreateSupportFragment(this);
 
+                    if (menu != null)
+                        menu.Clear();
+
                     fragment = _tasksPage;
                     SupportActionBar.Title = "My Tasks";
                     break;
                 case 2:
                     if(_timesheetPage == null)
                         _timesheetPage = new TimesheetPage().CreateSupportFragment(this);
+
+                    if (menu != null)
+                        MenuInflater.Inflate(Resource.Menu.timesheet_menu, menu);
 
                     fragment = _timesheetPage;
                     SupportActionBar.Title = "Timesheet";
@@ -236,20 +259,30 @@ namespace ProjectOnlineMobile2.Android
                 .Commit();
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            this.menu = menu;
+            return true;
+        }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
             {
                 case global::Android.Resource.Id.Home:
                     drawerLayout.OpenDrawer(GravityCompat.Start);
-                    return true;
+                    break;
+                case Resource.Id.action_submit:
+                    DisplaySubmitDialog();
+                    //MessagingCenter.Instance.Send<String>("","SubmitTimesheet");
+                    break;
+                case Resource.Id.action_recall:
+                    DisplayToastMessage("recalling timesheet");
+                    MessagingCenter.Instance.Send<String>("", "RecallTimesheet");
+                    break;
+               
             }
             return base.OnOptionsItemSelected(item);
-        }
-
-        protected override void OnDestroy()
-        {
-            MessagingCenter.Instance.Send<String>("", "Clear");
         }
     }
 }

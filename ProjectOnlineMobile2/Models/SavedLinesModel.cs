@@ -6,7 +6,7 @@ namespace ProjectOnlineMobile2.Models
 {
     public class SavedLinesModel : RealmObject
     {
-        public string periodId { get; set; }
-        public LineResult line { get; set; }
+        public string PeriodId { get; set; }
+        public LineResult LineModel { get; set; }
     }
 }

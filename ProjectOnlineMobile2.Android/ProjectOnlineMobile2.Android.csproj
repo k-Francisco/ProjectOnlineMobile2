@@ -288,6 +288,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\menu\timesheet_menu.xml" />
     <None Include="FodyWeavers.xml" />
     <Content Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>

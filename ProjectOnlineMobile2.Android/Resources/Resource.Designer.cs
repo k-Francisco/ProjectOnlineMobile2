@@ -3172,8 +3172,14 @@ namespace ProjectOnlineMobile2.Android
 			// aapt resource value: 0x7f08005c
 			public const int action_mode_close_button = 2131230812;
 			
+			// aapt resource value: 0x7f0800dc
+			public const int action_recall = 2131230940;
+			
 			// aapt resource value: 0x7f0800da
 			public const int action_save = 2131230938;
+			
+			// aapt resource value: 0x7f0800db
+			public const int action_submit = 2131230939;
 			
 			// aapt resource value: 0x7f0800c2
 			public const int action_text = 2131230914;
@@ -4088,6 +4094,9 @@ namespace ProjectOnlineMobile2.Android
 			// aapt resource value: 0x7f0f0001
 			public const int save_work_menu = 2131689473;
 			
+			// aapt resource value: 0x7f0f0002
+			public const int timesheet_menu = 2131689474;
+			
 			static Menu()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -4293,6 +4302,9 @@ namespace ProjectOnlineMobile2.Android
 			// aapt resource value: 0x7f09003a
 			public const int path_password_strike_through = 2131296314;
 			
+			// aapt resource value: 0x7f090044
+			public const int recall = 2131296324;
+			
 			// aapt resource value: 0x7f090042
 			public const int save = 2131296322;
 			
@@ -4301,6 +4313,9 @@ namespace ProjectOnlineMobile2.Android
 			
 			// aapt resource value: 0x7f09003b
 			public const int status_bar_notification_info_overflow = 2131296315;
+			
+			// aapt resource value: 0x7f090043
+			public const int submit = 2131296323;
 			
 			static String()
 			{

@@ -7,4 +7,6 @@
   <string name="fragment1">You are on Fragment 1</string>
   <string name="fragment2">You are on Fragment 2</string>
   <string name="save">Save</string>
+  <string name="submit">Submit</string>
+  <string name="recall">Recall</string>
 </resources>

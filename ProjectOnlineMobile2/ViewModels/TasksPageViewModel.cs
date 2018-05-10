@@ -26,127 +26,43 @@ namespace ProjectOnlineMobile2.ViewModels
         {
             Tasks = new ObservableCollection<Result>();
 
-            GetUserTasks();
+            var savedTasks = realm.All<Result>().ToList();
+
+            foreach (var item in savedTasks)
+            {
+                Tasks.Add(item);
+            }
+
+            SyncUserTasks(savedTasks);
         }
 
-        private async void GetUserTasks()
+        private async void SyncUserTasks(List<Result> savedTasks)
         {
             try
             {
-                await Task.Delay(2000);
-                var savedTasks = realm.All<Result>();
-                var savedProjects = realm.All<ProjectOnlineMobile2.Models.PSPL.Result>();
-                var userInfo = realm.All<ProjectOnlineMobile2.Models.D_User>();
-
+                var savedProjects = realm.All<ProjectOnlineMobile2.Models.PSPL.Result>().ToList();
+                var userInfo = realm.All<ProjectOnlineMobile2.Models.D_User>().FirstOrDefault();
                 List<Result> tempCollection = new List<Result>();
 
                 if (IsConnectedToInternet())
                 {
-                    if (savedProjects.Any())
+                    foreach (var item in savedProjects)
                     {
-                        foreach (var item in savedProjects)
+                        var assignment = await PSapi.GetResourceAssignment(item.ProjectId, userInfo.Title);
+                        foreach (var item2 in assignment.D.Results)
                         {
-                            var assignment = await PSapi.GetResourceAssignment(item.ProjectId, userInfo.First().Title);
-                            foreach (var item2 in assignment.D.Results)
-                            {
-                                tempCollection.Add(item2);
-                            }
+                            tempCollection.Add(item2);
                         }
-
-                        var isTheSame = savedTasks.ToList().SequenceEqual(tempCollection);
-
-                        if (isTheSame)
-                        {
-                            foreach (var item in savedTasks)
-                            {
-                                Tasks.Add(item);
-                            }
-                        }
-                        else
-                        {
-                            realm.Write(()=> {
-                                realm.RemoveAll<Result>();
-                            });
-
-                            foreach (var item in tempCollection)
-                            {
-                                realm.Write(()=> {
-                                    realm.Add(item);
-                                });
-                            }
-
-                            realm.Refresh();
-
-                            foreach (var item in savedTasks)
-                            {
-                                Tasks.Add(item);
-                            }
-                        }
-
                     }
-                    else
-                    {
-                        var projects = await PSapi.GetAllProjects();
 
-                        foreach (var item in projects.D.Results)
-                        {
-                            realm.Write(() => {
-                                realm.Add(item);
-                            });
-
-                            var assignment = await PSapi.GetResourceAssignment(item.ProjectId, userInfo.First().Title);
-                            foreach (var item2 in assignment.D.Results)
-                            {
-                                tempCollection.Add(item2);
-                            }
-                        }
-
-                        var isTheSame = savedTasks.SequenceEqual(tempCollection);
-
-                        if (isTheSame)
-                        {
-                            foreach (var item in savedTasks)
-                            {
-                                Tasks.Add(item);
-                            }
-                        }
-                        else
-                        {
-                            realm.Write(() => {
-                                realm.RemoveAll<Result>();
-                            });
-
-                            foreach (var item in tempCollection)
-                            {
-                                realm.Write(() => {
-                                    realm.Add(item);
-                                });
-                            }
-
-                            realm.Refresh();
-
-                            foreach (var item in savedTasks)
-                            {
-                                Tasks.Add(item);
-                            }
-                        }
-
-                    }
-                }
-                else
-                {
-                    foreach (var item in savedTasks)
-                    {
-                        Tasks.Add(item);
-                    }
+                    syncDataService.SyncUserTasks(savedTasks, tempCollection, Tasks);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                Debug.WriteLine("GetUserTasks", e.Message);
+                Debug.WriteLine("SyncUserTasks", e.Message);
             }
         }
-
         
     }
 }

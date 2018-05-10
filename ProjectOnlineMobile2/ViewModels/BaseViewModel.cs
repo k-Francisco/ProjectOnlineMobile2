@@ -20,6 +20,8 @@ namespace ProjectOnlineMobile2.ViewModels
         protected ProjectOnlineApiWrapper PSapi { get; private set; }
         protected Realm realm { get; set; }
 
+        protected SyncDataService syncDataService { get; set; }
+
         public BaseViewModel() {
             if (SPapi == null)
                 SPapi = new SharepointApiWrapper();
@@ -29,6 +31,9 @@ namespace ProjectOnlineMobile2.ViewModels
 
             if (realm == null)
                 realm = Realm.GetInstance();
+
+            if (syncDataService == null)
+                syncDataService = new SyncDataService();
 
         }
 

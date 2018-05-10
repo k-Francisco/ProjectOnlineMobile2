@@ -62,7 +62,7 @@
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
 
-                            <Entry Text="{Binding EntryTextActualHours, Mode=TwoWay}"
+                            <Entry Text="{Binding EntryTextActualHours}"
                                    Placeholder="{Binding ActualWork}"
                                    Keyboard="Numeric"
                                    FontSize="Medium"
@@ -70,15 +70,10 @@
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="1"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="Center">
-                                <Entry.Behaviors>
-                                    <behaviors:EventToCommandBehavior EventName="TextChanged"
-                                                                      Command="{Binding Path=BindingContext.WorkTextChanged, Source={x:Reference mainLayout}}"
-                                                                      CommandParameter="{Binding .}"/>
-                                </Entry.Behaviors>
-                            </Entry>
+                                   VerticalOptions="Center"/>
 
-                            <Entry Text="{Binding EntryTextPlannedHours, Mode=TwoWay}"
+
+                            <Entry Text="{Binding EntryTextPlannedHours}"
                                    Placeholder="{Binding PlannedWork}"
                                    Keyboard="Numeric"
                                    FontSize="Medium"
@@ -86,13 +81,8 @@
                                    TextColor="Black"
                                    Grid.Column="2"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="Center">
-                                <Entry.Behaviors>
-                                    <behaviors:EventToCommandBehavior EventName="TextChanged"
-                                                                      Command="{Binding Path=BindingContext.WorkTextChanged, Source={x:Reference mainLayout}}"
-                                                                      CommandParameter="{Binding .}"/>
-                                </Entry.Behaviors>
-                            </Entry>
+                                   VerticalOptions="Center"/>
+
 
                         </Grid>
 
