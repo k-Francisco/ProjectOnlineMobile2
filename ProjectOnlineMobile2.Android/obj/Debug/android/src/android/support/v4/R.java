@@ -3372,9 +3372,9 @@ containing a value of this type.
         public static int action_mode_bar=0x7f080079;
         public static int action_mode_bar_stub=0x7f080078;
         public static int action_mode_close_button=0x7f08005c;
-        public static int action_recall=0x7f0800dd;
+        public static int action_recall=0x7f0800dc;
         public static int action_save=0x7f0800da;
-        public static int action_submit=0x7f0800dc;
+        public static int action_submit=0x7f0800db;
         public static int action_text=0x7f0800c2;
         public static int actions=0x7f0800d0;
         public static int activity_chooser_view_content=0x7f08005d;
@@ -3544,7 +3544,6 @@ containing a value of this type.
         public static int textinput_counter=0x7f080014;
         public static int textinput_error=0x7f080015;
         public static int time=0x7f0800cb;
-        public static int timesheet_group=0x7f0800db;
         public static int timesheet_work_frame=0x7f08008e;
         public static int title=0x7f08001c;
         public static int titleDividerNoCustom=0x7f080071;

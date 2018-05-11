@@ -110,6 +110,10 @@
                                       BackgroundColor="Green"
                                       Grid.Row="1"
                                       Grid.Column="1">
+                    <controls:CustomFrame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Logout}"
+                                              NumberOfTapsRequired="1"/>
+                    </controls:CustomFrame.GestureRecognizers>
                     <Label Text="Logout"
                            TextColor="White"
                            FontSize="Medium"

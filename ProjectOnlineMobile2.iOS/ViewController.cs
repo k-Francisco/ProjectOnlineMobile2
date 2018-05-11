@@ -4,6 +4,7 @@ using ProjectOnlineMobile2.Pages;
 using ProjectOnlineMobile2.Services;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using UIKit;
 using Xamarin.Forms;
 
@@ -36,7 +37,7 @@ namespace ProjectOnlineMobile2.iOS
             // Perform any additional setup after loading the view, typically from a nib.
             this.NavigationController.NavigationBarHidden = true;
 
-
+            NSHttpCookieStorage.SharedStorage.Cookies.ToList().Clear();
             var url = "https://sharepointevo.sharepoint.com";
             var request = new NSMutableUrlRequest(new NSUrl(url));
             webView.Frame = View.Frame;

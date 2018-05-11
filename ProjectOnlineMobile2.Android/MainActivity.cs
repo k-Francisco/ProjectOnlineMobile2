@@ -75,14 +75,7 @@ namespace ProjectOnlineMobile2.Android
             });
 
             MessagingCenter.Instance.Subscribe<String>(this, "Toast", (message) => {
-                try
-                {
-                    DisplayToastMessage(message);
-                }
-                catch(Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine("Main Activity",e.InnerException.Message);
-                }
+                DisplayToastMessage(message);
             });
 
 
@@ -138,7 +131,7 @@ namespace ProjectOnlineMobile2.Android
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.SetTitle("");
             alert.SetMessage("Are you sure you want to log out?");
-            alert.SetPositiveButton("Ok", (senderAlert, args) => {
+            alert.SetPositiveButton("Logout", (senderAlert, args) => {
                 MessagingCenter.Instance.Send<String>("true", "ClearAll");
                 Intent intent = new Intent(this, typeof(LoginActivity));
                 StartActivity(intent);
@@ -274,7 +267,6 @@ namespace ProjectOnlineMobile2.Android
                     break;
                 case Resource.Id.action_submit:
                     DisplaySubmitDialog();
-                    //MessagingCenter.Instance.Send<String>("","SubmitTimesheet");
                     break;
                 case Resource.Id.action_recall:
                     DisplayToastMessage("recalling timesheet");

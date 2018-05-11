@@ -1,5 +1,5 @@
 ﻿using System;
-using LineResult = ProjectOnlineMobile2.Models.TLL.Result;
+using LineResult = ProjectOnlineMobile2.Models.TLL.TimesheetLineResult;
 using System.Diagnostics;
 using Foundation;
 using ProjectOnlineMobile2.Models;
@@ -141,6 +141,27 @@ namespace ProjectOnlineMobile2.iOS
                     _timesheetPage.Title = "Timesheet";
 
                 navigationController.PushViewController(_timesheetPage, true);
+            }
+            else if (page.Equals("Logout"))
+            {
+                var logoutDialog = UIAlertController.Create("",
+                "Are you sure you want to log out?",
+                UIAlertControllerStyle.Alert);
+
+                logoutDialog.AddAction(UIAlertAction.Create("Logout", UIAlertActionStyle.Default, alert => {
+                    MessagingCenter.Instance.Send<String>("", "ClearAll");
+
+                    var controller = Storyboard.InstantiateViewController("ViewController") as ViewController;
+                    navigationController.PushViewController(controller, true);
+                    AppDelegate.shared.navigationController = new UINavigationController(controller);
+                    AppDelegate.shared.Window.RootViewController = AppDelegate.shared.navigationController;
+                }));
+
+                logoutDialog.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, alert => {
+
+                }));
+
+                navigationController.PresentViewController(logoutDialog, true, null);
             }
         }
 

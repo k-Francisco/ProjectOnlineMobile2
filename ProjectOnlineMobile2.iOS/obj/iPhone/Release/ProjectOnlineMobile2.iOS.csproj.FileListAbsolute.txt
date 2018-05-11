@@ -2,9 +2,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Rel
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\ProjectOnlineMobile2.iOS.exe
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.AspNetCore.WebUtilities.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.Data.Sqlite.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.EntityFrameworkCore.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.EntityFrameworkCore.Sqlite.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.Extensions.Caching.Abstractions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.Extensions.Caching.Memory.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.Extensions.Configuration.Abstractions.dll
@@ -21,7 +18,9 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Rel
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Plugin.Settings.Abstractions.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Plugin.Settings.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\ProjectOnlineMobile2.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Refit.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Realm.DataBinding.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Realm.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Realm.Sync.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Remotion.Linq.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\SQLitePCLRaw.batteries_green.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\SQLitePCLRaw.batteries_v2.dll
@@ -41,9 +40,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Rel
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\ProjectOnlineMobile2.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.AspNetCore.WebUtilities.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.Data.Sqlite.xml
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.EntityFrameworkCore.xml
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.EntityFrameworkCore.Relational.xml
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.EntityFrameworkCore.Sqlite.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.Extensions.Caching.Abstractions.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.Extensions.Caching.Memory.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Microsoft.Extensions.Configuration.Abstractions.xml
@@ -64,7 +60,11 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Rel
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Plugin.Settings.Abstractions.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Plugin.Settings.Abstractions.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Plugin.Settings.Abstractions.dll.mdb
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Refit.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Realm.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Realm.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Realm.DataBinding.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Realm.Sync.pdb
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Realm.Sync.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\Remotion.Linq.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\System.Collections.Immutable.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\bin\iPhone\Release\System.Diagnostics.DiagnosticSource.xml
@@ -117,9 +117,10 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Rel
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\coremlc\_PartialAppManifest.items
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\coremlc\_BundleResourceWithLogicalName.items
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\optimized\arrow_down.png
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\optimized\user.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\optimized\Entitlements.plist
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\optimized\
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\ProjectOnlineMobile2.iOS.csprojResolveAssemblyReference.cache
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\ProjectOnlineMobile2.iOS.csprojAssemblyReference.cache
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\ProjectOnlineMobile2.iOS.csproj.CoreCompileInputs.cache
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\ProjectOnlineMobile2.iOS.csproj.CopyComplete
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.iOS\obj\iPhone\Release\ProjectOnlineMobile2.iOS.exe

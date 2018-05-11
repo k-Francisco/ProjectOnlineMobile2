@@ -107,8 +107,7 @@ namespace ProjectOnlineMobile2.ViewModels
                         DateTime.Compare(DateTime.Now, PeriodList[i].End.DateTime) < 0)
                 {
                     SelectedIndex = i;
-                    Debug.WriteLine("FindTodaysPeriod", i.ToString() + " ang selected index");
-                    ExecuteSelectedItemChangedCommand();
+                    //ExecuteSelectedItemChangedCommand();
                     break;
                 }
             }
@@ -192,6 +191,7 @@ namespace ProjectOnlineMobile2.ViewModels
             string[] ids = { _periodList[SelectedIndex].Id, timesheetLine.Id };
             MessagingCenter.Send<LineResult>(timesheetLine, "PushTimesheetWorkPage");
             MessagingCenter.Send<String[]>(ids, "TimesheetWork");
+
         }
 
         private void ExecuteSelectedItemChangedCommand()

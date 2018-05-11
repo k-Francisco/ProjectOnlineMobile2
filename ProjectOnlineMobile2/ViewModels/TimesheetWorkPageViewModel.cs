@@ -45,13 +45,14 @@ namespace ProjectOnlineMobile2.ViewModels
 
             MessagingCenter.Instance.Subscribe<String[]>(this, "TimesheetWork", (ids) =>
             {
+                Debug.WriteLine("TimesheetWorkPageViewModel", "here");
                 _periodId = ids[0];
                 _lineId = ids[1];
 
                 savedLineWork = realm.All<SavedTimesheetLineWork>()
-                    .Where(p => p.PeriodId == _periodId && p.LineId == _lineId)
-                    .ToList()
-                    .OrderBy(p => p.WorkModel.Start.DateTime);
+                   .Where(p => p.PeriodId == _periodId && p.LineId == _lineId)
+                   .ToList()
+                   .OrderBy(p => p.WorkModel.Start.DateTime);
 
                 foreach (var item in savedLineWork)
                 {
@@ -121,12 +122,10 @@ namespace ProjectOnlineMobile2.ViewModels
                                     item.WorkModel.EntryTextActualHours = "";
                                     item.WorkModel.EntryTextPlannedHours = "";
                                 });
-                                //MessagingCenter.Instance.Send<String>("Successfully saved work", "Toast");
                             }
                             else
                             {
-                                Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", "failed");
-                                //MessagingCenter.Instance.Send<String>("Unable to save work due to an encountered problem. Please try again", "Toast");
+                                //prompt user where the error has occured
                             }
                         }
                     }
@@ -212,8 +211,6 @@ namespace ProjectOnlineMobile2.ViewModels
                                 });
                             });
                         }
-
-                        realm.Refresh();
                     }
                     else
                     {

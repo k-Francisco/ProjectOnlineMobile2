@@ -17,6 +17,7 @@ namespace ProjectOnlineMobile2.ViewModels
         public ICommand GoToProjectsPage { get; set; }
         public ICommand GoToTasksPage { get; set; }
         public ICommand GoToTimesheetPage { get; set; }
+        public ICommand Logout { get; set; }
 
         private string _userName;
         public string UserName
@@ -37,6 +38,7 @@ namespace ProjectOnlineMobile2.ViewModels
             GoToProjectsPage = new Command(ExecuteGoToProjectsPage);
             GoToTasksPage = new Command(ExecuteGoToTasksPage);
             GoToTimesheetPage = new Command(ExecuteGoToTimesheetPage);
+            Logout = new Command(ExecuteLogout);
 
             GetUserInfo();
 
@@ -47,6 +49,11 @@ namespace ProjectOnlineMobile2.ViewModels
                 Settings.ClearAll();
             });
 
+        }
+
+        private void ExecuteLogout(object obj)
+        {
+            MessagingCenter.Instance.Send<String>("Logout", "NavigateToPage");
         }
 
         private async void GetUserInfo()
