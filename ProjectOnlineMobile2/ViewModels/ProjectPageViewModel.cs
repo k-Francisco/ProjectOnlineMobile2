@@ -31,7 +31,9 @@ namespace ProjectOnlineMobile2.ViewModels
                 ProjectList.Add(item);
             }
 
-            SyncProjects(savedProjects);
+            MessagingCenter.Instance.Subscribe<String>(this, "ProjectPageInit", (s)=> {
+                SyncProjects(savedProjects);
+            });
         }
 
         private async void SyncProjects(List<Result> savedProjects)

@@ -49,6 +49,17 @@ namespace ProjectOnlineMobile2.ViewModels
             SelectedItemChangedCommand = new Command(ExecuteSelectedItemChangedCommand);
             TimesheetLineClicked = new Command<LineResult>(ExecuteTimesheetLineClicked);
 
+            var savedPeriods = realm.All<TimesheetPeriodsResult>().ToList();
+            foreach (var item in savedPeriods)
+            {
+                PeriodList.Add(item);
+            }
+            FindTodaysPeriod();
+
+            MessagingCenter.Instance.Subscribe<String>(this, "TimesheetPageInit", (s) => {
+                SyncTimesheetPeriods(savedPeriods);
+            });
+
             MessagingCenter.Instance.Subscribe<String>(this, "CreateTimesheet", (periodId) =>
             {
                 CreateTimesheet(periodId);
@@ -68,15 +79,6 @@ namespace ProjectOnlineMobile2.ViewModels
                 ExecuteRecallTimesheet();
             });
 
-            var savedPeriods = realm.All<TimesheetPeriodsResult>().ToList();
-            foreach (var item in savedPeriods)
-            {
-                PeriodList.Add(item);
-            }
-            FindTodaysPeriod();
-
-            SyncTimesheetPeriods(savedPeriods);
-            
         }
 
         private async void SyncTimesheetPeriods(List<TimesheetPeriodsResult> savedPeriods)

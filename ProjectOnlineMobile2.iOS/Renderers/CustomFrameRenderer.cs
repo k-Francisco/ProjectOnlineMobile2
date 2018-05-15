@@ -1,9 +1,11 @@
-﻿using CoreGraphics;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CoreGraphics;
+using Foundation;
 using ProjectOnlineMobile2.Controls;
 using ProjectOnlineMobile2.iOS.Renderers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;

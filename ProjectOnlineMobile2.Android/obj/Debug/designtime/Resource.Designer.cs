@@ -26,7 +26,6 @@ namespace ProjectOnlineMobile2.Android
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::ProjectOnlineMobile2.Android.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation
