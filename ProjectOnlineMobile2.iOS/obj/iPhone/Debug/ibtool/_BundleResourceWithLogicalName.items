@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\LaunchScreen.nib">
+      <LogicalName>LaunchScreen.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\5651-view-5652.nib">
+      <LogicalName>Main.storyboardc/5651-view-5652.nib</LogicalName>
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\BYZ-38-t0r-view-8bC-Xf-vdC.nib">
+      <LogicalName>Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</LogicalName>
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\HomeController.nib">
+      <LogicalName>Main.storyboardc/HomeController.nib</LogicalName>
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\Info.plist">
+      <LogicalName>Main.storyboardc/Info.plist</LogicalName>
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\UINavigationController-12728.nib">
+      <LogicalName>Main.storyboardc/UINavigationController-12728.nib</LogicalName>
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\ViewController.nib">
+      <LogicalName>Main.storyboardc/ViewController.nib</LogicalName>
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+  </ItemGroup>
+</Project>

@@ -19,7 +19,7 @@ namespace ProjectOnlineMobile2.ViewModels
 {
     public class TimesheetWorkPageViewModel : BaseViewModel
     {
-        private ObservableCollection<LineWorkResult> _lineWork;
+        private ObservableCollection<LineWorkResult> _lineWork; 
         public ObservableCollection<LineWorkResult> LineWork
         {
             get { return _lineWork; }

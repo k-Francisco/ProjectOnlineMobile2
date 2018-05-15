@@ -224,9 +224,6 @@
       <HintPath>..\packages\Xamarin.Forms.3.0.0.446417\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="Xamarin.SideMenu, Version=1.0.6219.19131, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.SideMenu.1.0\lib\Xamarin.iOS10\Xamarin.SideMenu.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />

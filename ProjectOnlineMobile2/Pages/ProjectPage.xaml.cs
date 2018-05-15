@@ -16,5 +16,5 @@ namespace ProjectOnlineMobile2.Pages
 		{
 			InitializeComponent ();
 		}
-	}
+    }
 }

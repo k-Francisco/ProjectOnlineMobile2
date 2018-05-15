@@ -18,7 +18,8 @@ namespace ProjectOnlineMobile2.iOS
             base.ViewDidLoad();
             this.NavigationController.NavigationBarHidden = true;
 
-        }
 
+
+        }
     }
 }

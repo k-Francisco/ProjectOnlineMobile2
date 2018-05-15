@@ -7,7 +7,6 @@ using ProjectOnlineMobile2.Pages;
 using ProjectOnlineMobile2.Services;
 using UIKit;
 using Xamarin.Forms;
-using Xamarin.SideMenu;
 using System.IO;
 
 [assembly: Preserve(typeof(System.Linq.Queryable), AllMembers = true)]
@@ -24,7 +23,6 @@ namespace ProjectOnlineMobile2.iOS
         public static UIStoryboard Storyboard = UIStoryboard.FromName("Main", null);
 
         public UINavigationController navigationController;
-        //SideMenuManager _sideMenuManager;
         UIViewController controller;
         private UIViewController _projectPage, _tasksPage, _timesheetPage;
         public override UIWindow Window
@@ -44,6 +42,9 @@ namespace ProjectOnlineMobile2.iOS
             {
                 TextColor = UIColor.White
             });
+            UINavigationBar.Appearance.LargeTitleTextAttributes = new UIStringAttributes() {
+                ForegroundColor = UIColor.FromRGB(255, 255, 255)
+            };
             UINavigationBar.Appearance.Translucent = false;
             UINavigationBar.Appearance.TintColor = UIColor.White;
             UINavigationBar.Appearance.BarTintColor = UIColor.FromRGBA(49, 117, 47,1);
@@ -51,10 +52,6 @@ namespace ProjectOnlineMobile2.iOS
 
             shared = this;
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
-
-            
-
-            //_sideMenuManager = new SideMenuManager();
 
             if (String.IsNullOrWhiteSpace(Settings.CookieString))
             {
@@ -64,9 +61,6 @@ namespace ProjectOnlineMobile2.iOS
             {
                 controller = new HomePage().CreateViewController();
                 controller.Title = "Home";
-                //SetupSideMenu(controller);
-
-                //GetUserInfo();
             }
 
             MessagingCenter.Instance.Subscribe<String>(this,"NavigateToPage", (s) => {
@@ -82,6 +76,20 @@ namespace ProjectOnlineMobile2.iOS
             });
 
             navigationController = new UINavigationController();
+            navigationController.NavigationBar.PrefersLargeTitles = true;
+
+
+            //var searchController = new UISearchController(searchResultsController: null)
+            //{
+            //    HidesNavigationBarDuringPresentation = true,
+            //    DimsBackgroundDuringPresentation = true,
+            //};
+            //searchController.SearchBar.SearchBarStyle = UISearchBarStyle.Minimal;
+            //searchController.SearchBar.BackgroundColor = UIColor.White;
+            //searchController.SearchBar.Placeholder = "search";
+
+            //controller.NavigationItem.SearchController = searchController;
+
             Window.RootViewController = navigationController;
             navigationController.PushViewController(controller, false);
             Window.MakeKeyAndVisible();
@@ -122,7 +130,7 @@ namespace ProjectOnlineMobile2.iOS
             {
                 if(_projectPage == null)
                     _projectPage = new ProjectPage().CreateViewController();
-                _projectPage.Title = "Projects";
+                    _projectPage.Title = "Projects";
 
                 navigationController.PushViewController(_projectPage, true);
             }
@@ -164,37 +172,6 @@ namespace ProjectOnlineMobile2.iOS
                 navigationController.PresentViewController(logoutDialog, true, null);
             }
         }
-
-       
-
-        //public void SetupSideMenu(UIViewController controller)
-        //{
-        //    //if(_sideMenuManager.LeftNavigationController != null)
-        //    //{
-        //    //    _sideMenuManager.LeftNavigationController.DismissViewController(true, null);
-        //    //}
-        //    controller.NavigationItem.SetLeftBarButtonItem(new UIBarButtonItem("Menu", UIBarButtonItemStyle.Plain, (sender,e) => {
-        //        controller.PresentViewController(_sideMenuManager.LeftNavigationController, true, null);
-        //    }), false);
-            
-        //    _sideMenuManager.LeftNavigationController = new UISideMenuNavigationController(_sideMenuManager, Storyboard.InstantiateViewController("HomeController"), true);
-        //    //_sideMenuManager.AddScreenEdgePanGesturesToPresent(toView: navigationController?.View);
-
-        //    _sideMenuManager.PresentMode = SideMenuManager.MenuPresentMode.MenuSlideIn;
-        //    _sideMenuManager.BlurEffectStyle = null;
-        //    _sideMenuManager.AnimationFadeStrength = .25;
-        //    _sideMenuManager.ShadowOpacity = .50;
-        //    _sideMenuManager.FadeStatusBar = false;
-
-        //}
-
-        //public void SwitchControllers(UIViewController controller)
-        //{
-        //    navigationController = new UINavigationController();
-        //    navigationController.PushViewController(controller, false);
-        //    Window.RootViewController = navigationController;
-        //    SetupSideMenu(controller);
-        //}
 
         public override void OnResignActivation(UIApplication application)
         {
