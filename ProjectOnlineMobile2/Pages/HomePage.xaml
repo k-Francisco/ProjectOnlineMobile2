@@ -3,127 +3,87 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:ProjectOnlineMobile2.ViewModels"
              xmlns:controls="clr-namespace:ProjectOnlineMobile2.Controls"
+             xmlns:etc="clr-namespace:ProjectOnlineMobile2.Behaviors"
              x:Class="ProjectOnlineMobile2.Pages.HomePage">
     <ContentPage.BindingContext>
         <viewModels:HomePageViewModel/>
     </ContentPage.BindingContext>
-    
-    <ContentPage.Content>
-        <Grid RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
 
-            <StackLayout Orientation="Vertical"
-                         VerticalOptions="CenterAndExpand"
-                         HorizontalOptions="FillAndExpand"
-                         Grid.Row="0">
+    <ContentPage.Resources>
+        <ResourceDictionary>
 
-                <Image Source="user.png"
-                       HeightRequest="100"
-                       WidthRequest="100"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"/>
+            <DataTemplate x:Key="MasterMenu">
+                <controls:CustomViewCell>
+                    <StackLayout Orientation="Horizontal">
 
-                <Label Text="{Binding UserName}"
-                       FontAttributes="Bold"
-                       FontSize="Large"
-                       HorizontalOptions="Center"/>
+                        <Image Source="{Binding Image}"
+                               Aspect="AspectFit"
+                               HeightRequest="50"
+                               WidthRequest="50"/>
 
-                <Label Text="{Binding UserEmail}"
-                       FontSize="Small"
-                       HorizontalOptions="Center"/>
+                        <Label Text="{Binding Title}"
+                               TextColor="Black"
+                               FontSize="Medium"
+                               VerticalOptions="Center"/>
 
-            </StackLayout>
+                    </StackLayout>
+                </controls:CustomViewCell>
+            </DataTemplate>
             
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-            <Grid CompressedLayout.IsHeadless="True"
-                Grid.Row="1"
-                RowSpacing="0"
-                ColumnSpacing="0">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Padding="16,40,16,0">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <Image Source=""
+                   Aspect="AspectFit"
+                   HeightRequest="90"
+                   WidthRequest="90"
+                   Margin="0,0,0,24"/>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <Label Text="{Binding UserName}"
+                   TextColor="Black"
+                   FontSize="Large"
+                   HorizontalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center"/>
 
-                <controls:CustomFrame HasShadow="True"
-                                      Margin="8"
-                                      BackgroundColor="Green"
-                                      Grid.Row="0"
-                                      Grid.Column="0">
-                    <controls:CustomFrame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToProjectsPage}"
-                                              NumberOfTapsRequired="1"/>
-                    </controls:CustomFrame.GestureRecognizers>
-                    <Label Text="Projects"
-                           TextColor="White"
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"/>
+            <Label Text="{Binding UserEmail}"
+                   TextColor="Gray"
+                   FontSize="Small"
+                   HorizontalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center"/>
 
-                </controls:CustomFrame>
+            <StackLayout Margin="0,56,0,0"
+                         Orientation="Vertical"
+                         HeightRequest="180">
+                <ListView CachingStrategy="RecycleElementAndDataTemplate"
+                      HasUnevenRows="True"
+                      SeparatorVisibility="None"
+                      ItemTemplate="{StaticResource MasterMenu}"
+                      ItemsSource="{Binding MasterList}"
+                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                      VerticalOptions="FillAndExpand">
+                    <ListView.Behaviors>
+                        <etc:EventToCommandBehavior EventName="ItemSelected"
+                                                    Command="{Binding SelectedItemCommand}"/>
+                    </ListView.Behaviors>
+                </ListView>
+            </StackLayout>
 
-                <controls:CustomFrame HasShadow="True"
-                                      Margin="8"
-                                      BackgroundColor="Green"
-                                      Grid.Row="0"
-                                      Grid.Column="1">
-                    <controls:CustomFrame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToTasksPage}"
-                                              NumberOfTapsRequired="1"/>
-                    </controls:CustomFrame.GestureRecognizers>
-                    <Label Text="My Tasks"
-                           TextColor="White"
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"/>
-                </controls:CustomFrame>
+            <Button Text="Logout"
+                    TextColor="Red"
+                    HorizontalOptions="FillAndExpand">
+                <Button.Behaviors>
+                    <etc:EventToCommandBehavior EventName="Clicked"
+                                                Command="{Binding LogoutCommand}"/>
+                </Button.Behaviors>
+            </Button>
 
-                <controls:CustomFrame HasShadow="True"
-                                      Margin="8"
-                                      BackgroundColor="Green"
-                                      Grid.Row="1"
-                                      Grid.Column="0">
-                    <controls:CustomFrame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToTimesheetPage}"
-                                              NumberOfTapsRequired="1"/>
-                    </controls:CustomFrame.GestureRecognizers>
-                    <Label Text="Timesheet"
-                           TextColor="White"
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"/>
-                </controls:CustomFrame>
 
-                <controls:CustomFrame HasShadow="True"
-                                      Margin="8"
-                                      BackgroundColor="Green"
-                                      Grid.Row="1"
-                                      Grid.Column="1">
-                    <controls:CustomFrame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Logout}"
-                                              NumberOfTapsRequired="1"/>
-                    </controls:CustomFrame.GestureRecognizers>
-                    <Label Text="Logout"
-                           TextColor="White"
-                           FontSize="Medium"
-                           FontAttributes="Bold"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"/>
-                </controls:CustomFrame>
-
-            </Grid>
-
-        </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

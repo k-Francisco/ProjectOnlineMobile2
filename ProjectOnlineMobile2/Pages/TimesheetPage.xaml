@@ -127,19 +127,8 @@
         <StackLayout x:Name="mainLayout" 
                      Orientation="Vertical"
                      VerticalOptions="FillAndExpand"
-                     HorizontalOptions="FillAndExpand">
-
-            <controls:CustomPicker HorizontalOptions="FillAndExpand"
-                                   HeightRequest="40"
-                                   Image="arrow_down"
-                                   Title="Select Period"
-                                   Margin="16"
-                                   ItemsSource="{Binding PeriodList}"
-                                   SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
-                <controls:CustomPicker.Behaviors>
-                    <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedItemChangedCommand}"/>
-                </controls:CustomPicker.Behaviors>
-            </controls:CustomPicker>
+                     HorizontalOptions="FillAndExpand"
+                     Spacing="0">
 
             <ListView CachingStrategy="RecycleElementAndDataTemplate"
                       HasUnevenRows="True"
@@ -149,6 +138,22 @@
                       ItemTemplate="{StaticResource TimesheetLineCardTemplate}"
                       ItemsSource="{Binding PeriodLines}"/>
 
+            <Label Margin="16,0,16,0"
+                   Text="Period:"
+                   FontSize="Micro"
+                   TextColor="LightSlateGray"/>
+            
+            <controls:CustomPicker HorizontalOptions="FillAndExpand"
+                                   HeightRequest="30"
+                                   Image="arrow_down"
+                                   Title="Select Period"
+                                   Margin="16,0,16,16"
+                                   ItemsSource="{Binding PeriodList}"
+                                   SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+                <controls:CustomPicker.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedItemChangedCommand}"/>
+                </controls:CustomPicker.Behaviors>
+            </controls:CustomPicker>
 
         </StackLayout>
     </ContentPage.Content>

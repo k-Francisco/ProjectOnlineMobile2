@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using UIKit;
 using WebKit;
+using Xamarin.Forms;
 
 namespace ProjectOnlineMobile2.iOS
 {
@@ -15,11 +16,11 @@ namespace ProjectOnlineMobile2.iOS
         [Export("webView:didStartProvisionalNavigation:")]
         public async void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
-            var cookies = await webView.Configuration.WebsiteDataStore.HttpCookieStore.GetAllCookiesAsync();
-            foreach (var item in cookies)
-            {
-                loginWebView.Configuration.WebsiteDataStore.HttpCookieStore.DeleteCookie(item, null);
-            }
+            //var cookies = await webView.Configuration.WebsiteDataStore.HttpCookieStore.GetAllCookiesAsync();
+            //foreach (var item in cookies)
+            //{
+            //    webView.Configuration.WebsiteDataStore.HttpCookieStore.DeleteCookie(item, null);
+            //}
 
             activityIndicator.StartAnimating();
         }
@@ -61,8 +62,16 @@ namespace ProjectOnlineMobile2.iOS
                         var authCookie = rtFa + "; " + FedAuth;
                         Settings.CookieString = JsonConvert.SerializeObject(authCookie);
 
-                        var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
-                        AppDelegate.appDelegate.Window.RootViewController = controller;
+                        if (Device.Idiom == TargetIdiom.Tablet)
+                        {
+                            var controller = Storyboard.InstantiateViewController("SplitController") as SplitController;
+                            AppDelegate.appDelegate.Window.RootViewController = controller;
+                        }
+                        else if (Device.Idiom == TargetIdiom.Phone)
+                        {
+                            var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
+                            AppDelegate.appDelegate.Window.RootViewController = controller;
+                        }
                     }
                     catch (Exception ez)
                     {
@@ -91,11 +100,20 @@ namespace ProjectOnlineMobile2.iOS
 
             var url = "https://sharepointevo.sharepoint.com";
             var request = new NSMutableUrlRequest(new NSUrl(url));
+            NSUrlCache.SharedCache.RemoveAllCachedResponses();
+            NSUrlCache.SharedCache.MemoryCapacity = 0;
+            NSUrlCache.SharedCache.DiskCapacity = 0;
+            NSHttpCookieStorage CookieStorage = NSHttpCookieStorage.SharedStorage;
+            foreach (var cookie in CookieStorage.Cookies)
+                CookieStorage.DeleteCookie(cookie);
 
             loginWebView = new WKWebView(View.Frame, new WKWebViewConfiguration());
             loginWebView.Bounds = View.Bounds;
             loginWebView.NavigationDelegate = this;
             loginWebView.UIDelegate = this;
+
+            //clearCache();
+
             loginWebView.LoadRequest(request);
 
             View.AddSubview(loginWebView);
@@ -103,5 +121,30 @@ namespace ProjectOnlineMobile2.iOS
 
         }
 
+        private void clearCache()
+        {
+            var websiteDataTypes = new NSSet<NSString>(new[]
+            {
+                WKWebsiteDataType.Cookies,
+                WKWebsiteDataType.DiskCache,
+                WKWebsiteDataType.IndexedDBDatabases,
+                WKWebsiteDataType.LocalStorage,
+                WKWebsiteDataType.MemoryCache,
+                WKWebsiteDataType.OfflineWebApplicationCache,
+                WKWebsiteDataType.SessionStorage,
+                WKWebsiteDataType.WebSQLDatabases
+            });
+
+            WKWebsiteDataStore.DefaultDataStore.FetchDataRecordsOfTypes(websiteDataTypes, (NSArray records) =>
+            {
+                for (nuint i = 0; i < records.Count; i++)
+                {
+                    var record = records.GetItem<WKWebsiteDataRecord>(i);
+
+                    WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(record.DataTypes,
+                        new[] { record }, null );
+                }
+            });
+        }
     }
 }

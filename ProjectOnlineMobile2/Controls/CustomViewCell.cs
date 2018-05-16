@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace ProjectOnlineMobile2.Controls
 {
-    public class CustomListView : ListView
+    public class CustomViewCell : ViewCell
     {
     }
 }

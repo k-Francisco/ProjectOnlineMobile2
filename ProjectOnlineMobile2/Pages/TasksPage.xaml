@@ -84,6 +84,7 @@
                                     </Grid.RowDefinitions>
 
                                     <Label Text="Start"
+                                           TextColor="LightSlateGray"
                                            FontSize="Micro"
                                            Grid.Row="0" Grid.Column="0"/>
 
@@ -93,6 +94,7 @@
                                            Grid.Row="1" Grid.Column="0"/>
 
                                     <Label Text="Finish"
+                                           TextColor="LightSlateGray"
                                            FontSize="Micro"
                                            Grid.Row="0" Grid.Column="1"/>
 
@@ -116,6 +118,7 @@
                                     </Grid.RowDefinitions>
 
                                     <Label Text="Work"
+                                           TextColor="LightSlateGray"
                                            FontSize="Micro"
                                            Grid.Row="0" Grid.Column="0"/>
 
@@ -125,6 +128,7 @@
                                            Grid.Row="1" Grid.Column="0"/>
 
                                     <Label Text="Actual Work"
+                                           TextColor="LightSlateGray"
                                            FontSize="Micro"
                                            Grid.Row="0" Grid.Column="1"/>
 
@@ -134,6 +138,7 @@
                                            Grid.Row="1" Grid.Column="1"/>
 
                                     <Label Text="Remaining Work"
+                                           TextColor="LightSlateGray"
                                            FontSize="Micro"
                                            Grid.Row="0" Grid.Column="2"/>
 

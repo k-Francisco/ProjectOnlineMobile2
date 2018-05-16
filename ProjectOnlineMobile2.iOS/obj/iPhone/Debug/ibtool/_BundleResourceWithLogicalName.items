@@ -20,6 +20,11 @@
       <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\SplitController.nib">
+      <LogicalName>Main.storyboardc/SplitController.nib</LogicalName>
+      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\TabBarController.nib">
       <LogicalName>Main.storyboardc/TabBarController.nib</LogicalName>
       <InterfaceDefinition>Main.storyboard</InterfaceDefinition>

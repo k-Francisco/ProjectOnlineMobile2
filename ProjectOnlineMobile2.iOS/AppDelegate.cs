@@ -1,5 +1,7 @@
 ﻿using Foundation;
+using ProjectOnlineMobile2.Pages;
 using ProjectOnlineMobile2.Services;
+using System;
 using UIKit;
 using Xamarin.Forms;
 
@@ -25,6 +27,7 @@ namespace ProjectOnlineMobile2.iOS
             // If not required for your application you can safely delete this method
 
             Forms.Init();
+
             appDelegate = this;
 
             UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
@@ -48,11 +51,19 @@ namespace ProjectOnlineMobile2.iOS
             }
             else
             {
-                var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
-                Window.RootViewController = controller;
-                Window.MakeKeyAndVisible();
+                if(Device.Idiom == TargetIdiom.Tablet)
+                {
+                    var controller = Storyboard.InstantiateViewController("SplitController") as SplitController;
+                    Window.RootViewController = controller;
+                    Window.MakeKeyAndVisible();
+                }
+                else if(Device.Idiom == TargetIdiom.Phone)
+                {
+                    var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
+                    Window.RootViewController = controller;
+                    Window.MakeKeyAndVisible();
+                }
             }
-
             return true;
 		}
 

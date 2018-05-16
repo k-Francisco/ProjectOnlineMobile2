@@ -22,7 +22,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-736" y="-99"/>
         </scene>
         <scene sceneID="3477">
             <objects>
@@ -39,7 +39,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3480" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="577" y="-6"/>
+            <point key="canvasLocation" x="-275" y="-101"/>
+        </scene>
+        <scene sceneID="3767">
+            <objects>
+                <splitViewController id="3768" sceneMemberID="viewController" customClass="SplitController" storyboardIdentifier="SplitController" useStoryboardIdentifierAsRestorationIdentifier="YES"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3771" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="354" y="-101"/>
         </scene>
     </scenes>
 </document>

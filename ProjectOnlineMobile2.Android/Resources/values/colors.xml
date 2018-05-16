@@ -10,4 +10,6 @@
   <color name="secondaryText">#727272</color>
   <color name="divider">#B6B6B6</color>
   <color name="activated_color">#EAF8E7</color>
+  <color name="ListViewSelected">#96BCE3</color>
+  <color name="ListViewHighlighted">#E39696</color>
 </resources>

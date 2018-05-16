@@ -13,12 +13,6 @@ namespace ProjectOnlineMobile2.ViewModels
 {
     public class HomePageViewModel : BaseViewModel
     {
-
-        public ICommand GoToProjectsPage { get; set; }
-        public ICommand GoToTasksPage { get; set; }
-        public ICommand GoToTimesheetPage { get; set; }
-        public ICommand Logout { get; set; }
-
         private string _userName;
         public string UserName
         {
@@ -33,14 +27,49 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _userEmail, value); }
         }
 
+        private HomePageModel _selectedItem;
+        public HomePageModel SelectedItem
+        {
+            get { return _selectedItem; }
+            set { SetProperty(ref _selectedItem, value); }
+        }
+
+        public ICommand SelectedItemCommand { get; set; }
+        public ICommand LogoutCommand { get; set; }
+
+        public List<HomePageModel> MasterList { get; set; }
+
+        private HomePageModel _projects, _tasks, _timesheets;
+
         public HomePageViewModel()
         {
-            GoToProjectsPage = new Command(ExecuteGoToProjectsPage);
-            GoToTasksPage = new Command(ExecuteGoToTasksPage);
-            GoToTimesheetPage = new Command(ExecuteGoToTimesheetPage);
-            Logout = new Command(ExecuteLogout);
-
             GetUserInfo();
+
+            SelectedItemCommand = new Command(ExecuteSelectedItemCommand);
+            LogoutCommand = new Command(ExecuteLogoutCommand);
+
+            MasterList = new List<HomePageModel>();
+
+            _projects = new HomePageModel() {
+                Title = "Projects",
+                Image = ""
+            };
+            _tasks = new HomePageModel()
+            {
+                Title = "Tasks",
+                Image = ""
+            };
+            _timesheets = new HomePageModel()
+            {
+                Title = "Timesheets",
+                Image = ""
+            };
+
+            MasterList.Add(_projects);
+            MasterList.Add(_tasks);
+            MasterList.Add(_timesheets);
+
+            SelectedItem = _projects;
 
             MessagingCenter.Instance.Subscribe<String>(this, "ClearAll", (s)=> {
                 realm.Write(()=> {
@@ -51,9 +80,15 @@ namespace ProjectOnlineMobile2.ViewModels
 
         }
 
-        private void ExecuteLogout(object obj)
+        private void ExecuteLogoutCommand()
         {
-            MessagingCenter.Instance.Send<String>("Logout", "NavigateToPage");
+            string[]  strings = { "Are you sure you want to log out?", "Logout", "Logout"};
+            MessagingCenter.Instance.Send<String[]>(strings, "DisplayAlert");
+        }
+
+        private void ExecuteSelectedItemCommand()
+        {
+            MessagingCenter.Instance.Send<String>(SelectedItem.Title, "Navigate");
         }
 
         private async void GetUserInfo()
@@ -98,19 +133,5 @@ namespace ProjectOnlineMobile2.ViewModels
             }
         }
 
-        private void ExecuteGoToTimesheetPage()
-        {
-            MessagingCenter.Instance.Send<String>("TimesheetPage", "NavigateToPage");
-        }
-
-        private void ExecuteGoToTasksPage()
-        {
-            MessagingCenter.Instance.Send<String>("TasksPage", "NavigateToPage");
-        }
-
-        private void ExecuteGoToProjectsPage()
-        {
-            MessagingCenter.Instance.Send<String>("ProjectPage", "NavigateToPage");
-        }
     }
 }
