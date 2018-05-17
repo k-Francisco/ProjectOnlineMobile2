@@ -48,6 +48,8 @@ namespace ProjectOnlineMobile2.ViewModels
             SelectedItemCommand = new Command(ExecuteSelectedItemCommand);
             LogoutCommand = new Command(ExecuteLogoutCommand);
 
+            Debug.WriteLine("HomePageViewModel", "here");
+
             MasterList = new List<HomePageModel>();
 
             _projects = new HomePageModel() {

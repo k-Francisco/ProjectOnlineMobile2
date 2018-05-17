@@ -20,7 +20,9 @@ namespace ProjectOnlineMobile2.iOS
 			get;
 			set;
 		}
-        
+
+        public string UserName, UserEmail, TimesheetPeriod;
+
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
             // Override point for customization after application launch.
@@ -43,6 +45,15 @@ namespace ProjectOnlineMobile2.iOS
             UINavigationBar.Appearance.BarTintColor = UIColor.FromRGBA(49, 117, 47, 1);
             UINavigationBar.Appearance.BackgroundColor = UIColor.FromRGBA(49, 117, 47, 1);
 
+            MessagingCenter.Instance.Subscribe<ProjectOnlineMobile2.Models.D_User>(this, "UserInfo", (user)=> {
+                UserName = user.Title;
+                UserEmail = user.Email;
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "TimesheetPeriod", (tsp) => {
+                TimesheetPeriod = tsp;
+            });
+
             if (string.IsNullOrWhiteSpace(Settings.CookieString))
             {
                 var controller = Storyboard.InstantiateViewController("LoginController") as LoginController;
@@ -53,12 +64,17 @@ namespace ProjectOnlineMobile2.iOS
             {
                 if(Device.Idiom == TargetIdiom.Tablet)
                 {
-                    var controller = Storyboard.InstantiateViewController("SplitController") as SplitController;
+                    //var controller = Storyboard.InstantiateViewController("SplitController") as SplitController;
+                    //Window.RootViewController = controller;
+                    //Window.MakeKeyAndVisible();
+                    var homePageController = new HomePage().CreateViewController();
+                    var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
                     Window.RootViewController = controller;
                     Window.MakeKeyAndVisible();
                 }
                 else if(Device.Idiom == TargetIdiom.Phone)
                 {
+                    var homePageController = new HomePage().CreateViewController();
                     var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
                     Window.RootViewController = controller;
                     Window.MakeKeyAndVisible();

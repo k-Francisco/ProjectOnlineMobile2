@@ -56,9 +56,7 @@ namespace ProjectOnlineMobile2.ViewModels
             }
             FindTodaysPeriod();
 
-            MessagingCenter.Instance.Subscribe<String>(this, "TimesheetPageInit", (s) => {
-                SyncTimesheetPeriods(savedPeriods);
-            });
+            SyncTimesheetPeriods(savedPeriods);
 
             MessagingCenter.Instance.Subscribe<String>(this, "CreateTimesheet", (periodId) =>
             {
@@ -208,6 +206,8 @@ namespace ProjectOnlineMobile2.ViewModels
             }
 
             SyncTimesheetLines(savedLines);
+
+            MessagingCenter.Instance.Send<String>(PeriodList[SelectedIndex].ToString(), "TimesheetPeriod");
         }
 
         private async void SyncTimesheetLines(List<SavedLinesModel> savedLines)

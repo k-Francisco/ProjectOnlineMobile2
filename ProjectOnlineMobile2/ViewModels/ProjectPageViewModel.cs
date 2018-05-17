@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ProjectOnlineMobile2.ViewModels
@@ -20,9 +21,19 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _projectList, value); }
         }
 
+        private bool _isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set { SetProperty(ref _isRefreshing, value); }
+        }
+
+        public ICommand RefreshProjects { get; set; }
+
         public ProjectPageViewModel()
         {
             ProjectList = new ObservableCollection<Result>();
+            RefreshProjects = new Command(ExecuteRefreshProjects);
 
             var savedProjects = realm.All<Result>().ToList();
 
@@ -31,9 +42,24 @@ namespace ProjectOnlineMobile2.ViewModels
                 ProjectList.Add(item);
             }
 
-            MessagingCenter.Instance.Subscribe<String>(this, "ProjectPageInit", (s)=> {
+            SyncProjects(savedProjects);
+        }
+
+        private void ExecuteRefreshProjects()
+        {
+            IsRefreshing = true;
+            if (IsConnectedToInternet())
+            {
+                realm.Write(() => {
+                    realm.RemoveAll<Result>();
+                });
+                ProjectList.Clear();
+
+                var savedProjects = realm.All<Result>().ToList();
                 SyncProjects(savedProjects);
-            });
+            }
+            else
+                IsRefreshing = false;
         }
 
         private async void SyncProjects(List<Result> savedProjects)
@@ -45,11 +71,14 @@ namespace ProjectOnlineMobile2.ViewModels
                     var projects = await PSapi.GetAllProjects();
 
                     syncDataService.SyncProjects(projects, savedProjects, ProjectList);
+
+                    IsRefreshing = false;
                 }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("SyncProjects", e.Message);
+                IsRefreshing = false;
             }
         }
     }

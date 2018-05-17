@@ -171,8 +171,9 @@
             <ListView CachingStrategy="RecycleElementAndDataTemplate"
                       HasUnevenRows="True"
                       SeparatorVisibility="None"
-                      IsPullToRefreshEnabled="False"
-                      IsRefreshing="False"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RefreshCommand="{Binding RefreshProjects}"
                       ItemTemplate="{StaticResource ProjectCardTemplate}"
                       ItemsSource="{Binding ProjectList}"/>
 

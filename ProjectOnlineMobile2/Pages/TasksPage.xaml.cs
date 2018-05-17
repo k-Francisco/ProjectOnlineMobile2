@@ -17,10 +17,5 @@ namespace ProjectOnlineMobile2.Pages
 		{
 			InitializeComponent ();
 		}
-
-        protected override void OnAppearing()
-        {
-            MessagingCenter.Instance.Send<String>("", "TasksPageInit");
-        }
     }
 }

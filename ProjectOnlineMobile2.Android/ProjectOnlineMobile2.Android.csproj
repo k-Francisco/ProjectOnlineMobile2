@@ -288,6 +288,31 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\timesheet_menu.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_gear.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_projects.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_tasks.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_timesheet.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_user.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_gear.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_projects.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_tasks.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_timesheet.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_user.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_gear.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_projects.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_tasks.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_timesheet.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_user.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_gear.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_projects.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_tasks.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_timesheet.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_user.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_gear.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_projects.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_tasks.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_timesheet.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_user.png" />
     <None Include="FodyWeavers.xml" />
     <Content Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace ProjectOnlineMobile2.Services
 {
@@ -39,6 +40,7 @@ namespace ProjectOnlineMobile2.Services
                         realm.Write(()=> {
                             realm.Remove(item);
                         });
+                        displayedProjects.Remove(item);
                     }
                 }
 
@@ -103,6 +105,7 @@ namespace ProjectOnlineMobile2.Services
                         realm.Write(()=> {
                             realm.Remove(item);
                         });
+                        displayedTasks.Remove(item);
                     }
                 }
 
@@ -214,6 +217,7 @@ namespace ProjectOnlineMobile2.Services
                         realm.Write(()=> {
                             realm.Remove(item);
                         });
+                        displayedPeriods.Remove(item);
                     }
                 }
 
@@ -267,6 +271,7 @@ namespace ProjectOnlineMobile2.Services
                         realm.Write(()=> {
                             realm.Remove(item);
                         });
+                        displayedLines.Remove(item.LineModel);
                     }
                 }
 

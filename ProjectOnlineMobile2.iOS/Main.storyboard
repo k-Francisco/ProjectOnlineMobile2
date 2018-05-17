@@ -14,7 +14,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="687" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" colorSpace="calibratedRGB" red="0.19215686274509805" green="0.45882352941176469" blue="0.18431372549019609" alpha="0"/>
+                        <color key="tintColor" colorSpace="calibratedRGB" red="0.19215686274509805" green="0.45882352941176469" blue="0.18431372549019609" alpha="1"/>
                     </tabBar>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

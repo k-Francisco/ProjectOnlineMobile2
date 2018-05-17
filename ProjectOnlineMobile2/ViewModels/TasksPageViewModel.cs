@@ -33,9 +33,7 @@ namespace ProjectOnlineMobile2.ViewModels
                 Tasks.Add(item);
             }
 
-            MessagingCenter.Instance.Subscribe<String>(this, "TasksPageInit", (s) => {
-                SyncUserTasks(savedTasks);
-            });
+            SyncUserTasks(savedTasks);
         }
 
         private async void SyncUserTasks(List<Result> savedTasks)

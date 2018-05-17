@@ -211,6 +211,21 @@
   <ItemGroup>
     <Content Include="Entitlements.plist" />
     <Content Include="FodyWeavers.xml" />
+    <BundleResource Include="Resources\ic_gear.png" />
+    <BundleResource Include="Resources\ic_gear%402x.png" />
+    <BundleResource Include="Resources\ic_gear%403x.png" />
+    <BundleResource Include="Resources\ic_projects.png" />
+    <BundleResource Include="Resources\ic_projects%402x.png" />
+    <BundleResource Include="Resources\ic_projects%403x.png" />
+    <BundleResource Include="Resources\ic_tasks.png" />
+    <BundleResource Include="Resources\ic_tasks%402x.png" />
+    <BundleResource Include="Resources\ic_tasks%403x.png" />
+    <BundleResource Include="Resources\ic_timesheet.png" />
+    <BundleResource Include="Resources\ic_timesheet%402x.png" />
+    <BundleResource Include="Resources\ic_timesheet%403x.png" />
+    <BundleResource Include="Resources\ic_user.png" />
+    <BundleResource Include="Resources\ic_user%402x.png" />
+    <BundleResource Include="Resources\ic_user%403x.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -1,5 +1,6 @@
 ﻿using Foundation;
 using Newtonsoft.Json;
+using ProjectOnlineMobile2.Pages;
 using ProjectOnlineMobile2.Services;
 using System;
 using System.Diagnostics;
@@ -14,7 +15,7 @@ namespace ProjectOnlineMobile2.iOS
     {
 
         [Export("webView:didStartProvisionalNavigation:")]
-        public async void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
+        public void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
             //var cookies = await webView.Configuration.WebsiteDataStore.HttpCookieStore.GetAllCookiesAsync();
             //foreach (var item in cookies)
@@ -69,6 +70,7 @@ namespace ProjectOnlineMobile2.iOS
                         }
                         else if (Device.Idiom == TargetIdiom.Phone)
                         {
+                            var homePageController = new HomePage().CreateViewController();
                             var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
                             AppDelegate.appDelegate.Window.RootViewController = controller;
                         }
