@@ -133,8 +133,9 @@
             <ListView CachingStrategy="RecycleElementAndDataTemplate"
                       HasUnevenRows="True"
                       SeparatorVisibility="None"
-                      IsPullToRefreshEnabled="False"
-                      IsRefreshing="False"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RefreshCommand="{Binding RefreshLinesCommand}"
                       ItemTemplate="{StaticResource TimesheetLineCardTemplate}"
                       ItemsSource="{Binding PeriodLines}"/>
 

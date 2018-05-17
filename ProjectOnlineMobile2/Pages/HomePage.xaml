@@ -2,87 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:ProjectOnlineMobile2.ViewModels"
-             xmlns:controls="clr-namespace:ProjectOnlineMobile2.Controls"
-             xmlns:etc="clr-namespace:ProjectOnlineMobile2.Behaviors"
              x:Class="ProjectOnlineMobile2.Pages.HomePage">
     <ContentPage.BindingContext>
         <viewModels:HomePageViewModel/>
     </ContentPage.BindingContext>
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-
-            <DataTemplate x:Key="MasterMenu">
-                <controls:CustomViewCell>
-                    <StackLayout Orientation="Horizontal">
-
-                        <Image Source="{Binding Image}"
-                               Aspect="AspectFit"
-                               HeightRequest="50"
-                               WidthRequest="50"/>
-
-                        <Label Text="{Binding Title}"
-                               TextColor="Black"
-                               FontSize="Medium"
-                               VerticalOptions="Center"/>
-
-                    </StackLayout>
-                </controls:CustomViewCell>
-            </DataTemplate>
-            
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical"
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     Padding="16,40,16,0">
-
-            <Image Source=""
-                   Aspect="AspectFit"
-                   HeightRequest="90"
-                   WidthRequest="90"
-                   Margin="0,0,0,24"/>
-
-            <Label Text="{Binding UserName}"
-                   TextColor="Black"
-                   FontSize="Large"
-                   HorizontalOptions="CenterAndExpand"
-                   HorizontalTextAlignment="Center"/>
-
-            <Label Text="{Binding UserEmail}"
-                   TextColor="Gray"
-                   FontSize="Small"
-                   HorizontalOptions="CenterAndExpand"
-                   HorizontalTextAlignment="Center"/>
-
-            <StackLayout Margin="0,56,0,0"
-                         Orientation="Vertical"
-                         HeightRequest="180">
-                <ListView CachingStrategy="RecycleElementAndDataTemplate"
-                      HasUnevenRows="True"
-                      SeparatorVisibility="None"
-                      ItemTemplate="{StaticResource MasterMenu}"
-                      ItemsSource="{Binding MasterList}"
-                      SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                      VerticalOptions="FillAndExpand">
-                    <ListView.Behaviors>
-                        <etc:EventToCommandBehavior EventName="ItemSelected"
-                                                    Command="{Binding SelectedItemCommand}"/>
-                    </ListView.Behaviors>
-                </ListView>
-            </StackLayout>
-
-            <Button Text="Logout"
-                    TextColor="Red"
-                    HorizontalOptions="FillAndExpand">
-                <Button.Behaviors>
-                    <etc:EventToCommandBehavior EventName="Clicked"
-                                                Command="{Binding LogoutCommand}"/>
-                </Button.Behaviors>
-            </Button>
-
+        <StackLayout Orientation="Vertical">
 
         </StackLayout>
     </ContentPage.Content>

@@ -24,19 +24,26 @@ namespace ProjectOnlineMobile2.iOS
 
                 //s[0] = message
                 //s[1] = affirm button message
-                //s[2] = identifier
-                //further strings are for necessary parameters like periodId, lineId, etc
+                //s[2] = cancel button message
+                //s[3] = identifier
+                //s[4] = period id
                 var alertController = UIAlertController.Create("",
                 s[0],
                 UIAlertControllerStyle.Alert);
 
                 alertController.AddAction(UIAlertAction.Create(s[1], UIAlertActionStyle.Default, alert => {
-                    
+                    if (!string.IsNullOrEmpty(s[3]) && s[3].Equals("CreateTimesheet"))
+                    {
+                        MessagingCenter.Instance.Send<String>(s[4], "CreateTimesheet");
+                    }
                 }));
 
-                alertController.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, alert => {
+                if (!string.IsNullOrEmpty(s[4]))
+                {
+                    alertController.AddAction(UIAlertAction.Create(s[2], UIAlertActionStyle.Cancel, alert => {
 
-                }));
+                    }));
+                }
                 SelectedViewController.PresentViewController(alertController, true, null);
             });
         }

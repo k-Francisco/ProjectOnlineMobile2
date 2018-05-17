@@ -42,12 +42,5 @@
             </objects>
             <point key="canvasLocation" x="-275" y="-101"/>
         </scene>
-        <scene sceneID="3767">
-            <objects>
-                <splitViewController id="3768" sceneMemberID="viewController" customClass="SplitController" storyboardIdentifier="SplitController" useStoryboardIdentifierAsRestorationIdentifier="YES"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3771" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="354" y="-101"/>
-        </scene>
     </scenes>
 </document>

@@ -81,10 +81,6 @@
     <Compile Include="Renderers\CustomPickerRenderer.cs" />
     <Compile Include="Renderers\CustomProgressBarRenderer.cs" />
     <Compile Include="Renderers\CustomViewCellRenderer.cs" />
-    <Compile Include="SplitController.cs" />
-    <Compile Include="SplitController.designer.cs">
-      <DependentUpon>SplitController.cs</DependentUpon>
-    </Compile>
     <Compile Include="TabBarController.cs" />
     <Compile Include="TabBarController.designer.cs">
       <DependentUpon>TabBarController.cs</DependentUpon>

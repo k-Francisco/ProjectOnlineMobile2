@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using System.Linq;
 using ProjectOnlineMobile2.Models.PSPL;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ProjectOnlineMobile2.ViewModels
 {
@@ -22,9 +23,20 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _tasks, value); }
         }
 
+        private bool _isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set { SetProperty(ref _isRefreshing, value); }
+        }
+
+        public ICommand RefreshTasksCommand { get; set; }
+
         public TasksPageViewModel()
         {
             Tasks = new ObservableCollection<Result>();
+
+            RefreshTasksCommand = new Command(ExecuteRefreshTasksCommand);
 
             var savedTasks = realm.All<Result>().ToList();
 
@@ -34,6 +46,33 @@ namespace ProjectOnlineMobile2.ViewModels
             }
 
             SyncUserTasks(savedTasks);
+        }
+
+        private void ExecuteRefreshTasksCommand()
+        {
+            try
+            {
+                IsRefreshing = true;
+                if (IsConnectedToInternet())
+                {
+                    realm.Write(() =>
+                    {
+                        realm.RemoveAll<Result>();
+                    });
+                    Tasks.Clear();
+
+                    var savedTasks = realm.All<Result>().ToList();
+                    SyncUserTasks(savedTasks);
+                }
+                else
+                    IsRefreshing = false;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("ExecuteRefreshTasksCommand", e.Message);
+                IsRefreshing = false;
+            }
+            
         }
 
         private async void SyncUserTasks(List<Result> savedTasks)
@@ -56,11 +95,14 @@ namespace ProjectOnlineMobile2.ViewModels
                     }
 
                     syncDataService.SyncUserTasks(savedTasks, tempCollection, Tasks);
+
+                    IsRefreshing = false;
                 }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("SyncUserTasks", e.Message);
+                IsRefreshing = false;
             }
         }
         

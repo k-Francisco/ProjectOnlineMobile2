@@ -260,23 +260,6 @@ namespace ProjectOnlineMobile2.Services
             try
             {
 
-                foreach (var item in savedLines)
-                {
-                    var temp = linesFromServer
-                        .Where(p => p.Id.Equals(item.LineModel.Id))
-                        .FirstOrDefault();
-
-                    if(temp == null)
-                    {
-                        realm.Write(()=> {
-                            realm.Remove(item);
-                        });
-                        displayedLines.Remove(item.LineModel);
-                    }
-                }
-
-                realm.Refresh();
-
                 foreach (var item in linesFromServer)
                 {
                     var temp = savedLines

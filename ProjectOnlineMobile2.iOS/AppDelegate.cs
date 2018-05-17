@@ -62,23 +62,10 @@ namespace ProjectOnlineMobile2.iOS
             }
             else
             {
-                if(Device.Idiom == TargetIdiom.Tablet)
-                {
-                    //var controller = Storyboard.InstantiateViewController("SplitController") as SplitController;
-                    //Window.RootViewController = controller;
-                    //Window.MakeKeyAndVisible();
-                    var homePageController = new HomePage().CreateViewController();
-                    var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
-                    Window.RootViewController = controller;
-                    Window.MakeKeyAndVisible();
-                }
-                else if(Device.Idiom == TargetIdiom.Phone)
-                {
-                    var homePageController = new HomePage().CreateViewController();
-                    var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
-                    Window.RootViewController = controller;
-                    Window.MakeKeyAndVisible();
-                }
+                var homePageController = new HomePage().CreateViewController();
+                var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
+                Window.RootViewController = controller;
+                Window.MakeKeyAndVisible();
             }
             return true;
 		}

@@ -47,19 +47,27 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private void ExecuteRefreshProjects()
         {
-            IsRefreshing = true;
-            if (IsConnectedToInternet())
+            try
             {
-                realm.Write(() => {
-                    realm.RemoveAll<Result>();
-                });
-                ProjectList.Clear();
+                IsRefreshing = true;
+                if (IsConnectedToInternet())
+                {
+                    realm.Write(() => {
+                        realm.RemoveAll<Result>();
+                    });
+                    ProjectList.Clear();
 
-                var savedProjects = realm.All<Result>().ToList();
-                SyncProjects(savedProjects);
+                    var savedProjects = realm.All<Result>().ToList();
+                    SyncProjects(savedProjects);
+                }
+                else
+                    IsRefreshing = false;
             }
-            else
+            catch (Exception e)
+            {
+                Debug.WriteLine("ExecuteRefreshProjects", e.Message);
                 IsRefreshing = false;
+            }
         }
 
         private async void SyncProjects(List<Result> savedProjects)

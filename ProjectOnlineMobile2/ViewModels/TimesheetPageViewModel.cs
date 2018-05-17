@@ -37,9 +37,17 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _selectedIndex, value); }
         }
 
+        private bool _isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set { SetProperty(ref _isRefreshing, value); }
+        }
+
         public string periodId, lineId;
         public ICommand SelectedItemChangedCommand { get; set; }
         public ICommand TimesheetLineClicked { get; set; }
+        public ICommand RefreshLinesCommand { get; set; }
 
         public TimesheetPageViewModel()
         {
@@ -48,6 +56,7 @@ namespace ProjectOnlineMobile2.ViewModels
 
             SelectedItemChangedCommand = new Command(ExecuteSelectedItemChangedCommand);
             TimesheetLineClicked = new Command<LineResult>(ExecuteTimesheetLineClicked);
+            RefreshLinesCommand = new Command(ExecuteRefreshLinesCommand);
 
             var savedPeriods = realm.All<TimesheetPeriodsResult>().ToList();
             foreach (var item in savedPeriods)
@@ -79,6 +88,36 @@ namespace ProjectOnlineMobile2.ViewModels
 
         }
 
+        private void ExecuteRefreshLinesCommand()
+        {
+            try
+            {
+                IsRefreshing = true;
+
+                var savedLines = realm.All<SavedLinesModel>().Where(p => p.PeriodId == periodId);
+
+                if (IsConnectedToInternet())
+                {
+                    realm.Write(()=> {
+                        realm.RemoveRange<SavedLinesModel>(savedLines);
+                    });
+                    PeriodLines.Clear();
+
+                    realm.Refresh();
+
+                    SyncTimesheetLines(savedLines.ToList());
+                }
+                else
+                    IsRefreshing = false;
+                
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("ExecuteRefreshLinesCommand", e.Message);
+                IsRefreshing = false;
+            }
+        }
+
         private async void SyncTimesheetPeriods(List<TimesheetPeriodsResult> savedPeriods)
         {
             try
@@ -107,7 +146,7 @@ namespace ProjectOnlineMobile2.ViewModels
                         DateTime.Compare(DateTime.Now, PeriodList[i].End.DateTime) < 0)
                 {
                     SelectedIndex = i;
-                    //ExecuteSelectedItemChangedCommand();
+                    ExecuteSelectedItemChangedCommand();
                     break;
                 }
             }
@@ -117,24 +156,34 @@ namespace ProjectOnlineMobile2.ViewModels
         {
             try
             {
-                var formDigest = await SPapi.GetFormDigest();
-
-                var recall = await PSapi.RecallTimesheet(PeriodList[SelectedIndex].Id, formDigest.D.GetContextWebInformation.FormDigestValue);
-
-                if (recall)
+                if (IsConnectedToInternet())
                 {
-                    Debug.WriteLine("ExecuteRecallTimesheet", "success");
-                    //show success 
+                    var formDigest = await SPapi.GetFormDigest();
+
+                    var recall = await PSapi.RecallTimesheet(PeriodList[SelectedIndex].Id, formDigest.D.GetContextWebInformation.FormDigestValue);
+
+                    if (recall)
+                    {
+                        string[] alertStrings = { "Successfully recalled timesheet", "Close" };
+                        MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                    }
+                    else
+                    {
+                        string[] alertStrings = { "There was an error recalling the timesheet", "Close" };
+                        MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                    }
                 }
                 else
                 {
-                    Debug.WriteLine("ExecuteRecallTimesheet", "failed");
-                    //show failure
+                    string[] alertStrings = { "The device is not connected to the internet", "Close" };
+                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
                 }
             }
             catch(Exception e)
             {
                 Debug.WriteLine("ExecuteRecallTimesheet", e.Message);
+                string[] alertStrings = { "There was an error recalling the timesheet", "Close" };
+                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
         }
 
@@ -142,24 +191,29 @@ namespace ProjectOnlineMobile2.ViewModels
         {
             try
             {
-                var formDigest = await SPapi.GetFormDigest();
-
-                var submit = await PSapi.SubmitTimesheet(PeriodList[SelectedIndex].Id, comment, formDigest.D.GetContextWebInformation.FormDigestValue);
-
-                if (submit)
+                if (IsConnectedToInternet())
                 {
-                    Debug.WriteLine("ExecuteSubmitTimesheet", "success");
-                    //show success 
-                }
-                else
-                {
-                    Debug.WriteLine("ExecuteSubmitTimesheet", "failed");
-                    //show failure
+                    var formDigest = await SPapi.GetFormDigest();
+
+                    var submit = await PSapi.SubmitTimesheet(PeriodList[SelectedIndex].Id, comment, formDigest.D.GetContextWebInformation.FormDigestValue);
+
+                    if (submit)
+                    {
+                        string[] alertStrings = { "Successfully submitted the timesheet", "Close" };
+                        MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                    }
+                    else
+                    {
+                        string[] alertStrings = { "There was a problem submitting the timesheet", "Close" };
+                        MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                    }
                 }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("ExecuteSubmitTimesheet", e.Message);
+                string[] alertStrings = { "There was a problem submitting the timesheet", "Close" };
+                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
         }
 
@@ -171,16 +225,18 @@ namespace ProjectOnlineMobile2.ViewModels
 
                 if (await PSapi.CreateTimesheet(periodId, formDigest.D.GetContextWebInformation.FormDigestValue))
                 {
-                    ExecuteSelectedItemChangedCommand();
+                    ExecuteRefreshLinesCommand();
                 }
                 else
                 {
-                    //prompt user error
+                    string[] alertStrings = { "There was an error creating the timesheet", "Close"};
+                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
                 }
             }
             else
             {
-                //prompt user that the device is not connected to the internet
+                string[] alertStrings = { "The device is not connected to the internet", "Close" };
+                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
         }
 
@@ -196,26 +252,42 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private void ExecuteSelectedItemChangedCommand()
         {
-            PeriodLines.Clear();
             var periodId = PeriodList[SelectedIndex].Id;
-            var savedLines = realm.All<SavedLinesModel>().Where(p => p.PeriodId == periodId).ToList();
-            
-            foreach (var item in savedLines)
+            PeriodLines.Clear();
+            if (IsConnectedToInternet())
             {
-                PeriodLines.Add(item.LineModel);
+                ExecuteRefreshLinesCommand();
             }
-
-            SyncTimesheetLines(savedLines);
+            else
+            {
+                var savedLines = realm.All<SavedLinesModel>().Where(p => p.PeriodId == periodId).ToList();
+                foreach (var item in savedLines)
+                {
+                    PeriodLines.Add(item.LineModel);
+                }
+            }
+                
 
             MessagingCenter.Instance.Send<String>(PeriodList[SelectedIndex].ToString(), "TimesheetPeriod");
         }
 
         private async void SyncTimesheetLines(List<SavedLinesModel> savedLines)
         {
-            if (IsConnectedToInternet())
+            try
             {
-                var periodLines = await PSapi.GetTimesheetLinesByPeriod(PeriodList[SelectedIndex].Id);
-                syncDataService.SyncTimesheetLines(savedLines, periodLines.D.Results, PeriodLines, PeriodList[SelectedIndex].Id);
+                if (IsConnectedToInternet())
+                {
+                    var periodLines = await PSapi.GetTimesheetLinesByPeriod(PeriodList[SelectedIndex].Id);
+                    syncDataService.SyncTimesheetLines(savedLines, periodLines.D.Results, PeriodLines, PeriodList[SelectedIndex].Id);
+                    IsRefreshing = false;
+                }
+                else
+                    IsRefreshing = false;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("SyncTimesheetLines", e.Message);
+                IsRefreshing = false;
             }
         }
     }

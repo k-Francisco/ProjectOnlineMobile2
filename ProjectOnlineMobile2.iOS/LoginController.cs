@@ -63,17 +63,9 @@ namespace ProjectOnlineMobile2.iOS
                         var authCookie = rtFa + "; " + FedAuth;
                         Settings.CookieString = JsonConvert.SerializeObject(authCookie);
 
-                        if (Device.Idiom == TargetIdiom.Tablet)
-                        {
-                            var controller = Storyboard.InstantiateViewController("SplitController") as SplitController;
-                            AppDelegate.appDelegate.Window.RootViewController = controller;
-                        }
-                        else if (Device.Idiom == TargetIdiom.Phone)
-                        {
-                            var homePageController = new HomePage().CreateViewController();
-                            var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
-                            AppDelegate.appDelegate.Window.RootViewController = controller;
-                        }
+                        var homePageController = new HomePage().CreateViewController();
+                        var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
+                        AppDelegate.appDelegate.Window.RootViewController = controller;
                     }
                     catch (Exception ez)
                     {

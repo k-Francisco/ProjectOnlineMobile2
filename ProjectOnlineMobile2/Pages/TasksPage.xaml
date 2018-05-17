@@ -167,8 +167,9 @@
             <ListView CachingStrategy="RecycleElementAndDataTemplate"
                       HasUnevenRows="True"
                       SeparatorVisibility="None"
-                      IsPullToRefreshEnabled="False"
-                      IsRefreshing="False"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RefreshCommand="{Binding RefreshTasksCommand}"
                       ItemTemplate="{StaticResource TaskCardTemplate}"
                       ItemsSource="{Binding Tasks}"/>
 

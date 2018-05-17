@@ -135,7 +135,12 @@ namespace ProjectOnlineMobile2.Services
                 Debug.WriteLine("GetTimesheetLinesByPeriod", e.Message);
                 if (e.Message.Equals("404 (Not Found)"))
                 {
-                    MessagingCenter.Instance.Send<String>(periodId, "DoCreateTimesheet");
+                    string[] alertStrings = { "this timesheet has not been created. Do you want to create this timesheet?",
+                                              "Create",
+                                              "Cancel",
+                                              "CreateTimesheet",
+                                              periodId};
+                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
                 }
                 return null;
             }
