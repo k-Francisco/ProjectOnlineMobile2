@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:ProjectOnlineMobile2.ViewModels"
-             xmlns:behaviors="clr-namespace:ProjectOnlineMobile2.Behaviors"
+             xmlns:controls="clr-namespace:ProjectOnlineMobile2.Controls"
+             xmlns:textColorConverter="clr-namespace:ProjectOnlineMobile2.Converters"
              x:Class="ProjectOnlineMobile2.Pages.TimesheetWorkPage">
     <ContentPage.BindingContext>
         <viewModels:TimesheetWorkPageViewModel/>
@@ -10,6 +11,9 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+
+            <textColorConverter:StringToColorConverter x:Key="LabelColor"/>
+
             <DataTemplate x:Key="TimesheetWorkTemplate">
                 <ViewCell>
                     <StackLayout Orientation="Vertical"
@@ -70,7 +74,15 @@
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="1"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="Center"/>
+                                   VerticalOptions="Center">
+                                <Entry.Triggers>
+                                    <DataTrigger TargetType="Entry"
+                                                 Binding="{Binding isNotSaved}"
+                                                 Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                </Entry.Triggers>
+                            </Entry>
 
 
                             <Entry Text="{Binding EntryTextPlannedHours}"
@@ -81,7 +93,15 @@
                                    TextColor="Black"
                                    Grid.Column="2"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="Center"/>
+                                   VerticalOptions="Center">
+                                <Entry.Triggers>
+                                    <DataTrigger TargetType="Entry"
+                                                 Binding="{Binding isNotSaved}"
+                                                 Value="True">
+                                        <Setter Property="TextColor" Value="Red"/>
+                                    </DataTrigger>
+                                </Entry.Triggers>
+                            </Entry>
 
 
                         </Grid>
@@ -111,51 +131,30 @@
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
 
-                <!--<BoxView BackgroundColor="LightGray"
-                                     VerticalOptions="Start"
-                                     HorizontalOptions="Fill"
-                                     HeightRequest="1"
-                                     Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0"/>
-
-                <BoxView BackgroundColor="LightGray"
-                                     VerticalOptions="End"
-                                     HorizontalOptions="Fill"
-                                     HeightRequest="1"
-                                     Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0"/>
-
-                <BoxView BackgroundColor="LightGray"
-                                     VerticalOptions="Fill"
-                                     HorizontalOptions="Start"
-                                     WidthRequest="1"
-                                     Grid.Column="1"/>
-
-                <BoxView BackgroundColor="LightGray"
-                                     VerticalOptions="Fill"
-                                     HorizontalOptions="End"
-                                     WidthRequest="1"
-                                     Grid.Column="1"/>-->
-
                 <Label Text="Actual"
-                                   FontSize="Medium"
-                                   TextColor="Black"
-                                   Grid.Column="1"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
+                       FontSize="Medium"
+                       TextColor="Black"
+                       Grid.Column="1"
+                       IsVisible="{Binding HeaderVisibility}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
 
                 <Label Text="Planned"
-                                   FontSize="Medium"
-                                   TextColor="Black"
-                                   Grid.Column="2"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
+                       FontSize="Medium"
+                       TextColor="Black"
+                       Grid.Column="2"
+                       IsVisible="{Binding HeaderVisibility}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
 
             </Grid>
 
             <ListView HasUnevenRows="False"
                       SeparatorVisibility="None"
                       CachingStrategy="RecycleElementAndDataTemplate"
-                      IsRefreshing="False"
-                      IsPullToRefreshEnabled="False"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      RefreshCommand="{Binding RefreshLineWork}"
+                      IsPullToRefreshEnabled="True"
                       ItemsSource="{Binding LineWork}"
                       ItemTemplate="{StaticResource TimesheetWorkTemplate}"/>
         </StackLayout>

@@ -22,40 +22,53 @@ namespace ProjectOnlineMobile2.iOS
 
             MessagingCenter.Instance.Subscribe<String[]>(this, "DisplayAlert", (s) => {
 
-                //s[0] = message
-                //s[1] = affirm button message
-                //s[2] = cancel button message
-                //s[3] = identifier
-                //s[4] = period id
-                var alertController = UIAlertController.Create("",
-                s[0],
-                UIAlertControllerStyle.Alert);
-
-                alertController.AddAction(UIAlertAction.Create(s[1], UIAlertActionStyle.Default, alert => {
-                    if (!string.IsNullOrEmpty(s[3]) && s[3].Equals("CreateTimesheet"))
-                    {
-                        MessagingCenter.Instance.Send<String>(s[4], "CreateTimesheet");
-                    }
-                }));
-
-                if (!string.IsNullOrEmpty(s[4]))
+                try
                 {
-                    alertController.AddAction(UIAlertAction.Create(s[2], UIAlertActionStyle.Cancel, alert => {
+                    //s[0] = message
+                    //s[1] = affirm button message
+                    //s[2] = cancel button message
+                    //s[3] = identifier
+                    //s[4] = period id
+                    var alertController2 = new UIAlertView() {
+                        Title = s[0],
+                    };
+                    alertController2.AlertViewStyle = UIAlertViewStyle.Default;
+                    alertController2.AddButton(s[1]);
 
-                    }));
+                    if (s.Length == 3)
+                    alertController2.AddButton(s[2]);
+
+                    alertController2.DismissWithClickedButtonIndex(1,true);
+                    alertController2.Clicked += (sender, args) => {
+                        if(args.ButtonIndex == 0)
+                        {
+                            if(s.Length > 2)
+                            {
+                                if (!string.IsNullOrEmpty(s[3]))
+                                {
+                                    if (s[3].Equals("CreateTimesheet"))
+                                    {
+                                        MessagingCenter.Instance.Send<String>(s[4], "CreateTimesheet");
+                                    }
+                                }
+                            }
+                        }
+                    };
+
+                    alertController2.Show();
+                    
                 }
-                SelectedViewController.PresentViewController(alertController, true, null);
+                catch(Exception e)
+                {
+                    System.Diagnostics.Debug.WriteLine("DisplayAlert", e.Message);
+                }
             });
         }
 
         private void ExecutePushTimesheetWorkPage(LineResult line)
         {
-            var controller = new TimesheetWorkPage().CreateViewController();
-            controller.Title = line.TaskName;
-            controller.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem("Save", UIBarButtonItemStyle.Plain, (sender, e) => {
-                MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
-            }), false);
-            _timesheetNavController.PushViewController(controller, true);
+            _timesheetWorkPageController.Title = line.TaskName;
+            _timesheetNavController.PushViewController(_timesheetWorkPageController, true);
         }
 
         public override void ViewDidLoad()
@@ -108,6 +121,12 @@ namespace ProjectOnlineMobile2.iOS
             _timesheetNavController.TabBarItem.Image = UIImage.FromFile("ic_timesheet.png");
             _timesheetNavController.PushViewController(_timesheetPageController, false);
 
+            _timesheetWorkPageController = new TimesheetWorkPage().CreateViewController();
+            _timesheetWorkPageController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem("Save", UIBarButtonItemStyle.Plain, (sender, e) => {
+                MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
+            }), false);
+            MessagingCenter.Instance.Send<String>("", "SaveOfflineWorkChanges");
+
             var tabs = new UIViewController[] { _projectNavController, _tasksNavController, _timesheetNavController };
             ViewControllers = tabs;
             SelectedViewController = _projectNavController;
@@ -119,6 +138,10 @@ namespace ProjectOnlineMobile2.iOS
             var alertController = UIAlertController.Create("Timesheet Period",
                 AppDelegate.appDelegate.TimesheetPeriod,
                 UIAlertControllerStyle.ActionSheet);
+
+            alertController.AddAction(UIAlertAction.Create("Change Period", UIAlertActionStyle.Default, alert => {
+                MessagingCenter.Instance.Send<String>("", "OpenPeriodPicker");
+            }));
 
             alertController.AddAction(UIAlertAction.Create("Submit Timesheet", UIAlertActionStyle.Default, alert => {
 
@@ -163,11 +186,11 @@ namespace ProjectOnlineMobile2.iOS
                 "",
                 UIAlertControllerStyle.ActionSheet);
 
-            alertController.AddAction(UIAlertAction.Create("Complete", UIAlertActionStyle.Default, alert => {
+            alertController.AddAction(UIAlertAction.Create("All", UIAlertActionStyle.Default, alert => {
                 
             }));
 
-            alertController.AddAction(UIAlertAction.Create("Pending", UIAlertActionStyle.Default, alert => {
+            alertController.AddAction(UIAlertAction.Create("Complete", UIAlertActionStyle.Default, alert => {
 
             }));
 

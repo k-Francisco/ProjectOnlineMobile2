@@ -18,6 +18,7 @@
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer/>
                         </StackLayout.GestureRecognizers>
+                        
                         <controls:CustomFrame HasShadow="True"
                                               CornerRadius="4"
                                               BackgroundColor="White"
@@ -139,16 +140,13 @@
                       ItemTemplate="{StaticResource TimesheetLineCardTemplate}"
                       ItemsSource="{Binding PeriodLines}"/>
 
-            <Label Margin="16,0,16,0"
-                   Text="Period:"
-                   FontSize="Micro"
-                   TextColor="LightSlateGray"/>
-            
-            <controls:CustomPicker HorizontalOptions="FillAndExpand"
+            <controls:CustomPicker x:Name="periodPicker"
+                                   HorizontalOptions="FillAndExpand"
                                    HeightRequest="30"
                                    Image="arrow_down"
                                    Title="Select Period"
                                    Margin="16,0,16,16"
+                                   IsVisible="False"
                                    ItemsSource="{Binding PeriodList}"
                                    SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                 <controls:CustomPicker.Behaviors>

@@ -15,6 +15,9 @@ namespace ProjectOnlineMobile2.Pages
 		public TimesheetPage ()
 		{
 			InitializeComponent ();
+            MessagingCenter.Instance.Subscribe<String>(this,"OpenPeriodPicker",(s)=> {
+                periodPicker.Focus();
+            });
 		}
     }
 }

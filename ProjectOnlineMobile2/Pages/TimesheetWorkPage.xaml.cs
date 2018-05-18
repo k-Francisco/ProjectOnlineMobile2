@@ -16,5 +16,15 @@ namespace ProjectOnlineMobile2.Pages
 		{
 			InitializeComponent ();
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            MessagingCenter.Instance.Send<String>("", "WorkPagePushed");
+        }
+
+        protected override void OnDisappearing()
+        {
+            MessagingCenter.Instance.Send<String>("", "ClearEntries");
+        }
+    }
 }

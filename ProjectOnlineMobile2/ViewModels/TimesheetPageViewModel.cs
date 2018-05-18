@@ -44,6 +44,15 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _isRefreshing, value); }
         }
 
+        private bool _openPicker = false;
+        public bool OpenPicker
+        {
+            get { return _openPicker; }
+            set { SetProperty(ref _openPicker, value); }
+        }
+
+        private IQueryable<SavedLinesModel> _savedLines { get; set; }
+
         public string periodId, lineId;
         public ICommand SelectedItemChangedCommand { get; set; }
         public ICommand TimesheetLineClicked { get; set; }
@@ -53,7 +62,6 @@ namespace ProjectOnlineMobile2.ViewModels
         {
             PeriodList = new ObservableCollection<TimesheetPeriodsResult>();
             PeriodLines = new ObservableCollection<LineResult>();
-
             SelectedItemChangedCommand = new Command(ExecuteSelectedItemChangedCommand);
             TimesheetLineClicked = new Command<LineResult>(ExecuteTimesheetLineClicked);
             RefreshLinesCommand = new Command(ExecuteRefreshLinesCommand);
@@ -63,6 +71,7 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 PeriodList.Add(item);
             }
+
             FindTodaysPeriod();
 
             SyncTimesheetPeriods(savedPeriods);
@@ -94,18 +103,16 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 IsRefreshing = true;
 
-                var savedLines = realm.All<SavedLinesModel>().Where(p => p.PeriodId == periodId);
-
                 if (IsConnectedToInternet())
                 {
                     realm.Write(()=> {
-                        realm.RemoveRange<SavedLinesModel>(savedLines);
+                        realm.RemoveRange<SavedLinesModel>(_savedLines);
                     });
                     PeriodLines.Clear();
 
                     realm.Refresh();
 
-                    SyncTimesheetLines(savedLines.ToList());
+                    SyncTimesheetLines(_savedLines.ToList());
                 }
                 else
                     IsRefreshing = false;
@@ -212,6 +219,7 @@ namespace ProjectOnlineMobile2.ViewModels
             catch (Exception e)
             {
                 Debug.WriteLine("ExecuteSubmitTimesheet", e.Message);
+
                 string[] alertStrings = { "There was a problem submitting the timesheet", "Close" };
                 MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
@@ -242,7 +250,6 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private void ExecuteTimesheetLineClicked(LineResult timesheetLine)
         {
-            periodId = _periodList[SelectedIndex].Id;
             lineId = timesheetLine.Id;
             string[] ids = { _periodList[SelectedIndex].Id, timesheetLine.Id };
             MessagingCenter.Send<LineResult>(timesheetLine, "PushTimesheetWorkPage");
@@ -253,6 +260,8 @@ namespace ProjectOnlineMobile2.ViewModels
         private void ExecuteSelectedItemChangedCommand()
         {
             var periodId = PeriodList[SelectedIndex].Id;
+            _savedLines = realm.All<SavedLinesModel>().Where(p => p.PeriodId == periodId);
+
             PeriodLines.Clear();
             if (IsConnectedToInternet())
             {
@@ -260,8 +269,8 @@ namespace ProjectOnlineMobile2.ViewModels
             }
             else
             {
-                var savedLines = realm.All<SavedLinesModel>().Where(p => p.PeriodId == periodId).ToList();
-                foreach (var item in savedLines)
+                Debug.WriteLine("ExecuteRefreshLinesCommand", _savedLines.Count() + " ang count");
+                foreach (var item in _savedLines.ToList())
                 {
                     PeriodLines.Add(item.LineModel);
                 }

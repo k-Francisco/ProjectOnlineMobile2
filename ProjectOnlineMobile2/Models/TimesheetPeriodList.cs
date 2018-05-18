@@ -33,7 +33,7 @@ namespace ProjectOnlineMobile2.Models.TSPL
 
         public override string ToString()
         {
-            return " " + Name + " ( " + Start.AddDays(1).DateTime.ToShortDateString() + "-" + End.Date.ToShortDateString() + " )";
+            return " " + Name + " ( " + Start.AddDays(1).DateTime.ToString("MM/dd/yyyy") + " - " + End.Date.ToString("MM/dd/yyyy") + " )";
         }
 
     }

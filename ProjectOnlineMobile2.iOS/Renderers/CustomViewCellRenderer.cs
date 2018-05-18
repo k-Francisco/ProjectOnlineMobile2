@@ -20,7 +20,7 @@ namespace ProjectOnlineMobile2.iOS.Renderers
             var cell = base.GetCell(item, reusableCell, tv);
 
             cell.SelectedBackgroundView = new UIView {
-                BackgroundColor = UIColor.DarkGray,
+                BackgroundColor = UIColor.Clear,
             };
 
             return cell;

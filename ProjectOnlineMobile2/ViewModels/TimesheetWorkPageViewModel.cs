@@ -2,16 +2,10 @@
 using LineWorkResult = ProjectOnlineMobile2.Models.TLWM.WorkResult;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using Xamarin.Forms;
 using System.Diagnostics;
 using System.Windows.Input;
-using ProjectOnlineMobile2.Models.TLWM;
 using ProjectOnlineMobile2.Models;
-using ProjectOnlineMobile2.Services;
-using System.Net.Http;
-using System.Net;
-using System.Net.Http.Headers;
 using System.Linq;
 using ProjectOnlineMobile2.Models.TSPL;
 
@@ -26,11 +20,18 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _lineWork, value); }
         }
 
-        private List<LineWorkChangesModel> _lineWorkChanges;
-        public List<LineWorkChangesModel> LineWorkChanges
+        private bool _headerVisibility = false;
+        public bool HeaderVisibility
         {
-            get { return _lineWorkChanges; }
-            set { SetProperty(ref _lineWorkChanges, value); }
+            get { return _headerVisibility; }
+            set { SetProperty(ref _headerVisibility, value); }
+        }
+
+        private bool _isRefreshing;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set { SetProperty(ref _isRefreshing, value); }
         }
 
         private string _periodId { get; set; }
@@ -38,28 +39,47 @@ namespace ProjectOnlineMobile2.ViewModels
 
         public IOrderedEnumerable<SavedTimesheetLineWork> savedLineWork { get; set; }
 
+        public ICommand RefreshLineWork { get; set; }
+
         public TimesheetWorkPageViewModel()
         {
             LineWork = new ObservableCollection<LineWorkResult>();
-            LineWorkChanges = new List<LineWorkChangesModel>();
+
+            RefreshLineWork = new Command(ExecuteRefreshLineWork);
+
+            MessagingCenter.Instance.Subscribe<String>(this, "SaveOfflineWorkChanges", (s)=> {
+                SaveOfflineWorkChanges();
+            });
 
             MessagingCenter.Instance.Subscribe<String[]>(this, "TimesheetWork", (ids) =>
             {
-                Debug.WriteLine("TimesheetWorkPageViewModel", "here");
                 _periodId = ids[0];
                 _lineId = ids[1];
+            });
 
-                savedLineWork = realm.All<SavedTimesheetLineWork>()
+            MessagingCenter.Instance.Subscribe<String>(this, "WorkPagePushed", (s)=> {
+
+                try
+                {
+                    savedLineWork = realm.All<SavedTimesheetLineWork>()
                    .Where(p => p.PeriodId == _periodId && p.LineId == _lineId)
                    .ToList()
                    .OrderBy(p => p.WorkModel.Start.DateTime);
 
-                foreach (var item in savedLineWork)
-                {
-                    LineWork.Add(item.WorkModel);
-                }
+                    foreach (var item in savedLineWork)
+                    {
+                        LineWork.Add(item.WorkModel);
+                    }
 
-                SyncTimesheetLineWork();
+                    if(savedLineWork.Any())
+                        HeaderVisibility = true;
+
+                    SyncTimesheetLineWork();
+                }
+                catch(Exception e)
+                {
+                    Debug.WriteLine("WorkPagePushed", e.Message);
+                }
             });
 
             MessagingCenter.Instance.Subscribe<String>(this, "SaveTimesheetWorkChanges", (s) =>
@@ -68,17 +88,100 @@ namespace ProjectOnlineMobile2.ViewModels
             });
 
             //for android
-            MessagingCenter.Instance.Subscribe<String>(this, "Clear", (s) =>
+            MessagingCenter.Instance.Subscribe<String>(this, "ClearEntries", (s) =>
             {
+                
                 foreach (var item in savedLineWork)
                 {
-                    realm.Write(()=> {
-                        item.WorkModel.EntryTextActualHours = string.Empty;
-                        item.WorkModel.EntryTextPlannedHours = string.Empty;
-                    });
+                    if(item.WorkModel.isNotSaved != true)
+                    {
+                        realm.Write(() => {
+                            item.WorkModel.EntryTextActualHours = string.Empty;
+                            item.WorkModel.EntryTextPlannedHours = string.Empty;
+                        });
+                    }
+                }
+
+                LineWork.Clear();
+
+            });
+
+        }
+
+        private async void SaveOfflineWorkChanges()
+        {
+            try
+            {
+                if (IsConnectedToInternet())
+                {
+                    var formDigest = await SPapi.GetFormDigest();
+                    
+                    var allSavedLineWork = realm.All<SavedTimesheetLineWork>()
+                        .ToList();
+
+                    foreach (var item in allSavedLineWork)
+                    {
+                        if(item.WorkModel.isNotSaved == true)
+                        {
+                            string actualHours, plannedHours;
+
+                            if (string.IsNullOrWhiteSpace(item.WorkModel.EntryTextActualHours))
+                                actualHours = item.WorkModel.ActualWork;
+                            else
+                                actualHours = item.WorkModel.EntryTextActualHours + "h";
+
+                            if (string.IsNullOrWhiteSpace(item.WorkModel.EntryTextPlannedHours))
+                                plannedHours = item.WorkModel.PlannedWork;
+                            else
+                                plannedHours = item.WorkModel.EntryTextPlannedHours + "h";
+
+                            var body = "{'parameters':{'ActualWork':'" + actualHours + "', " +
+                            "'PlannedWork':'" + plannedHours + "', " +
+                            "'Start':'" + item.WorkModel.Start.DateTime + "', " +
+                            "'NonBillableOvertimeWork':'0h', " +
+                            "'NonBillableWork':'0h', " +
+                            "'OvertimeWork':'0h'}}";
+
+                            var response = await PSapi.AddTimesheetLineWork(item.PeriodId, item.LineId, body, formDigest.D.GetContextWebInformation.FormDigestValue);
+
+                            if (response)
+                            {
+                                realm.Write(() => {
+                                    item.WorkModel.ActualWork = actualHours;
+                                    item.WorkModel.PlannedWork = plannedHours;
+                                    item.WorkModel.EntryTextActualHours = "";
+                                    item.WorkModel.EntryTextPlannedHours = "";
+                                    item.WorkModel.isNotSaved = false;
+                                });
+                            }
+                        }
+                    }
+
+                    realm.Refresh();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("SaveOfflineWorkChanges", e.Message);
+            }
+        }
+
+        private void ExecuteRefreshLineWork()
+        {
+            HeaderVisibility = false;
+            LineWork.Clear();
+            IsRefreshing = true;
+
+            realm.Write(()=> {
+                foreach (var item in savedLineWork)
+                {
+                    realm.Remove(item);
                 }
             });
 
+            realm.Refresh();
+
+            SyncTimesheetLineWork();
         }
 
         private async void ExecuteSaveTimesheetWorkChanges()
@@ -121,23 +224,37 @@ namespace ProjectOnlineMobile2.ViewModels
                                     item.WorkModel.PlannedWork = plannedHours;
                                     item.WorkModel.EntryTextActualHours = "";
                                     item.WorkModel.EntryTextPlannedHours = "";
+                                    item.WorkModel.isNotSaved = false;
                                 });
                             }
                             else
                             {
-                                //prompt user where the error has occured
+                                realm.Write(() => {
+                                    item.WorkModel.isNotSaved = true;
+                                });
                             }
                         }
                     }
                 }
                 else
                 {
-                    //TODO: save it to the db
+                    string[] alertStrings = { "The changes that were made will be saved when the device is connected to the internet", "Close" };
+                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+
+                    foreach (var item in savedLineWork)
+                    {
+                        realm.Write(() => {
+                            if (!string.IsNullOrWhiteSpace(item.WorkModel.EntryTextActualHours) || !string.IsNullOrWhiteSpace(item.WorkModel.EntryTextPlannedHours))
+                                item.WorkModel.isNotSaved = true;
+                        });
+                    }
                 }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", e.Message);
+                string[] alertStrings = { "There was an error saving the timesheet. Please try again later", "Close" };
+                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
         }
 
@@ -153,9 +270,11 @@ namespace ProjectOnlineMobile2.ViewModels
 
                 if (IsConnectedToInternet())
                 {
+                    IsRefreshing = true;
+
                     var workHours = await PSapi.GetTimesheetLineWork(_periodId, _lineId);
 
-                    if (!savedLineWork.Any())
+                    if (!savedLineWork.ToList().Any())
                     {
 
                         for (int i = 1; i <= savedPeriod.End.Day - savedPeriod.Start.Day; i++)
@@ -211,17 +330,30 @@ namespace ProjectOnlineMobile2.ViewModels
                                 });
                             });
                         }
+                        HeaderVisibility = true;
                     }
                     else
                     {
                         syncDataService.SyncTimesheetLineWork(workHours, savedLineWork);
+                        HeaderVisibility = true;
                     }
 
+                    IsRefreshing = false;
+
+                }
+                else
+                {
+                    string[] alertStrings = { "Your device is not connected to the internet", "Close" };
+                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine("SyncTimesheetLineWork", e.Message);
+                Debug.WriteLine("SyncTimesheetLineWorkViewModel", e.Message);
+                IsRefreshing = false;
+
+                string[] alertStrings = { "An error has occured. Please try again", "Close" };
+                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
         }
     }

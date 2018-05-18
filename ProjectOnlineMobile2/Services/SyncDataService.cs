@@ -310,28 +310,32 @@ namespace ProjectOnlineMobile2.Services
                         .Where(p => p.Start.DateTime.ToShortDateString().Equals(item.WorkModel.Start.DateTime.ToShortDateString()))
                         .FirstOrDefault();
 
-                    realm.Write(() => {
-                        item.WorkModel.ActualWork = temp.ActualWork;
-                        item.WorkModel.ActualWorkMilliseconds = temp.ActualWorkMilliseconds;
-                        item.WorkModel.ActualWorkTimeSpan = temp.ActualWorkTimeSpan;
-                        item.WorkModel.End = temp.End;
-                        item.WorkModel.ActualWorkMilliseconds = temp.ActualWorkMilliseconds;
-                        item.WorkModel.ActualWorkTimeSpan = temp.ActualWorkTimeSpan;
-                        item.WorkModel.Comment = temp.Comment;
-                        item.WorkModel.Id = temp.Id;
-                        item.WorkModel.NonBillableOvertimeWork = temp.NonBillableOvertimeWork;
-                        item.WorkModel.NonBillableOvertimeWorkMilliseconds = temp.NonBillableOvertimeWorkMilliseconds;
-                        item.WorkModel.NonBillableOvertimeWorkTimeSpan = temp.NonBillableOvertimeWorkTimeSpan;
-                        item.WorkModel.NonBillableWork = temp.NonBillableWork;
-                        item.WorkModel.NonBillableWorkMilliseconds = temp.NonBillableWorkMilliseconds;
-                        item.WorkModel.NonBillableWorkTimeSpan = temp.NonBillableWorkTimeSpan;
-                        item.WorkModel.OvertimeWork = temp.OvertimeWork;
-                        item.WorkModel.OvertimeWorkMilliseconds = temp.OvertimeWorkMilliseconds;
-                        item.WorkModel.OvertimeWorkTimeSpan = temp.OvertimeWorkTimeSpan;
-                        item.WorkModel.PlannedWork = temp.PlannedWork;
-                        item.WorkModel.PlannedWorkMilliseconds = temp.PlannedWorkMilliseconds;
-                        item.WorkModel.PlannedWorkTimeSpan = temp.PlannedWorkTimeSpan;
-                    });
+                    if(temp != null)
+                    {
+                        realm.Write(() => {
+                            item.WorkModel.ActualWork = temp.ActualWork;
+                            item.WorkModel.ActualWorkMilliseconds = temp.ActualWorkMilliseconds;
+                            item.WorkModel.ActualWorkTimeSpan = temp.ActualWorkTimeSpan;
+                            item.WorkModel.End = temp.End;
+                            item.WorkModel.ActualWorkMilliseconds = temp.ActualWorkMilliseconds;
+                            item.WorkModel.ActualWorkTimeSpan = temp.ActualWorkTimeSpan;
+                            item.WorkModel.Comment = temp.Comment;
+                            item.WorkModel.Id = temp.Id;
+                            item.WorkModel.NonBillableOvertimeWork = temp.NonBillableOvertimeWork;
+                            item.WorkModel.NonBillableOvertimeWorkMilliseconds = temp.NonBillableOvertimeWorkMilliseconds;
+                            item.WorkModel.NonBillableOvertimeWorkTimeSpan = temp.NonBillableOvertimeWorkTimeSpan;
+                            item.WorkModel.NonBillableWork = temp.NonBillableWork;
+                            item.WorkModel.NonBillableWorkMilliseconds = temp.NonBillableWorkMilliseconds;
+                            item.WorkModel.NonBillableWorkTimeSpan = temp.NonBillableWorkTimeSpan;
+                            item.WorkModel.OvertimeWork = temp.OvertimeWork;
+                            item.WorkModel.OvertimeWorkMilliseconds = temp.OvertimeWorkMilliseconds;
+                            item.WorkModel.OvertimeWorkTimeSpan = temp.OvertimeWorkTimeSpan;
+                            item.WorkModel.PlannedWork = temp.PlannedWork;
+                            item.WorkModel.PlannedWorkMilliseconds = temp.PlannedWorkMilliseconds;
+                            item.WorkModel.PlannedWorkTimeSpan = temp.PlannedWorkTimeSpan;
+                        });
+                    }
+                    
                 }
 
                 return true;

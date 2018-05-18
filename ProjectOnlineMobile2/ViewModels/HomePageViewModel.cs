@@ -8,6 +8,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using ProjectOnlineMobile2.Models;
 using ProjectOnlineMobile2.Services;
+using Plugin.Connectivity;
 
 namespace ProjectOnlineMobile2.ViewModels
 {
@@ -37,6 +38,11 @@ namespace ProjectOnlineMobile2.ViewModels
                 });
                 Settings.ClearAll();
             });
+
+            CrossConnectivity.Current.ConnectivityChanged += async (sender, args) => {
+                if(IsConnectedToInternet())
+                    MessagingCenter.Instance.Send<String>("", "SaveOfflineWorkChanges");
+            };
 
         }
 

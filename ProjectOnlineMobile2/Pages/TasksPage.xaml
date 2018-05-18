@@ -16,9 +16,9 @@
                     <StackLayout CompressedLayout.IsHeadless="True"
                                  Orientation="Vertical">
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command=""/>
+                            <TapGestureRecognizer/>
                         </StackLayout.GestureRecognizers>
-
+                        
                         <controls:CustomFrame HasShadow="True"
                                               BackgroundColor="White"
                                               CornerRadius="4"

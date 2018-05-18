@@ -192,7 +192,6 @@ namespace ProjectOnlineMobile2.Services
                 if (!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
                     _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
 
-                Debug.WriteLine("SubmitTimesheet", periodId);
                 var response = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')/Timesheet/submit('" + comment + "')", contents);
                 var postResponse = response.EnsureSuccessStatusCode();
 

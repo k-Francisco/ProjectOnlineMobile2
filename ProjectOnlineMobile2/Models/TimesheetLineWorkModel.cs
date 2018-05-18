@@ -3,6 +3,7 @@ using Realms;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace ProjectOnlineMobile2.Models.TLWM
 {
@@ -62,20 +63,7 @@ namespace ProjectOnlineMobile2.Models.TLWM
         //custom
         public string EntryTextActualHours { get; set; }
         public string EntryTextPlannedHours { get; set; }
-
-        public override bool Equals(object obj)
-        {
-
-            var other = obj as WorkResult;
-
-            if (other == null)
-                return false;
-
-            if (!ActualWork.Equals(other.ActualWork) && !PlannedWork.Equals(other.PlannedWork))
-                return false;
-
-            return true;
-        }
+        public bool isNotSaved { get; set; }
 
     }
     public class Metadata
