@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+       android:id="@+id/menu_userinfo"
+       android:icon="@mipmap/ic_user"
+       app:showAsAction="always"
+       android:title="User Info" />
+
+  <item
+    android:id="@+id/empty"
+    android:title="options"
+    android:orderInCategory="101"
+    app:showAsAction="always"
+    android:icon="@mipmap/ic_gear">
+
+    <menu>
+
+      <item
+       android:id="@+id/menu_all_tasks"
+       app:showAsAction="never"
+       android:title="All" />
+
+      <item
+           android:id="@+id/menu_completed_tasks"
+           app:showAsAction="never"
+           android:title="Completed" />
+
+      <item
+           android:id="@+id/menu_inprogress_tasks"
+           app:showAsAction="never"
+           android:title="In Progress" />
+
+    </menu>
+
+  </item>
+
+</menu>

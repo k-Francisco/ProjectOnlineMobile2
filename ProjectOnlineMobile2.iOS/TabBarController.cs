@@ -125,6 +125,7 @@ namespace ProjectOnlineMobile2.iOS
             _timesheetWorkPageController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem("Save", UIBarButtonItemStyle.Plain, (sender, e) => {
                 MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
             }), false);
+
             MessagingCenter.Instance.Send<String>("", "SaveOfflineWorkChanges");
 
             var tabs = new UIViewController[] { _projectNavController, _tasksNavController, _timesheetNavController };

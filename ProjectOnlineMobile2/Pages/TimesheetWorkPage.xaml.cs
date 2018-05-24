@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,13 @@ namespace ProjectOnlineMobile2.Pages
 		public TimesheetWorkPage ()
 		{
 			InitializeComponent ();
+            Debug.WriteLine("TimesheetWorkPage", "here");
 		}
 
         protected override void OnAppearing()
         {
             MessagingCenter.Instance.Send<String>("", "WorkPagePushed");
+            Debug.WriteLine("OnAppearing", "here");
         }
 
         protected override void OnDisappearing()

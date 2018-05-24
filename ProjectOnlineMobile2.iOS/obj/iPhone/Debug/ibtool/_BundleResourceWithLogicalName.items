@@ -5,24 +5,32 @@
       <LogicalName>LaunchScreen.nib</LogicalName>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\3478-view-3479.nib">
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\Main.storyboardc\3478-view-3479.nib">
       <LogicalName>Main.storyboardc/3478-view-3479.nib</LogicalName>
-      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\Info.plist">
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\Main.storyboardc\Info.plist">
       <LogicalName>Main.storyboardc/Info.plist</LogicalName>
-      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\LoginController.nib">
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\Main.storyboardc\LoginController.nib">
       <LogicalName>Main.storyboardc/LoginController.nib</LogicalName>
-      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool\Main.storyboardc\TabBarController.nib">
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\Main.storyboardc\TabBarController.nib">
       <LogicalName>Main.storyboardc/TabBarController.nib</LogicalName>
-      <InterfaceDefinition>Main.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\MyLaunchScreen.storyboardc\228-view-229.nib">
+      <LogicalName>MyLaunchScreen.storyboardc/228-view-229.nib</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\MyLaunchScreen.storyboardc\Info.plist">
+      <LogicalName>MyLaunchScreen.storyboardc/Info.plist</LogicalName>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj\iPhone\Debug\ibtool-link\MyLaunchScreen.storyboardc\UIViewController-228.nib">
+      <LogicalName>MyLaunchScreen.storyboardc/UIViewController-228.nib</LogicalName>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
   </ItemGroup>

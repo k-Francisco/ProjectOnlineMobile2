@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>ProjectOnlineMobile2.iOS</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.kfcompany.TestApp123456</string>
+	<string>com.kfcompany.TestApp1234567</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -20,7 +20,7 @@
 		<integer>2</integer>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>MyLaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile~ipad</key>
@@ -44,9 +44,9 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-  <key>UIStatusBarStyle</key>
-  <string>UIStatusBarStyleLightContent</string>
-  <key>UIViewControllerBasedStatusBarAppearance</key>
-  <false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

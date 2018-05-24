@@ -87,7 +87,6 @@ namespace ProjectOnlineMobile2.ViewModels
                 ExecuteSaveTimesheetWorkChanges();
             });
 
-            //for android
             MessagingCenter.Instance.Subscribe<String>(this, "ClearEntries", (s) =>
             {
                 

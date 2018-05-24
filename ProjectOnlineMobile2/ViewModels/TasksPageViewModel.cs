@@ -98,11 +98,19 @@ namespace ProjectOnlineMobile2.ViewModels
 
                     IsRefreshing = false;
                 }
+                else
+                {
+                    string[] alertStrings = { "Your device is not connected to the internet", "Close" };
+                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("SyncUserTasks", e.Message);
                 IsRefreshing = false;
+
+                string[] alertStrings = { "There was a problem syncing your tasks. Please try again", "Close" };
+                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
         }
         

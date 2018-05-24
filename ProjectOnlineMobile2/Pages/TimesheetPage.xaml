@@ -140,19 +140,18 @@
                       ItemTemplate="{StaticResource TimesheetLineCardTemplate}"
                       ItemsSource="{Binding PeriodLines}"/>
 
-            <controls:CustomPicker x:Name="periodPicker"
+            <Picker x:Name="periodPicker"
                                    HorizontalOptions="FillAndExpand"
                                    HeightRequest="30"
-                                   Image="arrow_down"
                                    Title="Select Period"
                                    Margin="16,0,16,16"
                                    IsVisible="False"
                                    ItemsSource="{Binding PeriodList}"
                                    SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
-                <controls:CustomPicker.Behaviors>
+                <Picker.Behaviors>
                     <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedItemChangedCommand}"/>
-                </controls:CustomPicker.Behaviors>
-            </controls:CustomPicker>
+                </Picker.Behaviors>
+            </Picker>
 
         </StackLayout>
     </ContentPage.Content>

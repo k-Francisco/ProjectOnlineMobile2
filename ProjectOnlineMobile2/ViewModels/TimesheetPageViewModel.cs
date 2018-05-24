@@ -176,7 +176,7 @@ namespace ProjectOnlineMobile2.ViewModels
                     }
                     else
                     {
-                        string[] alertStrings = { "There was an error recalling the timesheet", "Close" };
+                        string[] alertStrings = { "There was an error recalling the timesheet. Please try again", "Close" };
                         MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
                     }
                 }
@@ -189,7 +189,7 @@ namespace ProjectOnlineMobile2.ViewModels
             catch(Exception e)
             {
                 Debug.WriteLine("ExecuteRecallTimesheet", e.Message);
-                string[] alertStrings = { "There was an error recalling the timesheet", "Close" };
+                string[] alertStrings = { "There was an error recalling the timesheet. Please try again", "Close" };
                 MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
         }
@@ -211,16 +211,21 @@ namespace ProjectOnlineMobile2.ViewModels
                     }
                     else
                     {
-                        string[] alertStrings = { "There was a problem submitting the timesheet", "Close" };
+                        string[] alertStrings = { "There was a problem submitting the timesheet. Please try again", "Close" };
                         MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
                     }
+                }
+                else
+                {
+                    string[] alertStrings = { "Your device is not connected to the internet", "Close" };
+                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
                 }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("ExecuteSubmitTimesheet", e.Message);
 
-                string[] alertStrings = { "There was a problem submitting the timesheet", "Close" };
+                string[] alertStrings = { "There was a problem submitting the timesheet. Please try again", "Close" };
                 MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
         }
@@ -237,7 +242,7 @@ namespace ProjectOnlineMobile2.ViewModels
                 }
                 else
                 {
-                    string[] alertStrings = { "There was an error creating the timesheet", "Close"};
+                    string[] alertStrings = { "There was an error creating the timesheet. Please try again", "Close"};
                     MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
                 }
             }
@@ -291,12 +296,19 @@ namespace ProjectOnlineMobile2.ViewModels
                     IsRefreshing = false;
                 }
                 else
+                {
                     IsRefreshing = false;
+                    string[] alertStrings = { "Your device is not connected to the internet", "Close" };
+                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("SyncTimesheetLines", e.Message);
                 IsRefreshing = false;
+
+                string[] alertStrings = { "There was a problem syncing the timesheet lines. Please try again", "Close" };
+                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
         }
     }
