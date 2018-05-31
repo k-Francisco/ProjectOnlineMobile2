@@ -26,18 +26,34 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
             <ImageView
-                android:id="@+id/arrow_back_bottomsheet"
+                android:id="@+id/arrow_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrow_back"
                 android:tint="@android:color/white" />
             <ImageView
-                android:id="@+id/save_bottomsheet"
+                android:id="@+id/save_work"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_save_black"
                 android:tint="@android:color/white"
                 android:layout_alignParentRight="true" />
+            <ImageView
+                android:id="@+id/delete_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
+                android:tint="@android:color/white"
+                android:layout_toLeftOf="@id/save_work"
+                android:layout_marginRight="8dp" />
+            <ImageView
+                android:id="@+id/edit_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit"
+                android:tint="@android:color/white"
+                android:layout_toLeftOf="@id/delete_line"
+                android:layout_marginRight="8dp" />
         </RelativeLayout>
         <FrameLayout
             android:id="@+id/content_frame"

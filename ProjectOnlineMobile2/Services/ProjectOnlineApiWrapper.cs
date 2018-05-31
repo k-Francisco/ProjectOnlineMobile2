@@ -165,6 +165,55 @@ namespace ProjectOnlineMobile2.Services
             }
         }
 
+        public async Task<bool> AddTimesheetLine(string periodId, string body, string formDigest)
+        {
+
+            try
+            {
+                var contents = new StringContent(body, Encoding.UTF8, "application/json");
+
+                if (!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
+                    _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
+
+                var response = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')/Timesheet/Lines/Add", contents);
+                var postResponse = response.EnsureSuccessStatusCode();
+
+                if (postResponse.IsSuccessStatusCode)
+                    return true;
+
+                return false;
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("AddTimesheetLine", e.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteTimesheetLine(string lineId, string periodId, string formDigest)
+        {
+            try
+            {
+                var contents = new StringContent("", Encoding.UTF8, "application/json");
+
+                if (!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
+                    _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
+
+                var response = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')/Timesheet/Lines('" + lineId + "')/deleteObject()", contents);
+                var postResponse = response.EnsureSuccessStatusCode();
+
+                if (postResponse.IsSuccessStatusCode)
+                    return true;
+
+                return false;
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("DeleteTimesheetLine", e.Message);
+                return false;
+            }
+        }
+
         //public async Task<TimesheetModel> GetTimesheet(string periodId)
         //{
         //    try

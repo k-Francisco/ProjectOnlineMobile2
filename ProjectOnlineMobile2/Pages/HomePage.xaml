@@ -6,10 +6,4 @@
     <ContentPage.BindingContext>
         <viewModels:HomePageViewModel/>
     </ContentPage.BindingContext>
-
-    <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-
-        </StackLayout>
-    </ContentPage.Content>
 </ContentPage>

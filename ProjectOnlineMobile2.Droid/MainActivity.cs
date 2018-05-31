@@ -83,6 +83,14 @@ namespace ProjectOnlineMobile2.Droid
                 PushTimesheetWorkPage(timesheetLine);
             });
 
+            MessagingCenter.Instance.Subscribe<String>(this, "AddTimesheetLineDialog", (s)=> {
+                dialogHelper.DisplayAddTimesheetLineDialog();
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this,"ExitWorkPage",(s)=> {
+                exitWorkPage();
+            });
+
             toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             if (toolbar != null)
             {
@@ -101,25 +109,37 @@ namespace ProjectOnlineMobile2.Droid
 
             dialogHelper = new DialogHelper(this);
 
-            var backButton = FindViewById<ImageView>(Resource.Id.arrow_back_bottomsheet);
+            var backButton = FindViewById<ImageView>(Resource.Id.arrow_back);
             backButton.Click += (sender,args) => {
-                toolbar.Visibility = ViewStates.Visible;
-                bottomNavigation.Visibility = ViewStates.Visible;
-
-                InputMethodManager imm = InputMethodManager.FromContext(this.ApplicationContext);
-                imm.HideSoftInputFromInputMethod(this.Window.DecorView.WindowToken, HideSoftInputFlags.NotAlways);
-
-                SupportFragmentManager.BeginTransaction()
-                    .Replace(Resource.Id.content_frame, fragment)
-                    .Commit();
+                exitWorkPage();
             };
 
-            var saveButton = FindViewById<ImageView>(Resource.Id.save_bottomsheet);
+            var saveButton = FindViewById<ImageView>(Resource.Id.save_work);
             saveButton.Click += (sender,args) => {
                 MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
             };
 
+            var deleteLineButton = FindViewById<ImageView>(Resource.Id.delete_line);
+            deleteLineButton.Click += (sender, args) => {
+                dialogHelper.DisplayConfirmationDialog("Do you really want to delete this line?","Delete","Cancel");
+            };
+
+            var editLineButton = FindViewById<ImageView>(Resource.Id.edit_line);
+
             LoadFragment(Resource.Id.menu_projects);
+        }
+
+        private void exitWorkPage()
+        {
+            toolbar.Visibility = ViewStates.Visible;
+            bottomNavigation.Visibility = ViewStates.Visible;
+
+            InputMethodManager imm = InputMethodManager.FromContext(this.ApplicationContext);
+            imm.HideSoftInputFromInputMethod(this.Window.DecorView.WindowToken, HideSoftInputFlags.NotAlways);
+
+            SupportFragmentManager.BeginTransaction()
+                .Replace(Resource.Id.content_frame, fragment)
+                .Commit();
         }
 
         private void PushTimesheetWorkPage(TimesheetLineResult timesheetLine)

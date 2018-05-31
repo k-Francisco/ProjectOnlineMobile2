@@ -2290,11 +2290,17 @@ namespace ProjectOnlineMobile2.Droid
 			// aapt resource value: 2130837588
 			public static int ic_audiotrack_light = 2130837588;
 			
+			// aapt resource value: 0
+			public static int ic_delete = 0;
+			
 			// aapt resource value: 2130837589
 			public static int ic_dialog_close_dark = 2130837589;
 			
 			// aapt resource value: 2130837590
 			public static int ic_dialog_close_light = 2130837590;
+			
+			// aapt resource value: 0
+			public static int ic_edit = 0;
 			
 			// aapt resource value: 2130837591
 			public static int ic_group_collapse_00 = 2130837591;
@@ -2938,7 +2944,7 @@ namespace ProjectOnlineMobile2.Droid
 			public static int appbar = 0;
 			
 			// aapt resource value: 0
-			public static int arrow_back_bottomsheet = 0;
+			public static int arrow_back = 0;
 			
 			// aapt resource value: 2131492901
 			public static int auto = 2131492901;
@@ -3006,6 +3012,9 @@ namespace ProjectOnlineMobile2.Droid
 			// aapt resource value: 2131492935
 			public static int default_activity_button = 2131492935;
 			
+			// aapt resource value: 0
+			public static int delete_line = 0;
+			
 			// aapt resource value: 2131492984
 			public static int design_bottom_sheet = 2131492984;
 			
@@ -3023,6 +3032,9 @@ namespace ProjectOnlineMobile2.Droid
 			
 			// aapt resource value: 2131492882
 			public static int disableHome = 2131492882;
+			
+			// aapt resource value: 0
+			public static int edit_line = 0;
 			
 			// aapt resource value: 2131492966
 			public static int edit_query = 2131492966;
@@ -3280,7 +3292,7 @@ namespace ProjectOnlineMobile2.Droid
 			public static int right_side = 2131493003;
 			
 			// aapt resource value: 0
-			public static int save_bottomsheet = 0;
+			public static int save_work = 0;
 			
 			// aapt resource value: 2131492895
 			public static int screen = 2131492895;

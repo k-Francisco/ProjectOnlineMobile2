@@ -107,6 +107,40 @@ namespace ProjectOnlineMobile2.ViewModels
 
             });
 
+            MessagingCenter.Instance.Subscribe<String>(this, "DeleteTimesheetLine", (s)=> {
+                ExecuteDeleteTimesheetLine();
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "Update", (s) => {
+
+            });
+
+        }
+
+        private async void ExecuteDeleteTimesheetLine()
+        {
+            try
+            {
+                MessagingCenter.Instance.Send<String[]>(new string[] { "Deleting timesheet line...", "Close" }, "DisplayAlert");
+
+                var formDigest = await SPapi.GetFormDigest();
+
+                var delete = await PSapi.DeleteTimesheetLine(_lineId, _periodId, formDigest.D.GetContextWebInformation.FormDigestValue);
+                if (delete)
+                {
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Successfully deleted the line", "Close" }, "DisplayAlert");
+                    MessagingCenter.Instance.Send<String>("", "RefreshTimesheetLines");
+                    MessagingCenter.Instance.Send<String>("", "ExitWorkPage");
+                }
+                else
+                {
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "There was an error deleting the line", "Close" }, "DisplayAlert");
+                }
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("ExecuteDeleteTimesheetLine", e.Message);
+            }
         }
 
         private async void SaveOfflineWorkChanges()

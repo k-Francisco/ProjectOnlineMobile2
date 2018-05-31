@@ -160,7 +160,7 @@
                     ItemsSource="{Binding ProjectsAssigned}"
                     SelectedIndex="{Binding SelectedProject, Mode=TwoWay}">
                 <Picker.Behaviors>
-                    <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedProjectChangedCommand}"/>
+                    <behaviors:EventToCommandBehavior EventName="Unfocused" Command="{Binding SelectedProjectChangedCommand}"/>
                 </Picker.Behaviors>
             </Picker>
 

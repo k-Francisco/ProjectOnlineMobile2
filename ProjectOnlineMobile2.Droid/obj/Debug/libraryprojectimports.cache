@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
   <Jars>
+    <Jar>obj\Debug\lp\0\jl\formsviewgroup.jar</Jar>
+    <Jar>obj\Debug\lp\14\jl\support-annotations.jar</Jar>
     <Jar>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\lp\0\jl\formsviewgroup.jar</Jar>
     <Jar>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\lp\13\jl\bin\classes.jar</Jar>
     <Jar>D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\lp\14\jl\support-annotations.jar</Jar>

@@ -125,6 +125,8 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\re
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\res\drawable-xhdpi\ic_logo.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\res\drawable-xxhdpi\ic_logo.png
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\res\drawable\ic_logo.png
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\res\drawable\ic_delete.xml
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\res\drawable\ic_edit.xml
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\R.cs.flag
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\R.txt
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\uploadflags.txt
@@ -207,7 +209,6 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\an
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\android\assets\Xamarin.Forms.Core.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\android\assets\Xamarin.Forms.Xaml.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\bin\Debug\ProjectOnlineMobile2.Droid.dll
-D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\linksrc\ProjectOnlineMobile2.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\linksrc\ProjectOnlineMobile2.Droid.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\linksrc\FormsViewGroup.dll.mdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Debug\linksrc\Plugin.Connectivity.dll.mdb

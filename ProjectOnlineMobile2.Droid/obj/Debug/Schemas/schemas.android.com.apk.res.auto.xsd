@@ -2,7 +2,7 @@
 <xs:schema xmlns:app="http://schemas.android.com/apk/res-auto" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res-auto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v26</xs:documentation>
-    <xs:documentation>31/05/2018 11:15:05 AM</xs:documentation>
+    <xs:documentation>31/05/2018 6:17:34 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="allowStacking">
     <xs:annotation>
@@ -1235,8 +1235,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -1455,7 +1457,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -2043,8 +2044,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -2263,7 +2266,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -2767,8 +2769,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -2987,7 +2991,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -3468,8 +3471,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -3688,7 +3693,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -5453,8 +5457,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -5673,7 +5679,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -6154,8 +6159,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -6374,7 +6381,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -7394,8 +7400,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -7614,7 +7622,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -8095,8 +8102,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -8315,7 +8324,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -9806,8 +9814,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -10026,7 +10036,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -10507,8 +10516,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -10727,7 +10738,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -11266,8 +11276,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -11486,7 +11498,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -11967,8 +11978,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -12187,7 +12200,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -12752,8 +12764,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -12972,7 +12986,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -13713,8 +13726,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -13961,7 +13976,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -14485,8 +14499,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -14705,7 +14721,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -15381,8 +15396,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -15601,7 +15618,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -16277,8 +16293,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -16497,7 +16515,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -16978,8 +16995,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -17198,7 +17217,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -18325,8 +18343,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -18545,7 +18565,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -19133,8 +19152,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -19353,7 +19374,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -19941,8 +19961,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -20161,7 +20183,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -21098,8 +21119,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -21318,7 +21341,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -22362,8 +22384,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -22582,7 +22606,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -23063,8 +23086,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -23283,7 +23308,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -23937,8 +23961,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -24157,7 +24183,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -24833,8 +24858,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -25053,7 +25080,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -25546,8 +25572,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -25766,7 +25794,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -26442,8 +26469,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -26662,7 +26691,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -27521,8 +27549,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -27741,7 +27771,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -28222,8 +28251,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -28442,7 +28473,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -31044,8 +31074,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -31264,7 +31296,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -33531,8 +33562,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -33751,7 +33784,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -34427,8 +34459,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -34647,7 +34681,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -35128,8 +35161,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -35348,7 +35383,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
@@ -36085,8 +36119,10 @@
             <xs:enumeration value="@drawable/ic_arrow_back" />
             <xs:enumeration value="@drawable/ic_audiotrack_dark" />
             <xs:enumeration value="@drawable/ic_audiotrack_light" />
+            <xs:enumeration value="@drawable/ic_delete" />
             <xs:enumeration value="@drawable/ic_dialog_close_dark" />
             <xs:enumeration value="@drawable/ic_dialog_close_light" />
+            <xs:enumeration value="@drawable/ic_edit" />
             <xs:enumeration value="@drawable/ic_group_collapse_00" />
             <xs:enumeration value="@drawable/ic_group_collapse_01" />
             <xs:enumeration value="@drawable/ic_group_collapse_02" />
@@ -36305,7 +36341,6 @@
             <xs:enumeration value="@android:drawable/editbox_dropdown_light_frame" />
             <xs:enumeration value="@android:drawable/gallery_thumb" />
             <xs:enumeration value="@android:drawable/ic_btn_speak_now" />
-            <xs:enumeration value="@android:drawable/ic_delete" />
             <xs:enumeration value="@android:drawable/ic_dialog_alert" />
             <xs:enumeration value="@android:drawable/ic_dialog_dialer" />
             <xs:enumeration value="@android:drawable/ic_dialog_email" />
