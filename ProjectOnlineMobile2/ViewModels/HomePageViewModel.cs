@@ -66,9 +66,11 @@ namespace ProjectOnlineMobile2.ViewModels
                     }
                     else
                     {
+                        var user = userInfo.First();
+                        MessagingCenter.Instance.Send<ProjectOnlineMobile2.Models.D_User>(user, "UserInfo");
+
                         UserName = userInfo.First().Title;
                         UserEmail = userInfo.First().Email;
-                        MessagingCenter.Instance.Send<ProjectOnlineMobile2.Models.D_User>(userInfo.First(), "UserInfo");
                     }
                 }
                 else

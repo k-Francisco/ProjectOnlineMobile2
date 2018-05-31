@@ -81,6 +81,8 @@ namespace ProjectOnlineMobile2.ViewModels
                     syncDataService.SyncProjects(projects, savedProjects, ProjectList);
 
                     IsRefreshing = false;
+
+                    //IsUserAssignedToAProject(savedProjects);
                 }
                 else
                 {
@@ -95,6 +97,32 @@ namespace ProjectOnlineMobile2.ViewModels
 
                 string[] alertStrings = { "There was a problem syncing the projects. Please try again", "Close" };
                 MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+            }
+        }
+
+        private async void IsUserAssignedToAProject(List<Result> savedProjects)
+        {
+            var userInfo = realm.All<ProjectOnlineMobile2.Models.D_User>().FirstOrDefault();
+
+            foreach (var item in savedProjects)
+            {
+                if (item.ProjectOwnerName.Equals(userInfo.Title))
+                {
+                    realm.Write(()=> {
+                        item.IsUserAssignedToThisProject = true;
+                    });
+                }
+                else
+                {
+                    var isUserAssigned = await PSapi.IsUserAssignedToThisProject(item.ProjectId, userInfo.Title);
+                    if (isUserAssigned)
+                    {
+                        realm.Write(() => {
+                            item.IsUserAssignedToThisProject = true;
+                        });
+                    }
+
+                }
             }
         }
     }

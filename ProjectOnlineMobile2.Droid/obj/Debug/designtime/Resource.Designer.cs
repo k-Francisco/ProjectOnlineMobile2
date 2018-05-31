@@ -24,11 +24,6 @@ namespace ProjectOnlineMobile2.Droid
 			global::Android.Runtime.ResourceIdManager.UpdateIdValues();
 		}
 		
-		public static void UpdateIdValues()
-		{
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::ProjectOnlineMobile2.Droid.Resource.Attribute.actionBarSize;
-		}
-		
 		public partial class Animation
 		{
 			
@@ -2287,7 +2282,7 @@ namespace ProjectOnlineMobile2.Droid
 			public static int frame_shadow = 0;
 			
 			// aapt resource value: 0
-			public static int Icon = 0;
+			public static int ic_arrow_back = 0;
 			
 			// aapt resource value: 2130837587
 			public static int ic_audiotrack_dark = 2130837587;
@@ -2709,6 +2704,9 @@ namespace ProjectOnlineMobile2.Droid
 			// aapt resource value: 2130837725
 			public static int ic_mr_button_grey = 2130837725;
 			
+			// aapt resource value: 0
+			public static int ic_save_black = 0;
+			
 			// aapt resource value: 2130837726
 			public static int ic_vol_type_speaker_dark = 2130837726;
 			
@@ -2939,6 +2937,9 @@ namespace ProjectOnlineMobile2.Droid
 			// aapt resource value: 0
 			public static int appbar = 0;
 			
+			// aapt resource value: 0
+			public static int arrow_back_bottomsheet = 0;
+			
 			// aapt resource value: 2131492901
 			public static int auto = 2131492901;
 			
@@ -3114,6 +3115,9 @@ namespace ProjectOnlineMobile2.Droid
 			public static int media_actions = 2131492999;
 			
 			// aapt resource value: 0
+			public static int menu_add_line = 0;
+			
+			// aapt resource value: 0
 			public static int menu_all_tasks = 0;
 			
 			// aapt resource value: 0
@@ -3130,9 +3134,6 @@ namespace ProjectOnlineMobile2.Droid
 			
 			// aapt resource value: 0
 			public static int menu_recall_timesheet = 0;
-			
-			// aapt resource value: 0
-			public static int menu_save_work = 0;
 			
 			// aapt resource value: 0
 			public static int menu_submit_timesheet = 0;
@@ -3278,6 +3279,9 @@ namespace ProjectOnlineMobile2.Droid
 			// aapt resource value: 2131493003
 			public static int right_side = 2131493003;
 			
+			// aapt resource value: 0
+			public static int save_bottomsheet = 0;
+			
 			// aapt resource value: 2131492895
 			public static int screen = 2131492895;
 			
@@ -3401,17 +3405,11 @@ namespace ProjectOnlineMobile2.Droid
 			// aapt resource value: 2131492945
 			public static int textSpacerNoTitle = 2131492945;
 			
-			// aapt resource value: 0
-			public static int textView1 = 0;
-			
 			// aapt resource value: 2131492992
 			public static int text_input_password_toggle = 2131492992;
 			
 			// aapt resource value: 2131493004
 			public static int time = 2131493004;
-			
-			// aapt resource value: 0
-			public static int timesheet_work_frame = 0;
 			
 			// aapt resource value: 2131492938
 			public static int title = 2131492938;
@@ -3424,9 +3422,6 @@ namespace ProjectOnlineMobile2.Droid
 			
 			// aapt resource value: 0
 			public static int toolbar = 0;
-			
-			// aapt resource value: 0
-			public static int toolbar_layout = 0;
 			
 			// aapt resource value: 2131492911
 			public static int top = 2131492911;
@@ -3465,7 +3460,7 @@ namespace ProjectOnlineMobile2.Droid
 			public static int withText = 2131492926;
 			
 			// aapt resource value: 0
-			public static int work_toolbar = 0;
+			public static int work_bar = 0;
 			
 			// aapt resource value: 2131492900
 			public static int wrap_content = 2131492900;
@@ -3638,9 +3633,6 @@ namespace ProjectOnlineMobile2.Droid
 			// aapt resource value: 0
 			public static int activity_login = 0;
 			
-			// aapt resource value: 0
-			public static int activity_timesheet_work = 0;
-			
 			// aapt resource value: 2130903067
 			public static int design_bottom_navigation_item = 2130903067;
 			
@@ -3682,15 +3674,6 @@ namespace ProjectOnlineMobile2.Droid
 			
 			// aapt resource value: 2130903080
 			public static int design_text_input_password_icon = 2130903080;
-			
-			// aapt resource value: 0
-			public static int fragment1 = 0;
-			
-			// aapt resource value: 0
-			public static int fragment2 = 0;
-			
-			// aapt resource value: 0
-			public static int fragment3 = 0;
 			
 			// aapt resource value: 0
 			public static int main = 0;
@@ -3797,9 +3780,6 @@ namespace ProjectOnlineMobile2.Droid
 			
 			// aapt resource value: 0
 			public static int timesheet_menu = 0;
-			
-			// aapt resource value: 0
-			public static int timesheet_work_menu = 0;
 			
 			static Menu()
 			{

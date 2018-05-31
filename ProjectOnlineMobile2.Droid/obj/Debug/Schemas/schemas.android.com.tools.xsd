@@ -2,7 +2,7 @@
 <xs:schema xmlns:tools="http://schemas.android.com/tools" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/tools" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v26</xs:documentation>
-    <xs:documentation>23/05/2018 6:13:49 PM</xs:documentation>
+    <xs:documentation>31/05/2018 10:47:21 AM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="layout">
     <xs:annotation>
@@ -40,7 +40,6 @@
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
             <xs:enumeration value="@layout/activity_login" />
-            <xs:enumeration value="@layout/activity_timesheet_work" />
             <xs:enumeration value="@layout/design_bottom_navigation_item" />
             <xs:enumeration value="@layout/design_bottom_sheet_dialog" />
             <xs:enumeration value="@layout/design_layout_snackbar" />
@@ -55,9 +54,6 @@
             <xs:enumeration value="@layout/design_navigation_menu" />
             <xs:enumeration value="@layout/design_navigation_menu_item" />
             <xs:enumeration value="@layout/design_text_input_password_icon" />
-            <xs:enumeration value="@layout/fragment1" />
-            <xs:enumeration value="@layout/fragment2" />
-            <xs:enumeration value="@layout/fragment3" />
             <xs:enumeration value="@layout/main" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />
@@ -150,7 +146,6 @@
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
             <xs:enumeration value="@layout/activity_login" />
-            <xs:enumeration value="@layout/activity_timesheet_work" />
             <xs:enumeration value="@layout/design_bottom_navigation_item" />
             <xs:enumeration value="@layout/design_bottom_sheet_dialog" />
             <xs:enumeration value="@layout/design_layout_snackbar" />
@@ -165,9 +160,6 @@
             <xs:enumeration value="@layout/design_navigation_menu" />
             <xs:enumeration value="@layout/design_navigation_menu_item" />
             <xs:enumeration value="@layout/design_text_input_password_icon" />
-            <xs:enumeration value="@layout/fragment1" />
-            <xs:enumeration value="@layout/fragment2" />
-            <xs:enumeration value="@layout/fragment3" />
             <xs:enumeration value="@layout/main" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />
@@ -260,7 +252,6 @@
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
             <xs:enumeration value="@layout/activity_login" />
-            <xs:enumeration value="@layout/activity_timesheet_work" />
             <xs:enumeration value="@layout/design_bottom_navigation_item" />
             <xs:enumeration value="@layout/design_bottom_sheet_dialog" />
             <xs:enumeration value="@layout/design_layout_snackbar" />
@@ -275,9 +266,6 @@
             <xs:enumeration value="@layout/design_navigation_menu" />
             <xs:enumeration value="@layout/design_navigation_menu_item" />
             <xs:enumeration value="@layout/design_text_input_password_icon" />
-            <xs:enumeration value="@layout/fragment1" />
-            <xs:enumeration value="@layout/fragment2" />
-            <xs:enumeration value="@layout/fragment3" />
             <xs:enumeration value="@layout/main" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />
@@ -370,7 +358,6 @@
             <xs:enumeration value="@layout/abc_search_view" />
             <xs:enumeration value="@layout/abc_select_dialog_material" />
             <xs:enumeration value="@layout/activity_login" />
-            <xs:enumeration value="@layout/activity_timesheet_work" />
             <xs:enumeration value="@layout/design_bottom_navigation_item" />
             <xs:enumeration value="@layout/design_bottom_sheet_dialog" />
             <xs:enumeration value="@layout/design_layout_snackbar" />
@@ -385,9 +372,6 @@
             <xs:enumeration value="@layout/design_navigation_menu" />
             <xs:enumeration value="@layout/design_navigation_menu_item" />
             <xs:enumeration value="@layout/design_text_input_password_icon" />
-            <xs:enumeration value="@layout/fragment1" />
-            <xs:enumeration value="@layout/fragment2" />
-            <xs:enumeration value="@layout/fragment3" />
             <xs:enumeration value="@layout/main" />
             <xs:enumeration value="@layout/mr_chooser_dialog" />
             <xs:enumeration value="@layout/mr_chooser_list_item" />

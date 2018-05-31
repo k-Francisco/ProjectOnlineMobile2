@@ -1,5 +1,6 @@
 ﻿using LineResult = ProjectOnlineMobile2.Models.TLL.TimesheetLineResult;
 using TimesheetPeriodsResult = ProjectOnlineMobile2.Models.TSPL.TimesheetPeriodResult;
+using ProjectResult = ProjectOnlineMobile2.Models.PSPL.Result;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -30,11 +31,25 @@ namespace ProjectOnlineMobile2.ViewModels
             set { SetProperty(ref _periodLines, value); }
         }
 
+        private ObservableCollection<String> _projectsAssigned;
+        public ObservableCollection<String> ProjectsAssigned
+        {
+            get { return _projectsAssigned; }
+            set { SetProperty(ref _projectsAssigned, value); }
+        }
+
         private int _selectedIndex;
         public int SelectedIndex
         {
             get { return _selectedIndex; }
             set { SetProperty(ref _selectedIndex, value); }
+        }
+
+        private int _selectedProject;
+        public int SelectedProject
+        {
+            get { return _selectedProject; }
+            set { SetProperty(ref _selectedProject, value); }
         }
 
         private bool _isRefreshing;
@@ -55,14 +70,32 @@ namespace ProjectOnlineMobile2.ViewModels
 
         public string periodId, lineId;
         public ICommand SelectedItemChangedCommand { get; set; }
+        public ICommand SelectedProjectChangedCommand { get; set; }
         public ICommand TimesheetLineClicked { get; set; }
         public ICommand RefreshLinesCommand { get; set; }
 
         public TimesheetPageViewModel()
         {
+
+            MessagingCenter.Instance.Subscribe<String>(this, "CreateTimesheet", (periodId) =>
+            {
+                CreateTimesheet(periodId);
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "SubmitTimesheet", (comment) => {
+                ExecuteSubmitTimesheet(comment);
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "RecallTimesheet", (s) => {
+                ExecuteRecallTimesheet();
+            });
+
             PeriodList = new ObservableCollection<TimesheetPeriodsResult>();
             PeriodLines = new ObservableCollection<LineResult>();
+            ProjectsAssigned = new ObservableCollection<string>();
+
             SelectedItemChangedCommand = new Command(ExecuteSelectedItemChangedCommand);
+            SelectedProjectChangedCommand = new Command(ExecuteSelectedProjectChangedCommand);
             TimesheetLineClicked = new Command<LineResult>(ExecuteTimesheetLineClicked);
             RefreshLinesCommand = new Command(ExecuteRefreshLinesCommand);
 
@@ -76,25 +109,20 @@ namespace ProjectOnlineMobile2.ViewModels
 
             SyncTimesheetPeriods(savedPeriods);
 
-            MessagingCenter.Instance.Subscribe<String>(this, "CreateTimesheet", (periodId) =>
+            ProjectsAssigned.Add("Personal Task");
+
+            var savedProjects = realm.All<ProjectResult>().ToList();
+            foreach (var item in savedProjects)
             {
-                CreateTimesheet(periodId);
-            });
+                if (item.IsUserAssignedToThisProject)
+                    ProjectsAssigned.Add(item.ProjectName);
+            }
 
-            //for android 
-            MessagingCenter.Instance.Subscribe<String>(this, "SendTimesheetIds", (s) =>{
-                string[] ids = { periodId, lineId};
-                MessagingCenter.Send<String[]>(ids, "TimesheetWork");
-            });
+        }
 
-            MessagingCenter.Instance.Subscribe<String>(this, "SubmitTimesheet", (comment)=> {
-                ExecuteSubmitTimesheet(comment);
-            });
-
-            MessagingCenter.Instance.Subscribe<String>(this, "RecallTimesheet", (s) => {
-                ExecuteRecallTimesheet();
-            });
-
+        private void ExecuteSelectedProjectChangedCommand(object obj)
+        {
+            throw new NotImplementedException();
         }
 
         private void ExecuteRefreshLinesCommand()

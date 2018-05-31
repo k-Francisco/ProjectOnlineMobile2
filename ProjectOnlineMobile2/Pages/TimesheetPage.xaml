@@ -131,27 +131,40 @@
                      HorizontalOptions="FillAndExpand"
                      Spacing="0">
 
-            <ListView CachingStrategy="RecycleElementAndDataTemplate"
+            <controls:CustomListView 
                       HasUnevenRows="True"
                       SeparatorVisibility="None"
                       IsPullToRefreshEnabled="True"
                       IsRefreshing="{Binding IsRefreshing}"
                       RefreshCommand="{Binding RefreshLinesCommand}"
                       ItemTemplate="{StaticResource TimesheetLineCardTemplate}"
-                      ItemsSource="{Binding PeriodLines}"/>
+                      ItemsSource="{Binding PeriodLines}">
+                <x:Arguments>
+                    <ListViewCachingStrategy>RecycleElementAndDataTemplate</ListViewCachingStrategy>
+                </x:Arguments>
+            </controls:CustomListView>
 
             <Picker x:Name="periodPicker"
-                                   HorizontalOptions="FillAndExpand"
-                                   HeightRequest="30"
-                                   Title="Select Period"
-                                   Margin="16,0,16,16"
-                                   IsVisible="False"
-                                   ItemsSource="{Binding PeriodList}"
-                                   SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
+                    Title="Select Period"
+                    IsVisible="False"
+                    ItemsSource="{Binding PeriodList}"
+                    SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                 <Picker.Behaviors>
                     <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedItemChangedCommand}"/>
                 </Picker.Behaviors>
             </Picker>
+
+            <Picker x:Name="projectPicker"
+                    Title="Select Project"
+                    IsVisible="False"
+                    ItemsSource="{Binding ProjectsAssigned}"
+                    SelectedIndex="{Binding SelectedProject, Mode=TwoWay}">
+                <Picker.Behaviors>
+                    <behaviors:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding SelectedProjectChangedCommand}"/>
+                </Picker.Behaviors>
+            </Picker>
+
+
 
         </StackLayout>
     </ContentPage.Content>

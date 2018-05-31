@@ -254,6 +254,8 @@ namespace ProjectOnlineMobile2.Models.PSPL
             get { return Convert.ToDouble((Convert.ToDouble(ProjectPercentCompleted) / 100)); }
         }
 
+        public bool IsUserAssignedToThisProject { get; set; }
+
     }
     //public class Metadata
     //{

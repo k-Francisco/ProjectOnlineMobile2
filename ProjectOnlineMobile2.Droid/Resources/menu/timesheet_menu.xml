@@ -17,9 +17,14 @@
     <menu>
 
       <item
-       android:id="@+id/menu_period_details"
-       app:showAsAction="never"
-       android:title="Period Details" />
+           android:id="@+id/menu_period_details"
+           app:showAsAction="never"
+           android:title="Period Details" />
+
+      <item
+           android:id="@+id/menu_add_line"
+           app:showAsAction="never"
+           android:title="Add Timesheet Line" />
 
       <item
            android:id="@+id/menu_submit_timesheet"

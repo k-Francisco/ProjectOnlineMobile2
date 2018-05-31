@@ -21,7 +21,6 @@ namespace ProjectOnlineMobile2.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
             Intent intent = new Intent(this, typeof(LoginActivity));
             StartActivity(intent);
         }

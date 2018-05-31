@@ -12,8 +12,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
 
-            <textColorConverter:StringToColorConverter x:Key="LabelColor"/>
-
             <DataTemplate x:Key="TimesheetWorkTemplate">
                 <ViewCell>
                     <StackLayout Orientation="Vertical"
@@ -149,14 +147,17 @@
 
             </Grid>
 
-            <ListView HasUnevenRows="False"
+            <controls:CustomListView HasUnevenRows="False"
                       SeparatorVisibility="None"
-                      CachingStrategy="RecycleElementAndDataTemplate"
                       IsRefreshing="{Binding IsRefreshing}"
                       RefreshCommand="{Binding RefreshLineWork}"
                       IsPullToRefreshEnabled="True"
                       ItemsSource="{Binding LineWork}"
-                      ItemTemplate="{StaticResource TimesheetWorkTemplate}"/>
+                      ItemTemplate="{StaticResource TimesheetWorkTemplate}">
+                <x:Arguments>
+                    <ListViewCachingStrategy>RecycleElementAndDataTemplate</ListViewCachingStrategy>
+                </x:Arguments>
+            </controls:CustomListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

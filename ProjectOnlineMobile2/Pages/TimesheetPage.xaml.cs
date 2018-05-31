@@ -18,6 +18,10 @@ namespace ProjectOnlineMobile2.Pages
             MessagingCenter.Instance.Subscribe<String>(this,"OpenPeriodPicker",(s)=> {
                 periodPicker.Focus();
             });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "OpenProjectPicker", (s)=> {
+                projectPicker.Focus();
+            });
 		}
     }
 }

@@ -169,14 +169,18 @@
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand">
 
-            <ListView CachingStrategy="RecycleElementAndDataTemplate"
+            <controls:CustomListView 
                       HasUnevenRows="True"
                       SeparatorVisibility="None"
                       IsPullToRefreshEnabled="True"
                       IsRefreshing="{Binding IsRefreshing}"
                       RefreshCommand="{Binding RefreshProjects}"
                       ItemTemplate="{StaticResource ProjectCardTemplate}"
-                      ItemsSource="{Binding ProjectList}"/>
+                      ItemsSource="{Binding ProjectList}">
+                <x:Arguments>
+                    <ListViewCachingStrategy>RecycleElementAndDataTemplate</ListViewCachingStrategy>
+                </x:Arguments>
+            </controls:CustomListView>
 
         </StackLayout>
     </ContentPage.Content>

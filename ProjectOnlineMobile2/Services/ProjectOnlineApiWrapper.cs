@@ -78,6 +78,25 @@ namespace ProjectOnlineMobile2.Services
             }
         }
 
+        public async Task<bool> IsUserAssignedToThisProject(string projectId, string userName)
+        {
+            try
+            {
+                var response = await _client.GetStringAsync(_projectOnlineUrl + "/_api/ProjectServer/Projects('"+ projectId + "')/ProjectResources?$filter=Name eq '" + userName + "'");
+                if(response.Length > 20)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("IsUserAssignedToThisProject", e.Message);
+                return false;
+            }
+        }
+
         //public async Task<TaskModel> GetTasksByProject(string projectUID)
         //{
         //    try

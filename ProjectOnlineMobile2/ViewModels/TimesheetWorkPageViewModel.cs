@@ -103,6 +103,8 @@ namespace ProjectOnlineMobile2.ViewModels
 
                 LineWork.Clear();
 
+                HeaderVisibility = false;
+
             });
 
         }

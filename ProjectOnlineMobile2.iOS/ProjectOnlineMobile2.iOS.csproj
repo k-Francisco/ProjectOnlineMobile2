@@ -86,9 +86,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
-    <Compile Include="Renderers\CustomPickerRenderer.cs" />
+    <Compile Include="Renderers\CustomListViewRenderer.cs" />
     <Compile Include="Renderers\CustomProgressBarRenderer.cs" />
-    <Compile Include="Renderers\CustomViewCellRenderer.cs" />
     <Compile Include="TabBarController.cs" />
     <Compile Include="TabBarController.designer.cs">
       <DependentUpon>TabBarController.cs</DependentUpon>

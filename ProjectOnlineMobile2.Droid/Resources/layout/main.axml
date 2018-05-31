@@ -11,13 +11,34 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
         <include
             layout="@layout/toolbar"
-            android:id="@+id/toolbar"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            android:id="@+id/toolbar" />
     </android.support.design.widget.AppBarLayout>
     <RelativeLayout
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/work_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <ImageView
+                android:id="@+id/arrow_back_bottomsheet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back"
+                android:tint="@android:color/white" />
+            <ImageView
+                android:id="@+id/save_bottomsheet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_save_black"
+                android:tint="@android:color/white"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
         <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"

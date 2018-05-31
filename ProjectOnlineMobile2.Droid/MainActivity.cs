@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.OS;
-using ProjectOnlineMobile2.Droid.Fragments;
 
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
@@ -17,6 +16,7 @@ using Android.Content;
 using ProjectOnlineMobile2.Models.TLL;
 using Newtonsoft.Json;
 using Android.Content.PM;
+using Android.Views.InputMethods;
 
 namespace ProjectOnlineMobile2.Droid
 {
@@ -29,12 +29,9 @@ namespace ProjectOnlineMobile2.Droid
         BottomNavigationView bottomNavigation;
         IMenu menu;
         Toolbar toolbar;
-
         DialogHelper dialogHelper;
 
         Fragment _homepageFragment, _projectsFragment, _tasksFragment, _timesheetFragment, _timesheetWorkFragment;
-
-        TimesheetWorkPage _timesheetWork;
 
         public string UserName, UserEmail, TimesheetPeriod;
 
@@ -45,10 +42,6 @@ namespace ProjectOnlineMobile2.Droid
             SetContentView(Resource.Layout.main);
 
             Forms.Init(this, bundle);
-            _homepageFragment = new HomePage().CreateSupportFragment(this);
-            _timesheetWork = new TimesheetWorkPage();
-
-            dialogHelper = new DialogHelper(this);
 
             MessagingCenter.Instance.Subscribe<string[]>(this, "DisplayAlert", (s) =>
             {
@@ -59,34 +52,27 @@ namespace ProjectOnlineMobile2.Droid
                 //s[3] = identifier
                 //s[4] = period id
 
-                try
+                if (s.Length > 2)
                 {
-                    if (s.Length > 2)
+                    if (!string.IsNullOrEmpty(s[3]))
                     {
-                        if (!string.IsNullOrEmpty(s[3]))
+                        if (s[3].Equals("CreateTimesheet"))
                         {
-                            if (s[3].Equals("CreateTimesheet"))
-                            {
-                                dialogHelper.DisplayCreateTimesheetDialog(s[0], s[4], s[1], s[2]);
-                            }
+                            dialogHelper.DisplayCreateTimesheetDialog(s[0], s[4], s[1], s[2]);
                         }
                     }
-                    else
-                    {
-                        Toast.MakeText(this, s[0], ToastLength.Short).Show();
-                    }
                 }
-                catch(Exception e)
+                else
                 {
-
+                    Toast.MakeText(this, s[0], ToastLength.Short).Show();
                 }
 
-                
+
             });
 
-            MessagingCenter.Instance.Subscribe<ProjectOnlineMobile2.Models.D_User>(this, "UserInfo", (user) => {
-                UserName = user.Title;
-                UserEmail = user.Email;
+            MessagingCenter.Instance.Subscribe<ProjectOnlineMobile2.Models.D_User>(this, "UserInfo", (userInfo)=> {
+                UserName = userInfo.Title;
+                UserEmail = userInfo.Email;
             });
 
             MessagingCenter.Instance.Subscribe<String>(this, "TimesheetPeriod", (tsp) => {
@@ -110,6 +96,29 @@ namespace ProjectOnlineMobile2.Droid
 
             bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
+            _homepageFragment = new HomePage().CreateSupportFragment(this);
+            _timesheetWorkFragment = new TimesheetWorkPage().CreateSupportFragment(this);
+
+            dialogHelper = new DialogHelper(this);
+
+            var backButton = FindViewById<ImageView>(Resource.Id.arrow_back_bottomsheet);
+            backButton.Click += (sender,args) => {
+                toolbar.Visibility = ViewStates.Visible;
+                bottomNavigation.Visibility = ViewStates.Visible;
+
+                InputMethodManager imm = InputMethodManager.FromContext(this.ApplicationContext);
+                imm.HideSoftInputFromInputMethod(this.Window.DecorView.WindowToken, HideSoftInputFlags.NotAlways);
+
+                SupportFragmentManager.BeginTransaction()
+                    .Replace(Resource.Id.content_frame, fragment)
+                    .Commit();
+            };
+
+            var saveButton = FindViewById<ImageView>(Resource.Id.save_bottomsheet);
+            saveButton.Click += (sender,args) => {
+                MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
+            };
+
             LoadFragment(Resource.Id.menu_projects);
         }
 
@@ -117,18 +126,18 @@ namespace ProjectOnlineMobile2.Droid
         {
             try
             {
-                var convertedPage = JsonConvert.SerializeObject(_timesheetWork);
+                toolbar.Visibility = ViewStates.Gone;
+                bottomNavigation.Visibility = ViewStates.Gone;
 
-                Intent intent = new Intent(this, typeof(TimesheetWorkActivity));
-                intent.PutExtra("TASK_NAME", timesheetLine.TaskName);
-                intent.PutExtra("LINE_ID", timesheetLine.Id);
-                intent.PutExtra("WORK_PAGE", convertedPage);
-                StartActivity(intent);
+                SupportFragmentManager.BeginTransaction()
+                    .Replace(Resource.Id.content_frame, _timesheetWorkFragment)
+                    .Commit();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine("PushTimesheetWorkPage", e.Message);
             }
+
         }
 
         private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
@@ -136,10 +145,10 @@ namespace ProjectOnlineMobile2.Droid
             LoadFragment(e.Item.ItemId);
         }
 
+        Fragment fragment = null;
         void LoadFragment(int id)
         {
-            Fragment fragment = null;
-
+            
             if(id == Resource.Id.menu_projects)
             {
                 if (_projectsFragment == null)
@@ -213,6 +222,10 @@ namespace ProjectOnlineMobile2.Droid
             else if(item.ItemId == Resource.Id.menu_recall_timesheet)
             {
                 MessagingCenter.Instance.Send<String>("", "RecallTimesheet");
+            }
+            else if(item.ItemId == Resource.Id.menu_add_line)
+            {
+                MessagingCenter.Instance.Send<String>("", "OpenProjectPicker");
             }
             
 
