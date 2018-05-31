@@ -120,9 +120,9 @@ namespace ProjectOnlineMobile2.ViewModels
 
         }
 
-        private void ExecuteSelectedProjectChangedCommand(object obj)
+        private void ExecuteSelectedProjectChangedCommand()
         {
-            throw new NotImplementedException();
+            
         }
 
         private void ExecuteRefreshLinesCommand()

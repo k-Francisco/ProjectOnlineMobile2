@@ -82,7 +82,7 @@ namespace ProjectOnlineMobile2.ViewModels
 
                     IsRefreshing = false;
 
-                    //IsUserAssignedToAProject(savedProjects);
+                    IsUserAssignedToAProject(savedProjects);
                 }
                 else
                 {
