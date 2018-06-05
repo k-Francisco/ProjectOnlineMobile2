@@ -40,12 +40,49 @@ namespace ProjectOnlineMobile2.ViewModels
 
             var savedTasks = realm.All<Result>().ToList();
 
+            MessagingCenter.Instance.Subscribe<String>(this, "SortTasks", (s) => {
+                ExecuteSortTasks(s, savedTasks);
+            });
+
             foreach (var item in savedTasks)
             {
                 Tasks.Add(item);
             }
 
             SyncUserTasks(savedTasks);
+        }
+
+        private void ExecuteSortTasks(string sort, List<Result> savedTasks)
+        {
+            Tasks.Clear();
+            Debug.WriteLine(sort);
+            if (sort.Equals("All"))
+            {
+                foreach (var item in savedTasks)
+                {
+                    Tasks.Add(item);
+                }
+            }
+            else if (sort.Equals("In Progress"))
+            {
+                foreach (var item in savedTasks)
+                {
+                    if(item.AssignmentPercentWorkCompleted != 100)
+                    {
+                        Tasks.Add(item);
+                    }
+                }
+            }
+            else if (sort.Equals("Completed"))
+            {
+                foreach (var item in savedTasks)
+                {
+                    if (item.AssignmentPercentWorkCompleted == 100)
+                    {
+                        Tasks.Add(item);
+                    }
+                }
+            }
         }
 
         private void ExecuteRefreshTasksCommand()
@@ -85,6 +122,8 @@ namespace ProjectOnlineMobile2.ViewModels
 
                 if (IsConnectedToInternet())
                 {
+                    IsRefreshing = true;
+
                     foreach (var item in savedProjects)
                     {
                         var assignment = await PSapi.GetResourceAssignment(item.ProjectId, userInfo.Title);

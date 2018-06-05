@@ -1,2 +1,0 @@
-android.app.Application
-com.company.ProjectOnlineMobile2.Droid

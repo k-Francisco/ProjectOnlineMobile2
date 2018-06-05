@@ -214,6 +214,37 @@ namespace ProjectOnlineMobile2.Services
             }
         }
 
+        public async Task<bool> UpdateTimesheetLine(string body, string lineId, string periodId, string formDigest)
+        {
+            try
+            {
+                var contents = new StringContent(body);
+                contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
+
+                if (!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
+                    _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigest);
+
+                if (!_client.DefaultRequestHeaders.Contains("X-HTTP-METHOD"))
+                    _client.DefaultRequestHeaders.Add("X-HTTP-METHOD", "MERGE");
+
+                var response = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')/Timesheet/Lines('" + lineId + "')", contents);
+                var postResponse = response.EnsureSuccessStatusCode();
+
+                _client.DefaultRequestHeaders.Remove("X-HTTP-METHOD");
+
+                if (postResponse.IsSuccessStatusCode)
+                    return true;
+                
+
+                return false;
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("UpdateTimesheetLine", e.Message);
+                return false;
+            }
+        }
+
         //public async Task<TimesheetModel> GetTimesheet(string periodId)
         //{
         //    try

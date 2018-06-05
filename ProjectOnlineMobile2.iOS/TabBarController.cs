@@ -4,8 +4,7 @@ using ProjectOnlineMobile2.Pages;
 using System;
 using UIKit;
 using Xamarin.Forms;
-using ProjectOnlineMobile2.Models.TLL;
-using ProjectOnlineMobile2.ViewModels;
+
 
 namespace ProjectOnlineMobile2.iOS
 {
@@ -20,49 +19,50 @@ namespace ProjectOnlineMobile2.iOS
                 ExecutePushTimesheetWorkPage(line);
             });
 
+            MessagingCenter.Instance.Subscribe<String>(this, "AddTimesheetLineDialog", (s)=> {
+                ExecuteAddTimesheetDialog();
+            });
+
             MessagingCenter.Instance.Subscribe<String[]>(this, "DisplayAlert", (s) => {
+                DisplayAlert(s);
+            });
+        }
 
-                try
+        private void DisplayAlert(string[] parameters)
+        {
+            //s[0] = message
+            //s[1] = affirm button message
+            //s[2] = cancel button message
+            //s[3] = identifier
+            //s[4] = period id
+            var alertController2 = new UIAlertView()
+            {
+                Title = parameters[0],
+            };
+            alertController2.AlertViewStyle = UIAlertViewStyle.Default;
+            alertController2.AddButton(parameters[1]);
+
+            if (parameters.Length == 3)
+                alertController2.AddButton(parameters[2]);
+
+            alertController2.DismissWithClickedButtonIndex(1, true);
+            alertController2.Clicked += (sender, args) => {
+                if (args.ButtonIndex == 0)
                 {
-                    //s[0] = message
-                    //s[1] = affirm button message
-                    //s[2] = cancel button message
-                    //s[3] = identifier
-                    //s[4] = period id
-                    var alertController2 = new UIAlertView() {
-                        Title = s[0],
-                    };
-                    alertController2.AlertViewStyle = UIAlertViewStyle.Default;
-                    alertController2.AddButton(s[1]);
-
-                    if (s.Length == 3)
-                    alertController2.AddButton(s[2]);
-
-                    alertController2.DismissWithClickedButtonIndex(1,true);
-                    alertController2.Clicked += (sender, args) => {
-                        if(args.ButtonIndex == 0)
+                    if (parameters.Length > 2)
+                    {
+                        if (!string.IsNullOrEmpty(parameters[3]))
                         {
-                            if(s.Length > 2)
+                            if (parameters[3].Equals("CreateTimesheet"))
                             {
-                                if (!string.IsNullOrEmpty(s[3]))
-                                {
-                                    if (s[3].Equals("CreateTimesheet"))
-                                    {
-                                        MessagingCenter.Instance.Send<String>(s[4], "CreateTimesheet");
-                                    }
-                                }
+                                MessagingCenter.Instance.Send<String>(parameters[4], "CreateTimesheet");
                             }
                         }
-                    };
+                    }
+                }
+            };
 
-                    alertController2.Show();
-                    
-                }
-                catch(Exception e)
-                {
-                    System.Diagnostics.Debug.WriteLine("DisplayAlert", e.Message);
-                }
-            });
+            alertController2.Show();
         }
 
         private void ExecutePushTimesheetWorkPage(LineResult line)
@@ -93,7 +93,7 @@ namespace ProjectOnlineMobile2.iOS
                 });
 
             _projectPageController = new ProjectPage().CreateViewController();
-            _projectPageController.Title = "Projects";
+            _projectPageController.Title = "Timesheet Tracker";
             _projectPageController.NavigationItem.SetLeftBarButtonItem(userButtonItem, true);
 
             _projectNavController = new UINavigationController();
@@ -102,7 +102,7 @@ namespace ProjectOnlineMobile2.iOS
             _projectNavController.PushViewController(_projectPageController, false);
 
             _tasksPageController = new TasksPage().CreateViewController();
-            _tasksPageController.Title = "Tasks";
+            _tasksPageController.Title = "Timesheet Tracker";
             _tasksPageController.NavigationItem.SetLeftBarButtonItem(userButtonItem, true);
             _tasksPageController.NavigationItem.SetRightBarButtonItem(taskOptionsButtonItem, true);
 
@@ -112,7 +112,7 @@ namespace ProjectOnlineMobile2.iOS
             _tasksNavController.PushViewController(_tasksPageController, false);
 
             _timesheetPageController = new TimesheetPage().CreateViewController();
-            _timesheetPageController.Title = "Timesheets";
+            _timesheetPageController.Title = "Timesheet Tracker";
             _timesheetPageController.NavigationItem.SetLeftBarButtonItem(userButtonItem, true);
             _timesheetPageController.NavigationItem.SetRightBarButtonItem(timesheetOptionsButtonItem, true);
 
@@ -123,7 +123,7 @@ namespace ProjectOnlineMobile2.iOS
 
             _timesheetWorkPageController = new TimesheetWorkPage().CreateViewController();
             _timesheetWorkPageController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem("Save", UIBarButtonItemStyle.Plain, (sender, e) => {
-                MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
+                DisplayWorkPageOptions(sender as UIBarButtonItem);
             }), false);
 
             MessagingCenter.Instance.Send<String>("", "SaveOfflineWorkChanges");
@@ -132,6 +132,96 @@ namespace ProjectOnlineMobile2.iOS
             ViewControllers = tabs;
             SelectedViewController = _projectNavController;
 
+        }
+
+        private void DisplayWorkPageOptions(UIBarButtonItem buttonItem)
+        {
+            var alertController = UIAlertController.Create("Timesheet Line",
+                AppDelegate.appDelegate.TimesheetPeriod,
+                UIAlertControllerStyle.ActionSheet);
+
+            alertController.AddAction(UIAlertAction.Create("Save", UIAlertActionStyle.Default, alert => {
+                MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
+            }));
+
+            alertController.AddAction(UIAlertAction.Create("Edit Line", UIAlertActionStyle.Default, alert => {
+                var updateLineAlertView = new UIAlertView()
+                {
+                    Title = "Update Line",
+                };
+                updateLineAlertView.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+                updateLineAlertView.GetTextField(0).Placeholder = "Comment";
+
+                updateLineAlertView.AddButton("Update");
+                updateLineAlertView.AddButton("Cancel");
+                updateLineAlertView.DismissWithClickedButtonIndex(1, true);
+                updateLineAlertView.Clicked += (sender, args) => {
+                    if (args.ButtonIndex == 0)
+                    {
+                        if (!string.IsNullOrWhiteSpace(updateLineAlertView.GetTextField(0).Text))
+                        {
+                            MessagingCenter.Instance.Send<String>(updateLineAlertView.GetTextField(0).Text, "UpdateTimesheetLine");
+                        }
+                    }
+                };
+                updateLineAlertView.Show();
+            }));
+
+            alertController.AddAction(UIAlertAction.Create("Delete Line", UIAlertActionStyle.Default, alert => {
+
+                var deleteLineAlertView = new UIAlertView()
+                {
+                    Title = "Do you really want to delete this line?",
+                };
+                deleteLineAlertView.AlertViewStyle = UIAlertViewStyle.Default;
+                deleteLineAlertView.AddButton("Delete");
+                deleteLineAlertView.AddButton("Cancel");
+                deleteLineAlertView.DismissWithClickedButtonIndex(1, true);
+                deleteLineAlertView.Clicked += (sender, args) => {
+                    if (args.ButtonIndex == 0)
+                    {
+                        MessagingCenter.Instance.Send<String>("", "DeleteTimesheetLine");
+                    }
+                };
+                deleteLineAlertView.Show();
+            }));
+
+            alertController.AddAction(UIAlertAction.Create("Close", UIAlertActionStyle.Cancel, alert => {
+
+            }));
+
+            UIPopoverPresentationController presentationController = alertController.PopoverPresentationController;
+            if (presentationController != null)
+            {
+                presentationController.SourceView = this.View;
+                presentationController.BarButtonItem = buttonItem;
+                presentationController.PermittedArrowDirections = UIPopoverArrowDirection.Up;
+            }
+
+            SelectedViewController.PresentModalViewController(alertController, true);
+        }
+
+        private void ExecuteAddTimesheetDialog()
+        {
+            var addLineAlertView = new UIAlertView()
+            {
+                Title = "Add Line",
+            };
+            addLineAlertView.AlertViewStyle = UIAlertViewStyle.LoginAndPasswordInput;
+            addLineAlertView.GetTextField(0).Placeholder = "Task Name";
+            addLineAlertView.GetTextField(1).Placeholder = "Comment";
+            addLineAlertView.GetTextField(1).SecureTextEntry = false;
+
+            addLineAlertView.AddButton("Add");
+            addLineAlertView.AddButton("Cancel");
+            addLineAlertView.DismissWithClickedButtonIndex(1, true);
+            addLineAlertView.Clicked += (sender, args) => {
+                if (args.ButtonIndex == 0)
+                {
+                    MessagingCenter.Instance.Send<String[]>(new string[] { addLineAlertView.GetTextField(0).Text, addLineAlertView.GetTextField(1).Text }, "AddTimesheetLine");
+                }
+            };
+            addLineAlertView.Show();
         }
 
         private void DisplayTimesheetOptions(UIBarButtonItem buttonItem)
@@ -144,22 +234,26 @@ namespace ProjectOnlineMobile2.iOS
                 MessagingCenter.Instance.Send<String>("", "OpenPeriodPicker");
             }));
 
+            alertController.AddAction(UIAlertAction.Create("Add Line", UIAlertActionStyle.Default, alert => {
+                MessagingCenter.Instance.Send<String>("", "OpenProjectPicker");
+            }));
+
             alertController.AddAction(UIAlertAction.Create("Submit Timesheet", UIAlertActionStyle.Default, alert => {
 
-                var submitAlertController = new UIAlertView() {
+                var submitAlertView = new UIAlertView() {
                     Title = "Comment",
                 };
-                submitAlertController.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
-                submitAlertController.AddButton("Submit");
-                submitAlertController.AddButton("Cancel");
-                submitAlertController.DismissWithClickedButtonIndex(1, true);
-                submitAlertController.Clicked += (sender, args) => {
+                submitAlertView.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+                submitAlertView.AddButton("Submit");
+                submitAlertView.AddButton("Cancel");
+                submitAlertView.DismissWithClickedButtonIndex(1, true);
+                submitAlertView.Clicked += (sender, args) => {
                     if(args.ButtonIndex == 0)
                     {
-                        MessagingCenter.Instance.Send<String>(submitAlertController.GetTextField(0).Text, "SubmitTimesheet");
+                        MessagingCenter.Instance.Send<String>(submitAlertView.GetTextField(0).Text, "SubmitTimesheet");
                     }
                 };
-                submitAlertController.Show();
+                submitAlertView.Show();
             }));
 
             alertController.AddAction(UIAlertAction.Create("Recall Timesheet", UIAlertActionStyle.Default, alert => {
@@ -188,15 +282,15 @@ namespace ProjectOnlineMobile2.iOS
                 UIAlertControllerStyle.ActionSheet);
 
             alertController.AddAction(UIAlertAction.Create("All", UIAlertActionStyle.Default, alert => {
-                
+                MessagingCenter.Instance.Send<String>("All", "SortTasks");
             }));
 
-            alertController.AddAction(UIAlertAction.Create("Complete", UIAlertActionStyle.Default, alert => {
-
+            alertController.AddAction(UIAlertAction.Create("Completed", UIAlertActionStyle.Default, alert => {
+                MessagingCenter.Instance.Send<String>("Completed", "SortTasks");
             }));
 
             alertController.AddAction(UIAlertAction.Create("In Progress", UIAlertActionStyle.Default, alert => {
-
+                MessagingCenter.Instance.Send<String>("In Progress", "SortTasks");
             }));
 
             alertController.AddAction(UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, alert => {

@@ -27,7 +27,7 @@
         </scene>
         <scene sceneID="3477">
             <objects>
-                <viewController id="3478" sceneMemberID="viewController" storyboardIdentifier="LoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" customClass="LoginController">
+                <viewController id="3478" sceneMemberID="viewController" storyboardIdentifier="LoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" customClass="LoginController" wantsFullScreenLayout="YES">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3475"/>
                         <viewControllerLayoutGuide type="bottom" id="3476"/>
@@ -36,7 +36,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" id="3713" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="loginWebView" destination="3713" id="name-outlet-3713"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3480" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

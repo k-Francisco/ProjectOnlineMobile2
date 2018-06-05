@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "17a2aa5a1553b0781ea88881b8e15199fbdc630f"
+    "signature": "ccde942b33363c32c33dc88d343dafb0ebc425f2"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,6 +9,8 @@
     ".NETStandard,Version=v2.0/": {
       "ProjectOnlineMobile2/1.0.0": {
         "dependencies": {
+          "Microsoft.AppCenter.Analytics": "1.6.1",
+          "Microsoft.AppCenter.Crashes": "1.6.1",
           "NETStandard.Library": "2.0.1",
           "Newtonsoft.Json": "11.0.2",
           "Realm": "3.0.0",
@@ -21,6 +23,27 @@
         }
       },
       "Fody/2.4.6": {},
+      "Microsoft.AppCenter/1.6.1": {
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.dll": {}
+        }
+      },
+      "Microsoft.AppCenter.Analytics/1.6.1": {
+        "dependencies": {
+          "Microsoft.AppCenter": "1.6.1"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.Analytics.dll": {}
+        }
+      },
+      "Microsoft.AppCenter.Crashes/1.6.1": {
+        "dependencies": {
+          "Microsoft.AppCenter": "1.6.1"
+        },
+        "runtime": {
+          "lib/netstandard1.0/Microsoft.AppCenter.Crashes.dll": {}
+        }
+      },
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
       "NETStandard.Library/2.0.1": {
@@ -326,6 +349,27 @@
       "sha512": "sha512-aCmPhhBV4IpuK0+ChDvteplDWre/zDcgENLUMPjT83QWcKppg3UNSoQTgbzt16JlpTjaBkEzH6a3F5YZWiL9Nw==",
       "path": "fody/2.4.6",
       "hashPath": "fody.2.4.6.nupkg.sha512"
+    },
+    "Microsoft.AppCenter/1.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ly1R8HcB5zbp8J2/F3eVXVK1ThnSmVrjsANnGG9hwtvjhI/oO+jvnKsdY91VwKVReSuXi52bLtemGydKhiv8Dg==",
+      "path": "microsoft.appcenter/1.6.1",
+      "hashPath": "microsoft.appcenter.1.6.1.nupkg.sha512"
+    },
+    "Microsoft.AppCenter.Analytics/1.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KWwIMJJjpu7gcElpXx+xe0aa+szbtE6DeW82e6qBRZY1BwKh3OMxjP5I0Yh/beeigVOsOW0MBaR6Bnyr2zG7gg==",
+      "path": "microsoft.appcenter.analytics/1.6.1",
+      "hashPath": "microsoft.appcenter.analytics.1.6.1.nupkg.sha512"
+    },
+    "Microsoft.AppCenter.Crashes/1.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2K/ZwzBDRB5xevOPu1bNJ7f0GWGidCk8HSGC2eRhQp0Ry06/HNCbSa/b6KXLVjzTRt5Hn7f9nIEeoQ9i9PzMTg==",
+      "path": "microsoft.appcenter.crashes/1.6.1",
+      "hashPath": "microsoft.appcenter.crashes.1.6.1.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",

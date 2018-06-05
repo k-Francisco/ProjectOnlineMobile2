@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>ProjectOnlineMobile2.iOS</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.kfcompany.TestApp1234567</string>
+	<string>com.kfcompany.TestAppz1</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -13,7 +13,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>11.3</string>
+	<string>11.4</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>

@@ -76,7 +76,6 @@ namespace ProjectOnlineMobile2.iOS
             }
         }
 
-        WKWebView loginWebView;
         UIActivityIndicatorView activityIndicator;
 
         public LoginController (IntPtr handle) : base (handle)
@@ -87,6 +86,12 @@ namespace ProjectOnlineMobile2.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            NSUrlCache.SharedCache.RemoveAllCachedResponses();
+            NSHttpCookieStorage CookieStorage = NSHttpCookieStorage.SharedStorage;
+            foreach (var cookie in CookieStorage.Cookies)
+                CookieStorage.DeleteCookie(cookie);
+
             activityIndicator = new UIActivityIndicatorView();
             activityIndicator.HidesWhenStopped = true;
             activityIndicator.StopAnimating();
@@ -94,12 +99,6 @@ namespace ProjectOnlineMobile2.iOS
 
             var url = "https://sharepointevo.sharepoint.com";
             var request = new NSMutableUrlRequest(new NSUrl(url));
-            NSUrlCache.SharedCache.RemoveAllCachedResponses();
-            NSUrlCache.SharedCache.MemoryCapacity = 0;
-            NSUrlCache.SharedCache.DiskCapacity = 0;
-            NSHttpCookieStorage CookieStorage = NSHttpCookieStorage.SharedStorage;
-            foreach (var cookie in CookieStorage.Cookies)
-                CookieStorage.DeleteCookie(cookie);
 
             loginWebView = new WKWebView(View.Frame, new WKWebViewConfiguration());
             loginWebView.Bounds = View.Bounds;

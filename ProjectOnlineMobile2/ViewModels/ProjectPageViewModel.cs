@@ -76,6 +76,8 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 if (IsConnectedToInternet())
                 {
+                    IsRefreshing = true;
+
                     var projects = await PSapi.GetAllProjects();
 
                     syncDataService.SyncProjects(projects, savedProjects, ProjectList);
@@ -114,7 +116,7 @@ namespace ProjectOnlineMobile2.ViewModels
                 }
                 else
                 {
-                    var isUserAssigned = await PSapi.IsUserAssignedToThisProject(item.ProjectId, userInfo.Title);
+                    var isUserAssigned = await PSapi.IsUserAssignedToThisProject(item.ProjectId, userInfo.Title).ConfigureAwait(false);
                     if (isUserAssigned)
                     {
                         realm.Write(() => {

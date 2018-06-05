@@ -27,6 +27,8 @@
       <item name="actionBarStyle">@style/MyTheme.ActionBar</item>
       <item name="android:windowContentOverlay">@null</item>
     -->
+
+    <item name="android:statusBarColor">@color/primaryDark</item>
   </style>
 
   <style name="Theme.MyTheme.ActionBar" parent="style/Widget.AppCompat.Light.ActionBar.Solid">

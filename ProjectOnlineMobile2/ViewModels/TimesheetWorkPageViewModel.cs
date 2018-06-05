@@ -111,30 +111,74 @@ namespace ProjectOnlineMobile2.ViewModels
                 ExecuteDeleteTimesheetLine();
             });
 
-            MessagingCenter.Instance.Subscribe<String>(this, "Update", (s) => {
-
+            MessagingCenter.Instance.Subscribe<String>(this, "UpdateTimesheetLine", (comment) => {
+                ExecuteUpdateTimesheetLine(comment);
             });
 
+        }
+
+        private async void ExecuteUpdateTimesheetLine(string comment)
+        {
+            try
+            {
+                if (IsConnectedToInternet())
+                {
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Updating timesheet line...", "Close" }, "DisplayAlert");
+
+                    string body = "{ \"__metadata\":{ \"type\":\"PS.TimeSheetLine\"}, " +
+                        "'Comment':'" + comment + "'}";
+
+                    var formDigest = await SPapi.GetFormDigest();
+
+                    var updateLine = await PSapi.UpdateTimesheetLine(body, _lineId, _periodId, formDigest.D.GetContextWebInformation.FormDigestValue);
+                    if (updateLine)
+                    {
+                        MessagingCenter.Instance.Send<String[]>(new string[] { "Successfully updated line", "Close" }, "DisplayAlert");
+                        MessagingCenter.Instance.Send<String>("", "RefreshTimesheetLines");
+                        MessagingCenter.Instance.Send<String>("", "ExitWorkPage");
+                    }
+                    else
+                    {
+                        MessagingCenter.Instance.Send<String[]>(new string[] { "There was an error adding the line. Please try again", "Close" }, "DisplayAlert");
+                    }
+                }
+                else
+                {
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Your device is not connected to the internet", "Close" }, "DisplayAlert");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("ExecuteUpdateTimesheetLine", e.Message);
+                MessagingCenter.Instance.Send<String[]>(new string[] { "There was an error adding the line. Please try again", "Close" }, "DisplayAlert");
+            }
         }
 
         private async void ExecuteDeleteTimesheetLine()
         {
             try
             {
-                MessagingCenter.Instance.Send<String[]>(new string[] { "Deleting timesheet line...", "Close" }, "DisplayAlert");
-
-                var formDigest = await SPapi.GetFormDigest();
-
-                var delete = await PSapi.DeleteTimesheetLine(_lineId, _periodId, formDigest.D.GetContextWebInformation.FormDigestValue);
-                if (delete)
+                if (IsConnectedToInternet())
                 {
-                    MessagingCenter.Instance.Send<String[]>(new string[] { "Successfully deleted the line", "Close" }, "DisplayAlert");
-                    MessagingCenter.Instance.Send<String>("", "RefreshTimesheetLines");
-                    MessagingCenter.Instance.Send<String>("", "ExitWorkPage");
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Deleting timesheet line...", "Close" }, "DisplayAlert");
+
+                    var formDigest = await SPapi.GetFormDigest();
+
+                    var delete = await PSapi.DeleteTimesheetLine(_lineId, _periodId, formDigest.D.GetContextWebInformation.FormDigestValue);
+                    if (delete)
+                    {
+                        MessagingCenter.Instance.Send<String[]>(new string[] { "Successfully deleted the line", "Close" }, "DisplayAlert");
+                        MessagingCenter.Instance.Send<String>("", "RefreshTimesheetLines");
+                        MessagingCenter.Instance.Send<String>("", "ExitWorkPage");
+                    }
+                    else
+                    {
+                        MessagingCenter.Instance.Send<String[]>(new string[] { "There was an error deleting the line", "Close" }, "DisplayAlert");
+                    }
                 }
                 else
                 {
-                    MessagingCenter.Instance.Send<String[]>(new string[] { "There was an error deleting the line", "Close" }, "DisplayAlert");
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Your device is not connected to the internet", "Close" }, "DisplayAlert");
                 }
             }
             catch(Exception e)

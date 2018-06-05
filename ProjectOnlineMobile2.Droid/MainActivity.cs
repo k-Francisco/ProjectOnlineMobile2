@@ -30,10 +30,11 @@ namespace ProjectOnlineMobile2.Droid
         IMenu menu;
         Toolbar toolbar;
         DialogHelper dialogHelper;
+        TextView timesheetLineTaskName;
 
         Fragment _homepageFragment, _projectsFragment, _tasksFragment, _timesheetFragment, _timesheetWorkFragment;
 
-        public string UserName, UserEmail, TimesheetPeriod;
+        public string UserName, UserEmail, TimesheetPeriod, TimesheetLineComment;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -45,29 +46,7 @@ namespace ProjectOnlineMobile2.Droid
 
             MessagingCenter.Instance.Subscribe<string[]>(this, "DisplayAlert", (s) =>
             {
-
-                //s[0] = message
-                //s[1] = affirm button message
-                //s[2] = cancel button message
-                //s[3] = identifier
-                //s[4] = period id
-
-                if (s.Length > 2)
-                {
-                    if (!string.IsNullOrEmpty(s[3]))
-                    {
-                        if (s[3].Equals("CreateTimesheet"))
-                        {
-                            dialogHelper.DisplayCreateTimesheetDialog(s[0], s[4], s[1], s[2]);
-                        }
-                    }
-                }
-                else
-                {
-                    Toast.MakeText(this, s[0], ToastLength.Short).Show();
-                }
-
-
+                DisplayAlert(s);
             });
 
             MessagingCenter.Instance.Subscribe<ProjectOnlineMobile2.Models.D_User>(this, "UserInfo", (userInfo)=> {
@@ -104,6 +83,8 @@ namespace ProjectOnlineMobile2.Droid
 
             bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
+            timesheetLineTaskName = FindViewById<TextView>(Resource.Id.timesheetLineTaskName);
+
             _homepageFragment = new HomePage().CreateSupportFragment(this);
             _timesheetWorkFragment = new TimesheetWorkPage().CreateSupportFragment(this);
 
@@ -125,8 +106,36 @@ namespace ProjectOnlineMobile2.Droid
             };
 
             var editLineButton = FindViewById<ImageView>(Resource.Id.edit_line);
+            editLineButton.Click += (sender, args) =>
+            {
+                dialogHelper.DisplayUpdateLineDialog(TimesheetLineComment);
+            };
 
             LoadFragment(Resource.Id.menu_projects);
+        }
+
+        private void DisplayAlert(string[] parameters)
+        {
+            //s[0] = message
+            //s[1] = affirm button message
+            //s[2] = cancel button message
+            //s[3] = identifier
+            //s[4] = period id
+
+            if (parameters.Length > 2)
+            {
+                if (!string.IsNullOrEmpty(parameters[3]))
+                {
+                    if (parameters[3].Equals("CreateTimesheet"))
+                    {
+                        dialogHelper.DisplayCreateTimesheetDialog(parameters[0], parameters[4], parameters[1], parameters[2]);
+                    }
+                }
+            }
+            else
+            {
+                Toast.MakeText(this, parameters[0], ToastLength.Short).Show();
+            }
         }
 
         private void exitWorkPage()
@@ -144,19 +153,16 @@ namespace ProjectOnlineMobile2.Droid
 
         private void PushTimesheetWorkPage(TimesheetLineResult timesheetLine)
         {
-            try
-            {
-                toolbar.Visibility = ViewStates.Gone;
-                bottomNavigation.Visibility = ViewStates.Gone;
+            TimesheetLineComment = timesheetLine.Comment;
 
-                SupportFragmentManager.BeginTransaction()
-                    .Replace(Resource.Id.content_frame, _timesheetWorkFragment)
-                    .Commit();
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine("PushTimesheetWorkPage", e.Message);
-            }
+            timesheetLineTaskName.Text = timesheetLine.TaskName;
+
+            toolbar.Visibility = ViewStates.Gone;
+            bottomNavigation.Visibility = ViewStates.Gone;
+
+            SupportFragmentManager.BeginTransaction()
+                .Replace(Resource.Id.content_frame, _timesheetWorkFragment)
+                .Commit();
 
         }
 
@@ -246,6 +252,18 @@ namespace ProjectOnlineMobile2.Droid
             else if(item.ItemId == Resource.Id.menu_add_line)
             {
                 MessagingCenter.Instance.Send<String>("", "OpenProjectPicker");
+            }
+            else if(item.ItemId == Resource.Id.menu_all_tasks)
+            {
+                MessagingCenter.Instance.Send<String>(GetString(Resource.String.menu_all_tasks), "SortTasks");
+            }
+            else if(item.ItemId == Resource.Id.menu_inprogress_tasks)
+            {
+                MessagingCenter.Instance.Send<String>(GetString(Resource.String.menu_inprogress), "SortTasks");
+            }
+            else if(item.ItemId == Resource.Id.menu_completed_tasks)
+            {
+                MessagingCenter.Instance.Send<String>(GetString(Resource.String.menu_completed), "SortTasks");
             }
             
 

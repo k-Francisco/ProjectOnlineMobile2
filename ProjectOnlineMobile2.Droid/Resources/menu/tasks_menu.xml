@@ -5,11 +5,11 @@
        android:id="@+id/menu_userinfo"
        android:icon="@mipmap/ic_user"
        app:showAsAction="always"
-       android:title="User Info" />
+       android:title="@string/menu_user_info" />
 
   <item
     android:id="@+id/empty"
-    android:title="options"
+    android:title="@string/menu_options"
     android:orderInCategory="101"
     app:showAsAction="always"
     android:icon="@mipmap/ic_gear">
@@ -19,17 +19,17 @@
       <item
        android:id="@+id/menu_all_tasks"
        app:showAsAction="never"
-       android:title="All" />
+       android:title="@string/menu_all_tasks" />
 
       <item
            android:id="@+id/menu_completed_tasks"
            app:showAsAction="never"
-           android:title="Completed" />
+           android:title="@string/menu_completed" />
 
       <item
            android:id="@+id/menu_inprogress_tasks"
            app:showAsAction="never"
-           android:title="In Progress" />
+           android:title="@string/menu_inprogress" />
 
     </menu>
 

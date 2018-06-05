@@ -97,7 +97,7 @@ namespace ProjectOnlineMobile2.ViewModels
                 ExecuteAddTimesheetLine(s[0], s[1]);
             });
 
-            MessagingCenter.Instance.Subscribe<String[]>(this, "RefreshTimesheetLines", (s)=> {
+            MessagingCenter.Instance.Subscribe<String>(this, "RefreshTimesheetLines", (s)=> {
                 ExecuteRefreshLinesCommand();
             });
 
@@ -120,6 +120,12 @@ namespace ProjectOnlineMobile2.ViewModels
 
             SyncTimesheetPeriods(savedPeriods);
 
+            AddAssignedProjects();
+
+        }
+
+        private void AddAssignedProjects()
+        {
             ProjectsAssigned.Add("Personal Task");
 
             var savedProjects = realm.All<ProjectResult>().ToList();
@@ -128,60 +134,60 @@ namespace ProjectOnlineMobile2.ViewModels
                 if (item.IsUserAssignedToThisProject)
                     ProjectsAssigned.Add(item.ProjectName);
             }
-
         }
 
         private async void ExecuteAddTimesheetLine(string taskName, string comment)
         {
             try
             {
-                MessagingCenter.Instance.Send<String[]>(new string[] { "Adding timesheet line...", "Close" }, "DisplayAlert");
-
-                string body = "";
-
-                var project = realm.All<ProjectResult>()
-                               .Where(p => p.ProjectName.Equals(ProjectsAssigned[SelectedProject]))
-                               .FirstOrDefault();
-
-                var formDigest = await SPapi.GetFormDigest();
-
-                if (project != null)
+                if (IsConnectedToInternet())
                 {
-                    body = "{'parameters':" +
-                        "{'TaskName':'" + taskName + "', " +
-                        "'Comment':'" + comment + "', " +
-                        "'ProjectId':'" + project.ProjectId + "'}}";
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Adding timesheet line...", "Close" }, "DisplayAlert");
 
-                    Debug.WriteLine("AddTimesheetLineConstructor", body);
+                    string body = "";
+
+                    var project = realm.All<ProjectResult>()
+                                   .Where(p => p.ProjectName.Equals(ProjectsAssigned[SelectedProject]))
+                                   .FirstOrDefault();
+
+                    var formDigest = await SPapi.GetFormDigest();
+
+                    if (project != null)
+                    {
+                        body = "{'parameters':" +
+                            "{'TaskName':'" + taskName + "', " +
+                            "'Comment':'" + comment + "', " +
+                            "'ProjectId':'" + project.ProjectId + "'}}";
+                    }
+                    else
+                    {
+                        body = "{'parameters':{'TaskName':'" + taskName + "', " +
+                            "'Comment':'" + comment + "'}}";
+                    }
+
+                    var addLine = await PSapi.AddTimesheetLine(PeriodList[SelectedIndex].Id, body, formDigest.D.GetContextWebInformation.FormDigestValue);
+                    if (addLine)
+                    {
+                        string[] alertStrings = { "Successfully added line", "Close" };
+                        MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+
+                        ExecuteRefreshLinesCommand();
+                    }
+                    else
+                    {
+                        string[] alertStrings = { "There was an error adding the line. Please try again", "Close" };
+                        MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                    }
                 }
                 else
                 {
-                    Debug.WriteLine("AddTimesheetLineConstructor", " here ");
-
-                    body = "{'parameters':{'TaskName':'" + taskName + "', " +
-                        "'Comment':'" + comment + "'}}";
-
-                    Debug.WriteLine("AddTimesheetLineConstructor", body + " ");
-                }
-
-                var addLine = await PSapi.AddTimesheetLine(PeriodList[SelectedIndex].Id, body, formDigest.D.GetContextWebInformation.FormDigestValue);
-                if (addLine)
-                {
-                    string[] alertStrings = { "Successfully added line", "Close" };
-                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
-
-                    ExecuteRefreshLinesCommand();
-                }
-                else
-                {
-                    string[] alertStrings = { "There was an error adding the line. Please try again", "Close" };
-                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Your device is not connected to the internet", "Close" }, "DisplayAlert");
                 }
 
             }
             catch (Exception e)
             {
-                Debug.WriteLine("AddTimesheetLineConstructor", e.Message);
+                Debug.WriteLine("ExecuteAddTimesheetLine", e.Message);
                 string[] alertStrings = { "There was an error adding the line. Please try again", "Close" };
                 MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }

@@ -1,4 +1,7 @@
 ﻿using Foundation;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using ProjectOnlineMobile2.Pages;
 using ProjectOnlineMobile2.Services;
 using System;
@@ -25,8 +28,7 @@ namespace ProjectOnlineMobile2.iOS
 
 		public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 		{
-            // Override point for customization after application launch.
-            // If not required for your application you can safely delete this method
+            AppCenter.Start("41b6b5a7-bb94-45c6-b42b-8f35f74f0376", typeof(Analytics), typeof(Crashes));
 
             Forms.Init();
 

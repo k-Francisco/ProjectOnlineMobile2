@@ -14,8 +14,16 @@ namespace ProjectOnlineMobile2.iOS
     [Register ("LoginController")]
     partial class LoginController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        WebKit.WKWebView loginWebView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (loginWebView != null) {
+                loginWebView.Dispose ();
+                loginWebView = null;
+            }
         }
     }
 }

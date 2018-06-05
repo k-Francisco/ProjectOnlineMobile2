@@ -81,6 +81,7 @@ namespace ProjectOnlineMobile2.Droid
         {
             LinearLayout linearLayout = new LinearLayout(_activity);
             linearLayout.Orientation = Orientation.Vertical;
+            linearLayout.SetPadding(16, 16, 16, 16);
 
             EditText taskName = new EditText(_activity);
             taskName.Hint = "Task Name";
@@ -133,10 +134,44 @@ namespace ProjectOnlineMobile2.Droid
             AlertDialog.Builder alert = new AlertDialog.Builder(_activity);
             alert.SetMessage(message);
             alert.SetPositiveButton(positiveButton, (senderAlert, args) => {
-                MessagingCenter.Instance.Send<String>("", "DeleteTimesheetLine");
+                if (positiveButton.Equals("Delete"))
+                {
+                    MessagingCenter.Instance.Send<String>("", "DeleteTimesheetLine");
+                }
             });
 
             alert.SetNegativeButton(negativeButton, (senderAlert, args) => {
+
+            });
+
+            Dialog dialog = alert.Create();
+            dialog.Show();
+        }
+
+        public void DisplayUpdateLineDialog(string recentComment)
+        {
+            LinearLayout linearLayout = new LinearLayout(_activity);
+            linearLayout.Orientation = Orientation.Vertical;
+            linearLayout.SetPadding(16,16,16,16);
+
+            EditText comment = new EditText(_activity);
+            comment.Hint = recentComment;
+
+            linearLayout.AddView(comment);
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(_activity);
+            alert.SetTitle("Update Comment");
+            alert.SetView(linearLayout);
+
+            alert.SetPositiveButton("Update", (senderAlert, args) => {
+
+                if (!string.IsNullOrWhiteSpace(comment.Text))
+                {
+                    MessagingCenter.Instance.Send<String>(comment.Text, "UpdateTimesheetLine");
+                }
+            });
+
+            alert.SetNegativeButton("Cancel", (senderAlert, args) => {
 
             });
 
