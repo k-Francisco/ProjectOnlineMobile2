@@ -6,6 +6,9 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Webkit;
 using Java.Lang;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using ProjectOnlineMobile2.Services;
 
 namespace ProjectOnlineMobile2.Droid
@@ -18,6 +21,9 @@ namespace ProjectOnlineMobile2.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            AppCenter.Start("ec0adfc6-d2b4-45e6-b4a3-fe05df1b76e6", typeof(Analytics), typeof(Crashes));
+
             SetContentView(Resource.Layout.activity_login);
             this.Window.AddFlags(WindowManagerFlags.Fullscreen);
 
