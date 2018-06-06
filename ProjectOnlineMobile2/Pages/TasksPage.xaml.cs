@@ -17,5 +17,12 @@ namespace ProjectOnlineMobile2.Pages
 		{
 			InitializeComponent ();
 		}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            MessagingCenter.Instance.Send<String>("", "SyncUserTasks");
+        }
     }
 }

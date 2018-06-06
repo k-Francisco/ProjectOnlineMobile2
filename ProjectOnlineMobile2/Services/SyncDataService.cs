@@ -109,8 +109,6 @@ namespace ProjectOnlineMobile2.Services
                     }
                 }
 
-                realm.Refresh();
-
                 foreach (var item in tasksFromServer)
                 {
                     var temp = savedTasks
@@ -124,6 +122,7 @@ namespace ProjectOnlineMobile2.Services
                         realm.Write(()=> {
                             realm.Add(item);
                             displayedTasks.Add(item);
+                            savedTasks.Add(item);
                         });
                     }
                     else
@@ -192,6 +191,8 @@ namespace ProjectOnlineMobile2.Services
                         });
                     }
                 }
+
+                realm.Refresh();
                 return true;
             }
             catch(Exception e)

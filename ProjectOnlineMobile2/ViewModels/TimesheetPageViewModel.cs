@@ -254,7 +254,7 @@ namespace ProjectOnlineMobile2.ViewModels
                         DateTime.Compare(DateTime.Now, PeriodList[i].End.DateTime) < 0)
                 {
                     SelectedIndex = i;
-                    ExecuteSelectedItemChangedCommand();
+                    //ExecuteSelectedItemChangedCommand();
                     break;
                 }
             }

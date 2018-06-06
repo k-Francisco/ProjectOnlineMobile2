@@ -12,6 +12,7 @@ namespace ProjectOnlineMobile2.iOS
     {
         private UIViewController _projectPageController, _tasksPageController, _timesheetPageController, _timesheetWorkPageController;
         private UINavigationController _projectNavController, _tasksNavController, _timesheetNavController;
+        private UIAlertView currentAlertView;
 
         public TabBarController (IntPtr handle) : base (handle)
         {
@@ -26,10 +27,80 @@ namespace ProjectOnlineMobile2.iOS
             MessagingCenter.Instance.Subscribe<String[]>(this, "DisplayAlert", (s) => {
                 DisplayAlert(s);
             });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "ExitWorkPage", (s)=> {
+                _timesheetNavController.PopViewController(true);
+            });
+        }
+
+        public override void ViewDidLoad()
+        {
+            this.TabBar.Translucent = false;
+            this.TabBar.TintColor = UIColor.FromRGBA(49,117,47,255);
+
+            UIBarButtonItem userButtonItem = new UIBarButtonItem(UIImage.FromFile("ic_user.png"), UIBarButtonItemStyle.Plain,
+                (sender, args) =>
+                {
+                    DisplayLogoutAlert(sender as UIBarButtonItem);
+                });
+
+            UIBarButtonItem taskOptionsButtonItem = new UIBarButtonItem(UIImage.FromFile("ic_gear.png"), UIBarButtonItemStyle.Plain,
+                (sender, args) => {
+                    DisplayTaskOptions(sender as UIBarButtonItem);
+                });
+
+            UIBarButtonItem timesheetOptionsButtonItem = new UIBarButtonItem(UIImage.FromFile("ic_gear.png"), UIBarButtonItemStyle.Plain,
+                (sender, args) => {
+                    DisplayTimesheetOptions(sender as UIBarButtonItem);
+                });
+
+            _projectPageController = new ProjectPage().CreateViewController();
+            _projectPageController.Title = "Projects";
+            _projectPageController.NavigationItem.SetLeftBarButtonItem(userButtonItem, true);
+
+            _projectNavController = new UINavigationController();
+            _projectNavController.TabBarItem = new UITabBarItem();
+            _projectNavController.TabBarItem.Image = UIImage.FromFile("ic_projects.png");
+            _projectNavController.PushViewController(_projectPageController, false);
+
+            _tasksPageController = new TasksPage().CreateViewController();
+            _tasksPageController.Title = "Tasks";
+            _tasksPageController.NavigationItem.SetLeftBarButtonItem(userButtonItem, true);
+            _tasksPageController.NavigationItem.SetRightBarButtonItem(taskOptionsButtonItem, true);
+
+            _tasksNavController = new UINavigationController();
+            _tasksNavController.TabBarItem = new UITabBarItem();
+            _tasksNavController.TabBarItem.Image = UIImage.FromFile("ic_tasks.png");
+            _tasksNavController.PushViewController(_tasksPageController, false);
+
+            _timesheetPageController = new TimesheetPage().CreateViewController();
+            _timesheetPageController.Title = "Timesheets";
+            _timesheetPageController.NavigationItem.SetLeftBarButtonItem(userButtonItem, true);
+            _timesheetPageController.NavigationItem.SetRightBarButtonItem(timesheetOptionsButtonItem, true);
+
+            _timesheetNavController = new UINavigationController();
+            _timesheetNavController.TabBarItem = new UITabBarItem();
+            _timesheetNavController.TabBarItem.Image = UIImage.FromFile("ic_timesheet.png");
+            _timesheetNavController.PushViewController(_timesheetPageController, false);
+
+            _timesheetWorkPageController = new TimesheetWorkPage().CreateViewController();
+            _timesheetWorkPageController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem("Options", UIBarButtonItemStyle.Plain, (sender, e) => {
+                DisplayWorkPageOptions(sender as UIBarButtonItem);
+            }), false);
+
+            MessagingCenter.Instance.Send<String>("", "SaveOfflineWorkChanges");
+
+            var tabs = new UIViewController[] { _projectNavController, _tasksNavController, _timesheetNavController };
+            ViewControllers = tabs;
+            SelectedViewController = _projectNavController;
+
         }
 
         private void DisplayAlert(string[] parameters)
         {
+            if (currentAlertView != null)
+                currentAlertView.DismissWithClickedButtonIndex(-1, true);    
+
             //s[0] = message
             //s[1] = affirm button message
             //s[2] = cancel button message
@@ -63,6 +134,7 @@ namespace ProjectOnlineMobile2.iOS
             };
 
             alertController2.Show();
+            currentAlertView = alertController2;
         }
 
         private void ExecutePushTimesheetWorkPage(LineResult line)
@@ -71,73 +143,10 @@ namespace ProjectOnlineMobile2.iOS
             _timesheetNavController.PushViewController(_timesheetWorkPageController, true);
         }
 
-        public override void ViewDidLoad()
-        {
-            this.TabBar.Translucent = false;
-            this.TabBar.TintColor = UIColor.FromRGBA(49,117,47,255);
-
-            UIBarButtonItem userButtonItem = new UIBarButtonItem(UIImage.FromFile("ic_user.png"), UIBarButtonItemStyle.Plain,
-                (sender, args) =>
-                {
-                    DisplayLogoutAlert(sender as UIBarButtonItem);
-                });
-
-            UIBarButtonItem taskOptionsButtonItem = new UIBarButtonItem(UIImage.FromFile("ic_gear.png"), UIBarButtonItemStyle.Plain,
-                (sender, args) => {
-                    DisplayTaskOptions(sender as UIBarButtonItem);
-                });
-
-            UIBarButtonItem timesheetOptionsButtonItem = new UIBarButtonItem(UIImage.FromFile("ic_gear.png"), UIBarButtonItemStyle.Plain,
-                (sender, args) => {
-                    DisplayTimesheetOptions(sender as UIBarButtonItem);
-                });
-
-            _projectPageController = new ProjectPage().CreateViewController();
-            _projectPageController.Title = "Timesheet Tracker";
-            _projectPageController.NavigationItem.SetLeftBarButtonItem(userButtonItem, true);
-
-            _projectNavController = new UINavigationController();
-            _projectNavController.TabBarItem = new UITabBarItem();
-            _projectNavController.TabBarItem.Image = UIImage.FromFile("ic_projects.png");
-            _projectNavController.PushViewController(_projectPageController, false);
-
-            _tasksPageController = new TasksPage().CreateViewController();
-            _tasksPageController.Title = "Timesheet Tracker";
-            _tasksPageController.NavigationItem.SetLeftBarButtonItem(userButtonItem, true);
-            _tasksPageController.NavigationItem.SetRightBarButtonItem(taskOptionsButtonItem, true);
-
-            _tasksNavController = new UINavigationController();
-            _tasksNavController.TabBarItem = new UITabBarItem();
-            _tasksNavController.TabBarItem.Image = UIImage.FromFile("ic_tasks.png");
-            _tasksNavController.PushViewController(_tasksPageController, false);
-
-            _timesheetPageController = new TimesheetPage().CreateViewController();
-            _timesheetPageController.Title = "Timesheet Tracker";
-            _timesheetPageController.NavigationItem.SetLeftBarButtonItem(userButtonItem, true);
-            _timesheetPageController.NavigationItem.SetRightBarButtonItem(timesheetOptionsButtonItem, true);
-
-            _timesheetNavController = new UINavigationController();
-            _timesheetNavController.TabBarItem = new UITabBarItem();
-            _timesheetNavController.TabBarItem.Image = UIImage.FromFile("ic_timesheet.png");
-            _timesheetNavController.PushViewController(_timesheetPageController, false);
-
-            _timesheetWorkPageController = new TimesheetWorkPage().CreateViewController();
-            _timesheetWorkPageController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem("Save", UIBarButtonItemStyle.Plain, (sender, e) => {
-                DisplayWorkPageOptions(sender as UIBarButtonItem);
-            }), false);
-
-            MessagingCenter.Instance.Send<String>("", "SaveOfflineWorkChanges");
-
-            var tabs = new UIViewController[] { _projectNavController, _tasksNavController, _timesheetNavController };
-            ViewControllers = tabs;
-            SelectedViewController = _projectNavController;
-
-        }
-
         private void DisplayWorkPageOptions(UIBarButtonItem buttonItem)
         {
             var alertController = UIAlertController.Create("Timesheet Line",
-                AppDelegate.appDelegate.TimesheetPeriod,
+                "",
                 UIAlertControllerStyle.ActionSheet);
 
             alertController.AddAction(UIAlertAction.Create("Save", UIAlertActionStyle.Default, alert => {
@@ -145,6 +154,10 @@ namespace ProjectOnlineMobile2.iOS
             }));
 
             alertController.AddAction(UIAlertAction.Create("Edit Line", UIAlertActionStyle.Default, alert => {
+
+                if (currentAlertView != null)
+                    currentAlertView.DismissWithClickedButtonIndex(-1, true);
+
                 var updateLineAlertView = new UIAlertView()
                 {
                     Title = "Update Line",
@@ -165,9 +178,13 @@ namespace ProjectOnlineMobile2.iOS
                     }
                 };
                 updateLineAlertView.Show();
+                currentAlertView = updateLineAlertView;
             }));
 
             alertController.AddAction(UIAlertAction.Create("Delete Line", UIAlertActionStyle.Default, alert => {
+
+                if (currentAlertView != null)
+                    currentAlertView.DismissWithClickedButtonIndex(-1, true);
 
                 var deleteLineAlertView = new UIAlertView()
                 {
@@ -184,6 +201,7 @@ namespace ProjectOnlineMobile2.iOS
                     }
                 };
                 deleteLineAlertView.Show();
+                currentAlertView = deleteLineAlertView;
             }));
 
             alertController.AddAction(UIAlertAction.Create("Close", UIAlertActionStyle.Cancel, alert => {
@@ -203,6 +221,11 @@ namespace ProjectOnlineMobile2.iOS
 
         private void ExecuteAddTimesheetDialog()
         {
+            if (currentAlertView != null)
+                currentAlertView.DismissWithClickedButtonIndex(-1, true);
+
+            MessagingCenter.Instance.Send<String>("", "CloseProjectPicker");
+
             var addLineAlertView = new UIAlertView()
             {
                 Title = "Add Line",
@@ -222,6 +245,7 @@ namespace ProjectOnlineMobile2.iOS
                 }
             };
             addLineAlertView.Show();
+            currentAlertView = addLineAlertView;
         }
 
         private void DisplayTimesheetOptions(UIBarButtonItem buttonItem)
@@ -240,6 +264,9 @@ namespace ProjectOnlineMobile2.iOS
 
             alertController.AddAction(UIAlertAction.Create("Submit Timesheet", UIAlertActionStyle.Default, alert => {
 
+                if (currentAlertView != null)
+                    currentAlertView.DismissWithClickedButtonIndex(-1, true);
+
                 var submitAlertView = new UIAlertView() {
                     Title = "Comment",
                 };
@@ -254,6 +281,7 @@ namespace ProjectOnlineMobile2.iOS
                     }
                 };
                 submitAlertView.Show();
+                currentAlertView = submitAlertView;
             }));
 
             alertController.AddAction(UIAlertAction.Create("Recall Timesheet", UIAlertActionStyle.Default, alert => {

@@ -14,16 +14,14 @@ namespace ProjectOnlineMobile2.iOS
     public partial class LoginController : UIViewController, IWKNavigationDelegate, IWKUIDelegate
     {
 
+        string rtFa = string.Empty;
+        string FedAuth = string.Empty;
+
         [Export("webView:didStartProvisionalNavigation:")]
         public void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
-            //var cookies = await webView.Configuration.WebsiteDataStore.HttpCookieStore.GetAllCookiesAsync();
-            //foreach (var item in cookies)
-            //{
-            //    webView.Configuration.WebsiteDataStore.HttpCookieStore.DeleteCookie(item, null);
-            //}
-
             activityIndicator.StartAnimating();
+            Debug.WriteLine("Starting","Starting loading");
         }
 
         [Export("webView:didFinishNavigation:")]
@@ -32,8 +30,6 @@ namespace ProjectOnlineMobile2.iOS
             activityIndicator.StopAnimating();
         }
 
-        string rtFa = string.Empty;
-        string FedAuth = string.Empty;
         [Export("webView:didCommitNavigation:")]
         public async void DidCommitNavigation(WKWebView webView, WKNavigation navigation)
         {
@@ -76,8 +72,6 @@ namespace ProjectOnlineMobile2.iOS
             }
         }
 
-        UIActivityIndicatorView activityIndicator;
-
         public LoginController (IntPtr handle) : base (handle)
         {
             
@@ -93,24 +87,18 @@ namespace ProjectOnlineMobile2.iOS
                 CookieStorage.DeleteCookie(cookie);
 
             activityIndicator = new UIActivityIndicatorView();
-            activityIndicator.HidesWhenStopped = true;
-            activityIndicator.StopAnimating();
-            activityIndicator.Color = UIColor.FromRGBA(49, 117, 47, 1);
+            activityIndicator.TranslatesAutoresizingMaskIntoConstraints = false;
 
             var url = "https://sharepointevo.sharepoint.com";
             var request = new NSMutableUrlRequest(new NSUrl(url));
 
             loginWebView = new WKWebView(View.Frame, new WKWebViewConfiguration());
-            loginWebView.Bounds = View.Bounds;
             loginWebView.NavigationDelegate = this;
             loginWebView.UIDelegate = this;
-
-            //clearCache();
 
             loginWebView.LoadRequest(request);
 
             View.AddSubview(loginWebView);
-            this.loginWebView.AddSubview(activityIndicator);
 
         }
 

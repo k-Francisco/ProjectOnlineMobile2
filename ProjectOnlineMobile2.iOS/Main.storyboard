@@ -1,33 +1,32 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
-        <!--Second-->
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController" storyboardIdentifier="TabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" customClass="TabBarController">
+                <tabBarController storyboardIdentifier="TabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="TabBarController" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="687" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="selectedImageTintColor" colorSpace="calibratedRGB" red="0.19215686274509805" green="0.45882352941176469" blue="0.18431372549019609" alpha="0"/>
-                        <color key="tintColor" colorSpace="calibratedRGB" red="0.19215686274509805" green="0.45882352941176469" blue="0.18431372549019609" alpha="1"/>
+                        <color key="tintColor" red="0.19215686274509805" green="0.45882352941176469" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.19215686274509805" green="0.45882352941176469" blue="0.18431372549019609" alpha="0.0" colorSpace="calibratedRGB"/>
                     </tabBar>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <nil key="simulatedTopBarMetrics"/>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-736" y="-99"/>
         </scene>
+        <!--Login Controller-->
         <scene sceneID="3477">
             <objects>
-                <viewController id="3478" sceneMemberID="viewController" storyboardIdentifier="LoginController" useStoryboardIdentifierAsRestorationIdentifier="YES" customClass="LoginController" wantsFullScreenLayout="YES">
+                <viewController storyboardIdentifier="LoginController" wantsFullScreenLayout="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3478" customClass="LoginController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3475"/>
                         <viewControllerLayoutGuide type="bottom" id="3476"/>
@@ -35,9 +34,8 @@
                     <view key="view" contentMode="scaleToFill" id="3479">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" id="3713" translatesAutoresizingMaskIntoConstraints="NO">
+                            <wkWebView contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3713">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -46,10 +44,17 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="center" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3943" fixedFrame="YES" hidesWhenStopped="YES" hidden="YES">
+                                <rect key="frame" x="197" y="358" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" colorSpace="calibratedRGB" red="0.19215686274509805" green="0.45882352941176469" blue="0.18431372549019609" alpha="1"/>
+                            </activityIndicatorView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="loginWebView" destination="3713" id="name-outlet-3713"/>
+                        <outlet property="activityIndicator" destination="3943" id="name-outlet-3943"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3480" userLabel="First Responder" sceneMemberID="firstResponder"/>

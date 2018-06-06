@@ -351,7 +351,11 @@ namespace ProjectOnlineMobile2.Services
 
         public async Task<bool> AddTimesheetLineWork(string periodId, string lineId, string body, string formDigestValue)
         {
-            bool isSuccess = false;
+
+            Debug.WriteLine("AddTimesheetLineWork", body);
+            Debug.WriteLine("AddTimesheetLineWork", periodId);
+            Debug.WriteLine("AddTimesheetLineWork", lineId);
+            Debug.WriteLine("AddTimesheetLineWork", formDigestValue);
 
             var contents = new StringContent(body);
             contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
@@ -362,17 +366,18 @@ namespace ProjectOnlineMobile2.Services
                     "/Timesheet/Lines('" + lineId + "')/Work/add", contents);
 
                 var postResult = result.EnsureSuccessStatusCode();
-                if (postResult.IsSuccessStatusCode)
-                    isSuccess = true;
 
                 _client.DefaultRequestHeaders.Remove("X-RequestDigest");
 
-                return isSuccess;
+                if (postResult.IsSuccessStatusCode)
+                    return true;
+
+                return false;
             }
             catch (Exception e)
             {
                 Debug.WriteLine("AddTimesheetLineWork", e.Message);
-                return isSuccess;
+                return false;
             }
         }
 

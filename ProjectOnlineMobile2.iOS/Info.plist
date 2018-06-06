@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>ProjectOnlineMobile2.iOS</string>
+	<string>Timesheet Tracker</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.kfcompany.TestAppz1</string>
 	<key>CFBundleShortVersionString</key>
@@ -42,11 +42,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>XSAppIconAssets</key>
+	<string>Resources/AppIcon.xcassets/AppIcons.appiconset</string>
 </dict>
 </plist>

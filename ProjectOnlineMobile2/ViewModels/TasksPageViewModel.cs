@@ -44,18 +44,19 @@ namespace ProjectOnlineMobile2.ViewModels
                 ExecuteSortTasks(s, savedTasks);
             });
 
+            MessagingCenter.Instance.Subscribe<String>(this, "SyncUserTasks", (s)=> {
+                ExecuteSynceUserTasks(savedTasks);
+            });
+
             foreach (var item in savedTasks)
             {
                 Tasks.Add(item);
             }
-
-            SyncUserTasks(savedTasks);
         }
 
         private void ExecuteSortTasks(string sort, List<Result> savedTasks)
         {
             Tasks.Clear();
-            Debug.WriteLine(sort);
             if (sort.Equals("All"))
             {
                 foreach (var item in savedTasks)
@@ -99,7 +100,7 @@ namespace ProjectOnlineMobile2.ViewModels
                     Tasks.Clear();
 
                     var savedTasks = realm.All<Result>().ToList();
-                    SyncUserTasks(savedTasks);
+                    ExecuteSynceUserTasks(savedTasks);
                 }
                 else
                     IsRefreshing = false;
@@ -112,7 +113,7 @@ namespace ProjectOnlineMobile2.ViewModels
             
         }
 
-        private async void SyncUserTasks(List<Result> savedTasks)
+        private async void ExecuteSynceUserTasks(List<Result> savedTasks)
         {
             try
             {

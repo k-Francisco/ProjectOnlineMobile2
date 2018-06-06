@@ -104,27 +104,34 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private async void IsUserAssignedToAProject(List<Result> savedProjects)
         {
-            var userInfo = realm.All<ProjectOnlineMobile2.Models.D_User>().FirstOrDefault();
-
-            foreach (var item in savedProjects)
+            try
             {
-                if (item.ProjectOwnerName.Equals(userInfo.Title))
+                var userInfo = realm.All<ProjectOnlineMobile2.Models.D_User>().FirstOrDefault();
+
+                foreach (var item in savedProjects)
                 {
-                    realm.Write(()=> {
-                        item.IsUserAssignedToThisProject = true;
-                    });
-                }
-                else
-                {
-                    var isUserAssigned = await PSapi.IsUserAssignedToThisProject(item.ProjectId, userInfo.Title).ConfigureAwait(false);
-                    if (isUserAssigned)
+                    if (item.ProjectOwnerName.Equals(userInfo.Title))
                     {
                         realm.Write(() => {
                             item.IsUserAssignedToThisProject = true;
                         });
                     }
+                    else
+                    {
+                        var isUserAssigned = await PSapi.IsUserAssignedToThisProject(item.ProjectId, userInfo.Title).ConfigureAwait(false);
+                        if (isUserAssigned)
+                        {
+                            realm.Write(() => {
+                                item.IsUserAssignedToThisProject = true;
+                            });
+                        }
 
+                    }
                 }
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("IsUserAssignedToAProject", e.Message);
             }
         }
     }
