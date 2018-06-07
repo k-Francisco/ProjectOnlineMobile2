@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using ProjectOnlineMobile2.Models;
@@ -141,13 +142,14 @@ namespace ProjectOnlineMobile2.Services
             }
         }
 
-        public async Task<TimesheetLinesList> GetTimesheetLinesByPeriod(string periodId)
+        public async Task<TimesheetLinesList> GetTimesheetLinesByPeriod(string periodId, CancellationToken cancelToken)
         {
             try
             {
-                var response = await _client.GetStringAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('"+ periodId +"')/Timesheet/Lines");
+                var response = await _client.GetAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('"+ periodId +"')/Timesheet/Lines", cancelToken);
+                var responseString = await response.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<TimesheetLinesList>(response);
+                return JsonConvert.DeserializeObject<TimesheetLinesList>(responseString);
             }
             catch (Exception e)
             {
@@ -351,11 +353,6 @@ namespace ProjectOnlineMobile2.Services
 
         public async Task<bool> AddTimesheetLineWork(string periodId, string lineId, string body, string formDigestValue)
         {
-
-            Debug.WriteLine("AddTimesheetLineWork", body);
-            Debug.WriteLine("AddTimesheetLineWork", periodId);
-            Debug.WriteLine("AddTimesheetLineWork", lineId);
-            Debug.WriteLine("AddTimesheetLineWork", formDigestValue);
 
             var contents = new StringContent(body);
             contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");

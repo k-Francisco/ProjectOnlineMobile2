@@ -86,19 +86,13 @@ namespace ProjectOnlineMobile2.ViewModels
 
                     IsUserAssignedToAProject(savedProjects);
                 }
-                else
-                {
-                    string[] alertStrings = { "Your device is not connected to the internet", "Close" };
-                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
-                }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("SyncProjects", e.Message);
                 IsRefreshing = false;
 
-                string[] alertStrings = { "There was a problem syncing the projects. Please try again", "Close" };
-                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                MessagingCenter.Instance.Send<String[]>(new string[] { "There was a problem syncing the projects. Please try again", "Close" }, "DisplayAlert");
             }
         }
 
@@ -118,7 +112,7 @@ namespace ProjectOnlineMobile2.ViewModels
                     }
                     else
                     {
-                        var isUserAssigned = await PSapi.IsUserAssignedToThisProject(item.ProjectId, userInfo.Title).ConfigureAwait(false);
+                        var isUserAssigned = await PSapi.IsUserAssignedToThisProject(item.ProjectId, userInfo.Title);
                         if (isUserAssigned)
                         {
                             realm.Write(() => {
@@ -128,6 +122,8 @@ namespace ProjectOnlineMobile2.ViewModels
 
                     }
                 }
+
+                MessagingCenter.Instance.Send<String>("", "AddAssignedProjects");
             }
             catch(Exception e)
             {

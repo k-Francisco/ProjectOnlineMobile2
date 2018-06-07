@@ -41,6 +41,7 @@ namespace ProjectOnlineMobile2.Services
                             realm.Remove(item);
                         });
                         displayedProjects.Remove(item);
+                        savedProjects.Remove(item);
                     }
                 }
 
@@ -57,6 +58,7 @@ namespace ProjectOnlineMobile2.Services
                         realm.Write(()=> {
                             realm.Add(item);
                             displayedProjects.Add(item);
+                            savedProjects.Add(item);
                         });
                     }
                     else
@@ -77,6 +79,8 @@ namespace ProjectOnlineMobile2.Services
                         });
                     }
                 }
+
+                realm.Refresh();
 
                 return true;
             }
@@ -106,8 +110,11 @@ namespace ProjectOnlineMobile2.Services
                             realm.Remove(item);
                         });
                         displayedTasks.Remove(item);
+                        savedTasks.Remove(item);
                     }
                 }
+
+                realm.Refresh();
 
                 foreach (var item in tasksFromServer)
                 {
@@ -219,6 +226,7 @@ namespace ProjectOnlineMobile2.Services
                             realm.Remove(item);
                         });
                         displayedPeriods.Remove(item);
+                        savedPeriods.Remove(item);
                     }
                 }
 

@@ -21,7 +21,6 @@ namespace ProjectOnlineMobile2.iOS
         public void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
             activityIndicator.StartAnimating();
-            Debug.WriteLine("Starting","Starting loading");
         }
 
         [Export("webView:didFinishNavigation:")]
@@ -87,12 +86,13 @@ namespace ProjectOnlineMobile2.iOS
                 CookieStorage.DeleteCookie(cookie);
 
             activityIndicator = new UIActivityIndicatorView();
-            activityIndicator.TranslatesAutoresizingMaskIntoConstraints = false;
 
             var url = "https://sharepointevo.sharepoint.com";
-            var request = new NSMutableUrlRequest(new NSUrl(url));
+            var request = new NSMutableUrlRequest(new NSUrl(url), NSUrlRequestCachePolicy.ReloadIgnoringCacheData, 0);
 
             loginWebView = new WKWebView(View.Frame, new WKWebViewConfiguration());
+            loginWebView.Frame = this.View.Frame;
+            loginWebView.Bounds = this.View.Bounds;
             loginWebView.NavigationDelegate = this;
             loginWebView.UIDelegate = this;
 

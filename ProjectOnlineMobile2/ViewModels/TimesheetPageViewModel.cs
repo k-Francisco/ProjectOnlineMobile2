@@ -10,6 +10,7 @@ using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 using ProjectOnlineMobile2.Models;
+using System.Threading;
 
 namespace ProjectOnlineMobile2.ViewModels
 {
@@ -67,12 +68,13 @@ namespace ProjectOnlineMobile2.ViewModels
         }
 
         private IQueryable<SavedLinesModel> _savedLines { get; set; }
-
-        public string periodId, lineId;
         public ICommand SelectedItemChangedCommand { get; set; }
         public ICommand SelectedProjectChangedCommand { get; set; }
         public ICommand TimesheetLineClicked { get; set; }
         public ICommand RefreshLinesCommand { get; set; }
+
+        public string periodId, lineId;
+        private CancellationTokenSource cancelTokenSource;
 
         public TimesheetPageViewModel()
         {
@@ -101,6 +103,10 @@ namespace ProjectOnlineMobile2.ViewModels
                 ExecuteRefreshLinesCommand();
             });
 
+            MessagingCenter.Instance.Subscribe<String>(this, "AddAssignedProjects", (s)=> {
+                ExecuteAddAssignedProjects();
+            });
+
             PeriodList = new ObservableCollection<TimesheetPeriodsResult>();
             PeriodLines = new ObservableCollection<LineResult>();
             ProjectsAssigned = new ObservableCollection<string>();
@@ -109,6 +115,9 @@ namespace ProjectOnlineMobile2.ViewModels
             SelectedProjectChangedCommand = new Command(ExecuteSelectedProjectChangedCommand);
             TimesheetLineClicked = new Command<LineResult>(ExecuteTimesheetLineClicked);
             RefreshLinesCommand = new Command(ExecuteRefreshLinesCommand);
+
+            cancelTokenSource = new CancellationTokenSource();
+            //cancelTokenSource.CancelAfter(TimeSpan.FromMilliseconds(100));
 
             var savedPeriods = realm.All<TimesheetPeriodsResult>().ToList();
             foreach (var item in savedPeriods)
@@ -120,11 +129,9 @@ namespace ProjectOnlineMobile2.ViewModels
 
             SyncTimesheetPeriods(savedPeriods);
 
-            AddAssignedProjects();
-
         }
 
-        private void AddAssignedProjects()
+        private void ExecuteAddAssignedProjects()
         {
             ProjectsAssigned.Add("Personal Task");
 
@@ -195,6 +202,8 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private void ExecuteSelectedProjectChangedCommand()
         {
+            
+            MessagingCenter.Instance.Send<String>("", "CloseProjectPicker");
             MessagingCenter.Instance.Send<String>("", "AddTimesheetLineDialog");
         }
 
@@ -236,6 +245,7 @@ namespace ProjectOnlineMobile2.ViewModels
                     syncDataService.SyncTimesheetPeriods(savedPeriods, periods.D.Results, PeriodList);
                     if(SelectedIndex <= 0)
                     {
+                        Debug.WriteLine("syncttimesheetperiods","agi siya diri");
                         FindTodaysPeriod();
                     }
                 }
@@ -254,7 +264,7 @@ namespace ProjectOnlineMobile2.ViewModels
                         DateTime.Compare(DateTime.Now, PeriodList[i].End.DateTime) < 0)
                 {
                     SelectedIndex = i;
-                    //ExecuteSelectedItemChangedCommand();
+                    ExecuteSelectedItemChangedCommand();
                     break;
                 }
             }
@@ -365,6 +375,8 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private void ExecuteSelectedItemChangedCommand()
         {
+            cancelTokenSource.Cancel();
+
             var periodId = PeriodList[SelectedIndex].Id;
             _savedLines = realm.All<SavedLinesModel>().Where(p => p.PeriodId == periodId);
 
@@ -375,7 +387,6 @@ namespace ProjectOnlineMobile2.ViewModels
             }
             else
             {
-                Debug.WriteLine("ExecuteRefreshLinesCommand", _savedLines.Count() + " ang count");
                 foreach (var item in _savedLines.ToList())
                 {
                     PeriodLines.Add(item.LineModel);
@@ -392,7 +403,7 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 if (IsConnectedToInternet())
                 {
-                    var periodLines = await PSapi.GetTimesheetLinesByPeriod(PeriodList[SelectedIndex].Id);
+                    var periodLines = await PSapi.GetTimesheetLinesByPeriod(PeriodList[SelectedIndex].Id, cancelTokenSource.Token);
                     syncDataService.SyncTimesheetLines(savedLines, periodLines.D.Results, PeriodLines, PeriodList[SelectedIndex].Id);
                     IsRefreshing = false;
                 }

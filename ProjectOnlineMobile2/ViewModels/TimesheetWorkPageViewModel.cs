@@ -294,6 +294,8 @@ namespace ProjectOnlineMobile2.ViewModels
                             "'NonBillableWork':'0h', " +
                             "'OvertimeWork':'0h'}}";
 
+                            Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", "saving");
+
                             var response = await PSapi.AddTimesheetLineWork(_periodId, _lineId, body, formDigest.D.GetContextWebInformation.FormDigestValue);
 
                             if (response)
@@ -420,19 +422,13 @@ namespace ProjectOnlineMobile2.ViewModels
                     IsRefreshing = false;
 
                 }
-                else
-                {
-                    string[] alertStrings = { "Your device is not connected to the internet", "Close" };
-                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
-                }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("SyncTimesheetLineWorkViewModel", e.Message);
                 IsRefreshing = false;
 
-                string[] alertStrings = { "An error has occured. Please try again", "Close" };
-                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                MessagingCenter.Instance.Send<String[]>(new string[] { "An error has occured. Please try again", "Close" }, "DisplayAlert");
             }
         }
     }
