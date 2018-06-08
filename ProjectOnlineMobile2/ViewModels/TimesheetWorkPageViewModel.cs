@@ -58,28 +58,7 @@ namespace ProjectOnlineMobile2.ViewModels
             });
 
             MessagingCenter.Instance.Subscribe<String>(this, "WorkPagePushed", (s)=> {
-
-                try
-                {
-                    savedLineWork = realm.All<SavedTimesheetLineWork>()
-                   .Where(p => p.PeriodId == _periodId && p.LineId == _lineId)
-                   .ToList()
-                   .OrderBy(p => p.WorkModel.Start.DateTime);
-
-                    foreach (var item in savedLineWork)
-                    {
-                        LineWork.Add(item.WorkModel);
-                    }
-
-                    if(savedLineWork.Any())
-                        HeaderVisibility = true;
-
-                    SyncTimesheetLineWork();
-                }
-                catch(Exception e)
-                {
-                    Debug.WriteLine("WorkPagePushed", e.Message);
-                }
+                ExecuteWorkPagePushed();
             });
 
             MessagingCenter.Instance.Subscribe<String>(this, "SaveTimesheetWorkChanges", (s) =>
@@ -89,10 +68,51 @@ namespace ProjectOnlineMobile2.ViewModels
 
             MessagingCenter.Instance.Subscribe<String>(this, "ClearEntries", (s) =>
             {
-                
+                ExecuteClearEntries();
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "DeleteTimesheetLine", (s)=> {
+                ExecuteDeleteTimesheetLine();
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "UpdateTimesheetLine", (comment) => {
+                ExecuteUpdateTimesheetLine(comment);
+            });
+
+        }
+
+        private void ExecuteWorkPagePushed()
+        {
+            try
+            {
+                savedLineWork = realm.All<SavedTimesheetLineWork>()
+               .Where(p => p.PeriodId == _periodId && p.LineId == _lineId)
+               .ToList()
+               .OrderBy(p => p.WorkModel.Start.DateTime);
+
                 foreach (var item in savedLineWork)
                 {
-                    if(item.WorkModel.isNotSaved != true)
+                    LineWork.Add(item.WorkModel);
+                }
+
+                if (savedLineWork.Any())
+                    HeaderVisibility = true;
+
+                SyncTimesheetLineWork();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("WorkPagePushed", e.Message);
+            }
+        }
+
+        private void ExecuteClearEntries()
+        {
+            try
+            {
+                foreach (var item in savedLineWork)
+                {
+                    if (item.WorkModel.isNotSaved != true)
                     {
                         realm.Write(() => {
                             item.WorkModel.EntryTextActualHours = string.Empty;
@@ -104,17 +124,11 @@ namespace ProjectOnlineMobile2.ViewModels
                 LineWork.Clear();
 
                 HeaderVisibility = false;
-
-            });
-
-            MessagingCenter.Instance.Subscribe<String>(this, "DeleteTimesheetLine", (s)=> {
-                ExecuteDeleteTimesheetLine();
-            });
-
-            MessagingCenter.Instance.Subscribe<String>(this, "UpdateTimesheetLine", (comment) => {
-                ExecuteUpdateTimesheetLine(comment);
-            });
-
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("ExecuteClearEntries", e.Message);
+            }
         }
 
         private async void ExecuteUpdateTimesheetLine(string comment)
@@ -294,7 +308,9 @@ namespace ProjectOnlineMobile2.ViewModels
                             "'NonBillableWork':'0h', " +
                             "'OvertimeWork':'0h'}}";
 
-                            Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", "saving");
+                            Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", body);
+                            Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", _periodId);
+                            Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", _lineId);
 
                             var response = await PSapi.AddTimesheetLineWork(_periodId, _lineId, body, formDigest.D.GetContextWebInformation.FormDigestValue);
 
@@ -410,8 +426,18 @@ namespace ProjectOnlineMobile2.ViewModels
                                     WorkModel = item
                                 });
                             });
+                            savedLineWork.ToList().Add(new SavedTimesheetLineWork() {
+                                PeriodId = _periodId,
+                                    LineId = _lineId,
+                                    WorkModel = item
+                            });
                         }
                         HeaderVisibility = true;
+
+                        savedLineWork = realm.All<SavedTimesheetLineWork>()
+                                       .Where(p => p.PeriodId == _periodId && p.LineId == _lineId)
+                                       .ToList()
+                                       .OrderBy(p => p.WorkModel.Start.DateTime);
                     }
                     else
                     {

@@ -54,6 +54,11 @@ namespace ProjectOnlineMobile2.iOS
                     DisplayTimesheetOptions(sender as UIBarButtonItem);
                 });
 
+            _timesheetWorkPageController = new TimesheetWorkPage().CreateViewController();
+            _timesheetWorkPageController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIImage.FromFile("ic_gear.png"), UIBarButtonItemStyle.Plain, (sender, e) => {
+                DisplayWorkPageOptions(sender as UIBarButtonItem);
+            }), false);
+
             _projectPageController = new ProjectPage().CreateViewController();
             _projectPageController.Title = "Projects";
             _projectPageController.NavigationItem.SetLeftBarButtonItem(userButtonItem, true);
@@ -83,11 +88,6 @@ namespace ProjectOnlineMobile2.iOS
             _timesheetNavController.TabBarItem.Image = UIImage.FromFile("ic_timesheet.png");
             _timesheetNavController.PushViewController(_timesheetPageController, false);
 
-            _timesheetWorkPageController = new TimesheetWorkPage().CreateViewController();
-            _timesheetWorkPageController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem("Options", UIBarButtonItemStyle.Plain, (sender, e) => {
-                DisplayWorkPageOptions(sender as UIBarButtonItem);
-            }), false);
-
             MessagingCenter.Instance.Send<String>("", "SaveOfflineWorkChanges");
 
             var tabs = new UIViewController[] { _projectNavController, _tasksNavController, _timesheetNavController };
@@ -113,7 +113,7 @@ namespace ProjectOnlineMobile2.iOS
             alertController2.AlertViewStyle = UIAlertViewStyle.Default;
             alertController2.AddButton(parameters[1]);
 
-            if (parameters.Length == 3)
+            if (parameters.Length > 3)
                 alertController2.AddButton(parameters[2]);
 
             alertController2.DismissWithClickedButtonIndex(1, true);

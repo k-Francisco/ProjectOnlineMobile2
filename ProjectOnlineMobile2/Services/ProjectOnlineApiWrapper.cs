@@ -142,18 +142,18 @@ namespace ProjectOnlineMobile2.Services
             }
         }
 
-        public async Task<TimesheetLinesList> GetTimesheetLinesByPeriod(string periodId, CancellationToken cancelToken)
+        public async Task<TimesheetLinesList> GetTimesheetLinesByPeriod(string periodId)
         {
             try
             {
-                var response = await _client.GetAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('"+ periodId +"')/Timesheet/Lines", cancelToken);
-                var responseString = await response.Content.ReadAsStringAsync();
+                var response = await _client.GetStringAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')/Timesheet/Lines");
 
-                return JsonConvert.DeserializeObject<TimesheetLinesList>(responseString);
+                return JsonConvert.DeserializeObject<TimesheetLinesList>(response);
             }
             catch (Exception e)
             {
                 Debug.WriteLine("GetTimesheetLinesByPeriod", e.Message);
+
                 if (e.Message.Equals("404 (Not Found)"))
                 {
                     string[] alertStrings = { "this timesheet has not been created. Do you want to create this timesheet?",
@@ -356,15 +356,16 @@ namespace ProjectOnlineMobile2.Services
 
             var contents = new StringContent(body);
             contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
-            _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigestValue);
+
+            if(!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
+                _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigestValue);
+
             try
             {
                 var result = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')" +
                     "/Timesheet/Lines('" + lineId + "')/Work/add", contents);
 
                 var postResult = result.EnsureSuccessStatusCode();
-
-                _client.DefaultRequestHeaders.Remove("X-RequestDigest");
 
                 if (postResult.IsSuccessStatusCode)
                     return true;

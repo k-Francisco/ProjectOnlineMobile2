@@ -309,13 +309,13 @@ namespace ProjectOnlineMobile2.Services
             }
         }
 
-        public bool SyncTimesheetLineWork(TimesheetLineWorkModel lineWorkModel, IOrderedEnumerable<SavedTimesheetLineWork> savedWork)
+        public bool SyncTimesheetLineWork(TimesheetLineWorkModel lineWorkHoursFromServer, IOrderedEnumerable<SavedTimesheetLineWork> savedWork)
         {
             try
             {
                 foreach (var item in savedWork)
                 {
-                    var temp = lineWorkModel.D.Results
+                    var temp = lineWorkHoursFromServer.D.Results
                         .Where(p => p.Start.DateTime.ToShortDateString().Equals(item.WorkModel.Start.DateTime.ToShortDateString()))
                         .FirstOrDefault();
 
