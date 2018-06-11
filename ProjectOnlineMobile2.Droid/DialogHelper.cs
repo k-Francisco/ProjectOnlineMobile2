@@ -41,9 +41,10 @@ namespace ProjectOnlineMobile2.Droid
             dialog.Show();
         }
 
-        public void DisplayPeriodDetails(string period)
+        public void DisplayPeriodDetails(string period, string status)
         {
             AlertDialog.Builder alert = new AlertDialog.Builder(_activity);
+            alert.SetTitle(status);
             alert.SetMessage(period);
             alert.SetPositiveButton("Change Period", (senderAlert, args) => {
                 MessagingCenter.Instance.Send<String>("", "OpenPeriodPicker");

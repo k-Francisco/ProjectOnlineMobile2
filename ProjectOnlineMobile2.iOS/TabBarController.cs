@@ -14,6 +14,8 @@ namespace ProjectOnlineMobile2.iOS
         private UINavigationController _projectNavController, _tasksNavController, _timesheetNavController;
         private UIAlertView currentAlertView;
 
+        private string TimesheetStatus;
+
         public TabBarController (IntPtr handle) : base (handle)
         {
             MessagingCenter.Instance.Subscribe<LineResult>(this, "PushTimesheetWorkPage", (line)=> {
@@ -31,6 +33,30 @@ namespace ProjectOnlineMobile2.iOS
             MessagingCenter.Instance.Subscribe<String>(this, "ExitWorkPage", (s)=> {
                 _timesheetNavController.PopViewController(true);
             });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "TimesheetStatus", (status) => {
+                SetTimesheetStatus(status);
+            });
+        }
+
+        private void SetTimesheetStatus(string status)
+        {
+            if (status.Equals("1"))
+            {
+                TimesheetStatus = "In Progress";
+            }
+            else if (status.Equals("2"))
+            {
+                TimesheetStatus = "Submitted";
+            }
+            else if (status.Equals("3"))
+            {
+                TimesheetStatus = "Not Yet Created";
+            }
+            else if (status.Equals("4"))
+            {
+                TimesheetStatus = "Approved";
+            }
         }
 
         public override void ViewDidLoad()
@@ -250,7 +276,7 @@ namespace ProjectOnlineMobile2.iOS
 
         private void DisplayTimesheetOptions(UIBarButtonItem buttonItem)
         {
-            var alertController = UIAlertController.Create("Timesheet Period",
+            var alertController = UIAlertController.Create(TimesheetStatus,
                 AppDelegate.appDelegate.TimesheetPeriod,
                 UIAlertControllerStyle.ActionSheet);
 

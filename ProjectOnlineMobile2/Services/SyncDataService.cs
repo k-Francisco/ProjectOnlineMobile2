@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ProjectOnlineMobile2.Services
 {
-    public class SyncDataService : ISyncDataService
+    public class SyncDataService 
     {
         private Realm realm { get; set; }
 
@@ -29,7 +29,8 @@ namespace ProjectOnlineMobile2.Services
         {
             try
             {
-                foreach (var item in savedProjects)
+                var savedProjectsClone = savedProjects;
+                foreach (var item in savedProjectsClone)
                 {
                     var temp = projects.D.Results
                         .Where(p => p.ProjectId.Equals(item.ProjectId))
@@ -95,8 +96,8 @@ namespace ProjectOnlineMobile2.Services
         {
             try
             {
-
-                foreach (var item in savedTasks)
+                var savedTasksClone = savedTasks;
+                foreach (var item in savedTasksClone)
                 {
                     var temp = tasksFromServer
                         .Where(p => p.AssignmentId.Equals(item.AssignmentId) &&
@@ -213,8 +214,8 @@ namespace ProjectOnlineMobile2.Services
         {
             try
             {
-
-                foreach (var item in savedPeriods)
+                var savedPeriodsClone = savedPeriods;
+                foreach (var item in savedPeriodsClone)
                 {
                     var temp = periodsFromServer
                         .Where(p => p.Id.Equals(item.Id))

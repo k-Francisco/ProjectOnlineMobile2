@@ -162,6 +162,7 @@ namespace ProjectOnlineMobile2.Services
                                               "CreateTimesheet",
                                               periodId};
                     MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                    MessagingCenter.Instance.Send<String>("3", "TimesheetStatus");
                 }
                 return null;
             }
@@ -247,18 +248,21 @@ namespace ProjectOnlineMobile2.Services
             }
         }
 
-        //public async Task<TimesheetModel> GetTimesheet(string periodId)
-        //{
-        //    try
-        //    {
-        //        return await RestService.For<IProjectOnlineApi>(_client).GetTimesheet(periodId);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Debug.WriteLine("GetTimesheet", e.Message);
-        //        return null;
-        //    }
-        //}
+        public async Task<TimesheetModel> GetTimesheet(string periodId)
+        {
+            try
+            {
+                var response = await _client.GetStringAsync(_projectOnlineUrl +
+                    "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')/Timesheet");
+
+                return JsonConvert.DeserializeObject<TimesheetModel>(response);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("GetTimesheet", e.Message);
+                return null;
+            }
+        }
 
         public async Task<bool> CreateTimesheet(string periodId, string formDigest)
         {

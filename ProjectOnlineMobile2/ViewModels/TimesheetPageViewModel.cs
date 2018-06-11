@@ -271,32 +271,31 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 if (IsConnectedToInternet())
                 {
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Recalling timesheet...","Close"}, "DisplayAlert");
                     var formDigest = await SPapi.GetFormDigest();
 
                     var recall = await PSapi.RecallTimesheet(PeriodList[SelectedIndex].Id, formDigest.D.GetContextWebInformation.FormDigestValue);
 
                     if (recall)
                     {
-                        string[] alertStrings = { "Successfully recalled timesheet", "Close" };
-                        MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                        MessagingCenter.Instance.Send<String[]>(new string[] { "Successfully recalled timesheet", "Close" }, "DisplayAlert");
+                        ExecuteRefreshLinesCommand();
+                        GetTimesheetStatus();
                     }
                     else
                     {
-                        string[] alertStrings = { "There was an error recalling the timesheet. Please try again", "Close" };
-                        MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                        MessagingCenter.Instance.Send<String[]>(new string[] { "There was an error recalling the timesheet. Please try again", "Close" }, "DisplayAlert");
                     }
                 }
                 else
                 {
-                    string[] alertStrings = { "The device is not connected to the internet", "Close" };
-                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "The device is not connected to the internet", "Close" }, "DisplayAlert");
                 }
             }
             catch(Exception e)
             {
                 Debug.WriteLine("ExecuteRecallTimesheet", e.Message);
-                string[] alertStrings = { "There was an error recalling the timesheet. Please try again", "Close" };
-                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                MessagingCenter.Instance.Send<String[]>(new string[] { "There was an error recalling the timesheet. Please try again", "Close" }, "DisplayAlert");
             }
         }
 
@@ -306,33 +305,31 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 if (IsConnectedToInternet())
                 {
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Submitting timesheet...","Close"}, "DisplayAlert");
                     var formDigest = await SPapi.GetFormDigest();
 
                     var submit = await PSapi.SubmitTimesheet(PeriodList[SelectedIndex].Id, comment, formDigest.D.GetContextWebInformation.FormDigestValue);
 
                     if (submit)
                     {
-                        string[] alertStrings = { "Successfully submitted the timesheet", "Close" };
-                        MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                        MessagingCenter.Instance.Send<String[]>(new string[] { "Successfully submitted the timesheet", "Close" }, "DisplayAlert");
+                        ExecuteRefreshLinesCommand();
+                        GetTimesheetStatus();
                     }
                     else
                     {
-                        string[] alertStrings = { "There was a problem submitting the timesheet. Please try again", "Close" };
-                        MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                        MessagingCenter.Instance.Send<String[]>(new string[] { "There was a problem submitting the timesheet. Please try again", "Close" }, "DisplayAlert");
                     }
                 }
                 else
                 {
-                    string[] alertStrings = { "Your device is not connected to the internet", "Close" };
-                    MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Your device is not connected to the internet", "Close" }, "DisplayAlert");
                 }
             }
             catch (Exception e)
             {
                 Debug.WriteLine("ExecuteSubmitTimesheet", e.Message);
-
-                string[] alertStrings = { "There was a problem submitting the timesheet. Please try again", "Close" };
-                MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
+                MessagingCenter.Instance.Send<String[]>(new string[] { "There was a problem submitting the timesheet. Please try again", "Close" }, "DisplayAlert");
             }
         }
 
@@ -373,6 +370,8 @@ namespace ProjectOnlineMobile2.ViewModels
             var periodId = PeriodList[SelectedIndex].Id;
             _savedLines = realm.All<SavedLinesModel>().Where(p => p.PeriodId == periodId);
 
+            GetTimesheetStatus();
+
             PeriodLines.Clear();
             if (IsConnectedToInternet())
             {
@@ -387,6 +386,12 @@ namespace ProjectOnlineMobile2.ViewModels
             }
 
             MessagingCenter.Instance.Send<String>(PeriodList[SelectedIndex].ToString(), "TimesheetPeriod");
+        }
+
+        private async void GetTimesheetStatus()
+        {
+            var timesheetModel = await PSapi.GetTimesheet(PeriodList[SelectedIndex].Id);
+            MessagingCenter.Instance.Send<String>(timesheetModel.D.Status.ToString(), "TimesheetStatus");
         }
 
         private async void SyncTimesheetLines(List<SavedLinesModel> savedLines)
@@ -410,9 +415,6 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 Debug.WriteLine("SyncTimesheetLines", e.Message);
                 IsRefreshing = false;
-
-                //string[] alertStrings = { "There was a problem syncing the timesheet lines. Please try again", "Close" };
-                //MessagingCenter.Instance.Send<String[]>(alertStrings, "DisplayAlert");
             }
         }
     }

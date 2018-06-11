@@ -323,6 +323,7 @@ namespace ProjectOnlineMobile2.ViewModels
                                     item.WorkModel.EntryTextPlannedHours = "";
                                     item.WorkModel.isNotSaved = false;
                                 });
+                                MessagingCenter.Instance.Send<String>("", "RefreshTimesheetLines");
                             }
                             else
                             {

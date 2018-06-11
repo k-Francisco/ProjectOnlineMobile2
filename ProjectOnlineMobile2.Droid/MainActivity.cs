@@ -30,11 +30,10 @@ namespace ProjectOnlineMobile2.Droid
         IMenu menu;
         Toolbar toolbar;
         DialogHelper dialogHelper;
-        TextView timesheetLineTaskName;
 
         Fragment _homepageFragment, _projectsFragment, _tasksFragment, _timesheetFragment, _timesheetWorkFragment;
 
-        public string UserName, UserEmail, TimesheetPeriod, TimesheetLineComment;
+        public string UserName, UserEmail, TimesheetPeriod, TimesheetLineComment, TimesheetStatus;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -58,6 +57,10 @@ namespace ProjectOnlineMobile2.Droid
                 TimesheetPeriod = tsp;
             });
 
+            MessagingCenter.Instance.Subscribe<String>(this, "TimesheetStatus", (status) => {
+                SetTimesheetStatus(status);
+            });
+
             MessagingCenter.Instance.Subscribe<ProjectOnlineMobile2.Models.TLL.TimesheetLineResult>(this, "PushTimesheetWorkPage", (timesheetLine) => {
                 PushTimesheetWorkPage(timesheetLine);
             });
@@ -76,6 +79,7 @@ namespace ProjectOnlineMobile2.Droid
                 SetSupportActionBar(toolbar);
                 SupportActionBar.SetDisplayHomeAsUpEnabled(false);
                 SupportActionBar.SetHomeButtonEnabled(false);
+                toolbar.NavigationClick += (sender,e) => { exitWorkPage(); };
 
             }
 
@@ -83,35 +87,35 @@ namespace ProjectOnlineMobile2.Droid
 
             bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
-            timesheetLineTaskName = FindViewById<TextView>(Resource.Id.timesheetLineTaskName);
-
             _homepageFragment = new HomePage().CreateSupportFragment(this);
             _timesheetWorkFragment = new TimesheetWorkPage().CreateSupportFragment(this);
+            _projectsFragment = new ProjectPage().CreateSupportFragment(this);
+            _tasksFragment = new TasksPage().CreateSupportFragment(this);
+            _timesheetFragment = new TimesheetPage().CreateSupportFragment(this);
 
             dialogHelper = new DialogHelper(this);
 
-            var backButton = FindViewById<ImageView>(Resource.Id.arrow_back);
-            backButton.Click += (sender,args) => {
-                exitWorkPage();
-            };
-
-            var saveButton = FindViewById<ImageView>(Resource.Id.save_work);
-            saveButton.Click += (sender,args) => {
-                MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
-            };
-
-            var deleteLineButton = FindViewById<ImageView>(Resource.Id.delete_line);
-            deleteLineButton.Click += (sender, args) => {
-                dialogHelper.DisplayConfirmationDialog("Do you really want to delete this line?","Delete","Cancel");
-            };
-
-            var editLineButton = FindViewById<ImageView>(Resource.Id.edit_line);
-            editLineButton.Click += (sender, args) =>
-            {
-                dialogHelper.DisplayUpdateLineDialog(TimesheetLineComment);
-            };
-
             LoadFragment(Resource.Id.menu_projects);
+        }
+
+        private void SetTimesheetStatus(string status)
+        {
+            if (status.Equals("1"))
+            {
+                TimesheetStatus = "In Progress";
+            }
+            else if (status.Equals("2"))
+            {
+                TimesheetStatus = "Submitted";
+            }
+            else if (status.Equals("3"))
+            {
+                TimesheetStatus = "Not Yet Created";
+            }
+            else if (status.Equals("4"))
+            {
+                TimesheetStatus = "Approved";
+            }
         }
 
         private void DisplayAlert(string[] parameters)
@@ -140,25 +144,29 @@ namespace ProjectOnlineMobile2.Droid
 
         private void exitWorkPage()
         {
-            toolbar.Visibility = ViewStates.Visible;
+            SupportActionBar.SetDisplayHomeAsUpEnabled(false);
+            toolbar.Title = "Timesheet Tracker";
             bottomNavigation.Visibility = ViewStates.Visible;
 
             InputMethodManager imm = InputMethodManager.FromContext(this.ApplicationContext);
             imm.HideSoftInputFromInputMethod(this.Window.DecorView.WindowToken, HideSoftInputFlags.NotAlways);
 
-            SupportFragmentManager.BeginTransaction()
-                .Replace(Resource.Id.content_frame, fragment)
-                .Commit();
+            LoadFragment(Resource.Id.menu_timesheets);
         }
 
         private void PushTimesheetWorkPage(TimesheetLineResult timesheetLine)
         {
             TimesheetLineComment = timesheetLine.Comment;
 
-            timesheetLineTaskName.Text = timesheetLine.TaskName;
-
-            toolbar.Visibility = ViewStates.Gone;
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            toolbar.Title = timesheetLine.TaskName;
             bottomNavigation.Visibility = ViewStates.Gone;
+
+            if (menu != null)
+            {
+                menu.Clear();
+                MenuInflater.Inflate(Resource.Menu.work_page_menu, menu);
+            }
 
             SupportFragmentManager.BeginTransaction()
                 .Replace(Resource.Id.content_frame, _timesheetWorkFragment)
@@ -177,9 +185,6 @@ namespace ProjectOnlineMobile2.Droid
             
             if(id == Resource.Id.menu_projects)
             {
-                if (_projectsFragment == null)
-                    _projectsFragment = new ProjectPage().CreateSupportFragment(this);
-
                 fragment = _projectsFragment;
 
                 if(menu != null)
@@ -190,9 +195,6 @@ namespace ProjectOnlineMobile2.Droid
             }
             else if(id == Resource.Id.menu_tasks)
             {
-                if (_tasksFragment == null)
-                    _tasksFragment = new TasksPage().CreateSupportFragment(this);
-
                 fragment = _tasksFragment;
 
                 if (menu != null)
@@ -203,9 +205,6 @@ namespace ProjectOnlineMobile2.Droid
             }
             else if(id == Resource.Id.menu_timesheets)
             {
-                if (_timesheetFragment == null)
-                    _timesheetFragment = new TimesheetPage().CreateSupportFragment(this);
-
                 fragment = _timesheetFragment;
 
                 if (menu != null)
@@ -239,7 +238,7 @@ namespace ProjectOnlineMobile2.Droid
             }
             else if(item.ItemId == Resource.Id.menu_period_details)
             {
-                dialogHelper.DisplayPeriodDetails(TimesheetPeriod);
+                dialogHelper.DisplayPeriodDetails(TimesheetPeriod, TimesheetStatus);
             }
             else if(item.ItemId == Resource.Id.menu_submit_timesheet)
             {
@@ -265,7 +264,19 @@ namespace ProjectOnlineMobile2.Droid
             {
                 MessagingCenter.Instance.Send<String>(GetString(Resource.String.menu_completed), "SortTasks");
             }
-            
+            else if (item.ItemId == Resource.Id.menu_save)
+            {
+                MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
+            }
+            else if (item.ItemId == Resource.Id.menu_edit)
+            {
+                dialogHelper.DisplayUpdateLineDialog(TimesheetLineComment);
+            }
+            else if (item.ItemId == Resource.Id.menu_delete)
+            {
+                dialogHelper.DisplayConfirmationDialog("Do you really want to delete this line?", "Delete", "Cancel");
+            }
+
 
             return true;
         }

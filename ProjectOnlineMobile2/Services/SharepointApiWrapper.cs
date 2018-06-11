@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ProjectOnlineMobile2.Services
 {
-    public class SharepointApiWrapper : BaseWrapper,ISharepointApi
+    public class SharepointApiWrapper : BaseWrapper
     {
         private static string _sharepointUrl = "https://sharepointevo.sharepoint.com";
         private HttpClient _client;

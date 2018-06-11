@@ -17,56 +17,6 @@
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
-            android:id="@+id/work_bar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/primary"
-            android:gravity="center_vertical"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
-            <ImageView
-                android:id="@+id/arrow_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_back"
-                android:tint="@android:color/white" />
-            <TextView
-                android:id="@+id/timesheetLineTaskName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Task Name"
-                android:textColor="@android:color/white"
-                style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
-                android:layout_toRightOf="@id/arrow_back"
-                android:layout_marginLeft="6dp"
-                android:maxLines="1"
-                android:maxLength="15"
-                android:ellipsize="end" />
-            <ImageView
-                android:id="@+id/save_work"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_save_black"
-                android:tint="@android:color/white"
-                android:layout_alignParentRight="true" />
-            <ImageView
-                android:id="@+id/delete_line"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_delete"
-                android:tint="@android:color/white"
-                android:layout_toLeftOf="@id/save_work"
-                android:layout_marginRight="8dp" />
-            <ImageView
-                android:id="@+id/edit_line"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"
-                android:tint="@android:color/white"
-                android:layout_toLeftOf="@id/delete_line"
-                android:layout_marginRight="8dp" />
-        </RelativeLayout>
         <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
