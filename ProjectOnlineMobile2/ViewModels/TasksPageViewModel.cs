@@ -34,19 +34,19 @@ namespace ProjectOnlineMobile2.ViewModels
 
         public TasksPageViewModel()
         {
+            var savedTasks = realm.All<Result>().ToList();
+
+            MessagingCenter.Instance.Subscribe<String>(this, "SortTasks", (sortReference) => {
+                ExecuteSortTasks(sortReference, savedTasks);
+            });
+
+            MessagingCenter.Instance.Subscribe<String>(this, "SyncUserTasks", (s) => {
+                ExecuteSynceUserTasks(savedTasks);
+            });
+
             Tasks = new ObservableCollection<Result>();
 
             RefreshTasksCommand = new Command(ExecuteRefreshTasksCommand);
-
-            var savedTasks = realm.All<Result>().ToList();
-
-            MessagingCenter.Instance.Subscribe<String>(this, "SortTasks", (s) => {
-                ExecuteSortTasks(s, savedTasks);
-            });
-
-            MessagingCenter.Instance.Subscribe<String>(this, "SyncUserTasks", (s)=> {
-                ExecuteSynceUserTasks(savedTasks);
-            });
 
             foreach (var item in savedTasks)
             {

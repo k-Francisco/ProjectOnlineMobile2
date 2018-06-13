@@ -76,6 +76,7 @@
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <BuildIpa>true</BuildIpa>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -204,6 +205,12 @@
     <BundleResource Include="Resources\launchImage%403x.png" />
     <BundleResource Include="Resources\launchImage.png" />
     <BundleResource Include="Resources\launchImage%402x.png" />
+    <BundleResource Include="Resources\event_busy%403x.png" />
+    <BundleResource Include="Resources\event_available.png" />
+    <BundleResource Include="Resources\event_available%402x.png" />
+    <BundleResource Include="Resources\event_available%403x.png" />
+    <BundleResource Include="Resources\event_busy.png" />
+    <BundleResource Include="Resources\event_busy%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="AppIcon.xcassets\AppIcons.appiconset\Contents.json">

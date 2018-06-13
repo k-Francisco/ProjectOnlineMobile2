@@ -271,6 +271,18 @@
     <AndroidResource Include="Resources\drawable\ic_delete.xml" />
     <AndroidResource Include="Resources\drawable\ic_edit.xml" />
     <AndroidResource Include="Resources\menu\work_page_menu.xml" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\event_available.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\event_busy.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\event_available.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\event_busy.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\event_available.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\event_busy.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\event_available.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\event_busy.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\event_available.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\event_busy.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\event_available.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\event_busy.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectOnlineMobile2\ProjectOnlineMobile2.csproj">

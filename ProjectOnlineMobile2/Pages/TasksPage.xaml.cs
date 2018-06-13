@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectOnlineMobile2.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,16 +14,24 @@ namespace ProjectOnlineMobile2.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TasksPage : ContentPage
 	{
+        private bool didAppear;
+        private TasksPageViewModel viewModel;
+
 		public TasksPage ()
 		{
 			InitializeComponent ();
+            viewModel = this.BindingContext as TasksPageViewModel;
 		}
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            MessagingCenter.Instance.Send<String>("", "SyncUserTasks");
+            if (!didAppear)
+            {
+                MessagingCenter.Instance.Send<String>("", "SyncUserTasks");
+                didAppear = true;
+            }
         }
     }
 }

@@ -2283,6 +2283,12 @@ namespace ProjectOnlineMobile2.Droid
 			// aapt resource value: 0x7F02005A
 			public const int design_snackbar_background = 2130837594;
 			
+			// aapt resource value: 0x7F010010
+			public const int event_available = 2130771984;
+			
+			// aapt resource value: 0x7F010011
+			public const int event_busy = 2130771985;
+			
 			// aapt resource value: 0x7F010002
 			public const int frame_shadow = 2130771970;
 			

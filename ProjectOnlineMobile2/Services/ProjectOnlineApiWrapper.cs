@@ -361,13 +361,12 @@ namespace ProjectOnlineMobile2.Services
             var contents = new StringContent(body);
             contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
 
-            if(!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
+            if (!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
                 _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigestValue);
-
             try
             {
                 var result = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')" +
-                    "/Timesheet/Lines('" + lineId + "')/Work/add", contents);
+                    "/Timesheet/Lines('" + lineId + "')/Work/Add", contents);
 
                 var postResult = result.EnsureSuccessStatusCode();
 

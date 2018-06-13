@@ -3,6 +3,7 @@ using Realms;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
 {
@@ -188,7 +189,7 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         }
         public string FormattedAssignmentRemainingWork
         {
-            get { return String.Format("{0:0.0}h", Double.Parse(AssignmentRemainingWork)); }
+            get { return String.Format("{0:0}h", Double.Parse("0")); }
         }
 
     }

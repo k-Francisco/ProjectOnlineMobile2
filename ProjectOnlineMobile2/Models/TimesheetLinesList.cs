@@ -47,6 +47,18 @@ namespace ProjectOnlineMobile2.Models.TLL
         public string TotalWorkTimeSpan { get; set; }
         [JsonProperty("ValidationType")]
         public int ValidationType { get; set; }
+
+        public string StatusTranslation
+        {
+            get {
+                if (Status == 1)
+                    return "Not Submitted";
+                else if (Status == 5)
+                    return "Awaiting approval";
+
+                return "";
+            }
+        }
     }
     public class Metadata
     {

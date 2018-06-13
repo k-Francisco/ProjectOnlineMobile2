@@ -1,4 +1,10 @@
 FormsViewGroup
+Microsoft.AppCenter.Analytics.Android.Bindings
+Microsoft.AppCenter.Analytics
+Microsoft.AppCenter.Android.Bindings
+Microsoft.AppCenter.Crashes.Android.Bindings
+Microsoft.AppCenter.Crashes
+Microsoft.AppCenter
 Newtonsoft.Json
 Plugin.Connectivity.Abstractions
 Plugin.Connectivity

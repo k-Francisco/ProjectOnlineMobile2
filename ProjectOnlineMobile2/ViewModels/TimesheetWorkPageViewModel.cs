@@ -308,10 +308,6 @@ namespace ProjectOnlineMobile2.ViewModels
                             "'NonBillableWork':'0h', " +
                             "'OvertimeWork':'0h'}}";
 
-                            Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", body);
-                            Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", _periodId);
-                            Debug.WriteLine("ExecuteSaveTimesheetWorkChanges", _lineId);
-
                             var response = await PSapi.AddTimesheetLineWork(_periodId, _lineId, body, formDigest.D.GetContextWebInformation.FormDigestValue);
 
                             if (response)

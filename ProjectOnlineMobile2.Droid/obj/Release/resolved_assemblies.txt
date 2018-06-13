@@ -1,6 +1,12 @@
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\ProjectOnlineMobile2.Droid.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\FormsViewGroup.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\Java.Interop.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\Microsoft.AppCenter.Analytics.Android.Bindings.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\Microsoft.AppCenter.Analytics.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\Microsoft.AppCenter.Android.Bindings.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\Microsoft.AppCenter.Crashes.Android.Bindings.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\Microsoft.AppCenter.Crashes.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\Microsoft.AppCenter.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\Mono.Android.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\mscorlib.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\android\assets\Newtonsoft.Json.dll
