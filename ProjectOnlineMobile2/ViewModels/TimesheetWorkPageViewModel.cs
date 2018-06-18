@@ -266,7 +266,7 @@ namespace ProjectOnlineMobile2.ViewModels
 
                             var body = "{'parameters':{'ActualWork':'" + actualHours + "', " +
                             "'PlannedWork':'" + plannedHours + "', " +
-                            "'Start':'" + item.WorkModel.Start.DateTime + "', " +
+                            "'Start':'" + string.Format("{0:MM/dd/yyyy hh:mm:ss tt}", item.WorkModel.Start.DateTime) + "', " +
                             "'NonBillableOvertimeWork':'0h', " +
                             "'NonBillableWork':'0h', " +
                             "'OvertimeWork':'0h'}}";

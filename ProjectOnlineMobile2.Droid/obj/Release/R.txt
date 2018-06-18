@@ -994,13 +994,14 @@ int id media_actions 0x7f0900a8
 int id menu_add_line 0x7f0900c4
 int id menu_all_tasks 0x7f0900c0
 int id menu_completed_tasks 0x7f0900c1
-int id menu_delete 0x7f0900c9
-int id menu_edit 0x7f0900c8
+int id menu_delete 0x7f0900ca
+int id menu_edit 0x7f0900c9
 int id menu_inprogress_tasks 0x7f0900c2
 int id menu_period_details 0x7f0900c3
 int id menu_projects 0x7f0900bb
 int id menu_recall_timesheet 0x7f0900c6
 int id menu_save 0x7f0900c7
+int id menu_send_progress 0x7f0900c8
 int id menu_submit_timesheet 0x7f0900c5
 int id menu_tasks 0x7f0900bc
 int id menu_timesheets 0x7f0900bd

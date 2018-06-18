@@ -71,7 +71,7 @@
                                    TextColor="Black"
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="1"
-                                   HorizontalOptions="Center"
+                                   HorizontalOptions="FillAndExpand"
                                    VerticalOptions="Center">
                                 <Entry.Triggers>
                                     <DataTrigger TargetType="Entry"
@@ -90,7 +90,7 @@
                                    HorizontalTextAlignment="Center"
                                    TextColor="Black"
                                    Grid.Column="2"
-                                   HorizontalOptions="Center"
+                                   HorizontalOptions="FillAndExpand"
                                    VerticalOptions="Center">
                                 <Entry.Triggers>
                                     <DataTrigger TargetType="Entry"

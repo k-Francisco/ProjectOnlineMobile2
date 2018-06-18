@@ -14,7 +14,8 @@
 
             <DataTemplate x:Key="TimesheetLineCardTemplate">
                 <ViewCell>
-                    <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Vertical"
+                                 Padding="0">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer/>
                         </StackLayout.GestureRecognizers>
@@ -22,99 +23,88 @@
                         <controls:CustomFrame HasShadow="True"
                                               CornerRadius="4"
                                               BackgroundColor="White"
-                                              Margin="16,8,16,8"
-                                              Padding="16">
+                                              Margin="16,8,16,8">
                             <controls:CustomFrame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Path=BindingContext.TimesheetLineClicked, Source={x:Reference mainLayout}}"
                                                   CommandParameter="{Binding .}"/>
                             </controls:CustomFrame.GestureRecognizers>
-                            
-                            <StackLayout Orientation="Vertical"
-                                         CompressedLayout.IsHeadless="True">
-                                <Grid RowSpacing="4"
-                                  ColumnSpacing="0"
-                                  CompressedLayout.IsHeadless="True">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="12"/>
-                                        <RowDefinition Height="22"/>
-                                    </Grid.RowDefinitions>
+                            <Grid CompressedLayout.IsHeadless="True"
+                                  RowSpacing="0"
+                                  ColumnSpacing="16">
+                                
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                </Grid.ColumnDefinitions>
 
-                                    <Label Text="Project Name"
-                                           FontSize="Micro"
-                                           TextColor="LightSlateGray"
-                                           Grid.Row="0" Grid.Column="0"/>
+                                <BoxView BackgroundColor="Green"
+                                         WidthRequest="1"
+                                         Grid.Column="0"
+                                         HorizontalOptions="End"
+                                         VerticalOptions="FillAndExpand"/>
 
-                                    <Label Text="{Binding ProjectName}"
-                                           FontSize="Medium"
-                                           TextColor="Black"
-                                           Grid.Row="1" Grid.Column="0"/>
-
-                                    <Label Text="Task Name"
-                                           FontSize="Micro"
-                                           TextColor="LightSlateGray"
-                                           Grid.Row="0" Grid.Column="1"/>
-
-                                    <Label Text="{Binding TaskName}"
-                                           FontSize="Medium"
-                                           TextColor="Black"
-                                           Grid.Row="1" Grid.Column="1"/>
-
-                                </Grid>
-
-                                <Grid RowSpacing="4"
-                                  ColumnSpacing="0"
-                                  CompressedLayout.IsHeadless="True"
-                                      Margin="0,8,0,0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="12"/>
-                                        <RowDefinition Height="22"/>
-                                    </Grid.RowDefinitions>
-
-                                    <Label Text="Status"
-                                           FontSize="Micro"
-                                           TextColor="LightSlateGray"
-                                           Grid.Row="0" Grid.Column="0"/>
-
-                                    <Label Text="{Binding Status}"
-                                           FontSize="Medium"
-                                           TextColor="Black"
-                                           Grid.Row="1" Grid.Column="0"/>
-
-                                    <Label Text="Total Work"
-                                           FontSize="Micro"
-                                           TextColor="LightSlateGray"
-                                           Grid.Row="0" Grid.Column="1"/>
+                                <StackLayout Orientation="Vertical"
+                                             Spacing="2"
+                                             Grid.Column="0"
+                                             HorizontalOptions="FillAndExpand"
+                                             VerticalOptions="Center">
 
                                     <Label Text="{Binding TotalWork}"
-                                           FontSize="Medium"
+                                           FontAttributes="Bold"
+                                           FontSize="Large"
                                            TextColor="Black"
-                                           Grid.Row="1" Grid.Column="1"/>
+                                           HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"/>
 
-                                </Grid>
+                                    <Label Text="Total Work"
+                                           FontAttributes="None"
+                                           FontSize="Micro"
+                                           TextColor="LightSlateGray"
+                                           HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"/>
+                                </StackLayout>
 
-                                <Label Text="Comment"
+                                <StackLayout Orientation="Vertical"
+                                             Spacing="1"
+                                             Grid.Column="1"
+                                             HorizontalOptions="Start"
+                                             VerticalOptions="Center"
+                                             Margin="0,6,0,0">
+
+                                    <Label Text="{Binding TaskName}"
+                                           FontAttributes="Bold"
+                                           FontSize="Large"
+                                           TextColor="Black"
+                                           LineBreakMode="TailTruncation"
+                                           HorizontalOptions="Start"/>
+
+                                    <Label Text="{Binding ProjectName}"
+                                           FontAttributes="None"
+                                           FontSize="Micro"
+                                           TextColor="LightSlateGray"
+                                           LineBreakMode="TailTruncation"
+                                           HorizontalOptions="Start"/>
+
+                                    <Label Text="{Binding Comment}"
+                                           FontAttributes="None"
+                                           FontSize="Medium"
+                                           TextColor="LightSlateGray"
+                                           HorizontalOptions="Start"
+                                           Margin="0,8,0,0"/>   
+
+
+                                </StackLayout>
+
+                                <Label Text="{Binding StatusTranslation}"
+                                       FontAttributes="None"
                                        FontSize="Micro"
-                                       TextColor="LightSlateGray"
-                                       Grid.Row="4" Grid.Column="0"
-                                       Margin="0,8,0,0"/>
+                                       TextColor="Red"
+                                       HorizontalOptions="End"
+                                       VerticalOptions="Start"
+                                       Grid.Column="1"/>
 
-                                <Label Text="{Binding Comment}"
-                                           FontSize="Medium"
-                                           TextColor="Black"
-                                       LineBreakMode="TailTruncation"
-                                           Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
-
-                            </StackLayout>
+                            </Grid>
 
                         </controls:CustomFrame>
                     </StackLayout>

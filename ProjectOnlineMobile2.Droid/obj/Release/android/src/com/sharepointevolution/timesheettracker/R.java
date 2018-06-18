@@ -3133,13 +3133,14 @@ containing a value of this type.
         public static final int menu_add_line=0x7f0900c4;
         public static final int menu_all_tasks=0x7f0900c0;
         public static final int menu_completed_tasks=0x7f0900c1;
-        public static final int menu_delete=0x7f0900c9;
-        public static final int menu_edit=0x7f0900c8;
+        public static final int menu_delete=0x7f0900ca;
+        public static final int menu_edit=0x7f0900c9;
         public static final int menu_inprogress_tasks=0x7f0900c2;
         public static final int menu_period_details=0x7f0900c3;
         public static final int menu_projects=0x7f0900bb;
         public static final int menu_recall_timesheet=0x7f0900c6;
         public static final int menu_save=0x7f0900c7;
+        public static final int menu_send_progress=0x7f0900c8;
         public static final int menu_submit_timesheet=0x7f0900c5;
         public static final int menu_tasks=0x7f0900bc;
         public static final int menu_timesheets=0x7f0900bd;

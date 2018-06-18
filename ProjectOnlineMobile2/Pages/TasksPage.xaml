@@ -45,8 +45,7 @@
                                              HorizontalOptions="Center"
                                              VerticalOptions="Center">
 
-                                    <Label x:Name="PercentLabel"
-                                           Text="{Binding AssignmentPercentWorkCompleted, StringFormat='{0}%'}"
+                                    <Label Text="{Binding AssignmentPercentWorkCompleted, StringFormat='{0}%'}"
                                            FontAttributes="Bold"
                                            FontSize="Large"
                                            TextColor="Black"
