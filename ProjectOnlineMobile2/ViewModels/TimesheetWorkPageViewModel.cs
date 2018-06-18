@@ -79,6 +79,42 @@ namespace ProjectOnlineMobile2.ViewModels
                 ExecuteUpdateTimesheetLine(comment);
             });
 
+            MessagingCenter.Instance.Subscribe<String>(this, "SendProgress", (comment) => {
+                ExecuteSendProgress(comment);
+            });
+
+        }
+
+        private async void ExecuteSendProgress(string comment)
+        {
+            try
+            {
+                if (IsConnectedToInternet())
+                {
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Sending progress...", "Close" }, "DisplayAlert");
+                    var formDigest = await SPapi.GetFormDigest();
+
+                    var response = await PSapi.SubmitTimesheetLineProgress(comment, _periodId, _lineId, formDigest.D.GetContextWebInformation.FormDigestValue);
+
+                    if (response)
+                    {
+                        MessagingCenter.Instance.Send<String[]>(new string[] { "Successfully sent the progress","Close" }, "DisplayAlert");
+                    }
+                    else
+                    {
+                        MessagingCenter.Instance.Send<String[]>(new string[] { "There was a problem sending the progress. Please try again", "Close" }, "DisplayAlert");
+                    }
+                }
+                else
+                {
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Your device is not connected to the internet", "Close" }, "DisplayAlert");
+                }
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("ExecuteSendProgress", e.Message);
+                MessagingCenter.Instance.Send<String[]>(new string[] { "There was a problem sending the progress. Please try again", "Close" }, "DisplayAlert");
+            }
         }
 
         private void ExecuteWorkPagePushed()
@@ -283,6 +319,7 @@ namespace ProjectOnlineMobile2.ViewModels
             {
                 if (IsConnectedToInternet())
                 {
+                    MessagingCenter.Instance.Send<String[]>(new string[] { "Saving progress...", "Close" }, "DisplayAlert");
                     var formDigest = await SPapi.GetFormDigest();
 
                     foreach (var item in savedLineWork)
@@ -303,7 +340,7 @@ namespace ProjectOnlineMobile2.ViewModels
 
                             var body = "{'parameters':{'ActualWork':'" + actualHours + "', " +
                             "'PlannedWork':'" + plannedHours + "', " +
-                            "'Start':'" + item.WorkModel.Start.DateTime + "', " +
+                            "'Start':'" + string.Format("{0:MM/dd/yyyy hh:mm:ss tt}", item.WorkModel.Start.DateTime) + "', " +
                             "'NonBillableOvertimeWork':'0h', " +
                             "'NonBillableWork':'0h', " +
                             "'OvertimeWork':'0h'}}";

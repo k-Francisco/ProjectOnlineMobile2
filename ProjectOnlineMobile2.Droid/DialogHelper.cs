@@ -180,5 +180,25 @@ namespace ProjectOnlineMobile2.Droid
             dialog.Show();
         }
 
+        public void DisplaySendProgressDialog()
+        {
+            EditText comment = new EditText(_activity);
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(_activity);
+            alert.SetTitle("Comment");
+            alert.SetView(comment);
+
+            alert.SetPositiveButton("Send", (senderAlert, args) => {
+                MessagingCenter.Instance.Send<String>(comment.Text, "SendProgress");
+            });
+
+            alert.SetNegativeButton("Cancel", (senderAlert, args) => {
+
+            });
+
+            Dialog dialog = alert.Create();
+            dialog.Show();
+        }
+
     }
 }

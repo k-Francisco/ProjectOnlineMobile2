@@ -3137,11 +3137,11 @@ namespace ProjectOnlineMobile2.Droid
 			// aapt resource value: 0x7F020015
 			public const int menu_completed_tasks = 2130837525;
 			
-			// aapt resource value: 0x7F020023
-			public const int menu_delete = 2130837539;
+			// aapt resource value: 0x7F020024
+			public const int menu_delete = 2130837540;
 			
-			// aapt resource value: 0x7F020022
-			public const int menu_edit = 2130837538;
+			// aapt resource value: 0x7F020023
+			public const int menu_edit = 2130837539;
 			
 			// aapt resource value: 0x7F020016
 			public const int menu_inprogress_tasks = 2130837526;
@@ -3157,6 +3157,9 @@ namespace ProjectOnlineMobile2.Droid
 			
 			// aapt resource value: 0x7F020021
 			public const int menu_save = 2130837537;
+			
+			// aapt resource value: 0x7F020022
+			public const int menu_send_progress = 2130837538;
 			
 			// aapt resource value: 0x7F020019
 			public const int menu_submit_timesheet = 2130837529;

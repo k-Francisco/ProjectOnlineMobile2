@@ -39,26 +39,6 @@ namespace ProjectOnlineMobile2.iOS
             });
         }
 
-        private void SetTimesheetStatus(string status)
-        {
-            if (status.Equals("1"))
-            {
-                TimesheetStatus = "In Progress";
-            }
-            else if (status.Equals("2"))
-            {
-                TimesheetStatus = "Submitted";
-            }
-            else if (status.Equals("3"))
-            {
-                TimesheetStatus = "Not Yet Created";
-            }
-            else if (status.Equals("4"))
-            {
-                TimesheetStatus = "Approved";
-            }
-        }
-
         public override void ViewDidLoad()
         {
             this.TabBar.Translucent = false;
@@ -79,6 +59,8 @@ namespace ProjectOnlineMobile2.iOS
                 (sender, args) => {
                     DisplayTimesheetOptions(sender as UIBarButtonItem);
                 });
+
+            var homePageController = new HomePage().CreateViewController();
 
             _timesheetWorkPageController = new TimesheetWorkPage().CreateViewController();
             _timesheetWorkPageController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIImage.FromFile("ic_gear.png"), UIBarButtonItemStyle.Plain, (sender, e) => {
@@ -120,6 +102,26 @@ namespace ProjectOnlineMobile2.iOS
             ViewControllers = tabs;
             SelectedViewController = _projectNavController;
 
+        }
+
+        private void SetTimesheetStatus(string status)
+        {
+            if (status.Equals("1"))
+            {
+                TimesheetStatus = "In Progress";
+            }
+            else if (status.Equals("2"))
+            {
+                TimesheetStatus = "Submitted";
+            }
+            else if (status.Equals("3"))
+            {
+                TimesheetStatus = "Not Yet Created";
+            }
+            else if (status.Equals("4"))
+            {
+                TimesheetStatus = "Approved";
+            }
         }
 
         private void DisplayAlert(string[] parameters)
@@ -177,6 +179,32 @@ namespace ProjectOnlineMobile2.iOS
 
             alertController.AddAction(UIAlertAction.Create("Save", UIAlertActionStyle.Default, alert => {
                 MessagingCenter.Instance.Send<String>("", "SaveTimesheetWorkChanges");
+            }));
+
+            alertController.AddAction(UIAlertAction.Create("Send Progress", UIAlertActionStyle.Default, alert => {
+                if (currentAlertView != null)
+                    currentAlertView.DismissWithClickedButtonIndex(-1, true);
+
+                var sendProgressAlertView = new UIAlertView()
+                {
+                    Title = "Comment",
+                };
+                sendProgressAlertView.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
+
+                sendProgressAlertView.AddButton("Send");
+                sendProgressAlertView.AddButton("Cancel");
+                sendProgressAlertView.DismissWithClickedButtonIndex(1, true);
+                sendProgressAlertView.Clicked += (sender, args) => {
+                    if (args.ButtonIndex == 0)
+                    {
+                        if (!string.IsNullOrWhiteSpace(sendProgressAlertView.GetTextField(0).Text))
+                        {
+                            MessagingCenter.Instance.Send<String>(sendProgressAlertView.GetTextField(0).Text, "SendProgress");
+                        }
+                    }
+                };
+                sendProgressAlertView.Show();
+                currentAlertView = sendProgressAlertView;
             }));
 
             alertController.AddAction(UIAlertAction.Create("Edit Line", UIAlertActionStyle.Default, alert => {

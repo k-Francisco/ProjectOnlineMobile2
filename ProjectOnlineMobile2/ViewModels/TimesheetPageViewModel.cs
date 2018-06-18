@@ -390,8 +390,15 @@ namespace ProjectOnlineMobile2.ViewModels
 
         private async void GetTimesheetStatus()
         {
-            var timesheetModel = await PSapi.GetTimesheet(PeriodList[SelectedIndex].Id);
-            MessagingCenter.Instance.Send<String>(timesheetModel.D.Status.ToString(), "TimesheetStatus");
+            try
+            {
+                var timesheetModel = await PSapi.GetTimesheet(PeriodList[SelectedIndex].Id);
+                MessagingCenter.Instance.Send<String>(timesheetModel.D.Status.ToString(), "TimesheetStatus");
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("GetTimesheetStatus", e.Message);
+            }
         }
 
         private async void SyncTimesheetLines(List<SavedLinesModel> savedLines)

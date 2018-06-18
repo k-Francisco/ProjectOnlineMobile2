@@ -64,7 +64,6 @@ namespace ProjectOnlineMobile2.iOS
             }
             else
             {
-                var homePageController = new HomePage().CreateViewController();
                 var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
                 Window.RootViewController = controller;
                 Window.MakeKeyAndVisible();

@@ -58,7 +58,6 @@ namespace ProjectOnlineMobile2.iOS
                         var authCookie = rtFa + "; " + FedAuth;
                         Settings.CookieString = JsonConvert.SerializeObject(authCookie);
 
-                        var homePageController = new HomePage().CreateViewController();
                         var controller = Storyboard.InstantiateViewController("TabBarController") as TabBarController;
                         AppDelegate.appDelegate.Window.RootViewController = controller;
                     }

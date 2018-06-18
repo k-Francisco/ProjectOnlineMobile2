@@ -276,6 +276,10 @@ namespace ProjectOnlineMobile2.Droid
             {
                 dialogHelper.DisplayConfirmationDialog("Do you really want to delete this line?", "Delete", "Cancel");
             }
+            else if (item.ItemId == Resource.Id.menu_send_progress)
+            {
+                dialogHelper.DisplaySendProgressDialog();
+            }
 
 
             return true;

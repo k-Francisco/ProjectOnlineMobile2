@@ -189,7 +189,7 @@ namespace ProjectOnlineMobile2.Models.ResourceAssignmentModel
         }
         public string FormattedAssignmentRemainingWork
         {
-            get { return String.Format("{0:0}h", Double.Parse("0")); }
+            get { return String.Format("{0:0}h", Double.Parse(AssignmentRemainingWork)); }
         }
 
     }

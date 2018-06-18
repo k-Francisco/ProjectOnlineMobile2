@@ -64,14 +64,14 @@
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
 
-                            <Entry Text="{Binding EntryTextActualHours}"
+                            <controls:BorderlessEntry Text="{Binding EntryTextActualHours}"
                                    Placeholder="{Binding ActualWork}"
                                    Keyboard="Numeric"
                                    FontSize="Medium"
                                    TextColor="Black"
                                    HorizontalTextAlignment="Center"
                                    Grid.Column="1"
-                                   HorizontalOptions="FillAndExpand"
+                                   HorizontalOptions="Center"
                                    VerticalOptions="Center">
                                 <Entry.Triggers>
                                     <DataTrigger TargetType="Entry"
@@ -80,17 +80,17 @@
                                         <Setter Property="TextColor" Value="Red"/>
                                     </DataTrigger>
                                 </Entry.Triggers>
-                            </Entry>
+                            </controls:BorderlessEntry>
 
 
-                            <Entry Text="{Binding EntryTextPlannedHours}"
+                            <controls:BorderlessEntry Text="{Binding EntryTextPlannedHours}"
                                    Placeholder="{Binding PlannedWork}"
                                    Keyboard="Numeric"
                                    FontSize="Medium"
                                    HorizontalTextAlignment="Center"
                                    TextColor="Black"
                                    Grid.Column="2"
-                                   HorizontalOptions="FillAndExpand"
+                                   HorizontalOptions="Center"
                                    VerticalOptions="Center">
                                 <Entry.Triggers>
                                     <DataTrigger TargetType="Entry"
@@ -99,7 +99,7 @@
                                         <Setter Property="TextColor" Value="Red"/>
                                     </DataTrigger>
                                 </Entry.Triggers>
-                            </Entry>
+                            </controls:BorderlessEntry>
 
 
                         </Grid>

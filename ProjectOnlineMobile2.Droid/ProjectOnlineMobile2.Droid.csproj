@@ -180,6 +180,7 @@
     <Compile Include="DialogHelper.cs" />
     <Compile Include="LoginActivity.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
     <Compile Include="Renderers\CustomFrameRenderer.cs" />
     <Compile Include="Renderers\CustomListViewRenderer.cs" />
     <Compile Include="Renderers\CustomProgressBarRenderer.cs" />

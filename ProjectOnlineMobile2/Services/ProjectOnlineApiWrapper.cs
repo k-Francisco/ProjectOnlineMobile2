@@ -363,6 +363,7 @@ namespace ProjectOnlineMobile2.Services
 
             if (!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
                 _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigestValue);
+
             try
             {
                 var result = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('" + periodId + "')" +
@@ -378,6 +379,33 @@ namespace ProjectOnlineMobile2.Services
             catch (Exception e)
             {
                 Debug.WriteLine("AddTimesheetLineWork", e.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> SubmitTimesheetLineProgress(string comment, string periodId, string lineId, string formDigestValue)
+        {
+            var contents = new StringContent("");
+            contents.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json;odata=verbose");
+
+            if (!_client.DefaultRequestHeaders.Contains("X-RequestDigest"))
+                _client.DefaultRequestHeaders.Add("X-RequestDigest", formDigestValue);
+
+            try
+            {
+                var result = await _client.PostAsync(_projectOnlineUrl + "/_api/ProjectServer/TimesheetPeriods('"+ periodId +"')" +
+                    "/Timesheet/Lines('"+ lineId +"')/submit('"+ comment +"')",contents);
+
+                var postResult = result.EnsureSuccessStatusCode();
+
+                if (postResult.IsSuccessStatusCode)
+                    return true;
+
+                return false;
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine("SubmitTimesheetLineProgress", e.Message);
                 return false;
             }
         }
