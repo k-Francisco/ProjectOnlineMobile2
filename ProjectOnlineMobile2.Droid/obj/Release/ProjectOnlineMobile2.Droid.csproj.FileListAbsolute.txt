@@ -150,6 +150,9 @@ D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\R.txt
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\obj\Release\uploadflags.txt
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\bin\Release\ProjectOnlineMobile2.Droid.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\packages\Xamarin.Forms.3.0.0.482510\lib\MonoAndroid10\FormsViewGroup.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\packages\Xam.Plugins.Settings.3.1.1\lib\MonoAndroid10\Plugin.Settings.Abstractions.dll
+D:\Xamarin Projects\ProjectOnlineMobile2\packages\Xamarin.Forms.3.0.0.482510\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\bin\Release\Mono.Android.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\bin\Release\mscorlib.pdb
 D:\Xamarin Projects\ProjectOnlineMobile2\ProjectOnlineMobile2.Droid\bin\Release\System.Core.pdb
